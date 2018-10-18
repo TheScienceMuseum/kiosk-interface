@@ -1,0 +1,23 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "indent": ["error", 4],
+        "consistent-return": ["warn"],
+        "max-len": ["warn", 100],
+        "prefer-rest-params": ["warn"],
+        "arrow-parens": ["error", "as-needed"],
+        "no-console": [0, { "allow": ["warn", "error"] }],
+        "react/jsx-indent": ["warn", 4],
+        "react/jsx-indent-props": ["warn", 4],
+        "jsx-a11y/label-has-for": [ 2, {
+            "components": [ "Label" ],
+            "required": {
+                "every": [ "id" ]
+            },
+            "allowChildren": false
+        }]
+    },
+    "env": {
+        "browser": true
+    }
+}
