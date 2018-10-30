@@ -1,0 +1,67 @@
+{
+    "packageID": 123,
+    "packageName": "Content Package 1",
+    "titles": {
+        "type": "text",
+        "galleryName": "The Medicine Gallery",
+        "title": "Perspectives on death and dying",
+        "image": null
+    },
+    "contents": [
+        {
+            "type": "mixed",
+            "title": "What it is like to perform a post-mortem",
+            "titleImage": "/images/menu-image-2.png",
+            "subpages": [
+                {
+                    "type": "title",
+                    "image": "img/src",
+                    "title": "",
+                    "subtitle": ""
+                },
+                {
+                    "type": "textImage",
+                    "layout": "left",
+                    "image": {
+                        "imageSource": "",
+                        "imageThumbnail": "",
+                        "imagePortrait": "",
+                        "imageLandscape": "",
+                        "nameText": "",
+                        "sourceText": ""
+                    },
+                    "title": "",
+                    "content": ""
+                },
+                {
+                    "type": "image",
+                    "layout": "left",
+                    "image": {
+                        "imageSource": "",
+                        "imageThumbnail": "",
+                        "imagePortrait": "",
+                        "imageLandscape": "",
+                        "nameText": "",
+                        "sourceText": ""
+                    },
+                    "title": "Anatomical Venuses of 18th-century Italy",
+                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                }
+            ]
+        },
+        {
+            "type": "video",
+            "title": "Digital autopsy: the future of post-mortem",
+            "titleImage": "/images/menu-image-1.png",
+            "videoSrc": "",
+            "image": {
+                "imageSource": "",
+                "imageThumbnail": "",
+                "imagePortrait": "",
+                "imageLandscape": "",
+                "nameText": "",
+                "sourceText": ""
+            }
+        }
+    ]
+}

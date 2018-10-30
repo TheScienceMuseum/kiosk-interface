@@ -7,6 +7,7 @@
         "prefer-rest-params": ["warn"],
         "arrow-parens": ["error", "as-needed"],
         "no-console": [0, { "allow": ["warn", "error"] }],
+        "react/jsx-filename-extension": ["off"],
         "react/jsx-indent": ["warn", 4],
         "react/jsx-indent-props": ["warn", 4],
         "jsx-a11y/label-has-for": [ 2, {
