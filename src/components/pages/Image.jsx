@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 /*
- * MenuItem:
+ * Image.jsx:
  *
  *
  * @author Gavin Cockrem <gavin@joipolloi.com.
@@ -11,13 +10,16 @@ import PropTypes from 'prop-types';
  */
 
 
-function MenuItem(props) {
+function Image(props) {
     return (
-        <div className="MenuItem">
+        <div className="Page_Image">
+            <h2>IMAGE</h2>
         </div>
     );
 }
 
-MenuItem.propTypes = {};
+Image.propTypes = {
 
-export default MenuItem;
+};
+
+export default Image;

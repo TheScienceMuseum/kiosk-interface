@@ -1,0 +1,66 @@
+@import "variables";
+
+.MenuItem {
+    //height: 800px;
+
+    flex: 0 0 auto;
+
+    a {
+        text-decoration: none;
+    }
+
+
+    &__Title {
+        height:800px;
+        width: 800px;
+        flex: 0 0 auto;
+        background-color: $pageBackground;
+        padding: 70px;
+        white-space: normal;
+
+        display: flex;
+        //align-items: center;
+        justify-content: center;
+        flex-flow: column;
+
+        p {
+            font-family: $fontMedium;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            //align-self: flex-start;
+        }
+
+        h1 {
+            font-family: $fontLight;
+            font-size: 80px;
+            text-transform: uppercase;
+            color: $red;
+            //align-self: flex-start;
+        }
+
+    }
+
+    &__Video, &__Mixed {
+
+        width: 1422px;
+        position: relative;
+
+        img {
+            position: absolute;
+            width: 1422px;
+        }
+
+        h2 {
+            font-family: $fontLight;
+            color: $white;
+            position: absolute;
+            font-size: 46px;
+            left: 50px;
+            bottom: 60px;
+            width: 660px;
+            white-space: normal;
+        }
+    }
+
+}

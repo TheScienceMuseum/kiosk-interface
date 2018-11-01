@@ -1,0 +1,34 @@
+.Menu {
+
+    padding: 140px 0;
+    height: 100%;
+
+
+    position: relative;
+
+    &__Container {
+
+        overflow: auto;
+        white-space: nowrap;
+
+        display: flex;
+        height: 800px;
+        padding: 0 100px;
+    }
+
+    ul {
+
+        //overflow: hidden;
+
+        li {
+            //display: block;
+            //background-color: green;
+
+            margin-right: 20px;
+
+        }
+    }
+
+}
+
+

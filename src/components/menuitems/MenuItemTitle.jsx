@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../../styles/MenuItem.scss';
+
 /*
  * Title:
  *
@@ -11,13 +13,13 @@ import PropTypes from 'prop-types';
 
 
 function MenuItemTitle(props) {
-    const { title, subtitle } = props;
+    const { title, galleryName } = props;
 
     return (
-        <div className="MenuItem_Title">
+        <li className="MenuItem MenuItem__Title">
+            <p>{ galleryName }</p>
             <h1>{ title }</h1>
-            <h2>{ subtitle }</h2>
-        </div>
+        </li>
     );
 }
 

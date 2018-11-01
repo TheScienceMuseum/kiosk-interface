@@ -1,4 +1,4 @@
-export const MenuItemTypes = {
+export const ArticleTypes = {
     TITLE: 'title',
     VIDEO: 'video',
     MIXED: 'mixed',

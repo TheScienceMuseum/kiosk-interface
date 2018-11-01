@@ -12,10 +12,12 @@ import PropTypes from 'prop-types';
 
 function TextImage(props) {
     return (
-        <div className="Page_TextImage"></div>;
+        <div className="Page_TextImage">
+            <h2>TEXT IMAGE</h2>
+        </div>
     );
 }
 
 TextImage.propTypes = {};
 
-export default;
+export default TextImage;

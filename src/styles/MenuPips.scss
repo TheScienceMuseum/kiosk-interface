@@ -1,0 +1,13 @@
+@import "variables";
+
+.MenuPips {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    button {
+        border: 1px solid $black;
+    }
+}

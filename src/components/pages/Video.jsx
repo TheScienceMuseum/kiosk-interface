@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 /*
- * MenuItem:
+ * Video:
  *
  *
  * @author Gavin Cockrem <gavin@joipolloi.com.
@@ -11,13 +10,16 @@ import PropTypes from 'prop-types';
  */
 
 
-function MenuItem(props) {
+function Video(props) {
     return (
-        <div className="MenuItem">
+        <div className="Page_Video">
+            <h2>VIDEO</h2>
         </div>
     );
 }
 
-MenuItem.propTypes = {};
+Video.propTypes = {
 
-export default MenuItem;
+};
+
+export default Video;

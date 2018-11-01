@@ -1,5 +1,22 @@
+
+@import "vendor/normalize.css";
+@import "fonts";
+@import "global";
+@import "variables";
+
+body, html {
+    margin: 0;
+}
+
+h1 {
+    font-family: $fontLight;
+}
+
 .App {
-  text-align: center;
+    text-align: left;
+    width: 1920px;
+    height: 1080px;
+    background-color: $appBackground;
 }
 
 .App-logo {
@@ -29,4 +46,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+
+.Menu ul {
+    margin-top: 0;
 }

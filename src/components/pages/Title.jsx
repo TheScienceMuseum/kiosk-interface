@@ -22,8 +22,8 @@ function Title(props) {
 }
 
 Title.propTypes = {
-    title: PropTypes.string().isRequired,
-    subtitle: PropTypes.string(),
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
 };
 
 Title.defaultProps = {

@@ -9,17 +9,35 @@
     },
     "contents": [
         {
+            "articleID": "123-0",
+            "type": "video",
+            "title": "Digital autopsy: the future of post-mortem",
+            "titleImage": "/images/menu-image-1.png",
+            "videoSrc": "",
+            "image": {
+                "imageSource": "",
+                "imageThumbnail": "",
+                "imagePortrait": "",
+                "imageLandscape": "",
+                "nameText": "",
+                "sourceText": ""
+            }
+        },
+        {
+            "articleID": "123-1",
             "type": "mixed",
             "title": "What it is like to perform a post-mortem",
             "titleImage": "/images/menu-image-2.png",
             "subpages": [
                 {
+                    "pageID": "123-0-0",
                     "type": "title",
-                    "image": "img/src",
-                    "title": "",
+                    "image": "/images/menu-image-2.png",
+                    "title": "What it is like to perform a post-mortem",
                     "subtitle": ""
                 },
                 {
+                    "pageID": "123-0-1",
                     "type": "textImage",
                     "layout": "left",
                     "image": {
@@ -34,6 +52,7 @@
                     "content": ""
                 },
                 {
+                    "pageID": "123-0-2",
                     "type": "image",
                     "layout": "left",
                     "image": {
@@ -48,11 +67,11 @@
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                 }
             ]
-        },
-        {
+        },{
+            "articleID": "123-2",
             "type": "video",
-            "title": "Digital autopsy: the future of post-mortem",
-            "titleImage": "/images/menu-image-1.png",
+            "title": "What is it like to be a student doing your first dissection",
+            "titleImage": "/images/menu-image-3.png",
             "videoSrc": "",
             "image": {
                 "imageSource": "",
@@ -62,6 +81,21 @@
                 "nameText": "",
                 "sourceText": ""
             }
+        },{
+            "articleID": "123-3",
+            "type": "mixed",
+            "title": "What is it like to donate your body to science",
+            "titleImage": "/images/menu-image-4.png",
+            "subpages": [
+                {
+                    "pageID": "123-0-0",
+                    "type": "title",
+                    "image": "/images/menu-image-4.png",
+                    "title": "What is it like to donate your body to science",
+                    "subtitle": ""
+                }
+            ]
         }
+
     ]
 }
