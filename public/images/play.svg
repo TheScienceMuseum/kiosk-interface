@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M80,80 L0,80 L0,0 L80,0 L80,80 Z M1.6,78.4 L78.4,78.4 L78.4,1.6 L1.6,1.6 L1.6,78.4 Z M27.36,56.48 L27.36,24.8 L53.44,40.64 L27.36,56.48 Z M28.96,27.68 L28.96,53.6 L50.4,40.64 L28.96,27.68 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Buttons/Video/Play">
+            <g id="Play">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="Colours/Flat/White" mask="url(#mask-2)" fill="#FFFFFF" fill-rule="nonzero">
+                    <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

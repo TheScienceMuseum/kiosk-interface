@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { TweenMax } from 'gsap/all';
+import { TweenLite, TweenMax, Ease } from 'gsap/all';
 import { Transition } from 'react-transition-group';
 import Hammer from 'react-hammerjs';
 
@@ -10,6 +10,7 @@ import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
+import NavButtons from './NavButtons';
 import { ArticleTypes } from './DataTypes';
 
 import '../styles/Menu.scss';
@@ -26,7 +27,7 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentFocused: null,
+            currentFocused: 0,
         };
 
         this.DOMrefs = {};
@@ -38,37 +39,40 @@ class Menu extends React.Component {
         this.handleSwipe = this.handleSwipe.bind(this);
 
         this.scrollElem = null;
+        this.scrollTween = null;
     }
 
     nextItem() {
-        console.log('Menu: nextItem');
+        // console.log('Menu: nextItem');
+        const { contents } = this.props;
         let { currentFocused } = this.state;
-        console.log('Menu: nextItem: currentFocused: ', currentFocused);
-        if (currentFocused != null) {
-            console.log('Menu: nextItem: add one: ');
-            currentFocused += 1;
-        } else {
-            currentFocused = 0;
-        }
-        //console.log('Menu: nextItem: currentFocused: ', currentFocused);
-        this.setState({ currentFocused }, this.jumpToItem(this.props.contents[currentFocused].articleID));
+        // console.log('Menu: nextItem: currentFocused: ', currentFocused);
+
+        if (currentFocused === (contents.length)) return;
+
+        currentFocused += 1;
+
+        const targetID = (currentFocused === 0) ? ArticleTypes.TITLE : contents[currentFocused - 1].articleID;
+        // console.log('Menu: nextItem: currentFocused: ', currentFocused);
+        this.setState({ currentFocused }, this.jumpToItem(targetID));
     }
 
     previousItem() {
+        const { contents } = this.props;
         let { currentFocused } = this.state;
-        console.log('Menu: previousItem: currentFocused: ', currentFocused);
-        if (currentFocused !== null && currentFocused !== 0) {
-            console.log('Menu: nextItem: delete one: ');
-            currentFocused -= 1;
-        } else {
-            currentFocused = 0;
-        }
-        console.log('Menu: nextItem: currentFocused: ', currentFocused);
-        this.setState({ currentFocused }, this.jumpToItem(this.props.contents[currentFocused].articleID));
+        // console.log('Menu: previousItem: currentFocused: ', currentFocused);
+
+        if (currentFocused === null || currentFocused === 0) return;
+
+        currentFocused -= 1;
+
+        // console.log('Menu: nextItem: currentFocused: ', currentFocused);
+        const targetID = (currentFocused === 0) ? ArticleTypes.TITLE : contents[currentFocused - 1].articleID;
+        this.setState({ currentFocused }, this.jumpToItem(targetID));
     }
 
     handleSwipe(e) {
-        console.log('Menu: handleSwipe: e: ', e);
+        // console.log('Menu: handleSwipe: e: ', e);
         if (e.direction === 2) {
             this.nextItem();
         } else if (e.direction === 4) {
@@ -77,24 +81,51 @@ class Menu extends React.Component {
     }
 
     jumpToItem(targetID) {
-        console.log('Menu: jumpToItem: targetID: ', targetID);
-        // console.log('Menu: jumpToItem: getDOMElement: ', this.DOMrefs);
-        const itemElem = this.DOMrefs[targetID];
-        console.log('Menu: jumpToItem: itemElem: ', itemElem);
-        console.log('Menu: jumpToItem: scrollElem: ', this.scrollElem);
-        console.log('Menu: jumpToItem: itemElem rect: ', itemElem.getBoundingClientRect());
-        const targetRect = itemElem.getBoundingClientRect();
-        // const targetLeft = itemElem.offsetLeft;
-        const targetCenter = itemElem.offsetLeft + (targetRect.width / 2);
-        const currentScroll = this.scrollElem.scrollLeft;
-        // console.log('Menu: jumpToItem: targetLeft: ', targetLeft);
-        console.log('Menu: jumpToItem: targetCenter: ', targetCenter);
-        console.log('Menu: jumpToItem: currentScroll: ', currentScroll);
+
+        // console.log('Menu: jumpToItem: targetID: ', targetID);
+
+        let targetScroll;
+        let index;
+
+        if (targetID === ArticleTypes.TITLE) {
+            targetScroll = 0;
+            index = 0;
+        } else {
+            const itemElem = this.DOMrefs[targetID];
+            const targetRect = itemElem.getBoundingClientRect();
+            const targetCenter = itemElem.offsetLeft + (targetRect.width / 2);
+            // const currentScroll = this.scrollElem.scrollLeft;
+            index = (Object.keys(this.DOMrefs).indexOf(targetID) + 1);
+
+            targetScroll = (targetCenter - 960);
+        }
+
+        //
+        // console.log('Menu: jumpToItem: targetID: ', this.DOMrefs);
+        // // console.log('Menu: jumpToItem: getDOMElement: ', this.DOMrefs);
+        //
+        // console.log('Menu: jumpToItem: itemElem: ', itemElem);
+        // console.log('Menu: jumpToItem: scrollElem: ', this.scrollElem);
+        // console.log('Menu: jumpToItem: itemElem rect: ', itemElem.getBoundingClientRect());
+        //
+        // // const targetLeft = itemElem.offsetLeft;
+        //
+        // // console.log('Menu: jumpToItem: targetLeft: ', targetLeft);
+        // console.log('Menu: jumpToItem: targetCenter: ', targetCenter);
+        // console.log('Menu: jumpToItem: currentScroll: ', currentScroll);
 
         // whats the current scroll?
         // where do i need to scroll to?
 
-        this.scrollElem.scrollLeft = (targetCenter - 960);
+        // this.scrollElem.scrollLeft = (targetCenter - 960);
+
+        // const idx = this.DOMrefs.indexOf(targetID);
+
+        // console.log('Menu: jumpToItem: index: ', index);
+        // alert(index);
+
+        this.setState({ currentFocused: index });
+        this.myTween = TweenLite.to(this.scrollElem, 0.25, { scrollLeft: targetScroll, ease: Ease.easeOut });
     }
 
     storeRef(ref, id) {
@@ -106,8 +137,8 @@ class Menu extends React.Component {
 
 
     render() {
-        const { contents, titles } = this.props;
-        const { show } = this.props;
+        const { contents, titles, show } = this.props;
+        const { currentFocused } = this.state;
         const startState = { autoAlpha: 0, y: -50 };
 
         const menuItems = contents.map(item => {
@@ -162,7 +193,8 @@ class Menu extends React.Component {
                             <MenuItemTitle {...titles} />
                             {menuItems}
                         </ul>
-                        <MenuPips onJump={this.onJump} contents={contents} />
+                        <MenuPips onJump={this.onJump} contents={contents} currentFocused={currentFocused} />
+                        <NavButtons onPrev={this.onPrev} onNext={this.onNext} />
                     </nav>
                 </Hammer>
             </Transition>

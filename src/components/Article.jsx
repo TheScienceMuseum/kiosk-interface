@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 import { TweenMax } from 'gsap/all';
+
 
 import { ArticleTypes, PageTypes } from './DataTypes';
 import Title from './pages/Title';
@@ -39,7 +41,7 @@ class Article extends React.Component {
         case ArticleTypes.MIXED:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
-            return <Video />;
+            return <Video { ...articleContent } />;
         default:
             break;
         }
@@ -89,8 +91,10 @@ class Article extends React.Component {
                 }}
             >
                 <article>
+                    <Link to="/" className="NavButtonHome"><button type="button" className="NavButton">Home</button></Link>
                     { this.makeArticle() }
                 </article>
+
             </Transition>
         );
     }

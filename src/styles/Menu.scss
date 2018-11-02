@@ -8,12 +8,16 @@
 
     &__Container {
 
-        overflow: auto;
+        overflow: hidden;
         white-space: nowrap;
 
         display: flex;
         height: 800px;
         padding: 0 100px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     ul {

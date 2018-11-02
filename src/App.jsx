@@ -28,15 +28,17 @@ class App extends Component {
             <BrowserRouter>
                 <div className="App">
                     <TransitionGroup>
-                        <Route
-                            exact
-                            path="/"
-                            render={match => <Menu titles={data.titles} show={match !== null} contents={data.contents} />}
-                        />
-                        <Route
-                            path="/article/:articleID"
-                            render={match => <Article contents={data.contents} show={match !== null} {...match} />}
-                        />
+                        <Switch>
+                            <Route
+                                exact
+                                path="/"
+                                render={match => <Menu titles={data.titles} show={match !== null} contents={data.contents} />}
+                            />
+                            <Route
+                                path="/article/:articleID"
+                                render={match => <Article contents={data.contents} show={match !== null} {...match} />}
+                            />
+                        </Switch>
                     </TransitionGroup>
                 </div>
             </BrowserRouter>

@@ -1,0 +1,28 @@
+@import 'variables';
+
+.NavButtons {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    button {
+
+
+
+
+    }
+
+    &__Prev, &__Next {
+        width: 100px;
+        overflow: hidden;
+        text-indent: -999px;
+        background: url("/images/arrow.svg") no-repeat center center;
+    }
+
+    &__Next {
+        transform: rotate(180deg);
+        margin-left: 2px;
+    }
+
+}

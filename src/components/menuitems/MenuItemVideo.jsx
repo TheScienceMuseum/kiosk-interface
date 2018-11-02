@@ -19,8 +19,8 @@ class MenuItemVideo extends React.Component {
 
         return (
             <li className="MenuItem MenuItem__Video">
-                <Link to={`/article/${articleID}`}>
-                    <img src={titleImage} alt="" />
+                <Link to={`/article/${articleID}`} draggable="false">
+                    <img src={titleImage} alt="" draggable="false" />
                     <h2>{title}</h2>
                 </Link>
             </li>

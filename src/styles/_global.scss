@@ -1,5 +1,12 @@
+@import "variables";
+
+
 * {
     box-sizing: border-box;
+}
+
+:focus {
+    outline: 0;
 }
 
 h1, h2, h3, p {
@@ -14,4 +21,34 @@ ul, li {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+img {
+    //user-drag: none;
+    //pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+a {
+    -webkit-user-drag: none;
+}
+
+.NavButton {
+    height: 100px;
+    background-color: $red;
+    font-size: 30px;
+    color: $white;
+    font-family: $fontMedium;
+    text-transform: uppercase;
+    padding: 0 20px;
+
+    outline: none;
+    border: none;
+}
+
+.NavButtonHome {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
 }

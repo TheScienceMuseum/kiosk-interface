@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="45px" viewBox="0 0 60 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="1.29312893e-15 20.3306587 53.5531254 20.3306587 35.4548984 2.47896985 37.9338683 0 60 22.0661317 37.9338683 44.1322635 35.4548984 41.6532936 53.5531254 23.8016048 0 23.8016048"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Arrows/LeftArrow">
+            <use id="Shape" fill="#FFFFFF" fill-rule="nonzero" transform="translate(30.000000, 22.066132) scale(-1, 1) translate(-30.000000, -22.066132) " xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
