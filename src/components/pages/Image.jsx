@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 /*
  * Image.jsx:
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  */
 
 
-function Image(props) {
+function Image() {
     return (
         <div className="Page_Image">
             <h2>IMAGE</h2>

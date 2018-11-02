@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import '../../styles/Page.scss';
 
@@ -13,13 +13,13 @@ import '../../styles/Page.scss';
 
 
 function Video(props) {
-
     const { videoSrc } = props;
 
     return (
         <div className="Page PageVideo">
             <video controls autoPlay>
                 <source src={videoSrc} type="video/mp4" />
+                <track kind="captions" />
             </video>
         </div>
     );

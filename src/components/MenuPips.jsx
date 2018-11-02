@@ -45,9 +45,9 @@ function MenuPips(props) {
                 className={`MenuPips__Button ${currentFocused === 0 ? 'MenuPips__Button--active' : ''}`}
                 type="button"
                 onClick={handleClick.bind(this, ArticleTypes.TITLE)}
-                key={`button_title`}
+                key="button_title"
             >
-                {`Jump to Title`}
+                {'Jump to Title'}
             </button>
             {output}
         </div>

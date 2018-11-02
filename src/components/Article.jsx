@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { TweenMax } from 'gsap/all';
@@ -19,35 +19,7 @@ import Image from './pages/Image';
  */
 
 class Article extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
-    getArticleContents(articleID) {
-        const { contents } = this.props;
-        const thisContent = contents.filter(item => (item.articleID === articleID));
-        console.log('Article: getArticleContents: thisContent: ', thisContent);
-        return thisContent[0];
-    }
-
-    makeArticle() {
-        const { match } = this.props;
-        const { articleID } = match.params;
-        const articleContent = this.getArticleContents(articleID);
-        // let pagesOutput;
-
-        switch (articleContent.type) {
-        case ArticleTypes.MIXED:
-            return this.makeMixedArticle(articleContent);
-        case ArticleTypes.VIDEO:
-            return <Video { ...articleContent } />;
-        default:
-            break;
-        }
-    }
-
-    makeMixedArticle(articleContent) {
+    static makeMixedArticle(articleContent) {
         const pages = articleContent.subpages;
         console.log('Article: makeArticle: pages: ', pages);
         const pagesOutput = pages.map(page => {
@@ -71,6 +43,35 @@ class Article extends React.Component {
 
         return pagesOutput;
     }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
+
+    getArticleContents(articleID) {
+        const { contents } = this.props;
+        const thisContent = contents.filter(item => (item.articleID === articleID));
+        console.log('Article: getArticleContents: thisContent: ', thisContent);
+        return thisContent[0];
+    }
+
+    makeArticle() {
+        const { match } = this.props;
+        const { articleID } = match.params;
+        const articleContent = this.getArticleContents(articleID);
+        // let pagesOutput;
+
+        switch (articleContent.type) {
+        case ArticleTypes.MIXED:
+            return this.makeMixedArticle(articleContent);
+        case ArticleTypes.VIDEO:
+            return <Video {...articleContent} />;
+        default:
+            break;
+        }
+    }
+
 
     render() {
         const { show } = this.props;

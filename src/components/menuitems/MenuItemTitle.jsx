@@ -25,11 +25,11 @@ function MenuItemTitle(props) {
 
 MenuItemTitle.propTypes = {
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string,
+    galleryName: PropTypes.string.isRequired,
 };
 
 MenuItemTitle.defaultProps = {
-    subtitle: '',
+
 };
 
 export default MenuItemTitle;

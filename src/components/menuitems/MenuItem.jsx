@@ -13,8 +13,7 @@ import PropTypes from 'prop-types';
 
 function MenuItem(props) {
     return (
-        <div className="MenuItem">
-        </div>
+        <div className="MenuItem" />
     );
 }
 

@@ -81,7 +81,6 @@ class Menu extends React.Component {
     }
 
     jumpToItem(targetID) {
-
         // console.log('Menu: jumpToItem: targetID: ', targetID);
 
         let targetScroll;
@@ -131,7 +130,7 @@ class Menu extends React.Component {
     storeRef(ref, id) {
         // console.log('Menu: storeRef: ref: ', ref);
         // console.log('Menu: storeRef: id: ', id);
-        // eslint:disable-next-line:react/no-find-dom-node
+        // eslint-disable-next-line react/no-find-dom-node
         this.DOMrefs[id] = ReactDOM.findDOMNode(ref);
     }
 

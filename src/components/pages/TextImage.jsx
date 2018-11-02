@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 /*
  * :
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  */
 
 
-function TextImage(props) {
+function TextImage() {
     return (
         <div className="Page_TextImage">
             <h2>TEXT IMAGE</h2>
