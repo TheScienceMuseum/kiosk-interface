@@ -12,6 +12,6 @@ export const PageTypes = {
 };
 
 export const Orientations = {
-    HORIZONTAL: 'Horiziontal',
-    VERTICAL: 'Vertical',
+    HORIZONTAL: 'horiziontal',
+    VERTICAL: 'vertical',
 };

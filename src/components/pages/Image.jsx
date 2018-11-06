@@ -41,7 +41,7 @@ class Image extends React.Component {
                         Zoom In/Out
                     </button>
                 </div>
-                <div className="ContentContainer">
+                <div className={`ContentContainer ContentContainer--${zoomed}`}>
                     <h2>{title}</h2>
                     <p>{content}</p>
                     <div className="ImageCaption">

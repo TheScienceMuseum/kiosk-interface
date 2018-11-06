@@ -18,11 +18,30 @@
         text-indent: 999px;
         white-space: nowrap;
 
-        margin-left: 30px;
+        &:not(:first-of-type) {
+            margin-left: 40px;
+        }
 
         &--active {
             background-color: $black;
         }
 
     }
+
+    &--vertical {
+        left: auto;
+        right: 40px;
+        width: 30px;
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &--vertical &__Button {
+        &:not(:first-of-type) {
+            margin-left: 0;
+            margin-top: 40px;
+        }
+    }
+
 }

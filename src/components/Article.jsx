@@ -126,8 +126,13 @@ class Article extends React.Component {
     }
 
     jumpToPage(pageID) {
-        console.log('Article: jumpToPage: pageID: ', pageID);
+        const { subpages } = this.articleContent;
+        // console.log('Article: jumpToPage: pageID: ', pageID);
+        const currentPage = subpages.map(e => e.pageID).indexOf(pageID);
+        // console.log('Article: jumpToPage: currentPage: ', currentPage);
+        this.setState({ currentPage }, this.scrollToPage);
     }
+
 
     scrollToPage() {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
@@ -135,10 +140,9 @@ class Article extends React.Component {
         const targetScroll = currentPage * 1080;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // console.log('Article: scrollToPage: this.scrollElem.scrollTop: ', this.scrollElem.scrollTop);
-
         // this.scrollElem.scrollTop = targetScroll;
-
-        this.articleTween = TweenLite.to(this.scrollElem, 0.25, { scrollTop: targetScroll, ease: Ease.easeOut });
+        const options = { scrollTop: targetScroll, ease: Ease.easeOut };
+        this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
 
     render() {
@@ -151,16 +155,31 @@ class Article extends React.Component {
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className="Article">
-                    <Link to="/" className="NavButtonHome"><button type="button" className="Button NavButton">Home</button></Link>
+                    <Link to="/" className="NavButtonHome">
+                        <button type="button" className="Button NavButton">
+                            Home
+                        </button>
+                    </Link>
                     <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
-                    <MenuPips
-                        onJump={this.onJump}
-                        contents={subpages}
-                        currentFocused={currentPage}
-                    />
-                    <NavButtons onPrev={this.prevPage} onNext={this.nextPage} orientation={Orientations.VERTICAL} />
+                    { subpages && (subpages.length > 1)
+                        && (
+                            <nav>
+                                <MenuPips
+                                    onJump={this.onJump}
+                                    contents={subpages}
+                                    currentFocused={currentPage}
+                                    orientation={Orientations.VERTICAL}
+                                />
+                                <NavButtons
+                                    onPrev={this.prevPage}
+                                    onNext={this.nextPage}
+                                    orientation={Orientations.VERTICAL}
+                                />
+                            </nav>
+                        )
+                    }
                 </article>
             </Hammer>
 

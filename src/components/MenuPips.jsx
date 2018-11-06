@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleTypes } from './DataTypes';
+import { ArticleTypes, Orientations } from './DataTypes';
 
 import '../styles/MenuPips.scss';
 
@@ -15,14 +15,16 @@ import '../styles/MenuPips.scss';
 
 
 function MenuPips(props) {
-    const { contents, currentFocused, showTitlePip } = props;
+    const {
+        contents, currentFocused, showTitlePip, orientation,
+    } = props;
 
     const handleClick = targetID => {
         // console.log('MenuPips: handleClick: targetID: ', targetID);
         props.onJump(targetID);
     };
 
-    console.log('MenuPips: contents: ', contents);
+    // console.log('MenuPips: contents: ', contents);
 
     const output = contents.map((articleContent, idx) => {
         // console.log('MenuPips: output map: articleContent: ', articleContent);
@@ -47,7 +49,7 @@ function MenuPips(props) {
     });
 
     return (
-        <div className="MenuPips">
+        <div className={`MenuPips MenuPips--${orientation}`}>
             { showTitlePip
             && (
                 <button
@@ -71,10 +73,12 @@ MenuPips.propTypes = {
     onJump: PropTypes.func.isRequired,
     currentFocused: PropTypes.number.isRequired,
     showTitlePip: PropTypes.bool,
+    orientation: PropTypes.oneOf(Object.values(Orientations)),
 };
 
 MenuPips.defaultProps = {
     showTitlePip: false,
+    orientation: Orientations.HORIZONTAL,
 };
 
 export default MenuPips;

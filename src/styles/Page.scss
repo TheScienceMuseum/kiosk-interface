@@ -141,6 +141,15 @@
         bottom: 0;
         background: $pageBackground;
 
+        transition: left 350ms ease-out;
+        &--zoomedOut {
+
+        }
+
+        &--zoomedIn {
+            left: -650px;
+        }
+
     }
 
     .ImageCaption {

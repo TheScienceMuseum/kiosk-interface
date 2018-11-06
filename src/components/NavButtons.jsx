@@ -19,8 +19,20 @@ function NavButtons(props) {
 
     return (
         <div className={`NavButtons NavButtons--${orientation}`}>
-            <button className="NavButton NavButtons__Prev" type="button" onClick={onPrev}>Previous</button>
-            <button className="NavButton NavButtons__Next" type="button" onClick={onNext}>Next</button>
+            <button
+                className="NavButton NavButtons__Prev"
+                type="button"
+                onClick={onPrev}
+            >
+                Previous
+            </button>
+            <button
+                className="NavButton NavButtons__Next"
+                type="button"
+                onClick={onNext}
+            >
+                Next
+            </button>
         </div>
     );
 }
