@@ -33,22 +33,11 @@ a {
     -webkit-user-drag: none;
 }
 
-.NavButton {
-    height: 100px;
+.Button {
     background-color: $red;
-    font-size: 30px;
     color: $white;
-    font-family: $fontMedium;
-    text-transform: uppercase;
-    padding: 0 20px;
-
-    outline: none;
-    border: none;
-}
-
-.NavButtonHome {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
+    text-indent: 110%;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
 }

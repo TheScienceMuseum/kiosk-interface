@@ -11,12 +11,15 @@ import PropTypes from 'prop-types';
 
 
 function Title(props) {
-    const { title, subtitle } = props;
+    const { title, subtitle, image } = props;
 
     return (
-        <div className="Page_Title">
-            <h1>{ title }</h1>
-            <h2>{ subtitle }</h2>
+        <div className="Page PageTitle">
+            <img src={image} alt="" />
+            <div className="PageTitle__Content">
+                <h1>{ title }</h1>
+                <h2>{ subtitle }</h2>
+            </div>
         </div>
     );
 }
@@ -24,6 +27,7 @@ function Title(props) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
+    image: PropTypes.string.isRequired,
 };
 
 Title.defaultProps = {

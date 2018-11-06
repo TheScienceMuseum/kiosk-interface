@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/CloseImg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7.5,7.5 L7.5,-1.24344979e-14 L10.5,-1.24344979e-14 L10.5,10.5 L-1.07469589e-13,10.5 L-1.07469589e-13,7.5 L7.5,7.5 Z M7.5,37.5 L-1.05693232e-13,37.5 L-1.05693232e-13,34.5 L10.5,34.5 L10.5,45 L7.5,45 L7.5,37.5 Z M37.5,7.5 L45,7.5 L45,10.5 L34.5,10.5 L34.5,-1.42108547e-14 L37.5,-1.42108547e-14 L37.5,7.5 Z M37.5,37.5 L37.5,45 L34.5,45 L34.5,34.5 L45,34.5 L45,37.5 L37.5,37.5 Z M29.8916016,20.8916016 L29.8916016,23.8916016 L15.1083984,23.8916016 L15.1083984,20.8916016 L29.8916016,20.8916016 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/CloseImg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Colours/Flat/Black" mask="url(#mask-2)" fill="#FFFFFF" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="45" height="45"></rect>
+        </g>
+    </g>
+</svg>

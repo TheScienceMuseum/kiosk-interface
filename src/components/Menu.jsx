@@ -124,7 +124,7 @@ class Menu extends React.Component {
         // alert(index);
 
         this.setState({ currentFocused: index });
-        this.myTween = TweenLite.to(this.scrollElem, 0.25, { scrollLeft: targetScroll, ease: Ease.easeOut });
+        this.scrollTween = TweenLite.to(this.scrollElem, 0.25, { scrollLeft: targetScroll, ease: Ease.easeOut });
     }
 
     storeRef(ref, id) {
@@ -173,30 +173,35 @@ class Menu extends React.Component {
             return output;
         });
         return (
-            <Transition
-                unmountOnExit
-                in={show}
-                timeout={1000}
-                onEnter={node => TweenMax.set(node, startState)}
-                addEndListener={(node, done) => {
-                    TweenMax.to(node, 0.5, {
-                        autoAlpha: show ? 1 : 0,
-                        y: show ? 0 : 50,
-                        onComplete: done,
-                    });
-                }}
-            >
-                <Hammer onSwipe={this.handleSwipe}>
-                    <nav className="Menu">
-                        <ul className="Menu__Container" ref={ref => { this.scrollElem = ref; }}>
-                            <MenuItemTitle {...titles} />
-                            {menuItems}
-                        </ul>
-                        <MenuPips onJump={this.onJump} contents={contents} currentFocused={currentFocused} />
-                        <NavButtons onPrev={this.onPrev} onNext={this.onNext} />
-                    </nav>
-                </Hammer>
-            </Transition>
+            // <Transition
+            //    unmountOnExit
+            // in={show}
+            //     timeout={1000}
+            //     onEnter={node => TweenMax.set(node, startState)}
+            //     addEndListener={(node, done) => {
+            //         TweenMax.to(node, 0.5, {
+            //             autoAlpha: show ? 1 : 0,
+            //             y: show ? 0 : 50,
+            //             onComplete: done,
+            //         });
+            //     }}
+            // >
+            <Hammer onSwipe={this.handleSwipe}>
+                <nav className="Menu">
+                    <ul className="Menu__Container" ref={ref => { this.scrollElem = ref; }}>
+                        <MenuItemTitle {...titles} />
+                        {menuItems}
+                    </ul>
+                    <MenuPips
+                        onJump={this.onJump}
+                        contents={contents}
+                        currentFocused={currentFocused}
+                        showTitlePip
+                    />
+                    <NavButtons onPrev={this.onPrev} onNext={this.onNext} />
+                </nav>
+            </Hammer>
+            // </Transition>
         );
     }
 }

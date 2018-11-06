@@ -10,3 +10,8 @@ export const PageTypes = {
     IMAGE: 'image',
     AUDIO: 'audio',
 };
+
+export const Orientations = {
+    HORIZONTAL: 'Horiziontal',
+    VERTICAL: 'Vertical',
+};

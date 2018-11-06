@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/ZoomIn</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M24,20.8916016 L45.1083984,20.8916016 L45.1083984,23.8916016 L24,23.8916016 L24,45 L21,45 L21,23.8916016 L0.108398438,23.8916016 L0.108398438,20.8916016 L21,20.8916016 L21,-0.108398438 L24,-0.108398438 L24,20.8916016 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/ZoomIn" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Colours/Flat/Black" mask="url(#mask-2)" fill="#000000" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="45" height="45"></rect>
+        </g>
+    </g>
+</svg>
