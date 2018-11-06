@@ -26,7 +26,7 @@ import MenuPips from './MenuPips';
 class Article extends React.Component {
     static makeMixedArticle(articleContent) {
         const pages = articleContent.subpages;
-        console.log('Article: makeArticle: pages: ', pages);
+        // console.log('Article: makeArticle: pages: ', pages);
         const pagesOutput = pages.map(page => {
             const { pageID } = page;
             let pageOut;
@@ -83,7 +83,7 @@ class Article extends React.Component {
     }
 
     componentDidMount() {
-        console.log('Article: componentDidMount: this.scrollElem: ', this.scrollElem);
+        // console.log('Article: componentDidMount: this.scrollElem: ', this.scrollElem);
     }
 
     getArticleContents(articleID) {

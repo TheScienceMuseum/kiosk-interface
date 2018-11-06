@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import '../../styles/MenuItem.scss';
 
@@ -15,14 +14,16 @@ import '../../styles/MenuItem.scss';
 
 class MenuItemVideo extends React.Component {
     render() {
-        const { title, titleImage, articleID } = this.props;
+        const {
+            title, titleImage, articleID, onClick,
+        } = this.props;
 
         return (
             <li className="MenuItem MenuItem__Video">
-                <Link to={`/article/${articleID}`} draggable="false">
+                <button type="button" onClick={() => onClick(articleID)}>
                     <img src={titleImage} alt="" draggable="false" />
                     <h2>{title}</h2>
-                </Link>
+                </button>
             </li>
         );
     }
@@ -32,6 +33,7 @@ MenuItemVideo.propTypes = {
     title: PropTypes.string.isRequired,
     titleImage: PropTypes.string.isRequired,
     articleID: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default MenuItemVideo;

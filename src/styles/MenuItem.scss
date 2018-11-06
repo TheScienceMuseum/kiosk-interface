@@ -3,6 +3,16 @@
 .MenuItem {
     //height: 800px;
 
+    button {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-align: left;
+        position: absolute;
+    }
+
     flex: 0 0 auto;
 
     a {
@@ -25,6 +35,7 @@
         //align-items: center;
         justify-content: center;
         flex-flow: column;
+
 
         p {
             font-family: $fontMedium;
@@ -52,6 +63,8 @@
         img {
             position: absolute;
             width: 1422px;
+            top: 0;
+            left: 0;
         }
 
         h2 {

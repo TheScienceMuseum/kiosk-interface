@@ -21,7 +21,7 @@ function Container(props) {
     } = props;
     // console.log('Container: render: data: ', data);
     // console.log('Container: render: location: ', location);
-    console.log('Container: render: props: ', props);
+    // console.log('Container: render: props: ', props);
 
     return (
         <TransitionGroup className="transition-group">

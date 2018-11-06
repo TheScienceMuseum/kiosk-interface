@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 /*
  * MenuItemMixed.jsx:
@@ -13,14 +12,18 @@ import { Link } from 'react-router-dom';
 
 class MenuItemMixed extends React.Component {
     render() {
-        const { title, titleImage, articleID } = this.props;
+        const {
+            title, titleImage, articleID, onClick,
+        } = this.props;
 
         return (
             <li className="MenuItem MenuItem__Mixed">
-                <Link to={`/article/${articleID}`}>
+                {/* <Link to={`/article/${articleID}`}> */}
+                <button type="button" onClick={() => onClick(articleID)}>
                     <img src={titleImage} alt="" />
                     <h2>{title}</h2>
-                </Link>
+                </button>
+                {/* </Link> */}
             </li>
         );
     }
@@ -30,6 +33,7 @@ MenuItemMixed.propTypes = {
     title: PropTypes.string.isRequired,
     titleImage: PropTypes.string.isRequired,
     articleID: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default MenuItemMixed;
