@@ -50,12 +50,27 @@
                     },
                     "title": "Anatomical Venuses of 18th-century Italy",
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                },
+                {
+                    "pageID": "123-0-3",
+                    "type": "textImage",
+                    "layout": "right",
+                    "image": {
+                        "imageSource": "/media/autopsy.png",
+                        "imageThumbnail": "",
+                        "imagePortrait": "",
+                        "imageLandscape": "",
+                        "nameText": "Image name",
+                        "sourceText": "Source: Science Museum/SSPL"
+                    },
+                    "title": "Why should you donate your body to medical science?",
+                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 }
             ]
         },{
             "articleID": "123-0",
             "type": "video",
-            "title": "Digital autopsy: the future of post-mortem",
+            "title": "Digital autopsy: the future of post-mortem?",
             "titleImage": "/media/menu-image-1.png",
             "videoSrc": "/videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
             "image": {
@@ -69,7 +84,7 @@
         },{
             "articleID": "123-1",
             "type": "mixed",
-            "title": "What it is like to perform a post-mortem",
+            "title": "What it is like to perform a post-mortem?",
             "titleImage": "/media/menu-image-2.png",
             "subpages": [
                 {

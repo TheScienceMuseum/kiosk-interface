@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // import PropTypes from 'prop-types';
 
 /*
@@ -34,7 +35,7 @@ class Image extends React.Component {
                 <div className={`ImageContainer ImageContainer--${zoomed}`}>
                     <img src={image.imageSource} alt="" />
                     <button
-                        className={`Button ImageContainer__ZoomButton`}
+                        className="Button ImageContainer__ZoomButton"
                         type="button"
                         onClick={this.handleToggleZoom}
                     >
@@ -55,7 +56,16 @@ class Image extends React.Component {
 }
 
 Image.propTypes = {
-
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+        imageSource: PropTypes.string.isRequired,
+        imageThumbnail: PropTypes.string.isRequired,
+        imagePortrait: PropTypes.string.isRequired,
+        imageLandscape: PropTypes.string.isRequired,
+        nameText: PropTypes.string.isRequired,
+        sourceText: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default Image;

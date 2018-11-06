@@ -36,7 +36,11 @@ function MenuPips(props) {
 
         const out = (
             <button
-                className={`MenuPips__Button ${currentFocused === (index) ? 'MenuPips__Button--active' : ''}`}
+                className={
+                    `MenuPips__Button ${currentFocused === (index)
+                        ? 'MenuPips__Button--active'
+                        : ''}`
+                }
                 type="button"
                 onClick={handleClick.bind(this, key)}
                 key={`button_${key}`}
@@ -53,7 +57,11 @@ function MenuPips(props) {
             { showTitlePip
             && (
                 <button
-                    className={`MenuPips__Button ${currentFocused === 0 ? 'MenuPips__Button--active' : ''}`}
+                    className={
+                        `MenuPips__Button ${currentFocused === 0
+                            ? 'MenuPips__Button--active'
+                            : ''}`
+                    }
                     type="button"
                     onClick={handleClick.bind(this, ArticleTypes.TITLE)}
                     key="button_title"

@@ -15,3 +15,8 @@ export const Orientations = {
     HORIZONTAL: 'horiziontal',
     VERTICAL: 'vertical',
 };
+
+export const Layouts = {
+    LEFT: 'left',
+    RIGHT: 'right',
+};

@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html, body, #root {
+    width: 100%;
+    height: 100%;
+}
+
 :focus {
     outline: 0;
 }
@@ -41,3 +46,44 @@ a {
     white-space: nowrap;
     border: 0;
 }
+
+
+.fade-enter, .fade-exit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+div.transition-group {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/*
+section.route-section {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+*/

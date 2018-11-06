@@ -1,10 +1,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import { Transition } from 'react-transition-group';
+// import { Transition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
-import { Ease, TweenMax } from 'gsap/all';
+import { Ease, TweenLite } from 'gsap/all';
 import Hammer from 'react-hammerjs';
-
 
 import { ArticleTypes, PageTypes, Orientations } from './DataTypes';
 import Title from './pages/Title';
@@ -13,7 +12,7 @@ import TextImage from './pages/TextImage';
 import Image from './pages/Image';
 
 import '../styles/Article.scss';
-import TweenLite from 'gsap/TweenLite';
+
 import NavButtons from './NavButtons';
 import MenuPips from './MenuPips';
 
@@ -59,7 +58,7 @@ class Article extends React.Component {
         case ArticleTypes.VIDEO:
             return <Video {...articleContent} />;
         default:
-            break;
+            return null;
         }
     }
 
@@ -139,7 +138,6 @@ class Article extends React.Component {
         const { currentPage } = this.state;
         const targetScroll = currentPage * 1080;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
-        // console.log('Article: scrollToPage: this.scrollElem.scrollTop: ', this.scrollElem.scrollTop);
         // this.scrollElem.scrollTop = targetScroll;
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);

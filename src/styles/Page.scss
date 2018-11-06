@@ -61,9 +61,8 @@
 
     .ContentContainer {
         width: 50%;
-
-
         position: relative;
+        padding-top: 130px;
     }
 
     .ImageCaption {
@@ -74,6 +73,26 @@
         font-size: 22px;
         //flex: 0 0 auto;
 
+    }
+
+    &--left {
+
+    }
+
+    &--right {
+        .ImageContainer {
+            order: 1;
+        }
+
+        .ContentContainer {
+            order: 0;
+        }
+
+        .ImageCaption {
+            left: auto;
+            right: 80px;
+            text-align: right;
+        }
     }
 
 }
