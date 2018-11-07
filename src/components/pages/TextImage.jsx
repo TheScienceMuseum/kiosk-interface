@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Layouts } from '../DataTypes';
 
+import '../../styles/pages/TextImage.scss';
+
 /*
  * :
  *

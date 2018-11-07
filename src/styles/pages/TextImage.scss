@@ -1,0 +1,50 @@
+@import "../_variables.scss";
+@import "Page";
+
+.PageTextImage {
+
+    display: flex;
+    flex: 0 0 100%;
+
+    .ImageContainer {
+        width: 50%;
+        overflow: hidden;
+    }
+
+    .ContentContainer {
+        width: 50%;
+        position: relative;
+        padding-top: 130px;
+    }
+
+    .ImageCaption {
+        display: block;
+        position: absolute;
+        bottom: 100px;
+        left: 80px;
+        font-size: 22px;
+        //flex: 0 0 auto;
+
+    }
+
+    &--left {
+
+    }
+
+    &--right {
+        .ImageContainer {
+            order: 1;
+        }
+
+        .ContentContainer {
+            order: 0;
+        }
+
+        .ImageCaption {
+            left: auto;
+            right: 80px;
+            text-align: right;
+        }
+    }
+
+}

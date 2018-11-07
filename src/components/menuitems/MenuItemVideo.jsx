@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/MenuItem.scss';
+import '../../styles/MenuItems.scss';
 
 /*
  * MenuItem-Video.jsx:

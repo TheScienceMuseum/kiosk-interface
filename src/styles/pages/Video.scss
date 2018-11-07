@@ -1,0 +1,9 @@
+@import "../_variables.scss";
+@import "Page";
+
+.PageVideo {
+    video {
+        width: 100%;
+        height: 100%;
+    }
+}

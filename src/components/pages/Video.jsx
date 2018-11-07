@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/Page.scss';
+import '../../styles/pages/Video.scss';
 
 /*
  * Video:
