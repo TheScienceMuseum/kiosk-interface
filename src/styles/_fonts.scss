@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'smgblack';
-    src: url('/fonts/smg-black-webfont.woff2') format('woff2'),
-    url('/fonts/smg-black-webfont.woff') format('woff');
+    src: url('../fonts/smg-black-webfont.woff2') format('woff2'),
+    url('../fonts/smg-black-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -11,8 +11,8 @@
 
 @font-face {
     font-family: 'smgbold';
-    src: url('/fonts/smg-bold-webfont.woff2') format('woff2'),
-    url('/fonts/smg-bold-webfont.woff') format('woff');
+    src: url('../fonts/smg-bold-webfont.woff2') format('woff2'),
+    url('../fonts/smg-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -20,8 +20,8 @@
 
 @font-face {
     font-family: 'smgbold_italic';
-    src: url('/fonts/smg-bolditalic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-bolditalic-webfont.woff') format('woff');
+    src: url('../fonts/smg-bolditalic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-bolditalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -29,8 +29,8 @@
 
 @font-face {
     font-family: 'smghair';
-    src: url('/fonts/smg-hair-webfont.woff2') format('woff2'),
-    url('/fonts/smg-hair-webfont.woff') format('woff');
+    src: url('../fonts/smg-hair-webfont.woff2') format('woff2'),
+    url('../fonts/smg-hair-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -38,8 +38,8 @@
 
 @font-face {
     font-family: 'smghair_italic';
-    src: url('/fonts/smg-hairitalic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-hairitalic-webfont.woff') format('woff');
+    src: url('../fonts/smg-hairitalic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-hairitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -47,8 +47,8 @@
 
 @font-face {
     font-family: 'smgitalic';
-    src: url('/fonts/smg-italic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-italic-webfont.woff') format('woff');
+    src: url('../fonts/smg-italic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -56,8 +56,8 @@
 
 @font-face {
     font-family: 'smglight';
-    src: url('/fonts/smg-light-webfont.woff2') format('woff2'),
-    url('/fonts/smg-light-webfont.woff') format('woff');
+    src: url('../fonts/smg-light-webfont.woff2') format('woff2'),
+    url('../fonts/smg-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -65,8 +65,8 @@
 
 @font-face {
     font-family: 'smgthin_italic';
-    src: url('/fonts/smg-thinitalic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-thinitalic-webfont.woff') format('woff');
+    src: url('../fonts/smg-thinitalic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-thinitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -74,8 +74,8 @@
 
 @font-face {
     font-family: 'smgthin';
-    src: url('/fonts/smg-thin-webfont.woff2') format('woff2'),
-    url('/fonts/smg-thin-webfont.woff') format('woff');
+    src: url('../fonts/smg-thin-webfont.woff2') format('woff2'),
+    url('../fonts/smg-thin-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -83,16 +83,16 @@
 
 @font-face {
     font-family: 'smgregular';
-    src: url('/fonts/smg-regular-webfont.woff2') format('woff2'),
-    url('/fonts/smg-regular-webfont.woff') format('woff');
+    src: url('../fonts/smg-regular-webfont.woff2') format('woff2'),
+    url('../fonts/smg-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 @font-face {
     font-family: 'smgmedium_italic';
-    src: url('/fonts/smg-mediumitalic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-mediumitalic-webfont.woff') format('woff');
+    src: url('../fonts/smg-mediumitalic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-mediumitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -100,8 +100,8 @@
 
 @font-face {
     font-family: 'smgmedium';
-    src: url('/fonts/smg-medium-webfont.woff2') format('woff2'),
-    url('/fonts/smg-medium-webfont.woff') format('woff');
+    src: url('../fonts/smg-medium-webfont.woff2') format('woff2'),
+    url('../fonts/smg-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -109,8 +109,8 @@
 
 @font-face {
     font-family: 'smglight_italic';
-    src: url('/fonts/smg-lightitalic-webfont.woff2') format('woff2'),
-    url('/fonts/smg-lightitalic-webfont.woff') format('woff');
+    src: url('../fonts/smg-lightitalic-webfont.woff2') format('woff2'),
+    url('../fonts/smg-lightitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

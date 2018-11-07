@@ -32,7 +32,6 @@ function Container(props) {
             >
                 <Switch location={location}>
                     <Route
-                        exact
                         path="/"
                         render={() => (
                             <Menu

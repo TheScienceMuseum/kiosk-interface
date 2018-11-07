@@ -10,8 +10,8 @@
         <mask id="mask-2" fill="white">
             <use xlink:href="#path-1"></use>
         </mask>
-        <use id="Rectangle" fill="#D8D8D8" fill-rule="nonzero" xlink:href="#path-1"></use>
-        <g id="Colours/Flat/Black" mask="url(#mask-2)" fill="#000000" fill-rule="nonzero">
+        <use id="Rectangle" fill="#ffffff" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Colours/Flat/Black" mask="url(#mask-2)" fill="#ffffff" fill-rule="nonzero">
             <rect id="Rectangle" x="0" y="0" width="45" height="45"></rect>
         </g>
     </g>

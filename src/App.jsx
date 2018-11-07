@@ -28,13 +28,13 @@ class App extends Component {
     }
 
     render() {
-        const { data } = this.props;
+        const { content } = this.props;
         const { activeArticle } = this.state;
 
         return (
             <Router>
                 <Container
-                    data={data}
+                    data={content}
                     activeArticle={activeArticle}
                     onArticleLoad={this.setActiveArticle}
                 />
@@ -44,7 +44,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-    data: PropTypes.shape().isRequired,
+    content: PropTypes.shape().isRequired,
 };
 
 export default App;

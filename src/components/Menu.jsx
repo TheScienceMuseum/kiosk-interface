@@ -71,7 +71,7 @@ class Menu extends React.Component {
             // console.log('Menu: onItemClick: navigate to article');
             // console.log('Menu: onItemClick: this.context: ', this.context.router);
             // this.setState({ redirect: `/article/${articleID}` });
-            history.push(`/article/${articleID}`);
+            history.push(`./article/${articleID}`);
         } else {
             // console.log('Menu: onItemClick: scroll to article');
             this.scrollToItem(articleID);
@@ -127,7 +127,7 @@ class Menu extends React.Component {
     }
 
     scrollToItem(targetID) {
-        console.log('Menu: jumpToItem: targetID: ', targetID);
+        // console.log('Menu: jumpToItem: targetID: ', targetID);
 
         // let targetScroll;
         let index;
