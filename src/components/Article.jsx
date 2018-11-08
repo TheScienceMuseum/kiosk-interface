@@ -153,7 +153,7 @@ class Article extends React.Component {
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className="Article">
-                    <Link to="/" className="NavButtonHome">
+                    <Link to="/index.html" className="NavButtonHome">
                         <button type="button" className="Button NavButton">
                             Home
                         </button>

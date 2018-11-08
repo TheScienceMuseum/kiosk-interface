@@ -12,7 +12,7 @@ import Container from './components/Container';
 
 
 const initialState = {
-    activeArticle: null,
+    activeArticle: -1,
     page: null,
 };
 
@@ -32,7 +32,7 @@ class App extends Component {
         const { activeArticle } = this.state;
 
         return (
-            <Router>
+            <Router basename="/sciencemuseum-kiosk-interface/build">
                 <Container
                     data={content}
                     activeArticle={activeArticle}

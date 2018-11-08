@@ -32,7 +32,7 @@ function Container(props) {
             >
                 <Switch location={location}>
                     <Route
-                        path="/"
+                        path="/index.html"
                         render={() => (
                             <Menu
                                 titles={data.titles}
@@ -53,6 +53,7 @@ function Container(props) {
                             />)
                         }
                     />
+
                     <Route render={() => <div>Not Found</div>} />
                 </Switch>
             </CSSTransition>
