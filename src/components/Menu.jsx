@@ -1,10 +1,9 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TweenLite, Ease } from 'gsap/all';
 import Hammer from 'react-hammerjs';
 
+import '../styles/Menu.scss';
 
 import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';
@@ -13,7 +12,7 @@ import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
 import { ArticleTypes } from './DataTypes';
 
-import '../styles/Menu.scss';
+
 
 
 /*
@@ -65,13 +64,14 @@ class Menu extends React.Component {
 
     onItemClick(articleID) {
         const { currentFocused } = this.state;
-        const { history } = this.props;
+        const { loadArticle } = this.props;
         // console.log('Menu: onItemClick: articleID: ', articleID);
         if (this.getIndexFromID(articleID) === currentFocused) {
             // console.log('Menu: onItemClick: navigate to article');
             // console.log('Menu: onItemClick: this.context: ', this.context.router);
             // this.setState({ redirect: `/article/${articleID}` });
-            history.push(`./article/${articleID}`);
+            //history.push(`./article/${articleID}`);
+            loadArticle(articleID);
         } else {
             // console.log('Menu: onItemClick: scroll to article');
             this.scrollToItem(articleID);
@@ -137,8 +137,8 @@ class Menu extends React.Component {
             index = this.getIndexFromID(targetID);
         }
 
-        const { onArticleLoad } = this.props;
-        onArticleLoad(index);
+        const { setActiveArticle } = this.props;
+        setActiveArticle(index);
 
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
@@ -245,4 +245,4 @@ Menu.defaultProps = {
     contents: {},
 };
 
-export default withRouter(Menu);
+export default Menu;

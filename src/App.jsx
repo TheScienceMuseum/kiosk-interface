@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router } from 'react-router-dom';
-// import { TransitionGroup, CSSTransition } from 'react-transition-group';
-// import { spring, AnimatedSwitch } from 'react-router-transition';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './styles/App.scss';
 
-import Container from './components/Container';
-// import Menu from './components/Menu';
-// import Article from './components/Article';
+import Menu from './components/Menu';
+import Article from './components/Article';
 
 
 const initialState = {
-    activeArticle: -1,
+    activeArticle: null,
     page: null,
+    location: 'menu',
 };
 
 class App extends Component {
@@ -21,24 +19,58 @@ class App extends Component {
         super(props);
         this.state = { ...initialState };
         this.setActiveArticle = this.setActiveArticle.bind(this);
+        this.loadArticle = this.loadArticle.bind(this);
     }
 
     setActiveArticle(activeArticle) {
+        console.log('App: setActiveArticle: activeArticle: ', activeArticle);
         this.setState({ activeArticle });
     }
 
-    render() {
+    loadArticle(articleID) {
+        console.log('App: loadArticle: articleID: ', articleID);
+        this.setState({ location: articleID });
+    }
+
+    getPage() {
+        const { activeArticle, location } = this.state;
         const { content } = this.props;
-        const { activeArticle } = this.state;
+
+        if (location === 'menu') {
+            return (
+                <Menu
+                    titles={content.titles}
+                    contents={content.contents}
+                    location={location}
+                    activeArticle={activeArticle}
+                    setActiveArticle={this.setActiveArticle}
+                    loadArticle={this.loadArticle}
+                />
+            );
+        }
+        return (
+            <Article
+                contents={content.contents}
+                articleID={location}
+                loadArticle={this.loadArticle}
+            />
+        );
+    }
+
+    render() {
+        const { location } = this.state;
 
         return (
-            <Router basename="/sciencemuseum-kiosk-interface/build">
-                <Container
-                    data={content}
-                    activeArticle={activeArticle}
-                    onArticleLoad={this.setActiveArticle}
-                />
-            </Router>
+            <TransitionGroup className="transition-group">
+                <CSSTransition
+                    key={location}
+                    timeout={{ enter: 300, exit: 300 }}
+                    classNames="fade"
+                >
+                    { this.getPage() }
+                </CSSTransition>
+            </TransitionGroup>
+
         );
     }
 }

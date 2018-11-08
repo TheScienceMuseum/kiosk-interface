@@ -1,7 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { Transition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { Ease, TweenLite } from 'gsap/all';
 import Hammer from 'react-hammerjs';
 
@@ -73,8 +72,8 @@ class Article extends React.Component {
         this.onJump = this.jumpToPage.bind(this);
         // this.article = null;
 
-        const { match } = this.props;
-        const { articleID } = match.params;
+        const { articleID } = this.props;
+        // const articleID = location;
 
         this.articleContent = this.getArticleContents(articleID);
         this.article = Article.makeArticle(this.articleContent);
@@ -143,6 +142,10 @@ class Article extends React.Component {
         this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
 
+    handleHomeButton() {
+        this.props.loadArticle('menu');
+    }
+
     render() {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
@@ -153,11 +156,15 @@ class Article extends React.Component {
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className="Article">
-                    <Link to="/index.html" className="NavButtonHome">
-                        <button type="button" className="Button NavButton">
+                    <div className="NavButtonHome">
+                        <button
+                            type="button"
+                            className="Button NavButton"
+                            onClick={this.handleHomeButton.bind(this)}
+                        >
                             Home
                         </button>
-                    </Link>
+                    </div>
                     <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
