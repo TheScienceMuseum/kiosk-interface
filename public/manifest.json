@@ -2,7 +2,6 @@
     "short_name": "SciMusPackage",
     "name": "SciMusPackage",
     "version": 123,
-    "start_url": "./",
     "icons": [
         {
             "src": "favicon.ico",
