@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Layouts } from '../DataTypes';
+import { Layouts } from '../../DataTypes';
 
 import '../../styles/pages/TextImage.scss';
 

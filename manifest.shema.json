@@ -1,0 +1,236 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/SciMusPackageManifest",
+    "definitions": {
+        "SciMusPackageManifest": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "short_name": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "integer"
+                },
+                "display": {
+                    "type": "string"
+                },
+                "main": {
+                    "type": "string"
+                },
+                "requirements": {
+                    "$ref": "#/definitions/Requirements"
+                },
+                "content": {
+                    "$ref": "#/definitions/SciMusPackageManifestContent"
+                }
+            },
+            "required": [
+                "content",
+                "display",
+                "label",
+                "main",
+                "name",
+                "requirements",
+                "short_name",
+                "version"
+            ],
+            "title": "SciMusPackageManifest"
+        },
+        "SciMusPackageManifestContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "titles": {
+                    "$ref": "#/definitions/Titles"
+                },
+                "contents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContentElement"
+                    }
+                }
+            },
+            "required": [
+                "contents",
+                "titles"
+            ],
+            "title": "SciMusPackageManifestContent"
+        },
+        "ContentElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "articleID": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "oneOf": ["video", "mixed"]
+                },
+                "title": {
+                    "type": "string"
+                },
+                "titleImage": {
+                    "type": "string"
+                },
+                "subpages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Subpage"
+                    }
+                },
+                "videoSrc": {
+                    "type": "string"
+                },
+                "image": {
+                    "$ref": "#/definitions/ImageClass"
+                }
+            },
+            "required": [
+                "articleID",
+                "title",
+                "titleImage",
+                "type"
+            ],
+            "title": "ContentElement"
+        },
+        "Subpage": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "pageID": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["textImage", "title", "video", "image"]
+                },
+                "image": {
+                    "$ref": "#/definitions/ImageUnion"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "layout": {
+                    "type": "string",
+                    "enum": ["left", "right"]
+                },
+                "content": {
+                    "$ref": "#/definitions/ContentUnion"
+                }
+            },
+            "required": [
+                "image",
+                "pageID",
+                "title",
+                "type"
+            ],
+            "title": "Subpage"
+        },
+        "ImageClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "imageSource": {
+                    "type": "string"
+                },
+                "imageThumbnail": {
+                    "type": "string"
+                },
+                "imagePortrait": {
+                    "type": "string"
+                },
+                "imageLandscape": {
+                    "type": "string"
+                },
+                "nameText": {
+                    "type": "string"
+                },
+                "sourceText": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "imageLandscape",
+                "imagePortrait",
+                "imageSource",
+                "imageThumbnail",
+                "nameText",
+                "sourceText"
+            ],
+            "title": "ImageClass"
+        },
+        "Titles": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "galleryName": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "image": {
+                    "$ref": "#/definitions/ImageUnion"
+                }
+            },
+            "required": [
+                "galleryName",
+                "image",
+                "title",
+                "type"
+            ],
+            "title": "Titles"
+        },
+        "Requirements": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "client_version": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "client_version"
+            ],
+            "title": "Requirements"
+        },
+        "ImageUnion": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/ImageClass"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "ImageUnion"
+        },
+        "ContentUnion":{
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "array"
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -6,13 +6,12 @@ import App from './App';
 // import * as serviceWorker from './serviceWorker';
 // import data from './data.json';
 
-
 fetch('manifest.json').then(resp => resp.json()).then(json => {
     if (process.env.NODE_ENV !== 'production') {
         console.log('JSON data version:', json.version);
         // console.log('Package version:', packageFile.version);
     }
-    ReactDOM.render(<App {...json} />, document.getElementById('root'));
+    ReactDOM.render(<App {...json} env={window.electon_env} clientVersion={window.client_ver} />, document.getElementById('root'));
 });
 
 

@@ -20,3 +20,10 @@ export const Layouts = {
     LEFT: 'left',
     RIGHT: 'right',
 };
+
+export const Environments = {
+    BROWSER: 'browser',
+    DEVELOPMENT: 'development',
+    STAGING: 'staging',
+    PRODUCTION: 'production',
+};

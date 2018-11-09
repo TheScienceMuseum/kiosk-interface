@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Ease, TweenLite } from 'gsap/all';
 import Hammer from 'react-hammerjs';
 
-import { ArticleTypes, PageTypes, Orientations } from './DataTypes';
+import { ArticleTypes, PageTypes, Orientations } from '../DataTypes';
 import Title from './pages/Title';
 import Video from './pages/Video';
 import TextImage from './pages/TextImage';
@@ -143,7 +143,8 @@ class Article extends React.Component {
     }
 
     handleHomeButton() {
-        this.props.loadArticle('menu');
+        const { loadArticle } = this.props;
+        loadArticle('menu');
     }
 
     render() {
@@ -193,7 +194,9 @@ class Article extends React.Component {
 }
 
 Article.propTypes = {
-    // articleID: PropTypes.string.isRequired,
+    articleID: PropTypes.string.isRequired,
+    contents: PropTypes.shape().isRequired,
+    loadArticle: PropTypes.func.isRequired,
 };
 
 export default Article;

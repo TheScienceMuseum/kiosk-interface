@@ -10,9 +10,7 @@ import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
-import { ArticleTypes } from './DataTypes';
-
-
+import { ArticleTypes } from '../DataTypes';
 
 
 /*
@@ -70,7 +68,7 @@ class Menu extends React.Component {
             // console.log('Menu: onItemClick: navigate to article');
             // console.log('Menu: onItemClick: this.context: ', this.context.router);
             // this.setState({ redirect: `/article/${articleID}` });
-            //history.push(`./article/${articleID}`);
+            // history.push(`./article/${articleID}`);
             loadArticle(articleID);
         } else {
             // console.log('Menu: onItemClick: scroll to article');

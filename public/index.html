@@ -26,7 +26,7 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root" class="App"></div>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -38,4 +38,17 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+<script>
+    try {
+        const Config = require('electron').remote.require('electron-config');
+        const config = new Config();
+        window.electon_env = config.get('environment');
+        window.client_ver = config.get('client_version');
+    } catch ( e ) {
+        //window.electon_env = 'browser';
+    }
+
+
+
+</script>
 </html>

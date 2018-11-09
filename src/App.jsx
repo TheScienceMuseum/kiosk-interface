@@ -6,18 +6,16 @@ import './styles/App.scss';
 
 import Menu from './components/Menu';
 import Article from './components/Article';
+import { Environments } from './DataTypes';
 
-
-const initialState = {
-    activeArticle: null,
-    page: null,
-    location: 'menu',
-};
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { ...initialState };
+        this.state = {
+            activeArticle: null,
+            location: 'menu',
+        };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
     }
@@ -25,11 +23,6 @@ class App extends Component {
     setActiveArticle(activeArticle) {
         console.log('App: setActiveArticle: activeArticle: ', activeArticle);
         this.setState({ activeArticle });
-    }
-
-    loadArticle(articleID) {
-        console.log('App: loadArticle: articleID: ', articleID);
-        this.setState({ location: articleID });
     }
 
     getPage() {
@@ -57,19 +50,41 @@ class App extends Component {
         );
     }
 
+    loadArticle(articleID) {
+        console.log('App: loadArticle: articleID: ', articleID);
+        this.setState({ location: articleID });
+    }
+
     render() {
+        const {
+            label, version, env, clientVersion,
+        } = this.props;
         const { location } = this.state;
 
         return (
-            <TransitionGroup className="transition-group">
-                <CSSTransition
-                    key={location}
-                    timeout={{ enter: 300, exit: 300 }}
-                    classNames="fade"
-                >
-                    { this.getPage() }
-                </CSSTransition>
-            </TransitionGroup>
+
+            <div className="App">
+                {env !== Environments.PRODUCTION
+                && (
+                    <div className="DebugPanel">
+                        <p>{`Package Name: ${label}`}</p>
+                        <p>{`Package Version: ${version}`}</p>
+                        <p>{`Client Environment: ${env}`}</p>
+                        <p>{`Client Version: ${clientVersion}`}</p>
+                    </div>
+                )
+                }
+
+                <TransitionGroup className="transition-group">
+                    <CSSTransition
+                        key={location}
+                        timeout={{ enter: 300, exit: 300 }}
+                        classNames="fade"
+                    >
+                        { this.getPage() }
+                    </CSSTransition>
+                </TransitionGroup>
+            </div>
 
         );
     }
@@ -77,6 +92,15 @@ class App extends Component {
 
 App.propTypes = {
     content: PropTypes.shape().isRequired,
+    name: PropTypes.string.isRequired,
+    version: PropTypes.number.isRequired,
+    env: PropTypes.oneOf(Object.values(Environments)),
+    clientVersion: PropTypes.string,
+};
+
+App.defaultProps = {
+    env: Environments.BROWSER,
+    clientVersion: 'n/a',
 };
 
 export default App;

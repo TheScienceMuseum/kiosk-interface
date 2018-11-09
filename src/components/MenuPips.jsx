@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleTypes, Orientations } from './DataTypes';
+import { ArticleTypes, Orientations } from '../DataTypes';
 
 import '../styles/MenuPips.scss';
 

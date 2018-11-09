@@ -1,18 +1,9 @@
 {
     "short_name": "SciMusPackage",
     "name": "SciMusPackage",
-    "version": 123,
-    "icons": [
-        {
-            "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
-            "type": "image/x-icon"
-        }
-    ],
-    "start_url": ".",
+    "label": "Science Museum Example Package",
+    "version": 3,
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff",
     "main": "index.html",
     "requirements": {
         "client_version": "0.0.1"
@@ -26,20 +17,20 @@
         },
         "contents": [
             {
-                "articleID": "123-3",
+                "articleID": "3-3",
                 "type": "mixed",
                 "title": "What is it like to donate your body to science",
                 "titleImage": "./media/menu-image-4.png",
                 "subpages": [
                     {
-                        "pageID": "123-0-0",
+                        "pageID": "3-3-0",
                         "type": "title",
                         "image": "./media/menu-image-4.png",
                         "title": "What is it like to donate your body to science?",
                         "subtitle": ""
                     },
                     {
-                        "pageID": "123-0-1",
+                        "pageID": "3-3-1",
                         "type": "textImage",
                         "layout": "left",
                         "image": {
@@ -54,7 +45,7 @@
                         "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     },
                     {
-                        "pageID": "123-0-2",
+                        "pageID": "3-3-2",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -69,7 +60,7 @@
                         "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                     },
                     {
-                        "pageID": "123-0-3",
+                        "pageID": "3-3-3",
                         "type": "textImage",
                         "layout": "right",
                         "image": {
@@ -86,7 +77,7 @@
                 ]
             },
             {
-                "articleID": "123-0",
+                "articleID": "3-0",
                 "type": "video",
                 "title": "Digital autopsy: the future of post-mortem?",
                 "titleImage": "./media/menu-image-1.png",
@@ -101,13 +92,13 @@
                 }
             },
             {
-                "articleID": "123-1",
+                "articleID": "3-1",
                 "type": "mixed",
                 "title": "What it is like to perform a post-mortem?",
                 "titleImage": "./media/menu-image-2.png",
                 "subpages": [
                     {
-                        "pageID": "123-0-0",
+                        "pageID": "3-1-0",
                         "type": "title",
                         "image": "./media/menu-image-2.png",
                         "title": "What it is like to perform a post-mortem",
@@ -116,7 +107,7 @@
                 ]
             },
             {
-                "articleID": "123-2",
+                "articleID": "3-2",
                 "type": "video",
                 "title": "What is it like to be a student doing your first dissection",
                 "titleImage": "./media/menu-image-3.png",

@@ -21,6 +21,13 @@ h1 {
     overflow: hidden;
 }
 
+.DebugPanel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
