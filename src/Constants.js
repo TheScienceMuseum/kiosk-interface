@@ -14,6 +14,7 @@ export const PageTypes = {
 export const Orientations = {
     HORIZONTAL: 'horiziontal',
     VERTICAL: 'vertical',
+    EXACT: 'exact',
 };
 
 export const Layouts = {
@@ -26,4 +27,9 @@ export const Environments = {
     DEVELOPMENT: 'development',
     STAGING: 'staging',
     PRODUCTION: 'production',
+};
+
+export const ScreenSize = {
+    width: 1920,
+    height: 1080,
 };

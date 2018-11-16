@@ -72,7 +72,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "oneOf": ["video", "mixed"]
+                    "enum": ["video", "mixed"]
                 },
                 "title": {
                     "type": "string"
@@ -116,7 +116,9 @@
                     "$ref": "#/definitions/ImageUnion"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 0
                 },
                 "subtitle": {
                     "type": "string"

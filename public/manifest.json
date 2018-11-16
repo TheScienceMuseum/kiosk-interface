@@ -49,6 +49,64 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
+                            "imageSource": "./media/virus_medical_biology_detail_medicine_psychedelic_science_abstract_abstraction_chemistry_Genetics_3840x1080.jpg",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "Virus medical biology detail medicine psychedelic science abstract",
+                        "content": "Image that is wide"
+                    },{
+                        "pageID": "3-3-3",
+                        "type": "image",
+                        "layout": "left",
+                        "image": {
+                            "imageSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "3D Science Animation",
+                        "content": "Image that is exact dimensions"
+                    },{
+                        "pageID": "3-3-4",
+                        "type": "image",
+                        "layout": "left",
+                        "image": {
+                            "imageSource": "./media/Einsteins-Gravity-Theory-Put-to-the-Test-By-a-Massive-Pulsar-in-a-Compact-Relativistic-Binary.jpg",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "Observations of a Pulsar and Its White Dwarf Companion Back General Theory of Relativity",
+                        "content": "Image that is tall"
+                    },
+                    {
+                        "pageID": "3-3-5",
+                        "type": "image",
+                        "layout": "left",
+                        "image": {
+                            "imageSource": "./media/109c63dbe51380edebc1c16755c29c12.jpg",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "Neurons!",
+                        "content": "Image that is not exactly 2x"
+                    },
+                    {
+                        "pageID": "3-3-6",
+                        "type": "image",
+                        "layout": "left",
+                        "image": {
                             "imageSource": "./media/big.png",
                             "imageThumbnail": "",
                             "imagePortrait": "",
@@ -57,10 +115,10 @@
                             "sourceText": "Source: Science Museum/SSPL"
                         },
                         "title": "Anatomical Venuses of 18th-century Italy",
-                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                        "content": "Image that is not exactly 2x"
                     },
                     {
-                        "pageID": "3-3-3",
+                        "pageID": "3-3-7",
                         "type": "textImage",
                         "layout": "right",
                         "image": {

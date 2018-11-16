@@ -14,5 +14,18 @@
         overflow: hidden;
     }
 
-}
+    .PageNav {
+        position: absolute;
+        width: 100px;
+        height: 100%;
 
+        top: 0;
+        right: 0;
+
+        transition: transform 350ms ease-out;
+
+        &--hidden {
+            transform: translateX(100%);
+        }
+    }
+}

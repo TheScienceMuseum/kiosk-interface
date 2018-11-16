@@ -6,7 +6,7 @@ import './styles/App.scss';
 
 import Menu from './components/Menu';
 import Article from './components/Article';
-import { Environments } from './DataTypes';
+import { Environments } from './Constants';
 
 
 class App extends Component {

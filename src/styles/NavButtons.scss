@@ -20,9 +20,15 @@
     left: 0;
     z-index: 999;
 
+    transition: transform 350ms ease-out;
+
     .Button {
         text-indent: initial;
         height: 80px;
+    }
+
+    &--hidden {
+        transform: translateX(-100%);
     }
 }
 

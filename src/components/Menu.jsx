@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TweenLite, Ease } from 'gsap/all';
 import Hammer from 'react-hammerjs';
+import HammerJS from 'hammerjs';
 
 import '../styles/Menu.scss';
 
@@ -10,7 +11,7 @@ import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
-import { ArticleTypes } from '../DataTypes';
+import { ArticleTypes } from '../Constants';
 
 
 /*
@@ -23,6 +24,10 @@ import { ArticleTypes } from '../DataTypes';
 class Menu extends React.Component {
     static getScrollAmount(index) {
         let targetScroll;
+
+        // const menuItemWidth =
+        // const firstItemLeftOffset =
+
         if (index === 0) {
             targetScroll = 0;
         } else {
@@ -41,8 +46,6 @@ class Menu extends React.Component {
         this.state = {
             currentFocused,
         };
-
-        // this.DOMrefs = {};
 
         this.onNext = this.nextItem.bind(this);
         this.onPrev = this.previousItem.bind(this);
@@ -117,9 +120,9 @@ class Menu extends React.Component {
 
     handleSwipe(e) {
         // console.log('Menu: handleSwipe: e: ', e);
-        if (e.direction === 2) {
+        if (e.direction === HammerJS.DIRECTION_LEFT) {
             this.nextItem();
-        } else if (e.direction === 4) {
+        } else if (e.direction === HammerJS.DIRECTION_RIGHT) {
             this.previousItem();
         }
     }
