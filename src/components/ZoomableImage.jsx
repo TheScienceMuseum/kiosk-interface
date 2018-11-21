@@ -352,11 +352,11 @@ class ZoomableImage extends React.Component {
 
         this.scale = this.initialScale;
         this.lastScale = this.initialScale;
-        this.curWidth = this.imgWidth * this.scale;
-        this.curHeight = this.imgHeight * this.scale;
+        this.curWidth = Math.ceil(this.imgWidth * this.scale);
+        this.curHeight = Math.ceil(this.imgHeight * this.scale);
 
-        this.x = (this.viewportWidth / 2) - (this.curWidth / 2);
-        this.y = (this.viewportHeight / 2) - (this.curHeight / 2);
+        this.x = Math.ceil((this.viewportWidth / 2) - (this.curWidth / 2));
+        this.y = Math.ceil((this.viewportHeight / 2) - (this.curHeight / 2));
 
         this.updateLastPos();
         this.updateLastScale();
@@ -371,10 +371,10 @@ class ZoomableImage extends React.Component {
         // this.zoomCenter(this.initialScale);
 
         this.setState({
-            width: Math.ceil(this.curWidth),
-            height: Math.ceil(this.curHeight),
-            x: Math.ceil(this.x),
-            y: Math.ceil(this.y),
+            width: this.curWidth,
+            height: this.curHeight,
+            x: this.x,
+            y: this.y,
         }, this.debugValues);
     }
 
@@ -388,8 +388,12 @@ class ZoomableImage extends React.Component {
         let pinchCenterOffset = { x: 0, y: 0 };
         if (this.pinchCenter === null) {
             this.pinchCenter = this.rawCenter(e);
-            const offsetX = this.pinchCenter.x * this.scale - (-this.x * this.scale + Math.min(this.viewportWidth, this.curWidth) / 2);
-            const offsetY = this.pinchCenter.y * this.scale - (-this.y * this.scale + Math.min(this.viewportHeight, this.curHeight) / 2);
+            const offsetX = this.pinchCenter.x * this.scale
+                - (-this.x * this.scale
+                + Math.min(this.viewportWidth, this.curWidth) / 2);
+            const offsetY = this.pinchCenter.y * this.scale
+                - (-this.y * this.scale
+                + Math.min(this.viewportHeight, this.curHeight) / 2);
             pinchCenterOffset = { x: offsetX, y: offsetY };
         }
 

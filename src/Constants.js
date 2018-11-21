@@ -23,6 +23,7 @@ export const Layouts = {
 };
 
 export const Environments = {
+    TESTING: 'testing',
     BROWSER: 'browser',
     DEVELOPMENT: 'development',
     STAGING: 'staging',
