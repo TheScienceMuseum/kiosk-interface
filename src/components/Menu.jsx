@@ -12,6 +12,7 @@ import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
 import { ArticleTypes } from '../Constants';
+import ZoomableImage from './ZoomableImage';
 
 
 /*

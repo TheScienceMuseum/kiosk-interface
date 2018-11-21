@@ -28,8 +28,7 @@
                         "image": "./media/menu-image-4.png",
                         "title": "What is it like to donate your body to science?",
                         "subtitle": ""
-                    },
-                    {
+                    },{
                         "pageID": "3-3-1",
                         "type": "textImage",
                         "layout": "left",
@@ -46,6 +45,21 @@
                     },
                     {
                         "pageID": "3-3-2",
+                        "type": "textImage",
+                        "layout": "right",
+                        "image": {
+                            "imageSource": "./media/autopsy.png",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "Why should you donate your body to medical science?",
+                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    },
+                    {
+                        "pageID": "3-3-3",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -58,8 +72,9 @@
                         },
                         "title": "Virus medical biology detail medicine psychedelic science abstract",
                         "content": "Image that is wide"
-                    },{
-                        "pageID": "3-3-3",
+                    },
+                    {
+                        "pageID": "3-3-4",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -72,8 +87,9 @@
                         },
                         "title": "3D Science Animation",
                         "content": "Image that is exact dimensions"
-                    },{
-                        "pageID": "3-3-4",
+                    },
+                    {
+                        "pageID": "3-3-5",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -88,7 +104,7 @@
                         "content": "Image that is tall"
                     },
                     {
-                        "pageID": "3-3-5",
+                        "pageID": "3-3-6",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -103,7 +119,7 @@
                         "content": "Image that is not exactly 2x"
                     },
                     {
-                        "pageID": "3-3-6",
+                        "pageID": "3-3-7",
                         "type": "image",
                         "layout": "left",
                         "image": {
@@ -118,7 +134,22 @@
                         "content": "Image that is not exactly 2x"
                     },
                     {
-                        "pageID": "3-3-7",
+                        "pageID": "3-3-8",
+                        "type": "image",
+                        "layout": "left",
+                        "image": {
+                            "imageSource": "./media/IMG_0847.jpg",
+                            "imageThumbnail": "",
+                            "imagePortrait": "",
+                            "imageLandscape": "",
+                            "nameText": "Image name",
+                            "sourceText": "Source: Science Museum/SSPL"
+                        },
+                        "title": "Anatomical Venuses of 18th-century Italy",
+                        "content": "Image that is really big"
+                    },
+                    {
+                        "pageID": "3-3-9",
                         "type": "textImage",
                         "layout": "right",
                         "image": {
@@ -132,6 +163,7 @@
                         "title": "Why should you donate your body to medical science?",
                         "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
+
                 ]
             },
             {

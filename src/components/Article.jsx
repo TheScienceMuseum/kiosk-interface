@@ -94,7 +94,7 @@ class Article extends React.Component {
                 pageOut = <Title key={pageID} {...page} />;
                 break;
             case PageTypes.TEXT_IMAGE:
-                pageOut = <TextImage key={pageID} {...page} />;
+                pageOut = <TextImage key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
                 break;
             case PageTypes.IMAGE:
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;

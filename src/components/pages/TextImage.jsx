@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Layouts } from '../../Constants';
 
 import '../../styles/pages/TextImage.scss';
+import ZoomableImage from '../ZoomableImage';
 
 /*
  * :
@@ -14,29 +15,55 @@ import '../../styles/pages/TextImage.scss';
  */
 
 
-function TextImage(props) {
-    const {
-        title, content, image, layout,
-    } = props;
+class TextImage extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            contentHidden: false,
+        };
 
-    return (
-        <div className={`Page PageTextImage PageTextImage--${layout}`}>
-            <div className="ImageContainer">
-                <img src={image.imageSource} alt="" />
-            </div>
-            <div className="ContentContainer">
-                <h2>{ title }</h2>
-                <p>{ content }</p>
-                <div className="ImageCaption">
-                    <h3>{image.nameText}</h3>
-                    <p>{image.sourceText}</p>
+        this.handleHideContent = this.handleHideContent.bind(this);
+    }
+
+    handleHideContent(imageZoomed) {
+        let { contentHidden } = this.state;
+        const { toggleNavHide } = this.props;
+
+        if (!imageZoomed) {
+            contentHidden = !contentHidden;
+        } else {
+            contentHidden = imageZoomed;
+        }
+
+        this.setState({ contentHidden });
+        toggleNavHide(contentHidden);
+    }
+
+    render() {
+        const {
+            title, content, image, layout,
+        } = this.props;
+
+        const { contentHidden } = this.state;
+        const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
+
+        return (
+            <div className={`Page PageTextImage PageTextImage--${layout} PageTextImage--${imageState}`}>
+                <div className="ImageContainer">
+                    <ZoomableImage image={image} onZoom={this.handleHideContent} />
+                </div>
+                <div className="ContentContainer">
+                    <h2>{title}</h2>
+                    <p>{content}</p>
+                    <div className="ImageCaption">
+                        <h3>{image.nameText}</h3>
+                        <p>{image.sourceText}</p>
+                    </div>
                 </div>
             </div>
-
-
-        </div>
-    );
+        );
+    }
 }
 
 TextImage.propTypes = {
@@ -51,6 +78,7 @@ TextImage.propTypes = {
         sourceText: PropTypes.string.isRequired,
     }).isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
+    toggleNavHide: PropTypes.func.isRequired
 };
 
 export default TextImage;

@@ -9,12 +9,17 @@
     .ImageContainer {
         width: 50%;
         overflow: hidden;
+        //transition: width 250ms ease-out;
     }
 
     .ContentContainer {
         width: 50%;
         position: relative;
         padding-top: 130px;
+        background: $pageBackground;
+        right: 0;
+
+        //transition: left 250ms ease-out, right 250ms ease-out;
     }
 
     .ImageCaption {
@@ -28,7 +33,10 @@
     }
 
     &--left {
-
+        .ContentContainer {
+            right: 0;
+            left: auto;
+        }
     }
 
     &--right {
@@ -38,12 +46,34 @@
 
         .ContentContainer {
             order: 0;
+            right: auto;
+            left: 0;
         }
 
         .ImageCaption {
             left: auto;
             right: 80px;
             text-align: right;
+        }
+    }
+
+    &--imageFull {
+        .ImageContainer {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+    }
+
+    &--left.PageTextImage--imageFull {
+        .ContentContainer {
+            right: -100%;
+        }
+    }
+
+    &--right.PageTextImage--imageFull {
+        .ContentContainer {
+            left: -100%;
         }
     }
 
