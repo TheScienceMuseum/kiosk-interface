@@ -27,7 +27,7 @@ class ZoomableImage extends React.Component {
         console.log('ZoomableImage: constructor');
 
         // this.MIN_SCALE = 1; // 1=scaling when first loaded
-        this.MAX_SCALE = 1;
+        this.imageMaxScale = 1;
 
         this.imageOrientation = null;
 
@@ -87,12 +87,13 @@ class ZoomableImage extends React.Component {
 
     getImageScale(zoomed, orientation) {
         let imageScale = 1;
-        const { offsetWidth, offsetHeight } = this.image;
+        // const { offsetWidth, offsetHeight } = this.image;
+
         if ((zoomed && (orientation === Orientations.VERTICAL))
             || (!zoomed && (orientation === Orientations.HORIZONTAL))) {
-            imageScale = this.viewportHeight / offsetHeight;
+            imageScale = this.viewportHeight / this.imgHeight;
         } else {
-            imageScale = this.viewportWidth / offsetWidth;
+            imageScale = this.viewportWidth / this.imgWidth;
         }
         return imageScale;
     }
@@ -103,15 +104,22 @@ class ZoomableImage extends React.Component {
         } = this.state;
 
         this.debugText.value = `
-        width:         ${width}
-        height:        ${height}
-        x:             ${x}
-        y:             ${y}
-        this.scale:    ${this.scale}
-        this.lastScale:    ${this.lastScale}
-        fullscreen:    ${fullscreen}
-        viewportWidth: ${this.viewportWidth}
-        viewportHeight: ${this.viewportHeight}
+        width:              ${width}
+        height:             ${height}
+        x:                  ${x}
+        y:                  ${y}
+        
+        this.scale:         ${this.scale}
+        this.lastScale:     ${this.lastScale}
+        
+        fullscreen:         ${fullscreen}
+        
+        viewportWidth:      ${this.viewportWidth}
+        viewportHeight:     ${this.viewportHeight}
+        
+        imageMinZoom:       ${this.imageMinScale}
+        imageMaxScale:      ${this.imageMaxScale}
+        imageOrientation:   ${this.imageOrientation}
         `;
     }
     /*
@@ -131,8 +139,8 @@ class ZoomableImage extends React.Component {
         let newScale = scale;
         if (scale < this.imageMinScale) {
             newScale = this.imageMinScale;
-        } else if (scale > this.MAX_SCALE) {
-            newScale = this.MAX_SCALE;
+        } else if (scale > this.imageMaxScale) {
+            newScale = this.imageMaxScale;
         }
         return newScale;
     }

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 
 import '../../styles/pages/Image.scss';
-import { ScreenSize } from '../../Constants';
 import ZoomableImage from '../ZoomableImage';
 
 /*
@@ -27,7 +26,6 @@ class Image extends React.Component {
 
 
     handleHideContent(imageZoomed = null) {
-
         let { contentHidden } = this.state;
         const { toggleNavHide } = this.props;
 

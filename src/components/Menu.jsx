@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TweenLite, Ease } from 'gsap/all';
+import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import Hammer from 'react-hammerjs';
 import HammerJS from 'hammerjs';
 
@@ -12,7 +12,6 @@ import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
 import { ArticleTypes } from '../Constants';
-import ZoomableImage from './ZoomableImage';
 
 
 /*

@@ -92,7 +92,7 @@ class App extends Component {
 
 App.propTypes = {
     content: PropTypes.shape().isRequired,
-    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     version: PropTypes.number.isRequired,
     env: PropTypes.oneOf(Object.values(Environments)),
     clientVersion: PropTypes.string,

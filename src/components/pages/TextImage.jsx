@@ -78,7 +78,7 @@ TextImage.propTypes = {
         sourceText: PropTypes.string.isRequired,
     }).isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
-    toggleNavHide: PropTypes.func.isRequired
+    toggleNavHide: PropTypes.func.isRequired,
 };
 
 export default TextImage;

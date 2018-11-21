@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Ease, TweenLite } from 'gsap/all';
+import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import Hammer from 'react-hammerjs';
 import HammerJS from 'hammerjs';
 
-import { ArticleTypes, PageTypes, Orientations, ScreenSize } from '../Constants';
+import {
+    ArticleTypes, PageTypes, Orientations, ScreenSize,
+} from '../Constants';
 import Title from './pages/Title';
 import Video from './pages/Video';
 import TextImage from './pages/TextImage';
