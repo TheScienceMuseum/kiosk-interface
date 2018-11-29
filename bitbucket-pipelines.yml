@@ -3,16 +3,14 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:8
+image: node-awscli
 
 definitions:
   setup: &setup
     name: Setup and install
     caches:
       - node
-      - pip
     script:
-      - pip install awscli
       - yarn
     artifacts:
       - node_modules/**
