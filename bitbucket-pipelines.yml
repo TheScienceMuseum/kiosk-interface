@@ -3,13 +3,26 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:6.9.4
+image: digitalgenius/alpine-node-aws
+
+definitions:
+  setup: &setup
+    name: Setup and install
+    caches:
+      -node
+    script:
+      - yarn -v
+  tests: &tests
+    name: Running tests
+    script:
+      - yarn test
 
 pipelines:
   default:
-    - step:
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - npm install
-          - npm test
+    - step: *setup
+    - step: *tests
+  branches:
+    develop:
+      - step: *setup
+      - step: *tests
+
