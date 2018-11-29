@@ -11,7 +11,7 @@ definitions:
     caches:
       - node
     script:
-      - yarn -v
+      - yarn
     artifacts:
       - node_modules/**
   tests: &tests
