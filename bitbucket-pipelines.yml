@@ -27,8 +27,12 @@ definitions:
   package: &package
     name: Package
     script:
-      - awscli --version
-
+      - aws --version
+      - cd build
+      - VERSION=$BITBUCKET_TAG
+      - tar -zcvf kiosk-interface-$VERSION.tar.gz .
+      - echo "Copy to S3"
+      - aws s3 cp kiosk-interface-$VERSION.tar.gz s3://$S3_BUCKET/
 
 pipelines:
   default:
