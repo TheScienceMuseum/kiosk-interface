@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint-plugin-jest": "^22.0.0",
     "gsap": "^2.0.2",
     "hammerjs": "^2.0.8",
     "json-stringify-safe": "^5.0.1",
@@ -45,6 +46,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.1",
@@ -78,6 +81,7 @@
     "workbox-webpack-plugin": "3.6.2"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
