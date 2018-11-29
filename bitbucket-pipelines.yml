@@ -12,6 +12,8 @@ definitions:
       - node
     script:
       - yarn -v
+    artifacts:
+      - node_modules/**
   tests: &tests
     name: Running tests
     script:
