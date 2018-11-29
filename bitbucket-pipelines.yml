@@ -10,7 +10,9 @@ definitions:
     name: Setup and install
     caches:
       - node
+      - pip
     script:
+      - pip install awscli
       - yarn
     artifacts:
       - node_modules/**
@@ -18,11 +20,24 @@ definitions:
     name: Running tests
     script:
       - yarn test
+  build: &build
+    name: Build
+    script:
+      - yarn build
+    artifacts:
+      - build/**
+  package: &package
+    name: Package
+    script:
+      - awscli --version
+
 
 pipelines:
   default:
     - step: *setup
     - step: *tests
+    - step: *build
+    - step: *package
   branches:
     develop:
       - step: *setup
