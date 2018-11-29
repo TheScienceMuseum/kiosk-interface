@@ -47,9 +47,11 @@ class TextImage extends React.Component {
 
         const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
+        const mainClass = 'Page PageTextImage'
+            + `PageTextImage--${layout} PageTextImage--${imageState}`;
 
         return (
-            <div className={`Page PageTextImage PageTextImage--${layout} PageTextImage--${imageState}`}>
+            <div className={mainClass}>
                 <div className="ImageContainer">
                     <ZoomableImage image={image} onZoom={this.handleHideContent} />
                 </div>
