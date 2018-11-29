@@ -9,7 +9,7 @@ definitions:
   setup: &setup
     name: Setup and install
     caches:
-      -node
+      - node
     script:
       - yarn -v
   tests: &tests
