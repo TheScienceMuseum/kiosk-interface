@@ -8,6 +8,7 @@ image: rhinogram/node-awscli
 definitions:
   setup: &setup
     name: Setup and install
+    image: node:8
     caches:
       - node
     script:
@@ -16,16 +17,19 @@ definitions:
       - node_modules/**
   tests: &tests
     name: Running tests
+    image: node:8
     script:
       - yarn test
   build: &build
     name: Build
+    image: node:8
     script:
       - yarn build
     artifacts:
       - build/**
   package: &package
     name: Package
+    image: atlassian/pipelines-awscli
     script:
       - aws --version
       - cd build
