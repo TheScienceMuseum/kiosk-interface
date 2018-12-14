@@ -31,7 +31,6 @@ definitions:
     name: Package
     image: atlassian/pipelines-awscli
     script:
-      - aws --version
       - cd build
       - VERSION=$BITBUCKET_BUILD_NUMBER
       - tar -zcvf ../kiosk-interface-$VERSION.tar.gz .
