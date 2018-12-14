@@ -34,3 +34,10 @@ export const ScreenSize = {
     width: 1920,
     height: 1080,
 };
+
+export const Dimensions = {
+    MENU_ITEM_WIDTH: 1422,
+    MENU_ITEM_SPACING: 20,
+    MENU_ITEM_PADDING: 100,
+    TITLE_ITEM_WIDTH: 800,
+};

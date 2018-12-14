@@ -11,7 +11,7 @@ import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './NavButtons';
-import { ArticleTypes } from '../Constants';
+import { ArticleTypes, Dimensions, ScreenSize } from '../Constants';
 
 
 /*
@@ -25,13 +25,19 @@ class Menu extends React.Component {
     static getScrollAmount(index) {
         let targetScroll;
 
-        // const menuItemWidth =
-        // const firstItemLeftOffset =
+        // the width of the menu title item
+        const menuTitleOffset = Dimensions.MENU_ITEM_PADDING
+            + Dimensions.TITLE_ITEM_WIDTH
+            + Dimensions.MENU_ITEM_SPACING;
+
+        // the space to the left and right of the active menu item
+        const activeItemSpacing = (ScreenSize.width - Dimensions.MENU_ITEM_WIDTH) / 2;
+        const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
 
         if (index === 0) {
             targetScroll = 0;
         } else {
-            targetScroll = 671 + ((index - 1) * 1442);
+            targetScroll = firstItemLeftOffset + ((index - 1) * Dimensions.MENU_ITEM_WIDTH);
         }
         return targetScroll;
     }
