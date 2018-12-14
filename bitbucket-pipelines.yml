@@ -3,13 +3,42 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: node:6.9.4
+image: rhinogram/node-awscli
+
+definitions:
+  setup: &setup
+    name: Setup and install
+    caches:
+      - node
+    script:
+      - yarn
+    artifacts:
+      - node_modules/**
+  tests: &tests
+    name: Running tests
+    script:
+      - yarn test
+  build: &build
+    name: Build
+    script:
+      - yarn build
+    artifacts:
+      - build/**
+  package: &package
+    name: Package
+    script:
+      - aws --version
+      - cd build
+      - VERSION=$BITBUCKET_BUILD_NUMBER
+      - tar -zcvf ../kiosk-interface-$VERSION.tar.gz .
+      - echo "Copy to S3"
+      - aws s3 cp ../kiosk-interface-$VERSION.tar.gz s3://$S3_BUCKET/
 
 pipelines:
-  default:
-    - step:
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - npm install
-          - npm test
+  branches:
+    develop:
+    - step: *setup
+    - step: *tests
+    - step: *build
+    - step: *package
+
