@@ -47,7 +47,7 @@ class TextImage extends React.Component {
 
         const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
-        const mainClass = 'Page PageTextImage'
+        const mainClass = 'Page PageTextImage '
             + `PageTextImage--${layout} PageTextImage--${imageState}`;
 
         return (
