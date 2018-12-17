@@ -24,7 +24,7 @@ class ZoomableImage extends React.Component {
             fullscreen: false,
         };
 
-        console.log('ZoomableImage: constructor');
+        // console.log('ZoomableImage: constructor');
 
         // this.MIN_SCALE = 1; // 1=scaling when first loaded
         this.imageMaxScale = 1;
@@ -62,7 +62,7 @@ class ZoomableImage extends React.Component {
     }
 
     componentDidMount() {
-        console.log('ZoomableImage: componentDidMount: container: ', this.container);
+        // console.log('ZoomableImage: componentDidMount: container: ', this.container);
         const { offsetWidth, offsetHeight } = this.container;
         this.viewportWidth = offsetWidth;
         this.viewportHeight = offsetHeight;
@@ -73,11 +73,11 @@ class ZoomableImage extends React.Component {
         const { fullscreen } = this.state;
 
         if (fullscreen !== prevState.fullscreen) {
-            console.log('ZoomableImage: componentDidUpdate: change in fullscreen');
+            // console.log('ZoomableImage: componentDidUpdate: change in fullscreen');
             this.viewportWidth = offsetWidth;
             this.viewportHeight = offsetHeight;
             const imageScale = (fullscreen) ? this.imageMinScale : this.initialScale;
-            console.log('ZoomableImage: componentDidUpdate: imageScale: ', imageScale);
+            // console.log('ZoomableImage: componentDidUpdate: imageScale: ', imageScale);
             this.calculateImageRatios();
             this.zoomToScale(imageScale);
         }
@@ -161,8 +161,8 @@ class ZoomableImage extends React.Component {
     }
 
     translate(deltaX, deltaY) {
-        console.log('ZoomableImage: translate: deltaX: ', deltaX);
-        console.log('ZoomableImage: translate: deltaY: ', deltaY);
+        // console.log('ZoomableImage: translate: deltaX: ', deltaX);
+        // console.log('ZoomableImage: translate: deltaY: ', deltaY);
 
         // We restrict to the min of the viewport width/height or current width/height as the
         // current width/height may be smaller than the viewport width/height
