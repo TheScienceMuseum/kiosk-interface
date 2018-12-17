@@ -17,7 +17,9 @@ function Title(props) {
 
     return (
         <div className="Page PageTitle">
-            <img src={image} alt="" />
+            {image
+            && <img src={image} alt="" />
+            }
             <div className="PageTitle__Content">
                 <h1>{ title }</h1>
                 <h2>{ subtitle }</h2>
@@ -29,11 +31,12 @@ function Title(props) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
 };
 
 Title.defaultProps = {
     subtitle: '',
+    image: null,
 };
 
 export default Title;
