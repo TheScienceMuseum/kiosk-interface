@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
-import '../styles/ZoomableImage.scss';
+import '../styles/components/ZoomableImage.scss';
 import { Orientations } from '../Constants';
 
 /*

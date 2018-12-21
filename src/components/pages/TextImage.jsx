@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Layouts } from '../../Constants';
 
-import '../../styles/pages/TextImage.scss';
+import '../../styles/components/pages/TextImage.scss';
 import ZoomableImage from '../ZoomableImage';
 
 /*

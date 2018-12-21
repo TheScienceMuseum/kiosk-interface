@@ -4,7 +4,7 @@ import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import Hammer from 'react-hammerjs';
 import HammerJS from 'hammerjs';
 
-import '../styles/Menu.scss';
+import '../styles/components/Menu.scss';
 
 import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';

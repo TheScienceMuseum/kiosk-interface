@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/MenuItems.scss';
+import '../../styles/components/menuitems/MenuItems.scss';
 
 /*
  * Title:

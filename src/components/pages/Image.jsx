@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-import '../../styles/pages/Image.scss';
+import '../../styles/components/pages/Image.scss';
 import ZoomableImage from '../ZoomableImage';
 
 /*

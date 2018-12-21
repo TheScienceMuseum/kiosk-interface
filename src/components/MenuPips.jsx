@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ArticleTypes, Orientations } from '../Constants';
 
-import '../styles/MenuPips.scss';
+import '../styles/components/MenuPips.scss';
 
 /*
  * MenuPips:

@@ -13,7 +13,7 @@ import Video from './pages/Video';
 import TextImage from './pages/TextImage';
 import Image from './pages/Image';
 
-import '../styles/Article.scss';
+import '../styles/components/Article.scss';
 
 import NavButtons from './NavButtons';
 import MenuPips from './MenuPips';
