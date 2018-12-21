@@ -1,4 +1,4 @@
-@import 'variables';
+@import '../variables';
 
 .NavButton {
     height: 100px;
@@ -47,7 +47,7 @@
         width: 100px;
         overflow: hidden;
         text-indent: -999px;
-        background: url("../images/arrow.svg") $red no-repeat center center;
+        background: url("../../images/arrow.svg") $red no-repeat center center;
     }
 
     &__Next {

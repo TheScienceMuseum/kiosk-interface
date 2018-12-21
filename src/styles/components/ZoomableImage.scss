@@ -1,4 +1,4 @@
-@import "variables";
+@import "../variables";
 
 .ZoomableImage {
 
@@ -54,7 +54,7 @@
 
         */
         .ZoomableImage__ZoomButton {
-            background-image: url("../images/enlarge-img.svg");
+            background-image: url("../../images/enlarge-img.svg");
         }
     }
 
@@ -74,7 +74,7 @@
         */
 
         .ZoomableImage__ZoomButton {
-            background-image: url("../images/close-img.svg");
+            background-image: url("../../images/close-img.svg");
         }
     }
 
@@ -91,11 +91,11 @@
     }
 
     &__ZoomInButton {
-        background-image: url("../images/zoom-in.svg");
+        background-image: url("../../images/zoom-in.svg");
     }
 
     &__ZoomOutButton {
-        background-image: url("../images/zoom-out.svg");
+        background-image: url("../../images/zoom-out.svg");
     }
 
     &__Debug {
