@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Orientations } from '../Constants';
+import { Orientations } from '../../Constants';
 
-import '../styles/NavButtons.scss';
+import '../../styles/components/navbar/NavButtons.scss';
 
 /*
  * NavButtons:

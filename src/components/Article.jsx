@@ -15,8 +15,9 @@ import Image from './pages/Image';
 
 import '../styles/components/Article.scss';
 
-import NavButtons from './NavButtons';
+import NavButtons from './navbar/NavButtons';
 import MenuPips from './MenuPips';
+import NavBar from './navbar/NavBar';
 
 /*
  * Article:
@@ -39,6 +40,7 @@ class Article extends React.Component {
         this.nextPage = this.nextPage.bind(this);
         this.onJump = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
+        this.handleHomeButton = this.handleHomeButton.bind(this);
         // this.article = null;
 
         const { articleID } = this.props;
@@ -177,39 +179,25 @@ class Article extends React.Component {
 
         const { currentPage, navHidden } = this.state;
         const { subpages } = this.articleContent;
+        const subpagesCount = (subpages) ? subpages.length : 1;
 
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className="Article">
-                    <div className={`NavButtonHome ${(navHidden) ? 'NavButtonHome--hidden' : ''} `}>
-                        <button
-                            type="button"
-                            className="Button NavButton"
-                            onClick={this.handleHomeButton.bind(this)}
-                        >
-                            Home
-                        </button>
-                    </div>
+
                     <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
-                    { subpages && (subpages.length > 1)
-                        && (
-                            <nav className={`PageNav ${(navHidden) ? 'PageNav--hidden' : ''}`}>
-                                <MenuPips
-                                    onJump={this.onJump}
-                                    contents={subpages}
-                                    currentFocused={currentPage}
-                                    orientation={Orientations.VERTICAL}
-                                />
-                                <NavButtons
-                                    onPrev={this.prevPage}
-                                    onNext={this.nextPage}
-                                    orientation={Orientations.VERTICAL}
-                                />
-                            </nav>
-                        )
-                    }
+                    <NavBar
+                        showNav={subpages && (subpages.length > 1)}
+                        onHomeClick={this.handleHomeButton}
+                        onPrev={this.prevPage}
+                        onNext={this.nextPage}
+                        orientation={Orientations.VERTICAL}
+                        currentPage={currentPage}
+                        totalPages={subpagesCount}
+                        hidden={navHidden}
+                    />
                 </article>
             </Hammer>
 

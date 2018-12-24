@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../../variables';
 
 .NavButton {
     height: 100px;
@@ -14,31 +14,15 @@
 
 }
 
-.NavButtonHome {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
 
-    transition: transform 350ms ease-out;
-
-    .Button {
-        text-indent: initial;
-        height: 80px;
-    }
-
-    &--hidden {
-        transform: translateX(-100%);
-    }
-}
 
 
 .NavButtons {
 
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 999;
+    //position: absolute;
+    //top: 0;
+    //right: 0;
+    //z-index: 999;
     .Button {
 
     }
@@ -47,12 +31,19 @@
         width: 100px;
         overflow: hidden;
         text-indent: -999px;
-        background: url("../../images/arrow.svg") $red no-repeat center center;
+        background: url("../../../images/arrow.svg") $red no-repeat center center;
+        background-size: 40%;
     }
 
     &__Next {
         transform: rotate(180deg);
         margin-left: 2px;
+    }
+
+    &--horiziontal {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 
     &--vertical {

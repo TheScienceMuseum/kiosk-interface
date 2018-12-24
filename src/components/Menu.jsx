@@ -10,7 +10,7 @@ import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
-import NavButtons from './NavButtons';
+import NavButtons from './navbar/NavButtons';
 import { ArticleTypes, Dimensions, ScreenSize } from '../Constants';
 
 
@@ -37,7 +37,9 @@ class Menu extends React.Component {
         if (index === 0) {
             targetScroll = 0;
         } else {
-            targetScroll = firstItemLeftOffset + ((index - 1) * Dimensions.MENU_ITEM_WIDTH);
+            targetScroll = firstItemLeftOffset + ((index - 1) * (
+                Dimensions.MENU_ITEM_WIDTH + Dimensions.MENU_ITEM_SPACING)
+            );
         }
         return targetScroll;
     }

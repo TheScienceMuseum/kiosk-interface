@@ -1,0 +1,37 @@
+@import '../../variables';
+.NavBar {
+    background-color: $red;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: right 0.25s ease;
+
+    &--hidden {
+        right: -100px;
+    }
+
+
+    > * {
+        flex: 0 0 auto;
+    }
+
+
+    > *:first-child {
+        flex: 1 0 auto;
+        //background-color: red;
+    }
+
+    &--noNav {
+        justify-content: flex-end;
+        > *:first-child {
+            flex: 0 0 auto;
+        }
+    }
+
+}

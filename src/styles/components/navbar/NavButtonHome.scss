@@ -1,0 +1,27 @@
+@import '../../variables';
+
+.NavButtonHome {
+    position: relative;
+    /*
+    top: auto;
+    left: auto;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    */
+
+    transition: transform 350ms ease-out;
+
+    .Button {
+        text-indent: initial;
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        text-indent: -999px;
+        background: url("../../../images/home.svg") $black no-repeat center center;
+    }
+
+    &--hidden {
+        transform: translateX(-100%);
+    }
+}

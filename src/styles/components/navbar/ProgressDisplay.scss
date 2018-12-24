@@ -1,0 +1,35 @@
+@import "../../variables";
+.ProgressDisplay {
+    color: $white;
+
+    &__track {
+        background-color: rgba($white, 0.22);
+        //height: 100%;
+        width: 4px;
+        flex: 1 0  auto;
+        flex-direction: column;
+    }
+
+    &__bar {
+        background-color: $white;
+        transition: height 250ms ease-in-out, top 250ms ease-in-out;
+        position: relative;
+    }
+
+    &--bar {
+        padding: 40px 0;
+        display: flex;
+        margin: 0 auto;
+        text-align: center;
+
+
+    }
+
+    &--text {
+        p {
+            font-size: 23px;
+            padding: 40px 0;
+            text-align: center;
+        }
+    }
+}
