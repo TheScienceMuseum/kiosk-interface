@@ -14,11 +14,12 @@
 
     .Button {
         text-indent: initial;
-        height: 100px;
-        width: 100px;
+        //height: 100px;
+        //width: 100px;
         overflow: hidden;
         text-indent: -999px;
-        background: url("../../../images/home.svg") $black no-repeat center center;
+        background: url("../../../images/home.svg") $red no-repeat center center;
+        //background-image: url("../../../images/home.svg");
     }
 
     &--hidden {

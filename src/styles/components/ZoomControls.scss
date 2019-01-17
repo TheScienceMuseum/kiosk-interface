@@ -1,0 +1,132 @@
+.ZoomControls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+
+    margin: 0 auto;
+    text-align: center;
+
+    width: 540px;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: rgba(0,0,0,0.8);
+
+    .Button {
+
+        background-color: transparent;
+        background-size: 25px;
+        width: 60px;
+        height: 60px;
+
+        &:not(:first-child) {
+            margin-left: 2px;
+        }
+
+
+    }
+
+    &__ZoomInButton {
+        background-image: url("../../images/zoom-in.svg");
+    }
+
+    &__ZoomOutButton {
+        background-image: url("../../images/zoom-out.svg");
+    }
+
+    &__RangeSlider {
+        background: none;
+        width: 380px;
+    }
+
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 15px 0;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+    background: rgba(255,255,255, 0.5);
+    border-radius: 0px;
+    border: 0px solid rgba(0, 0, 0, 0);
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 3px solid #ffffff;
+    height: 32px;
+    width: 32px;
+    border-radius: 50px;
+    background: #000000;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -15px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    //background: #ffffff;
+    background: rgba(255,255,255, 0.5);
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+    background: #ffffff;
+    border-radius: 0px;
+    border: 0px solid rgba(0, 0, 0, 0);
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 3px solid #ffffff;
+    height: 32px;
+    width: 32px;
+    border-radius: 50px;
+    background: #000000;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #f2f2f2;
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    box-shadow: none;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ffffff;
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    box-shadow: none;
+}
+input[type=range]::-ms-thumb {
+    box-shadow: none;
+    border: 3px solid #ffffff;
+    height: 32px;
+    width: 32px;
+    border-radius: 50px;
+    background: #000000;
+    cursor: pointer;
+    height: 2px;
+}
+input[type=range]:focus::-ms-fill-lower {
+    //background: #ffffff;
+}
+input[type=range]:focus::-ms-fill-upper {
+    //background: #ffffff;
+}
+

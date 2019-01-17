@@ -77,10 +77,13 @@ class Article extends React.Component {
     makeArticle(articleContent) {
         // let pagesOutput;
 
+        const { stopTimer } = this.props;
+
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
+            stopTimer();
             return <Video {...articleContent} />;
         default:
             return null;
@@ -161,9 +164,11 @@ class Article extends React.Component {
     scrollToPage() {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
         const { currentPage } = this.state;
+        const { resetInactiveTimer } = this.props;
         const targetScroll = currentPage * ScreenSize.height;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
+        resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
@@ -181,9 +186,11 @@ class Article extends React.Component {
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
 
+        const articleClass = (navHidden) ? 'Article--fullScreen' : '';
+
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
-                <article className="Article">
+                <article className={`Article ${articleClass}`}>
 
                     <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
                         { this.article }
@@ -209,6 +216,8 @@ Article.propTypes = {
     articleID: PropTypes.string.isRequired,
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     loadArticle: PropTypes.func.isRequired,
+    resetInactiveTimer: PropTypes.func.isRequired,
+    stopTimer: PropTypes.func.isRequired,
 };
 
 export default Article;

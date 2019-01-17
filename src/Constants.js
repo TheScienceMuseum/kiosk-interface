@@ -41,3 +41,8 @@ export const Dimensions = {
     MENU_ITEM_PADDING: 100,
     TITLE_ITEM_WIDTH: 800,
 };
+
+export const AppStates = {
+    ATTRACTOR: 'attractor',
+    MENU: 'menu',
+};

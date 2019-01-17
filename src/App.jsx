@@ -6,7 +6,8 @@ import './styles/App.scss';
 
 import Menu from './components/Menu';
 import Article from './components/Article';
-import { Environments } from './Constants';
+import { AppStates, Environments } from './Constants';
+import Attractor from './components/Attractor';
 
 
 class App extends Component {
@@ -14,14 +15,21 @@ class App extends Component {
         super(props);
         this.state = {
             activeArticle: null,
-            location: 'menu',
+            location: AppStates.ATTRACTOR,
+            inactiveTime: 0,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
+        this.onStart = this.start.bind(this);
+        this.startInactiveTimer = this.startInactiveTimer.bind(this);
+        this.stopTimer = this.stopTimer.bind(this);
+
+        this.inactiveTimer = null;
+        this.timeout = 999;
     }
 
     setActiveArticle(activeArticle) {
-        console.log('App: setActiveArticle: activeArticle: ', activeArticle);
+        // console.log('App: setActiveArticle: activeArticle: ', activeArticle);
         this.setState({ activeArticle });
     }
 
@@ -29,7 +37,12 @@ class App extends Component {
         const { activeArticle, location } = this.state;
         const { content } = this.props;
 
-        if (location === 'menu') {
+        switch (location) {
+        case AppStates.ATTRACTOR:
+            return (
+                <Attractor {...content.titles} start={this.onStart} />
+            );
+        case AppStates.MENU:
             return (
                 <Menu
                     titles={content.titles}
@@ -38,20 +51,53 @@ class App extends Component {
                     activeArticle={activeArticle}
                     setActiveArticle={this.setActiveArticle}
                     loadArticle={this.loadArticle}
+                    resetInactiveTimer={this.startInactiveTimer}
+                />
+            );
+        default:
+            return (
+                <Article
+                    contents={content.contents}
+                    articleID={location}
+                    loadArticle={this.loadArticle}
+                    resetInactiveTimer={this.startInactiveTimer}
+                    stopTimer={this.stopTimer}
                 />
             );
         }
-        return (
-            <Article
-                contents={content.contents}
-                articleID={location}
-                loadArticle={this.loadArticle}
-            />
-        );
+    }
+
+    startInactiveTimer(reset) {
+        let { inactiveTime } = this.state;
+        inactiveTime = (reset) ? 0 : inactiveTime + 1;
+
+        if (this.inactiveTimer) clearTimeout(this.inactiveTimer);
+
+        if (inactiveTime > this.timeout) {
+            this.kioskTimeout();
+        } else {
+            this.setState({ inactiveTime });
+            this.inactiveTimer = setTimeout(this.startInactiveTimer.bind(this), 1000);
+        }
+
+    }
+
+    stopTimer() {
+        clearTimeout(this.inactiveTimer);
+        //this.setState( {inactive})
+    }
+
+    kioskTimeout() {
+        this.setState({ location: AppStates.ATTRACTOR, inactiveTime: 0 });
+    }
+
+    start() {
+        this.setState({ location: AppStates.MENU }, this.startInactiveTimer);
     }
 
     loadArticle(articleID) {
-        console.log('App: loadArticle: articleID: ', articleID);
+        // console.log('App: loadArticle: articleID: ', articleID);
+        this.startInactiveTimer(true);
         this.setState({ location: articleID });
     }
 

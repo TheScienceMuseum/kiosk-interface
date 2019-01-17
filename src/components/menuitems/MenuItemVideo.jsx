@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Hammer from 'react-hammerjs';
+
 import '../../styles/components/menuitems/MenuItems.scss';
 
 /*
@@ -20,10 +22,12 @@ class MenuItemVideo extends React.Component {
 
         return (
             <li className="MenuItem MenuItem__Video">
-                <button type="button" onClick={() => onClick(articleID)}>
-                    <img src={titleImage} alt="" draggable="false" />
-                    <h2>{title}</h2>
-                </button>
+                <Hammer onTap={() => onClick(articleID)}>
+                    <button type="button" /*onClick={e => onClick(e, articleID)}*/>
+                        <img src={titleImage} alt="" draggable="false" />
+                        <h2>{title}</h2>
+                    </button>
+                </Hammer>
             </li>
         );
     }

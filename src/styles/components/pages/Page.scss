@@ -1,18 +1,27 @@
-@import '../../variables';
+@import "../../variables";
 
 .Page {
     //position: absolute;
     //top: 0;
     //left: 0;
     position: relative;
-    background: $pageBackground;
+    //background: $pageBackground;
+    background: red;
 
     width: 100%;
     height: 1080px;
 
+    //padding-right: 100px;
+
     flex: 0 0 auto;
 
     overflow: hidden;
+
+
+
+    .Article--fullScreen & {
+        //padding-right: 0;
+    }
 }
 
 

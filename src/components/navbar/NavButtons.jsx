@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Orientations } from '../../Constants';
 
 import '../../styles/components/navbar/NavButtons.scss';
+import ProgressDisplay from './ProgressDisplay';
 
 /*
  * NavButtons:
@@ -15,7 +16,9 @@ import '../../styles/components/navbar/NavButtons.scss';
 
 
 function NavButtons(props) {
-    const { onNext, onPrev, orientation } = props;
+    const {
+        onNext, onPrev, orientation, currentPage, totalPages,
+    } = props;
 
     return (
         <div className={`NavButtons NavButtons--${orientation}`}>
@@ -26,6 +29,14 @@ function NavButtons(props) {
             >
                 Previous
             </button>
+            {(orientation === Orientations.VERTICAL)
+            && (
+                <ProgressDisplay
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                />
+            )
+            }
             <button
                 className="NavButton NavButtons__Next"
                 type="button"

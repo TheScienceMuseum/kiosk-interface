@@ -18,7 +18,7 @@
     */
 
     img {
-        //transition: transform 350ms ease-out;
+        transition: all $transitionTime-showContent ease;
         //transform-origin: top left;
         //position: absolute;
         //top: 50%;
@@ -29,19 +29,21 @@
 
     & .Button {
 
-        width: 80px;
-        height: 80px;
-        background-color: $red;
+        //width: 80px;
+        //height: 80px;
+        background-color: $black;
         background-repeat: no-repeat;
         background-position: center center;
     }
 
     &__ZoomButton {
         position: absolute;
-        right: 100px;
+        left: 0;
         bottom: 0;
         z-index: 500;
-
+        .PageImage & {
+            left: 650px;
+        }
     }
 
     &--zoomedOut {
@@ -74,29 +76,17 @@
         */
 
         .ZoomableImage__ZoomButton {
+            //right: 0;
+            //left: auto;
             background-image: url("../../images/close-img.svg");
         }
     }
 
     &__ZoomControls {
-        position: absolute;
-        left: 0;
-        bottom: 0;
 
-        .Button {
-            &:not(:first-child) {
-                margin-left: 2px;
-            }
-        }
     }
 
-    &__ZoomInButton {
-        background-image: url("../../images/zoom-in.svg");
-    }
 
-    &__ZoomOutButton {
-        background-image: url("../../images/zoom-out.svg");
-    }
 
     &__Debug {
         position: absolute;
@@ -105,6 +95,7 @@
         left: 0;
         width: 400px;
         height: 300px;
+        //opacity: 0.4;
     }
 
     &--zoomedIn &__Debug {

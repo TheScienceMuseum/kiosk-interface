@@ -18,7 +18,7 @@ class NavButtonHome extends React.Component {
             <div className="NavButtonHome">
                 <button
                     type="button"
-                    className="Button NavButton"
+                    className="Button NavButton Button--icon"
                     onClick={onClick}
                 >
                     Home

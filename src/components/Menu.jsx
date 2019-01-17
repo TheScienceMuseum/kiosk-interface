@@ -72,6 +72,10 @@ class Menu extends React.Component {
     }
 
     onItemClick(articleID) {
+        // console.log('Menu: onItemClick: e: ', e);
+        // console.log('Menu: onItemClick: e.target: ', e.target);
+        // e.stopImmediatePropagation();
+
         const { currentFocused } = this.state;
         const { loadArticle } = this.props;
         // console.log('Menu: onItemClick: articleID: ', articleID);
@@ -85,6 +89,7 @@ class Menu extends React.Component {
             // console.log('Menu: onItemClick: scroll to article');
             this.scrollToItem(articleID);
         }
+
     }
 
 
@@ -146,8 +151,9 @@ class Menu extends React.Component {
             index = this.getIndexFromID(targetID);
         }
 
-        const { setActiveArticle } = this.props;
+        const { setActiveArticle, resetInactiveTimer } = this.props;
         setActiveArticle(index);
+        resetInactiveTimer(true);
 
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);

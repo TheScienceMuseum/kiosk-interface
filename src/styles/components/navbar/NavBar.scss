@@ -1,4 +1,5 @@
 @import '../../variables';
+
 .NavBar {
     background-color: $red;
     position: absolute;
@@ -10,7 +11,9 @@
     display: flex;
     flex-direction: column;
 
-    transition: right 0.25s ease;
+    transition: right $transitionTime-showContent ease;
+
+    //justify-content: flex-end;
 
     &--hidden {
         right: -100px;
@@ -19,19 +22,27 @@
 
     > * {
         flex: 0 0 auto;
+        .Button {
+            top: 50%;
+            position: absolute;
+        }
     }
 
 
     > *:first-child {
         flex: 1 0 auto;
+        //justify-content: center;
+        //align-content: center;
+        //align-items: center;
         //background-color: red;
     }
-
+    /*
     &--noNav {
         justify-content: flex-end;
         > *:first-child {
             flex: 0 0 auto;
         }
     }
+    */
 
 }

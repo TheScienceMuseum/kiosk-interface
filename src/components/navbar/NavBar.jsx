@@ -25,18 +25,19 @@ class NavBar extends React.Component {
 
         return (
             <div className={`NavBar ${hiddenClass} ${noNavClass}`}>
+                <NavButtonHome onClick={onHomeClick} />
                 {showNav
                     && <>
-                        <ProgressDisplay
+
+                        <NavButtons
+                            onNext={onNext}
+                            onPrev={onPrev}
+                            orientation={orientation}
                             currentPage={currentPage}
                             totalPages={totalPages}
-                            // displayBar
-                            // scrollStyle
                         />
-                        <NavButtons onNext={onNext} onPrev={onPrev} orientation={orientation} />
                     </>
                 }
-                <NavButtonHome onClick={onHomeClick} />
             </div>
         );
     }
