@@ -15,8 +15,8 @@ import Image from './pages/Image';
 
 import '../styles/components/Article.scss';
 
-import NavButtons from './navbar/NavButtons';
-import MenuPips from './MenuPips';
+// import NavButtons from './navbar/NavButtons';
+// import MenuPips from './MenuPips';
 import NavBar from './navbar/NavBar';
 
 /*
@@ -183,6 +183,7 @@ class Article extends React.Component {
         // const startState = { autoAlpha: 0, y: -50 };
 
         const { currentPage, navHidden } = this.state;
+        const { singleArticleMode } = this.props;
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
 
@@ -191,7 +192,6 @@ class Article extends React.Component {
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
-
                     <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
@@ -204,6 +204,7 @@ class Article extends React.Component {
                         currentPage={currentPage}
                         totalPages={subpagesCount}
                         hidden={navHidden}
+                        hideHome={singleArticleMode}
                     />
                 </article>
             </Hammer>
@@ -218,6 +219,11 @@ Article.propTypes = {
     loadArticle: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
     stopTimer: PropTypes.func.isRequired,
+    singleArticleMode: PropTypes.bool,
 };
+
+Article.defaultProps = {
+    singleArticleMode: false,
+}
 
 export default Article;

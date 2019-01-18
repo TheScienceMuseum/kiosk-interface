@@ -64,7 +64,7 @@ class ZoomableImage extends React.Component {
     }
 
     componentDidMount() {
-        console.log('ZoomableImage: componentDidMount: parent: ', this.container.parentElement);
+        // console.log('ZoomableImage: componentDidMount: parent: ', this.container.parentElement);
         const { offsetWidth, offsetHeight } = this.container;
 
         this.initialWidth = offsetWidth;
@@ -73,8 +73,8 @@ class ZoomableImage extends React.Component {
         this.viewportWidth = this.initialWidth;
         this.viewportHeight = this.initialHeight;
 
-        console.log('ZoomableImage: componentDidMount: offsetWidth: ', offsetWidth);
-        console.log('ZoomableImage: componentDidMount: offsetHeight: ', offsetHeight);
+        // console.log('ZoomableImage: componentDidMount: offsetWidth: ', offsetWidth);
+        // console.log('ZoomableImage: componentDidMount: offsetHeight: ', offsetHeight);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -87,8 +87,8 @@ class ZoomableImage extends React.Component {
             this.viewportHeight = (fullscreen) ? ScreenSize.height : this.initialHeight;
             const imageScale = (fullscreen) ? this.imageMinScale : this.initialScale;
 
-            console.log('ZoomableImage: componentDidUpdate: imageScale: ', imageScale);
-            console.log('ZoomableImage: componentDidUpdate: this.container: ', this.viewportHeight);
+            // console.log('ZoomableImage: componentDidUpdate: imageScale: ', imageScale);
+            // console.log('ZoomableImage: componentDidUpdate: this.container: ', this.viewportHeight);
 
             // this.handleImageLoad();
             this.calculateImageRatios();
@@ -198,14 +198,15 @@ class ZoomableImage extends React.Component {
         // console.log('ZoomableImage: translate: this.viewportWidth: ', this.viewportWidth);
         // console.log('ZoomableImage: translate: this.viewportHeight: ', this.viewportHeight);
 
-        if (this.curWidth < this.viewportWidth) {
-            newX += ((this.viewportWidth - this.curWidth) / 2) / this.scale;
-        } else if (this.curHeight < this.viewportHeight) {
-            newY += ((this.viewportHeight - this.curHeight) / 2) / this.scale;
-        }
+        // if (this.curWidth < this.viewportWidth) {
+        // console.log('ZoomableImage: recalculate x');
+        newX += ((this.viewportWidth - this.curWidth) / 2) / this.scale;
+        // } else if (this.curHeight < this.viewportHeight) {
+        newY += ((this.viewportHeight - this.curHeight) / 2) / this.scale;
+        // }
 
-        console.log('ZoomableImage: translate: newX: ', newX);
-        console.log('ZoomableImage: translate: newY: ', newY);
+        // console.log('ZoomableImage: translate: newX: ', newX);
+        // console.log('ZoomableImage: translate: newY: ', newY);
 
         this.x = newX;
         this.y = newY;
@@ -533,7 +534,6 @@ class ZoomableImage extends React.Component {
 
                 {zoomable && fullscreen
                 && (
-
                     <ZoomControls
                         zoomIn={this.handleZoomIn}
                         zoomOut={this.handleZoomOut}

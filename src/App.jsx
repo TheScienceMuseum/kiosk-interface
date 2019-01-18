@@ -13,10 +13,14 @@ import Attractor from './components/Attractor';
 class App extends Component {
     constructor(props) {
         super(props);
+
+        const singleArticleMode = (props.content.contents.length === 1);
+
         this.state = {
             activeArticle: null,
             location: AppStates.ATTRACTOR,
             inactiveTime: 0,
+            singleArticleMode,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
@@ -34,7 +38,7 @@ class App extends Component {
     }
 
     getPage() {
-        const { activeArticle, location } = this.state;
+        const { activeArticle, location, singleArticleMode } = this.state;
         const { content } = this.props;
 
         switch (location) {
@@ -62,6 +66,7 @@ class App extends Component {
                     loadArticle={this.loadArticle}
                     resetInactiveTimer={this.startInactiveTimer}
                     stopTimer={this.stopTimer}
+                    singleArticleMode={singleArticleMode}
                 />
             );
         }
@@ -79,12 +84,11 @@ class App extends Component {
             this.setState({ inactiveTime });
             this.inactiveTimer = setTimeout(this.startInactiveTimer.bind(this), 1000);
         }
-
     }
 
     stopTimer() {
         clearTimeout(this.inactiveTimer);
-        //this.setState( {inactive})
+        // this.setState( {inactive})
     }
 
     kioskTimeout() {
@@ -92,7 +96,15 @@ class App extends Component {
     }
 
     start() {
-        this.setState({ location: AppStates.MENU }, this.startInactiveTimer);
+        const { content } = this.props;
+        const { singleArticleMode } = this.state;
+
+        console.log('App: start: ', content.contents.length);
+
+        const startState = !singleArticleMode ? AppStates.MENU : content.contents[0].articleID;
+
+
+        this.setState({ location: startState }, this.startInactiveTimer);
     }
 
     loadArticle(articleID) {

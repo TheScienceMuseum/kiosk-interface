@@ -41,6 +41,9 @@
         left: 0;
         bottom: 0;
         z-index: 500;
+
+        transition: left $transitionTime-showContent ease;
+
         .PageImage & {
             left: 650px;
         }
@@ -77,7 +80,7 @@
 
         .ZoomableImage__ZoomButton {
             //right: 0;
-            //left: auto;
+            left: 0;
             background-image: url("../../images/close-img.svg");
         }
     }
@@ -90,7 +93,7 @@
 
     &__Debug {
         position: absolute;
-        //display: none;
+        display: none;
         top: 0;
         left: 0;
         width: 400px;

@@ -17,18 +17,23 @@ import ProgressDisplay from './ProgressDisplay';
 class NavBar extends React.Component {
     render() {
         const {
-            onHomeClick, onNext, onPrev, orientation, currentPage, totalPages, hidden, showNav,
+            onHomeClick, onNext, onPrev, orientation, currentPage, totalPages, hidden, showNav, hideHome,
         } = this.props;
 
         const hiddenClass = (hidden) ? 'NavBar--hidden' : '';
         const noNavClass = (!showNav) ? 'NavBar--noNav' : '';
+        const noHomeClass = (hideHome) ? 'NavBar--noHome' : '';
 
         return (
-            <div className={`NavBar ${hiddenClass} ${noNavClass}`}>
-                <NavButtonHome onClick={onHomeClick} />
-                {showNav
-                    && <>
+            <div className={`NavBar ${hiddenClass} ${noNavClass} ${noHomeClass}`}>
+                {!hideHome
+                    && (
+                        <NavButtonHome onClick={onHomeClick} />
+                    )
+                }
 
+                {showNav
+                    && (
                         <NavButtons
                             onNext={onNext}
                             onPrev={onPrev}
@@ -36,7 +41,7 @@ class NavBar extends React.Component {
                             currentPage={currentPage}
                             totalPages={totalPages}
                         />
-                    </>
+                    )
                 }
             </div>
         );
@@ -51,11 +56,15 @@ NavBar.propTypes = {
     currentPage: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
     hidden: PropTypes.bool,
+    hideHome: PropTypes.bool,
+    showNav: PropTypes.bool,
 };
 
 NavBar.defaultProps = {
     orientation: Orientations.HORIZONTAL,
     hidden: false,
+    hideHome: false,
+    showNav: true,
 };
 
 export default NavBar;
