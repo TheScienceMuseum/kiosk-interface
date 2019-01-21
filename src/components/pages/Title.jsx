@@ -15,10 +15,14 @@ import '../../styles/components/pages/Title.scss';
 function Title(props) {
     const { title, subtitle, image } = props;
 
+    const imageStyle = {
+        background: `url(${image})`,
+    };
+
     return (
         <div className="Page PageTitle">
             {image
-            && <img src={image} alt="" />
+            && <div className="Image Image--withGrad" style={imageStyle} />
             }
             <div className="PageTitle__Content">
                 <h1>{ title }</h1>

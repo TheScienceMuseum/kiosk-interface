@@ -224,7 +224,7 @@ class ZoomableImage extends React.Component {
 
         this.scale = this.restrictScale(this.lastScale * scaleBy);
 
-        //this.scale = Math.round(this.scale * 10) / 10;
+        // this.scale = Math.round(this.scale * 10) / 10;
 
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
@@ -298,8 +298,8 @@ class ZoomableImage extends React.Component {
     }
 
     zoomToScale(scaleTo) {
-        let scaleBy = scaleTo / this.scale;
-        //scaleBy = Math.round(scaleBy * 10) / 10;
+        const scaleBy = scaleTo / this.scale;
+        // scaleBy = Math.round(scaleBy * 10) / 10;
         // this.zoom(scaleBy);
         this.zoomCenter(scaleBy);
     }
@@ -312,15 +312,15 @@ class ZoomableImage extends React.Component {
     }
 
     handleZoomIn() {
-        let imageScale = Math.min(this.scale + 0.1, 1);
-        //imageScale = Math.round(imageScale * 10) / 10;
+        const imageScale = Math.min(this.scale + 0.1, 1);
+        // imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(1.1);
     }
 
     handleZoomOut() {
-        let imageScale = Math.max(this.scale - 0.1, this.imageMinScale);
-        //imageScale = Math.round(imageScale * 10) / 10;
+        const imageScale = Math.max(this.scale - 0.1, this.imageMinScale);
+        // imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(0.9);
     }
