@@ -77,9 +77,12 @@ h1 {
 
     &--icon {
         width: 100px;
-        text-indent: -999px;
-        overflow: hidden;
-        white-space: nowrap;
+        //text-indent: -999px;
+        //overflow: hidden;
+        //white-space: nowrap;
+        font-family: $icomoon-font-family;
+        text-align: center;
+        padding: 0;
     }
 }
 /*

@@ -29,10 +29,7 @@
 
     &__Prev, &__Next {
         width: 100px;
-        overflow: hidden;
-        text-indent: -999px;
-        background: url("../../../images/arrow.svg") $red no-repeat center center;
-        background-size: 40%;
+        line-height: 27px;
     }
 
     &__Next {

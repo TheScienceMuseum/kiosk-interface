@@ -224,6 +224,8 @@ class ZoomableImage extends React.Component {
 
         this.scale = this.restrictScale(this.lastScale * scaleBy);
 
+        //this.scale = Math.round(this.scale * 10) / 10;
+
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
 
@@ -296,7 +298,8 @@ class ZoomableImage extends React.Component {
     }
 
     zoomToScale(scaleTo) {
-        const scaleBy = scaleTo / this.scale;
+        let scaleBy = scaleTo / this.scale;
+        //scaleBy = Math.round(scaleBy * 10) / 10;
         // this.zoom(scaleBy);
         this.zoomCenter(scaleBy);
     }
@@ -309,13 +312,15 @@ class ZoomableImage extends React.Component {
     }
 
     handleZoomIn() {
-        const imageScale = Math.min(this.scale + 0.1, 1);
+        let imageScale = Math.min(this.scale + 0.1, 1);
+        //imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(1.1);
     }
 
     handleZoomOut() {
-        const imageScale = Math.max(this.scale - 0.1, this.imageMinScale);
+        let imageScale = Math.max(this.scale - 0.1, this.imageMinScale);
+        //imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(0.9);
     }
@@ -484,6 +489,8 @@ class ZoomableImage extends React.Component {
         const { image } = this.props;
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
+        const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-close';
+
         const style = {
             // transform: `scale(${imageScale})`,
             // transform: `scale(${imageScale})`,
@@ -527,7 +534,7 @@ class ZoomableImage extends React.Component {
                     type="button"
                     onClick={this.handleToggleFullScreen}
                 >
-                    Zoom In/Out
+                    <i className={zoomIconClass} />
                 </button>
 
                 <textarea className="ZoomableImage__Debug" ref={ref => { this.debugText = ref; }} />

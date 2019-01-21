@@ -1,0 +1,26 @@
+@import "../variables";
+
+.MenuNav {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+
+    &__Button {
+
+        //background: url("../../images/arrow.svg") $red no-repeat center center;
+        background-color: white;
+        color: $red;
+
+        &--Prev {
+            margin-right: 40px;
+        }
+
+        &--Next {
+            margin-left: 40px;
+            transform: rotate(180deg);
+        }
+
+    }
+}

@@ -18,7 +18,7 @@
     */
 
     img {
-        transition: all $transitionTime-showContent ease;
+        //transition: all $transitionTime-showContent ease;
         //transform-origin: top left;
         //position: absolute;
         //top: 50%;
@@ -59,7 +59,7 @@
 
         */
         .ZoomableImage__ZoomButton {
-            background-image: url("../../images/enlarge-img.svg");
+            //background-image: url("../../images/enlarge-img.svg");
         }
     }
 
@@ -81,7 +81,7 @@
         .ZoomableImage__ZoomButton {
             //right: 0;
             left: 0;
-            background-image: url("../../images/close-img.svg");
+            //background-image: url("../../images/close-img.svg");
         }
     }
 
@@ -93,7 +93,7 @@
 
     &__Debug {
         position: absolute;
-        display: none;
+        //display: none;
         top: 0;
         left: 0;
         width: 400px;

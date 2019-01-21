@@ -20,6 +20,7 @@
     }
 
 
+    /*
     > * {
         flex: 0 0 auto;
         .Button {
@@ -27,8 +28,9 @@
             position: absolute;
         }
     }
+    */
 
-
+    /*
     > *:first-child {
         flex: 1 0 auto;
         //justify-content: center;
@@ -36,6 +38,7 @@
         //align-items: center;
         //background-color: red;
     }
+    */
     /*
     &--noNav {
         justify-content: flex-end;
@@ -44,6 +47,20 @@
         }
     }
     */
+
+    .NavButtonHome {
+        flex: 1 0 auto;
+        position: relative;
+        .Button {
+            top: 50%;
+            position: absolute;
+            font-size: 36px;
+        }
+    }
+
+    .NavButtons {
+        flex: 0 0 auto;
+    }
 
     &--noHome {
         justify-content: flex-end;

@@ -85,7 +85,7 @@ MenuPips.propTypes = {
 };
 
 MenuPips.defaultProps = {
-    showTitlePip: false,
+    showTitlePip: true,
     orientation: Orientations.HORIZONTAL,
 };
 

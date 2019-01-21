@@ -12,6 +12,7 @@ import MenuItemVideo from './menuitems/MenuItemVideo';
 import MenuPips from './MenuPips';
 import NavButtons from './navbar/NavButtons';
 import { ArticleTypes, Dimensions, ScreenSize } from '../Constants';
+import MenuNav from './MenuNav';
 
 
 /*
@@ -89,7 +90,6 @@ class Menu extends React.Component {
             // console.log('Menu: onItemClick: scroll to article');
             this.scrollToItem(articleID);
         }
-
     }
 
 
@@ -231,13 +231,21 @@ class Menu extends React.Component {
                         <MenuItemTitle {...titles} />
                         {menuItems}
                     </ul>
-                    <MenuPips
-                        onJump={this.onJump}
+                    {/* <MenuPips */}
+                    {/* onJump={this.onJump} */}
+                    {/* contents={contents} */}
+                    {/* currentFocused={currentFocused} */}
+                    {/* showTitlePip */}
+                    {/* /> */}
+                    {/* <NavButtons onPrev={this.onPrev} onNext={this.onNext} /> */}
+
+                    <MenuNav
+                        onNext={this.onNext}
+                        onPrev={this.onPrev}
                         contents={contents}
+                        onJump={this.onJump}
                         currentFocused={currentFocused}
-                        showTitlePip
                     />
-                    <NavButtons onPrev={this.onPrev} onNext={this.onNext} />
                 </nav>
             </Hammer>
             // </Transition>

@@ -23,11 +23,11 @@ function NavButtons(props) {
     return (
         <div className={`NavButtons NavButtons--${orientation}`}>
             <button
-                className="NavButton NavButtons__Prev"
+                className="Button Button-icon NavButton NavButtons__Prev"
                 type="button"
                 onClick={onPrev}
             >
-                Previous
+                <i className="icon-arrow" />
             </button>
             {(orientation === Orientations.VERTICAL)
             && (
@@ -38,11 +38,11 @@ function NavButtons(props) {
             )
             }
             <button
-                className="NavButton NavButtons__Next"
+                className="Button Button-icon NavButton NavButtons__Next"
                 type="button"
                 onClick={onNext}
             >
-                Next
+                <i className="icon-arrow" />
             </button>
         </div>
     );

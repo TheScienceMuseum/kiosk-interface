@@ -28,7 +28,7 @@ class ZoomControls extends React.Component {
                     type="button"
                     onClick={zoomOut}
                 >
-                    Zoom In
+                    <i className="icon-minus" />
                 </button>
 
                 <input
@@ -46,7 +46,7 @@ class ZoomControls extends React.Component {
                     type="button"
                     onClick={zoomIn}
                 >
-                    Zoom Out
+                    <i className="icon-plus" />
                 </button>
             </div>
         );

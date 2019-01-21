@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../styles/components/navbar/NavButtonHome.scss';
 
 /*
  * NavButtonHome:
@@ -21,7 +20,7 @@ class NavButtonHome extends React.Component {
                     className="Button NavButton Button--icon"
                     onClick={onClick}
                 >
-                    Home
+                    <i className="icon-home" />
                 </button>
             </div>
         );
