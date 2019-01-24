@@ -117,7 +117,7 @@
                 },
                 "title": {
                     "type": "string",
-                    "maxLength": 20,
+                    "maxLength": 100,
                     "minLength": 0
                 },
                 "subtitle": {
@@ -187,6 +187,9 @@
                 },
                 "image": {
                     "$ref": "#/definitions/ImageUnion"
+                },
+                "attractorImage": {
+                    "$ref": "#/definitions/ImageUnion"
                 }
             },
             "required": [
@@ -217,6 +220,9 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
             "title": "ImageUnion"
