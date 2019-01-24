@@ -174,6 +174,10 @@ class ZoomableImage extends React.Component {
         this.lastY = this.y;
     }
 
+    updateLastScale() {
+        this.lastScale = this.scale;
+    }
+
     translate(deltaX, deltaY) {
         // console.log('ZoomableImage: translate: deltaX: ', deltaX);
         // console.log('ZoomableImage: translate: deltaY: ', deltaY);
@@ -198,12 +202,12 @@ class ZoomableImage extends React.Component {
         // console.log('ZoomableImage: translate: this.viewportWidth: ', this.viewportWidth);
         // console.log('ZoomableImage: translate: this.viewportHeight: ', this.viewportHeight);
 
-        // if (this.curWidth < this.viewportWidth) {
+        if (this.curWidth < this.viewportWidth) {
         // console.log('ZoomableImage: recalculate x');
-        newX += ((this.viewportWidth - this.curWidth) / 2) / this.scale;
-        // } else if (this.curHeight < this.viewportHeight) {
-        newY += ((this.viewportHeight - this.curHeight) / 2) / this.scale;
-        // }
+            newX += ((this.viewportWidth - this.curWidth) / 2) / this.scale;
+        } else if (this.curHeight < this.viewportHeight) {
+            newY += ((this.viewportHeight - this.curHeight) / 2) / this.scale;
+        }
 
         // console.log('ZoomableImage: translate: newX: ', newX);
         // console.log('ZoomableImage: translate: newY: ', newY);
@@ -256,9 +260,6 @@ class ZoomableImage extends React.Component {
         return { x: zoomX, y: zoomY };
     }
 
-    updateLastScale() {
-        this.lastScale = this.scale;
-    }
 
     zoomAround(scaleBy, rawZoomX, rawZoomY, doNotUpdateLast) {
         // Zoom
@@ -268,9 +269,14 @@ class ZoomableImage extends React.Component {
         const rawCenterX = -this.x + Math.min(this.viewportWidth, this.curWidth) / 2 / this.scale;
         const rawCenterY = -this.y + Math.min(this.viewportHeight, this.curHeight) / 2 / this.scale;
 
+        console.log('ZoomableImage: zoomAround: rawZoomX, rawZoomY: ', rawZoomX, rawZoomY);
+        console.log('ZoomableImage: zoomAround: rawCenterX, rawCenterY: ', rawCenterX, rawCenterY);
+
         // Delta
         const deltaX = (rawCenterX - rawZoomX) * this.scale;
         const deltaY = (rawCenterY - rawZoomY) * this.scale;
+
+        console.log('ZoomableImage: zoomAround: deltaX, deltaY: ', deltaX, deltaY);
 
         // Translate back to zoom center
         // console.log('ZoomableImage: zoomAround:');
@@ -291,8 +297,12 @@ class ZoomableImage extends React.Component {
 
         // const scaleBy = scaleTo / this.scale;
 
-        const zoomX = -this.x + Math.min(this.viewportWidth, this.curWidth) / 2 / this.scale;
-        const zoomY = -this.y + Math.min(this.viewportHeight, this.curHeight) / 2 / this.scale;
+        // const zoomX = (-this.x + Math.min(this.viewportWidth, this.curWidth)) / 2 / this.scale;
+        // const zoomY = (-this.y + Math.min(this.viewportHeight, this.curHeight)) / 2 / this.scale;
+        const zoomX = (-this.x + this.curWidth / this.scale) / 2;
+        const zoomY = (-this.y + this.curHeight / this.scale) / 2;
+
+        console.log('ZoomableImage: zoomCenter: zoomX, zoomY: ', zoomX, zoomY);
 
         this.zoomAround(scaleBy, zoomX, zoomY);
     }
