@@ -78,7 +78,7 @@ class ZoomableImage extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { offsetWidth, offsetHeight } = this.container;
+        // const { offsetWidth, offsetHeight } = this.container;
         const { fullscreen } = this.state;
 
         if (fullscreen !== prevState.fullscreen) {
@@ -87,8 +87,8 @@ class ZoomableImage extends React.Component {
             this.viewportHeight = (fullscreen) ? ScreenSize.height : this.initialHeight;
             const imageScale = (fullscreen) ? this.imageMinScale : this.initialScale;
 
-            // console.log('ZoomableImage: componentDidUpdate: imageScale: ', imageScale);
-            // console.log('ZoomableImage: componentDidUpdate: this.container: ', this.viewportHeight);
+            // console.log('ZoomableImage: didUpdate: imageScale: ', imageScale);
+            // console.log('ZoomableImage: didUpdate: viewportHeight: ', this.viewportHeight);
 
             // this.handleImageLoad();
             this.calculateImageRatios();

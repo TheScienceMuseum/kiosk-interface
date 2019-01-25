@@ -24,7 +24,7 @@ class MenuItemMixed extends React.Component {
             <li className="MenuItem MenuItem__Mixed">
                 {/* <Link to={`/article/${articleID}`}> */}
                 <Hammer onTap={() => onClick(articleID)}>
-                    <button type="button" /*onClick={onClick}*/>
+                    <button type="button">
                         <div className="Image--withGrad">
                             <img src={titleImage} alt="" />
                         </div>

@@ -5,7 +5,6 @@ import NavButtons from './NavButtons';
 import { Orientations } from '../../Constants';
 
 import '../../styles/components/navbar/NavBar.scss';
-import ProgressDisplay from './ProgressDisplay';
 
 /*
  * NavBar:
@@ -17,7 +16,15 @@ import ProgressDisplay from './ProgressDisplay';
 class NavBar extends React.Component {
     render() {
         const {
-            onHomeClick, onNext, onPrev, orientation, currentPage, totalPages, hidden, showNav, hideHome,
+            onHomeClick,
+            onNext,
+            onPrev,
+            orientation,
+            currentPage,
+            totalPages,
+            hidden,
+            showNav,
+            hideHome,
         } = this.props;
 
         const hiddenClass = (hidden) ? 'NavBar--hidden' : '';

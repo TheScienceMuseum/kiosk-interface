@@ -52,6 +52,8 @@ NavButtons.propTypes = {
     onNext: PropTypes.func.isRequired,
     onPrev: PropTypes.func.isRequired,
     orientation: PropTypes.oneOf(Object.values(Orientations)),
+    currentPage: PropTypes.number.isRequired,
+    totalPages: PropTypes.number.isRequired,
 };
 
 NavButtons.defaultProps = {

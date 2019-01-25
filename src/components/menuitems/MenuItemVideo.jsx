@@ -23,7 +23,7 @@ class MenuItemVideo extends React.Component {
         return (
             <li className="MenuItem MenuItem__Video">
                 <Hammer onTap={() => onClick(articleID)}>
-                    <button type="button" /*onClick={e => onClick(e, articleID)}*/>
+                    <button type="button">
                         <div className="Image--withGrad">
                             <img src={titleImage} alt="" draggable="false" />
                         </div>

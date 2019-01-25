@@ -11,10 +11,6 @@ import '../styles/components/ZoomControls.scss';
  */
 
 class ZoomControls extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {
             zoomIn, zoomOut, imageMinZoom, imageMaxZoom, handleZoomChange, currentScale,

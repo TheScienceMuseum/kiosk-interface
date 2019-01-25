@@ -9,8 +9,7 @@ import '../styles/components/Menu.scss';
 import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
-import MenuPips from './MenuPips';
-import NavButtons from './navbar/NavButtons';
+
 import { ArticleTypes, Dimensions, ScreenSize } from '../Constants';
 import MenuNav from './MenuNav';
 

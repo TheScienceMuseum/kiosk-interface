@@ -12,13 +12,7 @@ import '../styles/components/MenuNav.scss';
  */
 
 class MenuNav extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-
         const {
             onNext, onPrev, contents, onJump, currentFocused,
         } = this.props;
@@ -52,7 +46,6 @@ MenuNav.propTypes = {
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     onJump: PropTypes.func.isRequired,
     currentFocused: PropTypes.number.isRequired,
-    showTitlePip: PropTypes.bool,
 };
 
 export default MenuNav;

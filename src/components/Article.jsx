@@ -224,6 +224,6 @@ Article.propTypes = {
 
 Article.defaultProps = {
     singleArticleMode: false,
-}
+};
 
 export default Article;
