@@ -13,12 +13,16 @@ import '../styles/components/ZoomControls.scss';
 class ZoomControls extends React.Component {
     render() {
         const {
-            zoomIn, zoomOut, imageMinZoom, imageMaxZoom, handleZoomChange, currentScale,
+            zoomIn,
+            zoomOut,
+            imageMinZoom,
+            imageMaxZoom,
+            handleZoomChange,
+            currentScale,
         } = this.props;
 
         return (
             <div className="ZoomControls">
-
                 <button
                     className="Button Button--icon ZoomControls__ZoomOutButton"
                     type="button"

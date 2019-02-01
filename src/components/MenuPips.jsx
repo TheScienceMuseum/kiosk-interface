@@ -19,7 +19,7 @@ function MenuPips(props) {
         contents, currentFocused, showTitlePip, orientation,
     } = props;
 
-    const handleClick = targetID => {
+    const handleClick = (targetID) => {
         // console.log('MenuPips: handleClick: targetID: ', targetID);
         props.onJump(targetID);
     };

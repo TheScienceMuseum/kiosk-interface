@@ -180,7 +180,7 @@ class Menu extends React.Component {
         // }
 
 
-        const menuItems = contents.map(item => {
+        const menuItems = contents.map((item) => {
             const id = item.articleID;
             let output;
             switch (item.type) {
@@ -226,7 +226,7 @@ class Menu extends React.Component {
             // >
             <Hammer onSwipe={this.handleSwipe}>
                 <nav className="Menu">
-                    <ul className="Menu__Container" ref={ref => { this.scrollElem = ref; }}>
+                    <ul className="Menu__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         <MenuItemTitle {...titles} />
                         {menuItems}
                     </ul>

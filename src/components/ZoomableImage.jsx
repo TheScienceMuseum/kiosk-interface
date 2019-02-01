@@ -513,7 +513,7 @@ class ZoomableImage extends React.Component {
         return (
             <div
                 className={`ZoomableImage ZoomableImage--${zoomed}`}
-                ref={ref => { this.container = ref; }}
+                ref={(ref) => { this.container = ref; }}
             >
                 <Hammer
                     onPinch={this.handlePinch}
@@ -531,7 +531,7 @@ class ZoomableImage extends React.Component {
                         <img
                             src={image.imageSource}
                             alt=""
-                            ref={ref => { this.image = ref; }}
+                            ref={(ref) => { this.image = ref; }}
                             onLoad={this.handleImageLoad}
                             style={style}
                         />
@@ -547,7 +547,10 @@ class ZoomableImage extends React.Component {
                     <i className={zoomIconClass} />
                 </button>
 
-                <textarea className="ZoomableImage__Debug" ref={ref => { this.debugText = ref; }} />
+                <textarea
+                    className="ZoomableImage__Debug"
+                    ref={(ref) => { this.debugText = ref; }}
+                />
 
                 {zoomable && fullscreen
                 && (

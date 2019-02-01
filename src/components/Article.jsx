@@ -93,7 +93,7 @@ class Article extends React.Component {
     makeMixedArticle(articleContent) {
         const pages = articleContent.subpages;
         // console.log('Article: makeArticle: pages: ', pages);
-        const pagesOutput = pages.map(page => {
+        const pagesOutput = pages.map((page) => {
             const { pageID } = page;
             let pageOut;
             switch (page.type) {
@@ -192,7 +192,7 @@ class Article extends React.Component {
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
-                    <div className="Article__Container" ref={ref => { this.scrollElem = ref; }}>
+                    <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
                     <NavBar

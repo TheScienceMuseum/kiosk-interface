@@ -21,7 +21,8 @@
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js",
-        "lint": "./node_modules/.bin/eslint --ignore-pattern '*.test.js' ./src --ext .js,.jsx"
+        "lint": "./node_modules/.bin/eslint --ignore-pattern '*.test.js' ./src --ext .js,.jsx",
+        "fix": "./node_modules/.bin/eslint --fix --ignore-pattern '*.test.js' ./src --ext .js,.jsx"
     },
     "browserslist": [
         ">1%",
