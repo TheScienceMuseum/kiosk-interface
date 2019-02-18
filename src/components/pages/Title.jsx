@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../../propTypes';
+
 import '../../styles/pages/Title.scss';
 
 /*
@@ -18,7 +20,7 @@ function Title(props) {
     return (
         <div className="Page PageTitle">
             {image
-            && <img src={image} alt="" />
+            && <img src={image.imageSource} alt="" />
             }
             <div className="PageTitle__Content">
                 <h1>{ title }</h1>
@@ -31,7 +33,7 @@ function Title(props) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: propTypes.image,
 };
 
 Title.defaultProps = {

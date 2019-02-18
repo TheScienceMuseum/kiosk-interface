@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Layouts } from '../../Constants';
 
+import propTypes from '../../propTypes';
+
 import '../../styles/pages/TextImage.scss';
 import ZoomableImage from '../ZoomableImage';
 
@@ -71,14 +73,7 @@ class TextImage extends React.Component {
 TextImage.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-        imageSource: PropTypes.string.isRequired,
-        imageThumbnail: PropTypes.string.isRequired,
-        imagePortrait: PropTypes.string.isRequired,
-        imageLandscape: PropTypes.string.isRequired,
-        nameText: PropTypes.string.isRequired,
-        sourceText: PropTypes.string.isRequired,
-    }).isRequired,
+    image: propTypes.image.isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
 };
