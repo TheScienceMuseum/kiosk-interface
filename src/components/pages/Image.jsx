@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../../propTypes';
 
 import '../../styles/pages/Image.scss';
 import ZoomableImage from '../ZoomableImage';
@@ -66,14 +67,7 @@ class Image extends React.Component {
 Image.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-        imageSource: PropTypes.string.isRequired,
-        imageThumbnail: PropTypes.string.isRequired,
-        imagePortrait: PropTypes.string.isRequired,
-        imageLandscape: PropTypes.string.isRequired,
-        nameText: PropTypes.string.isRequired,
-        sourceText: PropTypes.string.isRequired,
-    }).isRequired,
+    image: propTypes.image.isRequired,
     toggleNavHide: PropTypes.func.isRequired,
 };
 

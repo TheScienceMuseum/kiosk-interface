@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../../propTypes';
+
 import '../../styles/pages/Title.scss';
 
 /*
@@ -31,7 +33,7 @@ function Title(props) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    image: propTypes.image,
 };
 
 Title.defaultProps = {

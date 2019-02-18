@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../../propTypes';
+
 import '../../styles/MenuItems.scss';
 
 /*
@@ -31,7 +33,7 @@ class MenuItemVideo extends React.Component {
 
 MenuItemVideo.propTypes = {
     title: PropTypes.string.isRequired,
-    titleImage: PropTypes.string.isRequired,
+    titleImage: propTypes.image.isRequired,
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
 };
