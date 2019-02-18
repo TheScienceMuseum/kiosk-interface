@@ -8,8 +8,8 @@ const image = PropTypes.shape({
         width: PropTypes.number,
         height: PropTypes.number,
     }),
-    nameText: PropTypes.string.isRequired,
-    sourceText: PropTypes.string.isRequired,
+    nameText: PropTypes.string,
+    sourceText: PropTypes.string,
 });
 
 export default { image };
