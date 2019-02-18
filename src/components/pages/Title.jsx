@@ -20,7 +20,7 @@ function Title(props) {
     return (
         <div className="Page PageTitle">
             {image
-            && <img src={image} alt="" />
+            && <img src={image.imageSource} alt="" />
             }
             <div className="PageTitle__Content">
                 <h1>{ title }</h1>

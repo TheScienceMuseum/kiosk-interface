@@ -21,7 +21,7 @@ class MenuItemMixed extends React.Component {
             <li className="MenuItem MenuItem__Mixed">
                 {/* <Link to={`/article/${articleID}`}> */}
                 <button type="button" onClick={() => onClick(articleID)}>
-                    <img src={titleImage} alt="" />
+                    <img src={titleImage.imageSource} alt="" />
                     <h2>{title}</h2>
                 </button>
                 {/* </Link> */}

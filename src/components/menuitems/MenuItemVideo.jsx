@@ -23,7 +23,7 @@ class MenuItemVideo extends React.Component {
         return (
             <li className="MenuItem MenuItem__Video">
                 <button type="button" onClick={() => onClick(articleID)}>
-                    <img src={titleImage} alt="" draggable="false" />
+                    <img src={titleImage.imageSource} alt="" draggable="false" />
                     <h2>{title}</h2>
                 </button>
             </li>
