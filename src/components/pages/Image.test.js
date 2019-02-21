@@ -9,7 +9,7 @@ import data from '../../../public/manifest';
 const pageData = data.content.contents[0].subpages[1];
 
 it('renders', () => {
-    //const page = shallow(<TextImage {...pageData} toggleNavHide={() => {}} />);
+    // const page = shallow(<TextImage {...pageData} toggleNavHide={() => {}} />);
     const image = shallow(<Image {...pageData} toggleNavHide={() => {}} />);
     // console.log(page.debug());
 });

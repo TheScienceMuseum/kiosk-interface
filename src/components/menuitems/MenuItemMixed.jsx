@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Hammer from 'react-hammerjs';
 
+import propTypes from '../../propTypes';
 import '../../styles/components/menuitems/MenuItems.scss';
 
 /*
@@ -22,7 +22,6 @@ class MenuItemMixed extends React.Component {
 
         return (
             <li className="MenuItem MenuItem__Mixed">
-                {/* <Link to={`/article/${articleID}`}> */}
                 <Hammer onTap={() => onClick(articleID)}>
                     <button type="button">
                         <div className="Image--withGrad">
@@ -31,7 +30,6 @@ class MenuItemMixed extends React.Component {
                         <h2>{title}</h2>
                     </button>
                 </Hammer>
-                {/* </Link> */}
             </li>
         );
     }
