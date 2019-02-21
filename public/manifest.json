@@ -216,7 +216,10 @@
                 "articleID": "3-0",
                 "type": "video",
                 "title": "Digital autopsy: the future of post-mortem?",
-                "titleImage": "./media/menu-image-1.png",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/menu-image-1.png"
+                },
                 "asset": {
                     "assetSource": "./videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
                     "assetType": "image",
@@ -234,7 +237,10 @@
                 "articleID": "3-1",
                 "type": "mixed",
                 "title": "What it is like to perform a post-mortem?",
-                "titleImage": "./media/menu-image-2.png",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/menu-image-2.png"
+                },
                 "subpages": [
                     {
                         "pageID": "3-1-0",
@@ -252,7 +258,10 @@
                 "articleID": "3-2",
                 "type": "video",
                 "title": "What is it like to be a student doing your first dissection",
-                "titleImage": "./media/menu-image-3.png",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/menu-image-3.png"
+                },
                 "asset": {
                     "assetSource": "./videos/0fafe4959802c00a27cacd515099f40c.mp4 ",
                     "assetType": "video"

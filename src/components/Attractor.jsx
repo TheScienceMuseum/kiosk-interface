@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../propTypes';
+
 import '../styles/components/Attractor.scss';
 
 /*
@@ -13,13 +15,13 @@ import '../styles/components/Attractor.scss';
 class Attractor extends React.Component {
     render() {
         const {
-            attractorImage, galleryName, title, start,
+            attractor, galleryName, title, start,
         } = this.props;
 
         return (
             <div className="Attractor">
                 <div className="Image--withGrad">
-                    <img src={attractorImage} alt="" />
+                    <img src={attractor.assetSource} alt="" />
                 </div>
                 <div className="Attractor__details">
                     <p>{ galleryName }</p>
@@ -33,7 +35,7 @@ class Attractor extends React.Component {
 }
 
 Attractor.propTypes = {
-    attractorImage: PropTypes.string.isRequired,
+    attractor: propTypes.asset.isRequired,
     title: PropTypes.string.isRequired,
     galleryName: PropTypes.string.isRequired,
     start: PropTypes.func.isRequired,

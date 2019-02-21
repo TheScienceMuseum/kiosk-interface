@@ -34,7 +34,7 @@ function MenuPips(props) {
         // console.log('MenuPips: output map: index: ', index);
         // console.log('MenuPips: output map: currentFocused: ', currentFocused);
 
-        const out = (
+        return (
             <button
                 className={
                     `MenuPips__Button ${currentFocused === (index)
@@ -48,8 +48,6 @@ function MenuPips(props) {
                 {`Jump to ${articleContent.title}`}
             </button>
         );
-
-        return out;
     });
 
     return (

@@ -43,7 +43,7 @@ class TextImage extends React.Component {
 
     render() {
         const {
-            title, content, image, layout,
+            title, content, asset, layout,
         } = this.props;
 
         const { contentHidden } = this.state;
@@ -54,14 +54,14 @@ class TextImage extends React.Component {
         return (
             <div className={mainClass}>
                 <div className="ImageContainer">
-                    <ZoomableImage image={image} onZoom={this.handleHideContent} />
+                    <ZoomableImage image={asset.assetSource} onZoom={this.handleHideContent} />
                 </div>
                 <div className="ContentContainer">
                     <h2>{title}</h2>
                     <p>{content}</p>
                     <div className="ImageCaption">
-                        <h3>{image.nameText}</h3>
-                        <p>{image.sourceText}</p>
+                        <h3>{asset.nameText}</h3>
+                        <p>{asset.sourceText}</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@ class TextImage extends React.Component {
 TextImage.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    image: propTypes.image.isRequired,
+    asset: propTypes.asset.isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Title.scss';
-// import propTypes from '../../propTypes';
+import propTypes from '../../propTypes';
 
 /*
  * Title:
@@ -14,15 +14,15 @@ import '../../styles/components/pages/Title.scss';
 
 
 function Title(props) {
-    const { title, subtitle, image } = props;
+    const { title, subtitle, asset } = props;
 
     const imageStyle = {
-        background: `url(${image})`,
+        background: `url(${asset.assetSource})`,
     };
 
     return (
         <div className="Page PageTitle">
-            {image
+            {asset
             && <div className="Image Image--withGrad" style={imageStyle} />
             }
             <div className="PageTitle__Content">
@@ -36,12 +36,12 @@ function Title(props) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
-    image: PropTypes.string,
+    asset: propTypes.asset,
 };
 
 Title.defaultProps = {
     subtitle: '',
-    image: null,
+    asset: null,
 };
 
 export default Title;

@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Video.scss';
+import propTypes from '../../propTypes';
 
 /*
  * Video:
@@ -13,12 +14,12 @@ import '../../styles/components/pages/Video.scss';
 
 
 function Video(props) {
-    const { videoSrc } = props;
+    const { asset } = props;
 
     return (
         <div className="Page PageVideo">
             <video controls autoPlay>
-                <source src={videoSrc} type="video/mp4" />
+                <source src={asset.assetSource} type="video/mp4" />
                 <track kind="captions" />
             </video>
         </div>
@@ -26,7 +27,7 @@ function Video(props) {
 }
 
 Video.propTypes = {
-    videoSrc: PropTypes.string.isRequired,
+    asset: propTypes.asset.isRequired,
 };
 
 export default Video;

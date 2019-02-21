@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 
-const image = PropTypes.shape({
-    imageSource: PropTypes.string.isRequired,
+const asset = PropTypes.shape({
+    assetSource: PropTypes.string.isRequired,
+    assetType: PropTypes.oneOf(['image', 'video']).isRequired,
     boundingBox: PropTypes.shape({
         x: PropTypes.number,
         y: PropTypes.number,
@@ -12,4 +13,4 @@ const image = PropTypes.shape({
     sourceText: PropTypes.string,
 });
 
-export default { image };
+export default { asset };

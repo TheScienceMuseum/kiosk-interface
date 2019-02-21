@@ -5,7 +5,7 @@ import Hammer from 'react-hammerjs';
 import '../styles/components/ZoomableImage.scss';
 import { Orientations, ScreenSize } from '../Constants';
 import ZoomControls from './ZoomControls';
-import propTypes from '../propTypes';
+// import propTypes from '../propTypes';
 
 /*
  * NewZoomableImage:
@@ -530,7 +530,7 @@ class ZoomableImage extends React.Component {
                 >
                     <div>
                         <img
-                            src={image.imageSource}
+                            src={image}
                             alt=""
                             ref={(ref) => { this.image = ref; }}
                             onLoad={this.handleImageLoad}
@@ -572,7 +572,7 @@ class ZoomableImage extends React.Component {
 }
 
 ZoomableImage.propTypes = {
-    image: propTypes.image.isRequired,
+    image: PropTypes.string.isRequired,
     onZoom: PropTypes.func.isRequired,
 };
 
