@@ -82,11 +82,11 @@
                         "$ref": "#/definitions/Subpage"
                     }
                 },
-                "videoSrc": {
-                    "type": "string"
+                "video": {
+                    "$ref": "#/definitions/AssetClass"
                 },
                 "image": {
-                    "$ref": "#/definitions/ImageClass"
+                    "$ref": "#/definitions/AssetClass"
                 }
             },
             "required": [
@@ -109,7 +109,7 @@
                     "enum": ["textImage", "title", "video", "image"]
                 },
                 "image": {
-                    "$ref": "#/definitions/ImageUnion"
+                    "$ref": "#/definitions/AssetClass"
                 },
                 "title": {
                     "type": "string",
@@ -135,12 +135,16 @@
             ],
             "title": "Subpage"
         },
-        "ImageClass": {
+        "AssetClass": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "imageSource": {
+                "assetSource": {
                     "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["video", "image"]
                 },
                 "boundingBox": {
                     "$ref": "#/definitions/BoundingBox"
@@ -153,10 +157,8 @@
                 }
             },
             "required": [
-                "imageSource",
-                "boundingBox",
-                "nameText",
-                "sourceText"
+                "assetType",
+                "assetSource"
             ],
             "title": "ImageClass"
         },
@@ -175,17 +177,24 @@
                     "type": "string"
                 },
                 "image": {
-                    "$ref": "#/definitions/ImageUnion"
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/AssetClass",
+                        }
+                    ]
                 },
-                "attractorImage": {
-                    "$ref": "#/definitions/ImageUnion"
+                "attractor": {
+                    "$ref": "#/definitions/AssetClass"
                 }
             },
             "required": [
                 "galleryName",
-                "image",
                 "title",
-                "type"
+                "type",
+                "attractor"
             ],
             "title": "Titles"
         },
@@ -205,7 +214,7 @@
         "ImageUnion": {
             "anyOf": [
                 {
-                    "$ref": "#/definitions/ImageClass"
+                    "$ref": "#/definitions/AssetClass"
                 },
                 {
                     "type": "string"

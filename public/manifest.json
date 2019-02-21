@@ -13,7 +13,11 @@
             "galleryName": "The Medicine Gallery",
             "title": "Perspectives on death and dying",
             "image": null,
-            "attractorImage": "./media/attractor.png"
+            "attractor": {
+                "assetType": "image",
+                "assetSource": "./media/attractor.png"
+
+            }
         },
         "contents": [
             {
@@ -25,7 +29,10 @@
                     {
                         "pageID": "3-2-0",
                         "type": "title",
-                        "image": "./media/menu-image-4.png",
+                        "image": {
+                            "assetType": "image",
+                            "assetSource": "./media/menu-image-4.png"
+                        },
                         "title": "What is it like to donate your body to science?",
                         "subtitle": ""
                     },
@@ -34,7 +41,8 @@
                         "type": "textImage",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/autopsy.png",
+                            "assetSource": "./media/autopsy.png",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -52,7 +60,8 @@
                         "type": "textImage",
                         "layout": "right",
                         "image": {
-                            "imageSource": "./media/autopsy.png",
+                            "assetSource": "./media/autopsy.png",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -70,7 +79,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/virus_medical_biology_detail_medicine_psychedelic_science_abstract_abstraction_chemistry_Genetics_3840x1080.jpg",
+                            "assetSource": "./media/virus_medical_biology_detail_medicine_psychedelic_science_abstract_abstraction_chemistry_Genetics_3840x1080.jpg",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -88,7 +98,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -106,7 +117,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/Einsteins-Gravity-Theory-Put-to-the-Test-By-a-Massive-Pulsar-in-a-Compact-Relativistic-Binary.jpg",
+                            "assetSource": "./media/Einsteins-Gravity-Theory-Put-to-the-Test-By-a-Massive-Pulsar-in-a-Compact-Relativistic-Binary.jpg",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -124,7 +136,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/109c63dbe51380edebc1c16755c29c12.jpg",
+                            "assetSource": "./media/109c63dbe51380edebc1c16755c29c12.jpg",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -142,7 +155,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/big.png",
+                            "assetSource": "./media/big.png",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -160,7 +174,8 @@
                         "type": "image",
                         "layout": "left",
                         "image": {
-                            "imageSource": "./media/IMG_0847.jpg",
+                            "assetSource": "./media/IMG_0847.jpg",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -178,7 +193,8 @@
                         "type": "textImage",
                         "layout": "right",
                         "image": {
-                            "imageSource": "./media/autopsy.png",
+                            "assetSource": "./media/autopsy.png",
+                            "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
                                 "y": 0.25,
@@ -198,9 +214,9 @@
                 "type": "video",
                 "title": "Digital autopsy: the future of post-mortem?",
                 "titleImage": "./media/menu-image-1.png",
-                "videoSrc": "./videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
-                "image": {
-                    "imageSource": "",
+                "video": {
+                    "assetSource": "./videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
+                    "assetType": "image",
                     "boundingBox" : {
                         "x": 0.25,
                         "y": 0.25,
@@ -220,7 +236,10 @@
                     {
                         "pageID": "3-1-0",
                         "type": "title",
-                        "image": "./media/menu-image-2.png",
+                        "image": {
+                            "assetType": "image",
+                            "assetSource": "./media/menu-image-2.png"
+                        },
                         "title": "What it is like to perform a post-mortem",
                         "subtitle": ""
                     }
@@ -231,17 +250,9 @@
                 "type": "video",
                 "title": "What is it like to be a student doing your first dissection",
                 "titleImage": "./media/menu-image-3.png",
-                "videoSrc": "./videos/0fafe4959802c00a27cacd515099f40c.mp4 ",
-                "image": {
-                    "imageSource": "",
-                    "boundingBox" : {
-                        "x": 0.25,
-                        "y": 0.25,
-                        "width": 0.5,
-                        "height": 0.5
-                    },
-                    "nameText": "",
-                    "sourceText": ""
+                "video": {
+                    "assetSource": "./videos/0fafe4959802c00a27cacd515099f40c.mp4 ",
+                    "assetType": "video"
                 }
             }
         ]
