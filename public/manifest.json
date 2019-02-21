@@ -24,12 +24,15 @@
                 "articleID": "3-3",
                 "type": "mixed",
                 "title": "What is it like to donate your body to science",
-                "titleImage": "./media/menu-image-4.png",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/menu-image-4.png"
+                },
                 "subpages": [
                     {
                         "pageID": "3-2-0",
                         "type": "title",
-                        "image": {
+                        "asset":  {
                             "assetType": "image",
                             "assetSource": "./media/menu-image-4.png"
                         },
@@ -40,7 +43,7 @@
                         "pageID": "3-3-1",
                         "type": "textImage",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/autopsy.png",
                             "assetType": "image",
                             "boundingBox" : {
@@ -59,7 +62,7 @@
                         "pageID": "3-3-2",
                         "type": "textImage",
                         "layout": "right",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/autopsy.png",
                             "assetType": "image",
                             "boundingBox" : {
@@ -78,7 +81,7 @@
                         "pageID": "3-3-3",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/virus_medical_biology_detail_medicine_psychedelic_science_abstract_abstraction_chemistry_Genetics_3840x1080.jpg",
                             "assetType": "image",
                             "boundingBox" : {
@@ -97,7 +100,7 @@
                         "pageID": "3-3-4",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
                             "assetType": "image",
                             "boundingBox" : {
@@ -116,7 +119,7 @@
                         "pageID": "3-3-5",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/Einsteins-Gravity-Theory-Put-to-the-Test-By-a-Massive-Pulsar-in-a-Compact-Relativistic-Binary.jpg",
                             "assetType": "image",
                             "boundingBox" : {
@@ -135,7 +138,7 @@
                         "pageID": "3-3-6",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/109c63dbe51380edebc1c16755c29c12.jpg",
                             "assetType": "image",
                             "boundingBox" : {
@@ -154,7 +157,7 @@
                         "pageID": "3-3-7",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/big.png",
                             "assetType": "image",
                             "boundingBox" : {
@@ -173,7 +176,7 @@
                         "pageID": "3-3-8",
                         "type": "image",
                         "layout": "left",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/IMG_0847.jpg",
                             "assetType": "image",
                             "boundingBox" : {
@@ -192,7 +195,7 @@
                         "pageID": "3-3-9",
                         "type": "textImage",
                         "layout": "right",
-                        "image": {
+                        "asset": {
                             "assetSource": "./media/autopsy.png",
                             "assetType": "image",
                             "boundingBox" : {
@@ -214,7 +217,7 @@
                 "type": "video",
                 "title": "Digital autopsy: the future of post-mortem?",
                 "titleImage": "./media/menu-image-1.png",
-                "video": {
+                "asset": {
                     "assetSource": "./videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
                     "assetType": "image",
                     "boundingBox" : {
@@ -236,7 +239,7 @@
                     {
                         "pageID": "3-1-0",
                         "type": "title",
-                        "image": {
+                        "asset": {
                             "assetType": "image",
                             "assetSource": "./media/menu-image-2.png"
                         },
@@ -250,7 +253,7 @@
                 "type": "video",
                 "title": "What is it like to be a student doing your first dissection",
                 "titleImage": "./media/menu-image-3.png",
-                "video": {
+                "asset": {
                     "assetSource": "./videos/0fafe4959802c00a27cacd515099f40c.mp4 ",
                     "assetType": "video"
                 }

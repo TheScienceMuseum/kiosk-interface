@@ -74,7 +74,7 @@
                     "type": "string"
                 },
                 "titleImage": {
-                    "type": "string"
+                    "$ref": "#/definitions/AssetClass"
                 },
                 "subpages": {
                     "type": "array",
@@ -82,10 +82,7 @@
                         "$ref": "#/definitions/Subpage"
                     }
                 },
-                "video": {
-                    "$ref": "#/definitions/AssetClass"
-                },
-                "image": {
+                "asset": {
                     "$ref": "#/definitions/AssetClass"
                 }
             },
@@ -108,7 +105,7 @@
                     "type": "string",
                     "enum": ["textImage", "title", "video", "image"]
                 },
-                "image": {
+                "asset": {
                     "$ref": "#/definitions/AssetClass"
                 },
                 "title": {
@@ -128,7 +125,7 @@
                 }
             },
             "required": [
-                "image",
+                "asset",
                 "pageID",
                 "title",
                 "type"
