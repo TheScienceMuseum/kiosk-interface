@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
 import '../../styles/components/menuitems/MenuItems.scss';
-import propTypes from '../../propTypes';
+// import propTypes from '../../propTypes';
 
 /*
  * MenuItem-Video.jsx:

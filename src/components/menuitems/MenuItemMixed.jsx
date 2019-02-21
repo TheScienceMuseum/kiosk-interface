@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
-import propTypes from '../../propTypes';
+// import propTypes from '../../propTypes';
 import '../../styles/components/menuitems/MenuItems.scss';
 
 /*

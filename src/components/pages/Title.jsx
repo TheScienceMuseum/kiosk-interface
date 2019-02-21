@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Title.scss';
-import propTypes from '../../propTypes';
+// import propTypes from '../../propTypes';
 
 /*
  * Title:
