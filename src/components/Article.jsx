@@ -77,13 +77,13 @@ class Article extends React.Component {
     makeArticle(articleContent) {
         // let pagesOutput;
 
-        const { stopTimer } = this.props;
+        const { pauseTimer } = this.props;
 
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
-            stopTimer();
+            pauseTimer();
             return <Video {...articleContent} />;
         default:
             return null;
@@ -168,7 +168,7 @@ class Article extends React.Component {
         const targetScroll = currentPage * ScreenSize.height;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
-        resetInactiveTimer(true);
+        //resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
@@ -217,8 +217,8 @@ Article.propTypes = {
     articleID: PropTypes.string.isRequired,
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     loadArticle: PropTypes.func.isRequired,
-    resetInactiveTimer: PropTypes.func.isRequired,
-    stopTimer: PropTypes.func.isRequired,
+    //resetInactiveTimer: PropTypes.func.isRequired,
+    pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
 };
 

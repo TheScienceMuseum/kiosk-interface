@@ -13,6 +13,8 @@
         width: 30px;
         height: 30px;
 
+        position: relative;
+
         &:not(:first-child) {
             width: 50px;
         }
@@ -26,10 +28,68 @@
             margin-left: 25px;
         }
 
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            top: 0;
+            left: -100%;
+            transition: left 350ms ease;
+        }
+        /*
+        &--right {
+            &:after {
+                left: -100%;
+                width: 0;
+            }
+        }
+        */
+        /*
+        &--left {
+            &:after {
+                //left: 100%;
+                transform: rotate(180deg);
+                width: 0;
+            }
+        }
+        */
+
         &--active {
-            background-color: $red;
+            &:after {
+                left: 0;
+                background-color: $red;
+            }
         }
 
+        &--exiting {
+            &:after {
+                left: 100%;
+                background-color: $red;
+            }
+        }
+
+        &--left {
+            &:after {
+                background-color: white;
+                left: 100%;
+            }
+        }
+
+        &--left#{&}--active {
+            &:after {
+                background-color: $red;
+                left: 0;
+            }
+        }
+
+        &--left#{&}--exiting {
+            &:after {
+                background-color: $red;
+                left: -100%;
+            }
+        }
     }
 
     &--vertical {
