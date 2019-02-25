@@ -18,6 +18,7 @@ class MenuPips extends React.Component {
     constructor(props) {
         super(props);
         this.lastActive = null;
+        this.moveDirection = MoveDiections.RIGHT;
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -31,6 +32,12 @@ class MenuPips extends React.Component {
             // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps.currentFocused);
             this.lastActive = currentFocused;
         }
+
+        this.moveDirection = (currentFocused > nextProps.currentFocused)
+            ? MoveDiections.LEFT
+            : MoveDiections.RIGHT;
+
+        console.log('MenuPips: componentWillUpdate: moveDirection: ', this.moveDirection);
     }
 
     makePips() {
@@ -38,11 +45,7 @@ class MenuPips extends React.Component {
             contents, showTitlePip, currentFocused,
         } = this.props;
 
-        const newMoveDirection = (currentFocused < this.lastActive)
-            ? MoveDiections.LEFT
-            : MoveDiections.RIGHT;
-
-        console.log('MenuPips: makePips: newMoveDirection: ', newMoveDirection);
+        console.log('MenuPips: makePips: moveDirection: ', this.moveDirection);
         console.log('MenuPips: makePips: currentFocused: ', currentFocused);
         console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
 
@@ -55,7 +58,7 @@ class MenuPips extends React.Component {
             // console.log('MenuPips: output map: currentFocused: ', currentFocused);
             // console.log('MenuPips: output map: this.lastActive: ', this.lastActive);
 
-            const classList = ['MenuPips__Button', `MenuPips__Button--${newMoveDirection}`];
+            const classList = ['MenuPips__Button', `MenuPips__Button--${this.moveDirection}`];
             if (currentFocused === (index)) classList.push('MenuPips__Button--active');
             if (this.lastActive === (index)) classList.push('MenuPips__Button--exiting');
 
@@ -89,7 +92,7 @@ class MenuPips extends React.Component {
 
     render() {
         const {
-            currentFocused, showTitlePip, orientation, moveDirection,
+            currentFocused, showTitlePip, orientation,
         } = this.props;
         /*
         const handleClick = (targetID) => {
@@ -99,7 +102,7 @@ class MenuPips extends React.Component {
         */
 
         // console.log('MenuPips: contents: ', contents);
-        const classList = ['MenuPips__Button', `MenuPips__Button--${moveDirection}`];
+        const classList = ['MenuPips__Button', `MenuPips__Button--${this.moveDirection}`];
         if (currentFocused === (0)) classList.push('MenuPips__Button--active');
         if (this.lastActive === (0)) classList.push('MenuPips__Button--exiting');
         const className = classList.join(' ');
