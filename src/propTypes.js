@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { AssetTypes } from './Constants';
 
 const asset = PropTypes.shape({
     assetSource: PropTypes.string.isRequired,
-    assetType: PropTypes.oneOf(['image', 'video']).isRequired,
+    assetType: PropTypes.oneOf(Object.values(AssetTypes)).isRequired,
     boundingBox: PropTypes.shape({
         x: PropTypes.number,
         y: PropTypes.number,

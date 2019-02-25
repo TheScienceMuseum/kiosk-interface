@@ -11,6 +11,11 @@ export const PageTypes = {
     AUDIO: 'audio',
 };
 
+export const AssetTypes = {
+    VIDEO: 'video',
+    IMAGE: 'image'
+};
+
 export const Orientations = {
     HORIZONTAL: 'horiziontal',
     VERTICAL: 'vertical',

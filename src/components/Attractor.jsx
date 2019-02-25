@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import propTypes from '../propTypes';
 
 import '../styles/components/Attractor.scss';
+import { AssetTypes } from '../Constants';
 
 /*
  * Attractor:
@@ -13,6 +14,26 @@ import '../styles/components/Attractor.scss';
  */
 
 class Attractor extends React.Component {
+    makeAttractor() {
+        const { attractor } = this.props;
+
+        if (attractor.assetType === AssetTypes.IMAGE) {
+            return (
+                <div className="Attractor__image Image--withGrad">
+                    <img src={attractor.assetSource} alt="" />
+                </div>
+            );
+        }
+        return (
+            <div className="Attractor__video Image--withGrad">
+                <video autoPlay loop controls={false}>
+                    <source src={attractor.assetSource} type="video/mp4" />
+                    <track kind="captions" />
+                </video>
+            </div>
+        );
+    }
+
     render() {
         const {
             attractor, galleryName, title, start,
@@ -20,9 +41,7 @@ class Attractor extends React.Component {
 
         return (
             <div className="Attractor">
-                <div className="Image--withGrad">
-                    <img src={attractor.assetSource} alt="" />
-                </div>
+                {this.makeAttractor()}
                 <div className="Attractor__details">
                     <p>{ galleryName }</p>
                     <h1>{ title }</h1>
