@@ -24,20 +24,18 @@ class MenuPips extends React.Component {
 
     componentWillUpdate(nextProps) {
         // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps);
-
         const { currentFocused } = this.props;
-
         if (nextProps.currentFocused !== currentFocused) {
-            // console.log('MenuPips: componentWillUpdate: currentFocussed: ', currentFocused);
-            // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps.currentFocused);
+            console.log('MenuPips: componentWillUpdate: currentFocussed: ', currentFocused);
+            console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps.currentFocused);
             this.lastActive = currentFocused;
+            if (currentFocused > nextProps.currentFocused) {
+                this.moveDirection = MoveDirections.LEFT;
+            } else if (currentFocused < nextProps.currentFocused) {
+                this.moveDirection = MoveDirections.RIGHT;
+            }
+            console.log('MenuPips: componentWillUpdate: moveDirection: ', this.moveDirection);
         }
-
-        this.moveDirection = (currentFocused > nextProps.currentFocused)
-            ? MoveDirections.LEFT
-            : MoveDirections.RIGHT;
-
-        console.log('MenuPips: componentWillUpdate: moveDirection: ', this.moveDirection);
     }
 
     makePips() {

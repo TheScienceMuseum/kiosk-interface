@@ -66,7 +66,7 @@ class Menu extends React.Component {
 
         this.scrollElem = null;
         // this.scrollTween = null;
-        console.log('Menu: constructor: props.initial: ', props.initial);
+        // console.log('Menu: constructor: props.initial: ', props.initial);
 
         // this.moveDirection = MoveDiections.RIGHT;
     }
@@ -77,8 +77,10 @@ class Menu extends React.Component {
     }
 
     componentWillUpdate(nextProps) {
+        // console.log('Menu: componentWillUpdate: nextProps.initial: ', nextProps.initial);
 
-        console.log('Menu: componentWillUpdate: nextProps.initial: ', nextProps.initial);
+        // console.log('Menu: componentWillUpdate: nextProps: ', nextProps);
+        // console.log('Menu: componentWillUpdate: this.props: ', this.props);
 
         if (nextProps.initial) {
             this.state = {
@@ -88,7 +90,7 @@ class Menu extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log('Menu: componentWillUnmount:');
+        // console.log('Menu: componentWillUnmount:');
     }
 
     onItemClick(articleID) {
@@ -195,7 +197,7 @@ class Menu extends React.Component {
         const { contents, titles, location } = this.props;
         const { currentFocused } = this.state;
 
-        console.log('Menu: render: location: ', location);
+        // console.log('Menu: render: location: ', location);
 
         // const startState = { autoAlpha: 0, y: -50 };
 
