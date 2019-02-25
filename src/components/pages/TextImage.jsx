@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Layouts } from '../../Constants';
 import '../../styles/components/pages/TextImage.scss';
 import propTypes from '../../propTypes';
+import createBodyTag from '../createBodyTag';
 
 import ZoomableImage from '../ZoomableImage';
 
@@ -58,7 +59,10 @@ class TextImage extends React.Component {
                 </div>
                 <div className="ContentContainer">
                     <h2>{title}</h2>
-                    <p>{content}</p>
+                    <div
+                        className="ContentContainer__body"
+                        dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
+                    />
                     <div className="ImageCaption">
                         <h3>{asset.nameText}</h3>
                         <p>{asset.sourceText}</p>
@@ -71,7 +75,10 @@ class TextImage extends React.Component {
 
 TextImage.propTypes = {
     title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)])
+        .isRequired,
     asset: propTypes.asset.isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
