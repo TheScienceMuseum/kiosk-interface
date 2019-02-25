@@ -66,7 +66,10 @@ class Image extends React.Component {
 
 Image.propTypes = {
     title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)])
+        .isRequired,
     asset: propTypes.asset.isRequired,
     toggleNavHide: PropTypes.func.isRequired,
 };

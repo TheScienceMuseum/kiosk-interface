@@ -13,7 +13,7 @@ export const PageTypes = {
 
 export const AssetTypes = {
     VIDEO: 'video',
-    IMAGE: 'image'
+    IMAGE: 'image',
 };
 
 export const Orientations = {
@@ -52,7 +52,7 @@ export const AppStates = {
     MENU: 'menu',
 };
 
-export const MoveDiections = {
+export const MoveDirections = {
     LEFT: 'left',
     RIGHT: 'right',
 };

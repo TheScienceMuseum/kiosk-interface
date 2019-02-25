@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { AssetTypes } from './Constants';
+import { AssetTypes } from './utils/Constants';
 
 const asset = PropTypes.shape({
     assetSource: PropTypes.string.isRequired,

@@ -7,7 +7,7 @@ import HammerJS from 'hammerjs';
 
 import {
     ArticleTypes, PageTypes, Orientations, ScreenSize,
-} from '../Constants';
+} from '../utils/Constants';
 import Title from './pages/Title';
 import Video from './pages/Video';
 import TextImage from './pages/TextImage';

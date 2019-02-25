@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MenuPips from './MenuPips';
 
 import '../styles/components/MenuNav.scss';
-import { MoveDiections } from '../Constants';
 
 /*
  * MenuNav:
@@ -15,7 +14,7 @@ import { MoveDiections } from '../Constants';
 class MenuNav extends React.Component {
     render() {
         const {
-            onNext, onPrev, contents, onJump, currentFocused, moveDirection,
+            onNext, onPrev, contents, onJump, currentFocused,
         } = this.props;
 
         return (
@@ -32,7 +31,6 @@ class MenuNav extends React.Component {
                     contents={contents}
                     onJump={onJump}
                     currentFocused={currentFocused}
-                    moveDirection={moveDirection}
                 />
                 <button
                     className="Button Button--icon MenuNav__Button MenuNav__Button--Next"
@@ -52,11 +50,9 @@ MenuNav.propTypes = {
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     onJump: PropTypes.func.isRequired,
     currentFocused: PropTypes.number.isRequired,
-    moveDirection: PropTypes.oneOf(Object.values(MoveDiections)),
 };
 
 MenuNav.defaultProps = {
-    moveDirection: MoveDiections.RIGHT,
 };
 
 export default MenuNav;

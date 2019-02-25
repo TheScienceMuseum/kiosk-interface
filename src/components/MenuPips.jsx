@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MoveDiections, Orientations } from '../Constants';
+import { MoveDirections, Orientations } from '../utils/Constants';
 
 import '../styles/components/MenuPips.scss';
 
@@ -18,7 +18,7 @@ class MenuPips extends React.Component {
     constructor(props) {
         super(props);
         this.lastActive = null;
-        this.moveDirection = MoveDiections.RIGHT;
+        this.moveDirection = MoveDirections.RIGHT;
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -34,8 +34,8 @@ class MenuPips extends React.Component {
         }
 
         this.moveDirection = (currentFocused > nextProps.currentFocused)
-            ? MoveDiections.LEFT
-            : MoveDiections.RIGHT;
+            ? MoveDirections.LEFT
+            : MoveDirections.RIGHT;
 
         console.log('MenuPips: componentWillUpdate: moveDirection: ', this.moveDirection);
     }
@@ -45,9 +45,9 @@ class MenuPips extends React.Component {
             contents, showTitlePip, currentFocused,
         } = this.props;
 
-        console.log('MenuPips: makePips: moveDirection: ', this.moveDirection);
-        console.log('MenuPips: makePips: currentFocused: ', currentFocused);
-        console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
+        // console.log('MenuPips: makePips: moveDirection: ', this.moveDirection);
+        // console.log('MenuPips: makePips: currentFocused: ', currentFocused);
+        // console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
 
         const output = contents.map((articleContent, idx) => {
             // console.log('MenuPips: output map: articleContent: ', articleContent);
@@ -135,13 +135,11 @@ MenuPips.propTypes = {
     currentFocused: PropTypes.number.isRequired,
     showTitlePip: PropTypes.bool,
     orientation: PropTypes.oneOf(Object.values(Orientations)),
-    moveDirection: PropTypes.oneOf(Object.values(MoveDiections)),
 };
 
 MenuPips.defaultProps = {
     showTitlePip: true,
     orientation: Orientations.HORIZONTAL,
-    moveDirection: MoveDiections.RIGHT,
 };
 
 export default MenuPips;

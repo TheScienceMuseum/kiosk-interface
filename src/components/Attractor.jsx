@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import propTypes from '../propTypes';
 
 import '../styles/components/Attractor.scss';
-import { AssetTypes } from '../Constants';
+import { AssetTypes } from '../utils/Constants';
 
 /*
  * Attractor:
@@ -36,7 +36,7 @@ class Attractor extends React.Component {
 
     render() {
         const {
-            attractor, galleryName, title, start,
+            galleryName, title, start,
         } = this.props;
 
         return (
