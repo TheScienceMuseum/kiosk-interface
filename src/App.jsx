@@ -20,7 +20,6 @@ class App extends Component {
         this.state = {
             activeArticle: null,
             location: AppStates.ATTRACTOR,
-            inactiveTime: 0,
             singleArticleMode,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
@@ -31,6 +30,8 @@ class App extends Component {
         this.onIdle = this.onIdle.bind(this);
 
         this.idleTimer = null;
+
+        this.idleTimeout = 60; // in seconds
 
         // this.startInactiveTimer = this.startInactiveTimer.bind(this);
         // this.pauseTimer = this.pauseTimer.bind(this);
@@ -124,7 +125,7 @@ class App extends Component {
                     element={document}
                     onIdle={this.onIdle}
                     debounce={250}
-                    timeout={1000 * 15}
+                    timeout={1000 * this.idleTimeout}
                 />
                 {env !== Environments.PRODUCTION
                 && (

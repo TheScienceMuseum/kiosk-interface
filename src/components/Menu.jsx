@@ -11,7 +11,7 @@ import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 
 import {
-    ArticleTypes, Dimensions, MoveDiections, ScreenSize,
+    ArticleTypes, Dimensions, ScreenSize,
 } from '../Constants';
 import MenuNav from './MenuNav';
 
@@ -67,7 +67,7 @@ class Menu extends React.Component {
         this.scrollElem = null;
         // this.scrollTween = null;
 
-        this.moveDirection = MoveDiections.RIGHT;
+        // this.moveDirection = MoveDiections.RIGHT;
     }
 
     componentDidMount() {
@@ -105,7 +105,7 @@ class Menu extends React.Component {
         // console.log('Menu: nextItem');
         const { contents } = this.props;
         let { currentFocused } = this.state;
-        this.moveDirection = MoveDiections.RIGHT;
+        // this.moveDirection = MoveDiections.RIGHT;
         // console.log('Menu: nextItem: currentFocused: ', currentFocused);
 
         if (currentFocused === (contents.length)) return;
@@ -122,7 +122,7 @@ class Menu extends React.Component {
     previousItem() {
         const { contents } = this.props;
         let { currentFocused } = this.state;
-        this.moveDirection = MoveDiections.LEFT;
+        // this.moveDirection = MoveDiections.LEFT;
         // console.log('Menu: previousItem: currentFocused: ', currentFocused);
 
         if (currentFocused === null || currentFocused === 0) return;
@@ -156,9 +156,9 @@ class Menu extends React.Component {
             index = this.getIndexFromID(targetID);
         }
 
-        const { setActiveArticle, resetInactiveTimer } = this.props;
+        const { setActiveArticle } = this.props;
         setActiveArticle(index);
-        //resetInactiveTimer(true);
+        // resetInactiveTimer(true);
 
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
@@ -246,7 +246,6 @@ class Menu extends React.Component {
                         contents={contents}
                         onJump={this.onJump}
                         currentFocused={currentFocused}
-                        moveDirection={this.moveDirection}
                     />
                 </nav>
             </Hammer>

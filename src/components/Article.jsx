@@ -38,7 +38,7 @@ class Article extends React.Component {
         this.scrollToPage = this.scrollToPage.bind(this);
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
-        this.onJump = this.jumpToPage.bind(this);
+        // this.onJump = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
         this.handleHomeButton = this.handleHomeButton.bind(this);
         // this.article = null;
@@ -48,7 +48,7 @@ class Article extends React.Component {
 
         this.articleContent = this.getArticleContents(articleID);
         this.article = this.makeArticle(this.articleContent);
-        this.articleTween = null;
+        // this.articleTween = null;
         this.scrollElem = null;
     }
 
@@ -152,23 +152,23 @@ class Article extends React.Component {
         this.setState({ currentPage }, this.scrollToPage);
     }
 
-    jumpToPage(pageID) {
-        const { subpages } = this.articleContent;
-        // console.log('Article: jumpToPage: pageID: ', pageID);
-        const currentPage = subpages.map(e => e.pageID).indexOf(pageID);
-        // console.log('Article: jumpToPage: currentPage: ', currentPage);
-        this.setState({ currentPage }, this.scrollToPage);
-    }
+    // jumpToPage(pageID) {
+    //     const { subpages } = this.articleContent;
+    //     // console.log('Article: jumpToPage: pageID: ', pageID);
+    //     const currentPage = subpages.map(e => e.pageID).indexOf(pageID);
+    //     // console.log('Article: jumpToPage: currentPage: ', currentPage);
+    //     this.setState({ currentPage }, this.scrollToPage);
+    // }
 
 
     scrollToPage() {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
         const { currentPage } = this.state;
-        const { resetInactiveTimer } = this.props;
+        // const { resetInactiveTimer } = this.props;
         const targetScroll = currentPage * ScreenSize.height;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
-        //resetInactiveTimer(true);
+        // resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
@@ -217,7 +217,7 @@ Article.propTypes = {
     articleID: PropTypes.string.isRequired,
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     loadArticle: PropTypes.func.isRequired,
-    //resetInactiveTimer: PropTypes.func.isRequired,
+    // resetInactiveTimer: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
 };

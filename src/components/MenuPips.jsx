@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ArticleTypes, MoveDiections, Orientations } from '../Constants';
+import { MoveDiections, Orientations } from '../Constants';
 
 import '../styles/components/MenuPips.scss';
 
@@ -22,7 +22,6 @@ class MenuPips extends React.Component {
     }
 
     componentWillUpdate(nextProps) {
-
         // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps);
 
         const { currentFocused } = this.props;
@@ -36,8 +35,16 @@ class MenuPips extends React.Component {
 
     makePips() {
         const {
-            contents, showTitlePip, moveDirection, currentFocused,
+            contents, showTitlePip, currentFocused,
         } = this.props;
+
+        const newMoveDirection = (currentFocused < this.lastActive)
+            ? MoveDiections.LEFT
+            : MoveDiections.RIGHT;
+
+        console.log('MenuPips: makePips: newMoveDirection: ', newMoveDirection);
+        console.log('MenuPips: makePips: currentFocused: ', currentFocused);
+        console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
 
         const output = contents.map((articleContent, idx) => {
             // console.log('MenuPips: output map: articleContent: ', articleContent);
@@ -48,7 +55,7 @@ class MenuPips extends React.Component {
             // console.log('MenuPips: output map: currentFocused: ', currentFocused);
             // console.log('MenuPips: output map: this.lastActive: ', this.lastActive);
 
-            const classList = ['MenuPips__Button', `MenuPips__Button--${moveDirection}`];
+            const classList = ['MenuPips__Button', `MenuPips__Button--${newMoveDirection}`];
             if (currentFocused === (index)) classList.push('MenuPips__Button--active');
             if (this.lastActive === (index)) classList.push('MenuPips__Button--exiting');
 
@@ -67,7 +74,7 @@ class MenuPips extends React.Component {
             );
         });
 
-        //this.lastActive = currentFocused;
+        // this.lastActive = currentFocused;
 
         return output;
     }
