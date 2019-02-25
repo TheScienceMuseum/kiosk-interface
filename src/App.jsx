@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import IdleTimer from 'react-idle-timer';
 
 import './styles/App.scss';
 
@@ -19,17 +20,29 @@ class App extends Component {
         this.state = {
             activeArticle: null,
             location: AppStates.ATTRACTOR,
-            inactiveTime: 0,
             singleArticleMode,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
         this.onStart = this.start.bind(this);
-        this.startInactiveTimer = this.startInactiveTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
 
-        this.inactiveTimer = null;
-        this.timeout = 999;
+        this.pauseTimer = this.pauseTimer.bind(this);
+        this.onIdle = this.onIdle.bind(this);
+
+        this.idleTimer = null;
+
+        this.idleTimeout = 60; // in seconds
+
+        // this.startInactiveTimer = this.startInactiveTimer.bind(this);
+        // this.pauseTimer = this.pauseTimer.bind(this);
+
+        // this.inactiveTimer = null;
+        // this.timeout = 999;
+    }
+
+    onIdle(e) {
+        console.log('user is idle', e);
+        this.setState({ location: AppStates.ATTRACTOR });
     }
 
     setActiveArticle(activeArticle) {
@@ -65,53 +78,37 @@ class App extends Component {
                     articleID={location}
                     loadArticle={this.loadArticle}
                     resetInactiveTimer={this.startInactiveTimer}
-                    stopTimer={this.stopTimer}
+                    pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
                 />
             );
         }
     }
 
-    startInactiveTimer(reset) {
-        let { inactiveTime } = this.state;
-        inactiveTime = (reset) ? 0 : inactiveTime + 1;
-
-        if (this.inactiveTimer) clearTimeout(this.inactiveTimer);
-
-        if (inactiveTime > this.timeout) {
-            this.kioskTimeout();
-        } else {
-            this.setState({ inactiveTime });
-            this.inactiveTimer = setTimeout(this.startInactiveTimer.bind(this), 1000);
-        }
-    }
-
-    stopTimer() {
-        clearTimeout(this.inactiveTimer);
-        // this.setState( {inactive})
-    }
-
-    kioskTimeout() {
-        this.setState({ location: AppStates.ATTRACTOR, inactiveTime: 0 });
-    }
-
     start() {
         const { content } = this.props;
         const { singleArticleMode } = this.state;
-
         console.log('App: start: ', content.contents.length);
-
         const startState = !singleArticleMode ? AppStates.MENU : content.contents[0].articleID;
-
-
-        this.setState({ location: startState }, this.startInactiveTimer);
+        this.setState({ location: startState }, this.resetTimer);
     }
 
     loadArticle(articleID) {
         // console.log('App: loadArticle: articleID: ', articleID);
-        this.startInactiveTimer(true);
+        // this.startInactiveTimer(true);
         this.setState({ location: articleID });
     }
+
+    pauseTimer() {
+        console.log('App: pauseTimer: time: ', this.idleTimer.getRemainingTime());
+        this.idleTimer.pause();
+    }
+
+    resetTimer() {
+        console.log('App: resetTimer: time: ', this.idleTimer.getRemainingTime());
+        this.idleTimer.reset();
+    }
+
 
     render() {
         const {
@@ -119,9 +116,17 @@ class App extends Component {
         } = this.props;
         const { location } = this.state;
 
-        return (
+        // console.log('App: render: ', this.state.inactiveTime);
 
+        return (
             <div className="App">
+                <IdleTimer
+                    ref={(ref) => { this.idleTimer = ref; }}
+                    element={document}
+                    onIdle={this.onIdle}
+                    debounce={250}
+                    timeout={1000 * this.idleTimeout}
+                />
                 {env !== Environments.PRODUCTION
                 && (
                     <div className="DebugPanel">

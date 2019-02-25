@@ -46,3 +46,8 @@ export const AppStates = {
     ATTRACTOR: 'attractor',
     MENU: 'menu',
 };
+
+export const MoveDiections = {
+    LEFT: 'left',
+    RIGHT: 'right',
+};
