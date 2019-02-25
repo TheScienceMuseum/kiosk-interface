@@ -10,11 +10,11 @@
     "content": {
         "titles": {
             "type": "text",
-            "galleryName": "The Medicine Gallery",
-            "title": "Genetic Diagnosis",
+            "galleryName": "",
+            "title": "",
             "attractor": {
-                "assetType": "video",
-                "assetSource": "./videos/103421265.mp4"
+                "assetType": "image",
+                "assetSource": ""
             }
         },
         "contents": [
