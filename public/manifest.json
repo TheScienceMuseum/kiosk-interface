@@ -1,7 +1,7 @@
 {
     "short_name": "",
-    "name": "",
-    "label": "",
+    "name": "genetic-diagnosis",
+    "label": "Genetic Diagnosis",
     "version": 1,
     "main": "",
     "requirements": {
