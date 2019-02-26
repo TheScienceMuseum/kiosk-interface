@@ -49,7 +49,9 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
 
-        const currentFocused = (props.activeArticle || !this.props.initial)
+        const { initial } = props;
+
+        const currentFocused = (props.activeArticle && initial)
             ? props.activeArticle
             : 0;
 
@@ -66,7 +68,8 @@ class Menu extends React.Component {
 
         this.scrollElem = null;
         // this.scrollTween = null;
-        // console.log('Menu: constructor: props.initial: ', props.initial);
+        // console.log('Menu: constructor: props.initial: ', initial);
+        // console.log('Menu: constructor: currentFocused: ', currentFocused);
 
         // this.moveDirection = MoveDiections.RIGHT;
     }
@@ -194,7 +197,7 @@ class Menu extends React.Component {
 
 
     render() {
-        const { contents, titles, location } = this.props;
+        const { contents, titles } = this.props;
         const { currentFocused } = this.state;
 
         // console.log('Menu: render: location: ', location);

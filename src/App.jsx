@@ -52,7 +52,9 @@ class App extends Component {
     }
 
     getPage() {
-        const { activeArticle, location, singleArticleMode, initial} = this.state;
+        const {
+            activeArticle, location, singleArticleMode, initial,
+        } = this.state;
         const { content } = this.props;
 
         switch (location) {
@@ -79,7 +81,7 @@ class App extends Component {
                     contents={content.contents}
                     articleID={location}
                     loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.startInactiveTimer}
+                    resetInactiveTimer={this.resetTimer}
                     pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
                 />
@@ -92,7 +94,12 @@ class App extends Component {
         const { singleArticleMode } = this.state;
         console.log('App: start: ', content.contents.length);
         const startState = !singleArticleMode ? AppStates.MENU : content.contents[0].articleID;
-        this.setState({ location: startState, initial: true, activeArticle:null }, this.resetTimer);
+        this.setState({
+            location: startState,
+            initial: true,
+            activeArticle: null,
+        },
+        this.resetTimer);
     }
 
     loadArticle(articleID) {
