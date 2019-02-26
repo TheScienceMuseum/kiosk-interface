@@ -121,35 +121,35 @@ class App extends Component {
 
         return (
             <ErrorBoundary>
-            <div className="App">
-                <IdleTimer
-                    ref={(ref) => { this.idleTimer = ref; }}
-                    element={document}
-                    onIdle={this.onIdle}
-                    debounce={250}
-                    timeout={1000 * this.idleTimeout}
-                />
-                {env !== Environments.PRODUCTION
-                && (
-                    <div className="DebugPanel">
-                        <p>{`Package Name: ${label}`}</p>
-                        <p>{`Package Version: ${version}`}</p>
-                        <p>{`Client Environment: ${env}`}</p>
-                        <p>{`Client Version: ${clientVersion}`}</p>
-                    </div>
-                )
-                }
+                <div className="App">
+                    <IdleTimer
+                        ref={(ref) => { this.idleTimer = ref; }}
+                        element={document}
+                        onIdle={this.onIdle}
+                        debounce={250}
+                        timeout={1000 * this.idleTimeout}
+                    />
+                    {env !== Environments.PRODUCTION
+                    && (
+                        <div className="DebugPanel">
+                            <p>{`Package Name: ${label}`}</p>
+                            <p>{`Package Version: ${version}`}</p>
+                            <p>{`Client Environment: ${env}`}</p>
+                            <p>{`Client Version: ${clientVersion}`}</p>
+                        </div>
+                    )
+                    }
 
-                <TransitionGroup className="transition-group">
-                    <CSSTransition
-                        key={location}
-                        timeout={{ enter: 300, exit: 300 }}
-                        classNames="fade"
-                    >
-                        { this.getPage() }
-                    </CSSTransition>
-                </TransitionGroup>
-            </div>
+                    <TransitionGroup className="transition-group">
+                        <CSSTransition
+                            key={location}
+                            timeout={{ enter: 300, exit: 300 }}
+                            classNames="fade"
+                        >
+                            { this.getPage() }
+                        </CSSTransition>
+                    </TransitionGroup>
+                </div>
             </ErrorBoundary>
         );
     }
