@@ -32,7 +32,7 @@ class App extends Component {
         this.onIdle = this.onIdle.bind(this);
 
         this.idleTimer = null;
-        this.idleTimeout = 10; // in seconds
+        this.idleTimeout = 60; // in seconds
 
         // this.startInactiveTimer = this.startInactiveTimer.bind(this);
         // this.pauseTimer = this.pauseTimer.bind(this);
