@@ -9,6 +9,7 @@ import Menu from './components/Menu';
 import Article from './components/Article';
 import { AppStates, Environments } from './Constants';
 import Attractor from './components/Attractor';
+import ErrorBoundary from './components/ErrorBoundary';
 
 
 class App extends Component {
@@ -119,6 +120,7 @@ class App extends Component {
         // console.log('App: render: ', this.state.inactiveTime);
 
         return (
+            <ErrorBoundary>
             <div className="App">
                 <IdleTimer
                     ref={(ref) => { this.idleTimer = ref; }}
@@ -148,7 +150,7 @@ class App extends Component {
                     </CSSTransition>
                 </TransitionGroup>
             </div>
-
+            </ErrorBoundary>
         );
     }
 }
