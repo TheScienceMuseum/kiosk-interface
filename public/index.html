@@ -62,12 +62,6 @@
             clientEmitter('interface-error', [arguments]);
             ce.apply(this, arguments);
         };
-
-        const cw = console.warn;
-        console.warn = function () {
-            clientEmitter('interface-error', [arguments]);
-            cw.apply(this, arguments);
-        };
     } catch ( e ) {
         console.warn('could not hijack console functions, errors will not be sent to the kms server');
     }
