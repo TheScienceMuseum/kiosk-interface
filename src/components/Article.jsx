@@ -189,6 +189,9 @@ class Article extends React.Component {
 
         const articleClass = (navHidden) ? 'Article--fullScreen' : '';
 
+        // console.log('Article: render: subpages: ', subpages);
+        // console.log('Article: render: subpagesCount: ', subpagesCount);
+
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
@@ -196,7 +199,7 @@ class Article extends React.Component {
                         { this.article }
                     </div>
                     <NavBar
-                        showNav={subpages && (subpages.length > 1)}
+                        showNav={(subpagesCount > 1)}
                         onHomeClick={this.handleHomeButton}
                         onPrev={this.prevPage}
                         onNext={this.nextPage}
