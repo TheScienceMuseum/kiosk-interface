@@ -12,7 +12,7 @@ import MenuItemVideo from './menuitems/MenuItemVideo';
 
 import {
     ArticleTypes, Dimensions, ScreenSize,
-} from '../Constants';
+} from '../utils/Constants';
 import MenuNav from './MenuNav';
 
 
@@ -49,7 +49,9 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
 
-        const currentFocused = (props.activeArticle)
+        const { initial } = props;
+
+        const currentFocused = (props.activeArticle && initial)
             ? props.activeArticle
             : 0;
 
@@ -66,6 +68,8 @@ class Menu extends React.Component {
 
         this.scrollElem = null;
         // this.scrollTween = null;
+        // console.log('Menu: constructor: props.initial: ', initial);
+        // console.log('Menu: constructor: currentFocused: ', currentFocused);
 
         // this.moveDirection = MoveDiections.RIGHT;
     }
@@ -73,6 +77,23 @@ class Menu extends React.Component {
     componentDidMount() {
         const { currentFocused } = this.state;
         this.jumpToItem(currentFocused);
+    }
+
+    componentWillUpdate(nextProps) {
+        // console.log('Menu: componentWillUpdate: nextProps.initial: ', nextProps.initial);
+
+        // console.log('Menu: componentWillUpdate: nextProps: ', nextProps);
+        // console.log('Menu: componentWillUpdate: this.props: ', this.props);
+
+        if (nextProps.initial) {
+            this.state = {
+                currentFocused: 0,
+            };
+        }
+    }
+
+    componentWillUnmount() {
+        // console.log('Menu: componentWillUnmount:');
     }
 
     onItemClick(articleID) {
@@ -179,7 +200,7 @@ class Menu extends React.Component {
         const { contents, titles } = this.props;
         const { currentFocused } = this.state;
 
-        // console.log('Menu: render: currentFocused: ', currentFocused);
+        // console.log('Menu: render: location: ', location);
 
         // const startState = { autoAlpha: 0, y: -50 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
 import '../styles/components/ZoomableImage.scss';
-import { Orientations, ScreenSize } from '../Constants';
+import { Orientations, ScreenSize } from '../utils/Constants';
 import ZoomControls from './ZoomControls';
 // import propTypes from '../propTypes';
 

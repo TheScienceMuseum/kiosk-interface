@@ -11,6 +11,11 @@ export const PageTypes = {
     AUDIO: 'audio',
 };
 
+export const AssetTypes = {
+    VIDEO: 'video',
+    IMAGE: 'image',
+};
+
 export const Orientations = {
     HORIZONTAL: 'horiziontal',
     VERTICAL: 'vertical',
@@ -47,7 +52,7 @@ export const AppStates = {
     MENU: 'menu',
 };
 
-export const MoveDiections = {
+export const MoveDirections = {
     LEFT: 'left',
     RIGHT: 'right',
 };

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Layouts } from '../../Constants';
+import { Layouts } from '../../utils/Constants';
 import '../../styles/components/pages/TextImage.scss';
 import propTypes from '../../propTypes';
+import createBodyTag from '../../utils/createBodyTag';
 
 import ZoomableImage from '../ZoomableImage';
 
@@ -51,6 +52,7 @@ class TextImage extends React.Component {
         const mainClass = 'Page PageTextImage '
             + `PageTextImage--${layout} PageTextImage--${imageState}`;
 
+        /* eslint-disable react/no-danger */
         return (
             <div className={mainClass}>
                 <div className="ImageContainer">
@@ -58,7 +60,10 @@ class TextImage extends React.Component {
                 </div>
                 <div className="ContentContainer">
                     <h2>{title}</h2>
-                    <p>{content}</p>
+                    <div
+                        className="ContentContainer__body"
+                        dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
+                    />
                     <div className="ImageCaption">
                         <h3>{asset.nameText}</h3>
                         <p>{asset.sourceText}</p>
@@ -66,12 +71,16 @@ class TextImage extends React.Component {
                 </div>
             </div>
         );
+        /* eslint-enable react/no-danger */
     }
 }
 
 TextImage.propTypes = {
     title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)])
+        .isRequired,
     asset: propTypes.asset.isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
