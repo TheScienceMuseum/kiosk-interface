@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Environments } from '../Constants';
 
 class ErrorBoundary extends Component {
     constructor(props) {
