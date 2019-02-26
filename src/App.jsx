@@ -9,6 +9,7 @@ import Menu from './components/Menu';
 import Article from './components/Article';
 import { AppStates, Environments } from './utils/Constants';
 import Attractor from './components/Attractor';
+import ErrorBoundary from './components/ErrorBoundary';
 
 
 class App extends Component {
@@ -128,36 +129,37 @@ class App extends Component {
         // console.log('App: render: ', this.state.inactiveTime);
 
         return (
-            <div className="App">
-                <IdleTimer
-                    ref={(ref) => { this.idleTimer = ref; }}
-                    element={document}
-                    onIdle={this.onIdle}
-                    debounce={250}
-                    timeout={1000 * this.idleTimeout}
-                />
-                {env !== Environments.PRODUCTION
-                && (
-                    <div className="DebugPanel">
-                        <p>{`Package Name: ${label}`}</p>
-                        <p>{`Package Version: ${version}`}</p>
-                        <p>{`Client Environment: ${env}`}</p>
-                        <p>{`Client Version: ${clientVersion}`}</p>
-                    </div>
-                )
-                }
+            <ErrorBoundary>
+                <div className="App">
+                    <IdleTimer
+                        ref={(ref) => { this.idleTimer = ref; }}
+                        element={document}
+                        onIdle={this.onIdle}
+                        debounce={250}
+                        timeout={1000 * this.idleTimeout}
+                    />
+                    {env !== Environments.PRODUCTION
+                    && (
+                        <div className="DebugPanel">
+                            <p>{`Package Name: ${label}`}</p>
+                            <p>{`Package Version: ${version}`}</p>
+                            <p>{`Client Environment: ${env}`}</p>
+                            <p>{`Client Version: ${clientVersion}`}</p>
+                        </div>
+                    )
+                    }
 
-                <TransitionGroup className="transition-group">
-                    <CSSTransition
-                        key={location}
-                        timeout={{ enter: 300, exit: 300 }}
-                        classNames="fade"
-                    >
-                        { this.getPage() }
-                    </CSSTransition>
-                </TransitionGroup>
-            </div>
-
+                    <TransitionGroup className="transition-group">
+                        <CSSTransition
+                            key={location}
+                            timeout={{ enter: 300, exit: 300 }}
+                            classNames="fade"
+                        >
+                            { this.getPage() }
+                        </CSSTransition>
+                    </TransitionGroup>
+                </div>
+            </ErrorBoundary>
         );
     }
 }
