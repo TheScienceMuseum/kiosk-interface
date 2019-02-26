@@ -51,7 +51,7 @@ class Menu extends React.Component {
 
         const { initial } = props;
 
-        const currentFocused = (props.activeArticle && initial)
+        const currentFocused = (!initial || props.activeArticle)
             ? props.activeArticle
             : 0;
 
