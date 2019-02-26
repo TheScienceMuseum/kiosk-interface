@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Orientations } from '../../Constants';
+import { Orientations } from '../../utils/Constants';
 
 import '../../styles/components/navbar/NavButtons.scss';
 import ProgressDisplay from './ProgressDisplay';

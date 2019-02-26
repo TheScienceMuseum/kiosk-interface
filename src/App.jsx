@@ -7,7 +7,7 @@ import './styles/App.scss';
 
 import Menu from './components/Menu';
 import Article from './components/Article';
-import { AppStates, Environments } from './Constants';
+import { AppStates, Environments } from './utils/Constants';
 import Attractor from './components/Attractor';
 
 
@@ -21,16 +21,17 @@ class App extends Component {
             activeArticle: null,
             location: AppStates.ATTRACTOR,
             singleArticleMode,
+            initial: true,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
         this.onStart = this.start.bind(this);
 
         this.pauseTimer = this.pauseTimer.bind(this);
+        this.resetTimer = this.resetTimer.bind(this);
         this.onIdle = this.onIdle.bind(this);
 
         this.idleTimer = null;
-
         this.idleTimeout = 60; // in seconds
 
         // this.startInactiveTimer = this.startInactiveTimer.bind(this);
@@ -42,7 +43,7 @@ class App extends Component {
 
     onIdle(e) {
         console.log('user is idle', e);
-        this.setState({ location: AppStates.ATTRACTOR });
+        this.setState({ location: AppStates.ATTRACTOR, initial: true });
     }
 
     setActiveArticle(activeArticle) {
@@ -51,7 +52,9 @@ class App extends Component {
     }
 
     getPage() {
-        const { activeArticle, location, singleArticleMode } = this.state;
+        const {
+            activeArticle, location, singleArticleMode, initial,
+        } = this.state;
         const { content } = this.props;
 
         switch (location) {
@@ -68,7 +71,8 @@ class App extends Component {
                     activeArticle={activeArticle}
                     setActiveArticle={this.setActiveArticle}
                     loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.startInactiveTimer}
+                    resetInactiveTimer={this.resetTimer}
+                    initial={initial}
                 />
             );
         default:
@@ -77,7 +81,7 @@ class App extends Component {
                     contents={content.contents}
                     articleID={location}
                     loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.startInactiveTimer}
+                    resetInactiveTimer={this.resetTimer}
                     pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
                 />
@@ -90,13 +94,18 @@ class App extends Component {
         const { singleArticleMode } = this.state;
         console.log('App: start: ', content.contents.length);
         const startState = !singleArticleMode ? AppStates.MENU : content.contents[0].articleID;
-        this.setState({ location: startState }, this.resetTimer);
+        this.setState({
+            location: startState,
+            initial: true,
+            activeArticle: null,
+        },
+        this.resetTimer);
     }
 
     loadArticle(articleID) {
         // console.log('App: loadArticle: articleID: ', articleID);
         // this.startInactiveTimer(true);
-        this.setState({ location: articleID });
+        this.setState({ location: articleID, initial: false });
     }
 
     pauseTimer() {

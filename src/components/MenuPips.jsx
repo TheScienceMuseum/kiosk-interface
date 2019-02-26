@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MoveDiections, Orientations } from '../Constants';
+import { MoveDirections, Orientations } from '../utils/Constants';
 
 import '../styles/components/MenuPips.scss';
 
@@ -18,18 +18,23 @@ class MenuPips extends React.Component {
     constructor(props) {
         super(props);
         this.lastActive = null;
+        this.moveDirection = MoveDirections.RIGHT;
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentWillUpdate(nextProps) {
         // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps);
-
         const { currentFocused } = this.props;
-
         if (nextProps.currentFocused !== currentFocused) {
-            // console.log('MenuPips: componentWillUpdate: currentFocussed: ', currentFocused);
-            // console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps.currentFocused);
+            console.log('MenuPips: componentWillUpdate: currentFocussed: ', currentFocused);
+            console.log('MenuPips: componentWillUpdate: nextProps: ', nextProps.currentFocused);
             this.lastActive = currentFocused;
+            if (currentFocused > nextProps.currentFocused) {
+                this.moveDirection = MoveDirections.LEFT;
+            } else if (currentFocused < nextProps.currentFocused) {
+                this.moveDirection = MoveDirections.RIGHT;
+            }
+            console.log('MenuPips: componentWillUpdate: moveDirection: ', this.moveDirection);
         }
     }
 
@@ -38,13 +43,9 @@ class MenuPips extends React.Component {
             contents, showTitlePip, currentFocused,
         } = this.props;
 
-        const newMoveDirection = (currentFocused < this.lastActive)
-            ? MoveDiections.LEFT
-            : MoveDiections.RIGHT;
-
-        console.log('MenuPips: makePips: newMoveDirection: ', newMoveDirection);
-        console.log('MenuPips: makePips: currentFocused: ', currentFocused);
-        console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
+        // console.log('MenuPips: makePips: moveDirection: ', this.moveDirection);
+        // console.log('MenuPips: makePips: currentFocused: ', currentFocused);
+        // console.log('MenuPips: makePips: this.lastActive: ', this.lastActive);
 
         const output = contents.map((articleContent, idx) => {
             // console.log('MenuPips: output map: articleContent: ', articleContent);
@@ -55,7 +56,7 @@ class MenuPips extends React.Component {
             // console.log('MenuPips: output map: currentFocused: ', currentFocused);
             // console.log('MenuPips: output map: this.lastActive: ', this.lastActive);
 
-            const classList = ['MenuPips__Button', `MenuPips__Button--${newMoveDirection}`];
+            const classList = ['MenuPips__Button', `MenuPips__Button--${this.moveDirection}`];
             if (currentFocused === (index)) classList.push('MenuPips__Button--active');
             if (this.lastActive === (index)) classList.push('MenuPips__Button--exiting');
 
@@ -89,7 +90,7 @@ class MenuPips extends React.Component {
 
     render() {
         const {
-            currentFocused, showTitlePip, orientation, moveDirection,
+            currentFocused, showTitlePip, orientation,
         } = this.props;
         /*
         const handleClick = (targetID) => {
@@ -99,7 +100,7 @@ class MenuPips extends React.Component {
         */
 
         // console.log('MenuPips: contents: ', contents);
-        const classList = ['MenuPips__Button', `MenuPips__Button--${moveDirection}`];
+        const classList = ['MenuPips__Button', `MenuPips__Button--${this.moveDirection}`];
         if (currentFocused === (0)) classList.push('MenuPips__Button--active');
         if (this.lastActive === (0)) classList.push('MenuPips__Button--exiting');
         const className = classList.join(' ');
@@ -132,13 +133,11 @@ MenuPips.propTypes = {
     currentFocused: PropTypes.number.isRequired,
     showTitlePip: PropTypes.bool,
     orientation: PropTypes.oneOf(Object.values(Orientations)),
-    moveDirection: PropTypes.oneOf(Object.values(MoveDiections)),
 };
 
 MenuPips.defaultProps = {
     showTitlePip: true,
     orientation: Orientations.HORIZONTAL,
-    moveDirection: MoveDiections.RIGHT,
 };
 
 export default MenuPips;

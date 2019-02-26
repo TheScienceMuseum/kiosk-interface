@@ -1,9 +1,9 @@
 {
-    "short_name": "SciMusPackage",
-    "name": "SciMusPackage",
-    "label": "Science Museum Example Package",
-    "version": 3,
-    "main": "index.html",
+    "short_name": "",
+    "name": "",
+    "label": "",
+    "version": 1,
+    "main": "",
     "requirements": {
         "client_version": "0.0.1"
     },
@@ -11,40 +11,38 @@
         "titles": {
             "type": "text",
             "galleryName": "The Medicine Gallery",
-            "title": "Perspectives on death and dying",
-            "image": null,
+            "title": "Genetic Diagnosis",
             "attractor": {
-                "assetType": "image",
-                "assetSource": "./media/attractor.png"
-
+                "assetType": "video",
+                "assetSource": "./videos/stock-footage-dna-strand.mp4"
             }
         },
         "contents": [
             {
-                "articleID": "3-3",
+                "articleID": "1-1",
                 "type": "mixed",
-                "title": "What is it like to donate your body to science",
+                "title": "James Watson: discovering the Double Helix",
                 "titleImage": {
                     "assetType": "image",
-                    "assetSource": "./media/menu-image-4.png"
+                    "assetSource": "./media/01.jpg"
                 },
                 "subpages": [
                     {
-                        "pageID": "3-2-0",
+                        "pageID": "1-1-1",
                         "type": "title",
                         "asset":  {
                             "assetType": "image",
-                            "assetSource": "./media/menu-image-4.png"
+                            "assetSource": "./media/01.jpg"
                         },
-                        "title": "What is it like to donate your body to science?",
+                        "title": "James Watson: discovering the Double Helix",
                         "subtitle": ""
                     },
                     {
-                        "pageID": "3-3-1",
+                        "pageID": "1-1-2",
                         "type": "textImage",
                         "layout": "left",
                         "asset": {
-                            "assetSource": "./media/autopsy.png",
+                            "assetSource": "./media/02.jpg",
                             "assetType": "image",
                             "boundingBox" : {
                                 "x": 0.25,
@@ -52,221 +50,278 @@
                                 "width": 0.5,
                                 "height": 0.5
                             },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
+                            "nameText": "James Watson (b. 1928) pictured in 2018.",
+                            "sourceText": "Science Museum Group."
                         },
-                        "title": "Why should you donate your body to medical science?",
-                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    },
-                    {
-                        "pageID": "3-3-2",
-                        "type": "textImage",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/autopsy.png",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Why should you donate your body to medical science?",
-                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    },
-                    {
-                        "pageID": "3-3-3",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/virus_medical_biology_detail_medicine_psychedelic_science_abstract_abstraction_chemistry_Genetics_3840x1080.jpg",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Virus medical biology detail medicine psychedelic science abstract",
-                        "content": "Image that is wide"
-                    },
-                    {
-                        "pageID": "3-3-4",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "3D Science Animation",
-                        "content": "Image that is exact dimensions"
-                    },
-                    {
-                        "pageID": "3-3-5",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/Einsteins-Gravity-Theory-Put-to-the-Test-By-a-Massive-Pulsar-in-a-Compact-Relativistic-Binary.jpg",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Observations of a Pulsar and Its White Dwarf Companion Back General Theory of Relativity",
-                        "content": "Image that is tall"
-                    },
-                    {
-                        "pageID": "3-3-6",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/109c63dbe51380edebc1c16755c29c12.jpg",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Neurons!",
-                        "content": "Image that is not exactly 2x"
-                    },
-                    {
-                        "pageID": "3-3-7",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/big.png",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Anatomical Venuses of 18th-century Italy",
-                        "content": "Image that is not exactly 2x"
-                    },
-                    {
-                        "pageID": "3-3-8",
-                        "type": "image",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/IMG_0847.jpg",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Anatomical Venuses of 18th-century Italy",
-                        "content": "Image that is really big"
-                    },
-                    {
-                        "pageID": "3-3-9",
-                        "type": "textImage",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/autopsy.png",
-                            "assetType": "image",
-                            "boundingBox" : {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
-                            },
-                            "nameText": "Image name",
-                            "sourceText": "Source: Science Museum/SSPL"
-                        },
-                        "title": "Why should you donate your body to medical science?",
-                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                        "title": "James Watson: discovering the Double Helix",
+                        "content": [
+                            "James Watson speaks about the journey to discovering the double helix:",
+                            "[Audio clip]"
+                        ]
                     }
                 ]
             },
             {
-                "articleID": "3-0",
-                "type": "video",
-                "title": "Digital autopsy: the future of post-mortem?",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/menu-image-1.png"
-                },
-                "asset": {
-                    "assetSource": "./videos/27c5c9b73b18bc62e39f0ef6533d6caf.mp4",
-                    "assetType": "image",
-                    "boundingBox" : {
-                        "x": 0.25,
-                        "y": 0.25,
-                        "width": 0.5,
-                        "height": 0.5
-                    },
-                    "nameText": "",
-                    "sourceText": ""
-                }
-            },
-            {
-                "articleID": "3-1",
+                "articleID": "1-2",
                 "type": "mixed",
-                "title": "What it is like to perform a post-mortem?",
+                "title": "The search for the BRCA2 gene",
                 "titleImage": {
                     "assetType": "image",
-                    "assetSource": "./media/menu-image-2.png"
+                    "assetSource": "./media/03.jpg"
                 },
                 "subpages": [
                     {
-                        "pageID": "3-1-0",
+                        "pageID": "1-2-1",
                         "type": "title",
-                        "asset": {
+                        "asset":  {
                             "assetType": "image",
-                            "assetSource": "./media/menu-image-2.png"
+                            "assetSource": "./media/03.jpg"
                         },
-                        "title": "What it is like to perform a post-mortem",
+                        "title": "The search for the BRCA2 gene",
                         "subtitle": ""
+                    },
+                    {
+                        "pageID": "1-2-2",
+                        "type": "textImage",
+                        "layout": "left",
+                        "asset": {
+                            "assetSource": "./media/03.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "",
+                            "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
+                        },
+                        "title": "The search for the BRCA2 gene [introduction]",
+                        "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.","Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
+                    },
+                    {
+                        "pageID": "1-2-3",
+                        "type": "textImage",
+                        "layout": "right",
+                        "asset": {
+                            "assetSource": "./media/04.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Sir Mike Stratton",
+                            "sourceText": "Science Museum Group"
+                        },
+                        "title": "The team that tracked BRCA2 down",
+                        "content": [
+                            "Professor Stratton and his team revealed the identity of BRCA2 in a paper published in the journal Nature at the end of 1995.",
+                            "Mike explains the significance of BRCA2:",
+                            "[Audio clip]"
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-4",
+                        "type": "textImage",
+                        "layout": "left",
+                        "asset": {
+                            "assetSource": "./media/05.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Understanding the presence of disease across a family is essential to create genetic family tree-known as a pedigree ",
+                            "sourceText": "GARO / PHANIE / SCIENCE PHOTO LIBRARY"
+                        },
+                        "title": "A family history of breast cancer",
+                        "content": [
+                            "The team began to research large family trees where there was a history of cancer. The researchers analysed DNA from 15 families from around the world affected by early-onset breast cancer that wasn’t related to BRCA1.",
+                            "<i>“Over the period of about 18 months this huge family tree was put together with hundreds of people on the tree…very tellingly we then found an individual with male breast cancer”.</i>",
+                            "That was an important observation because male breast cancer did not seem to be a feature of BRCA1 based susceptibility to breast cancer and that added weight to the notion that this was a different gene. The team never met the family."
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-5",
+                        "type": "textImage",
+                        "layout": "right",
+                        "asset": {
+                            "assetSource": "./media/05a.png",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Ideogram of human chromosome. Chromosome 13 highlighted where the alterations can be found for BRCA2.",
+                            "sourceText": "National Center for Biotechnology Information, U.S. National Library of Medicine"
+                        },
+                        "title": "Finding the gene",
+                        "content": [
+                            "Using painstaking genetic techniques, the researchers pinpointed the location of BRCA2 to a region on one end of human chromosome 13 – a region known to contain a number of different genes.",
+                            "[Audio clip]"
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-6",
+                        "type": "textImage",
+                        "layout": "left",
+                        "asset": {
+                            "assetSource": "./media/06.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Concern about gene patenting",
+                            "sourceText": "Getty Images"
+                        },
+                        "title": "A race to the gene",
+                        "content": [
+                            "Mike’s team wasn’t alone in looking to identify the BRCA2 gene. An American company called Myriad Genetics had been successful in isolating BRCA1 with the aim to provide tests for BRCA1. However, what was a cause of concern for Mike and other researchers was that the company had taken out patents essentially monopolising the usage of BRCA1.  They were looking to do the same with BRCA2.",
+                            "<i>“ DNA is in all of us, it belongs to humanity, …so what had previously been a collaboration to find the position of BRCA2 now became a competition and it became a race to actually identify the gene.”</i>"
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-7",
+                        "type": "image",
+                        "layout": "right",
+                        "asset": {
+                            "assetSource": "./media/07.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
+                            "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
+                        },
+                        "title": "Sequenced at the Sanger Centre ",
+                        "content": [
+                            "Mike and his team had a secret weapon – the human genome project. The Sanger Centre was ready to embark on sequencing the human genome for the first time. Mike was able to collaborate so that the DNA of chromosome 13 - the location where Mike’s team suspected BRCA2 lay – was the first million letters of DNA to be sequenced."
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-8",
+                        "type": "textImage",
+                        "layout": "right",
+                        "asset": {
+                            "assetSource": "./media/08.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Patient blood test taken for genetic screening.",
+                            "sourceText": "BURGER / PHANIE / SCIENCE PHOTO LIBRARY"
+                        },
+                        "title": "The first patient to be tested for BRACA2",
+                        "content": [
+                            "Mike recalls how quickly the gene’s identification impacted potential patients.",
+                            "[Audio clip]"
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-9",
+                        "type": "textImage",
+                        "layout": "left",
+                        "asset": {
+                            "assetSource": "./media/09.jpg",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "Colour-enhanced image of a breast cancer cell.",
+                            "sourceText": "Anne Weston, Francis Crick Institute"
+                        },
+                        "title": "The legacy of BRACA2 and Cancer Genome project",
+                        "content": [
+                            "Since Mike’s team identified BRCA2, gene sequencing work has sequenced the DNA of around 25,000 human cancers.  This work is trying to reveal the genes that convert a normal cell into a cancer cell and these patterns of mutations that can tell us what causes a cancer.",
+                            "“Genetics has been driven by changes in technology and those changes in technology have allowed us to look through larger and larger and larger amounts of DNA to find the abnormalities, the changes, the mutations…When I first started researching we were looking at very small portions of DNA for abnormalities.  In the position that I’m in now we are sequencing hundreds of human genomes every week, a difference that I could not even have dreamt of when I started working in science 30 years ago”."
+                        ]
                     }
                 ]
             },
             {
-                "articleID": "3-2",
-                "type": "video",
-                "title": "What is it like to be a student doing your first dissection",
+                "articleID": "1-3",
+                "title": "Managing my risk: Caroline’s story of BRCA2 diagnosis",
                 "titleImage": {
                     "assetType": "image",
-                    "assetSource": "./media/menu-image-3.png"
+                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
                 },
+                "type": "video",
                 "asset": {
-                    "assetSource": "./videos/0fafe4959802c00a27cacd515099f40c.mp4 ",
+                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetType": "video"
+                }
+            },
+            {
+                "articleID": "1-4",
+                "title": "Life-changing decisions: Deborah’s story",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+                },
+                "type": "video",
+                "asset": {
+                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetType": "video"
+                }
+            },
+            {
+                "articleID": "1-5",
+                "title": "Knowledge is power: Peter’s story",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+                },
+                "type": "video",
+                "asset": {
+                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetType": "video"
+                }
+            },
+            {
+                "articleID": "1-6",
+                "title": "Looking for answers: Lisa, Ray & Michael’s story",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+                },
+                "type": "video",
+                "asset": {
+                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetType": "video"
+                }
+            },
+            {
+                "articleID": "1-7",
+                "title": "Helping families with nameless conditions: Anna, Clinical Nurse Specialist",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+                },
+                "type": "video",
+                "asset": {
+                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
                     "assetType": "video"
                 }
             }
+
         ]
     }
 }
