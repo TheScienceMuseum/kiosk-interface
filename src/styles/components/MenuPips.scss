@@ -6,10 +6,39 @@
     //left: 0;
     //right: 0;
     //text-align: center;
+    position: relative;
+
+    .MenuPipsContainer {
+        display: flex;
+    }
+
+    .spacer {
+        width: 25px;
+        height: 30px;
+        background: $white;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-indent: 999px;
+        white-space: nowrap;
+    }
+
+    .MenuPipHighlighter {
+        display: block;
+        content: "";
+        background: $red;
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s;
+    }
 
     &__Button {
-        border: 3px solid $red;
-        background-color: $white;
+        border: 0;
+        background-color: transparent;
+
         width: 30px;
         height: 30px;
 
@@ -24,71 +53,16 @@
         text-indent: 999px;
         white-space: nowrap;
 
-        &:not(:first-of-type) {
-            margin-left: 25px;
-        }
-
         &:after {
             content: '';
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: white;
+            border: 3px solid $red;
             top: 0;
-            left: -100%;
+            left: 0;
             transition: left 350ms ease;
-        }
-        /*
-        &--right {
-            &:after {
-                left: -100%;
-                width: 0;
-            }
-        }
-        */
-        /*
-        &--left {
-            &:after {
-                //left: 100%;
-                transform: rotate(180deg);
-                width: 0;
-            }
-        }
-        */
-
-        &--active {
-            &:after {
-                left: 0;
-                background-color: $red;
-            }
-        }
-
-        &--exiting {
-            &:after {
-                left: 100%;
-                background-color: $red;
-            }
-        }
-
-        &--left {
-            &:after {
-                background-color: white;
-                left: 100%;
-            }
-        }
-
-        &--left#{&}--active {
-            &:after {
-                background-color: $red;
-                left: 0;
-            }
-        }
-
-        &--left#{&}--exiting {
-            &:after {
-                background-color: $red;
-                left: -100%;
-            }
+            box-sizing: border-box;
         }
     }
 
