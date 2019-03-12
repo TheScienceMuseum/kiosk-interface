@@ -16,7 +16,7 @@
                 "assetType": "video",
                 "assetSource": "./videos/stock-footage-dna-strand.mp4"
             },
-            "idleTimeout": 9
+            "idleTimeout": 120
         },
         "contents": [{
                 "articleID": "1-1",

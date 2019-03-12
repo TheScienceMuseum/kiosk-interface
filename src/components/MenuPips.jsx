@@ -22,16 +22,14 @@ class MenuPips extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.highlighterStyle = this.highlighterStyle.bind(this);
         this.state = {
-            highlighterMarginLeft: 0
+            highlighterMarginLeft: 0,
         };
-        this.getElementOffset = this.getElementOffset.bind(this);
         this.goToActive = this.goToActive.bind(this);
     }
 
     componentWillUpdate(nextProps) {
         const { currentFocused } = this.props;
         if (nextProps.currentFocused !== currentFocused) {
-
             this.lastActive = currentFocused;
             if (currentFocused > nextProps.currentFocused) {
                 this.moveDirection = MoveDirections.LEFT;
@@ -42,27 +40,23 @@ class MenuPips extends React.Component {
             setTimeout(() => {
                 this.goToActive();
             }, 100);
-
-
         }
     }
 
-    getElementOffset(el) {
+    static getElementOffset(el) {
         const rect = el.getBoundingClientRect();
-
         const ret = {
             top: rect.top + document.body.scrollTop,
-            left: rect.left + document.body.scrollLeft
-        }
-
+            left: rect.left + document.body.scrollLeft,
+        };
         return ret;
     }
 
     goToActive() {
         const domElement = document.getElementsByClassName('MenuPips__Button--active')[0];
 
-        const offset = this.getElementOffset(domElement);
-        const parentOffset = this.getElementOffset(this.pipsContainer);
+        const offset = this.constructor.getElementOffset(domElement);
+        const parentOffset = this.constructor.getElementOffset(this.pipsContainer);
 
         const l = (offset.left - parentOffset.left) + domElement.style.borderLeftWidth;
 
@@ -75,7 +69,6 @@ class MenuPips extends React.Component {
         } = this.props;
 
         const output = contents.map((articleContent, idx) => {
-
             const index = showTitlePip ? idx + 1 : idx;
             const key = articleContent.articleID ? articleContent.articleID : articleContent.pageID;
 
@@ -111,10 +104,10 @@ class MenuPips extends React.Component {
         const targetID = target.getAttribute('data-key');
         const domElement = e.target;
 
-        const offset = this.getElementOffset(domElement);
-        const parentOffset = this.getElementOffset(this.pipsContainer);
+        const offset = this.constructor.getElementOffset(domElement);
+        const parentOffset = this.constructor.getElementOffset(this.pipsContainer);
 
-        const l = (offset.left - parentOffset.left) + domElement.style.borderLeftWidth;
+        const l = (offset.left - parentOffset.left);
 
         this.setState({ highlighterMarginLeft: l });
 
@@ -122,8 +115,10 @@ class MenuPips extends React.Component {
     }
 
     highlighterStyle() {
-        let style = {
-            marginLeft: this.state.highlighterMarginLeft + "px",
+        const model = this.state;
+        const mLeft = `${model.highlighterMarginLeft}px`;
+        const style = {
+            marginLeft: mLeft,
         };
         return style;
     }
@@ -140,7 +135,7 @@ class MenuPips extends React.Component {
 
 
         return (
-            <div className={`MenuPips MenuPips--${orientation}`} ref={(node) => { this.pipsContainer = node }}>
+            <div className={`MenuPips MenuPips--${orientation}`} ref={(node) => { this.pipsContainer = node; }}>
                 <div className="MenuPipHighlighter" style={this.highlighterStyle()} />
                 <div className="MenuPipsContainer">
                     {showTitlePip
@@ -158,7 +153,7 @@ class MenuPips extends React.Component {
                     }
                     {this.makePips()}
                 </div>
-            </div >
+            </div>
         );
     }
 }
