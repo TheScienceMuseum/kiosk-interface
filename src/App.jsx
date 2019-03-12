@@ -33,13 +33,8 @@ class App extends Component {
         this.onIdle = this.onIdle.bind(this);
 
         this.idleTimer = null;
-        this.idleTimeout = 60; // in seconds
+        this.idleTimeout = props.content.titles.idleTimeout || 6; // in seconds
 
-        // this.startInactiveTimer = this.startInactiveTimer.bind(this);
-        // this.pauseTimer = this.pauseTimer.bind(this);
-
-        // this.inactiveTimer = null;
-        // this.timeout = 999;
     }
 
     onIdle(e) {
@@ -59,34 +54,34 @@ class App extends Component {
         const { content } = this.props;
 
         switch (location) {
-        case AppStates.ATTRACTOR:
-            return (
-                <Attractor {...content.titles} start={this.onStart} />
-            );
-        case AppStates.MENU:
-            return (
-                <Menu
-                    titles={content.titles}
-                    contents={content.contents}
-                    location={location}
-                    activeArticle={activeArticle}
-                    setActiveArticle={this.setActiveArticle}
-                    loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.resetTimer}
-                    initial={initial}
-                />
-            );
-        default:
-            return (
-                <Article
-                    contents={content.contents}
-                    articleID={location}
-                    loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.resetTimer}
-                    pauseTimer={this.pauseTimer}
-                    singleArticleMode={singleArticleMode}
-                />
-            );
+            case AppStates.ATTRACTOR:
+                return (
+                    <Attractor {...content.titles} start={this.onStart} />
+                );
+            case AppStates.MENU:
+                return (
+                    <Menu
+                        titles={content.titles}
+                        contents={content.contents}
+                        location={location}
+                        activeArticle={activeArticle}
+                        setActiveArticle={this.setActiveArticle}
+                        loadArticle={this.loadArticle}
+                        resetInactiveTimer={this.resetTimer}
+                        initial={initial}
+                    />
+                );
+            default:
+                return (
+                    <Article
+                        contents={content.contents}
+                        articleID={location}
+                        loadArticle={this.loadArticle}
+                        resetInactiveTimer={this.resetTimer}
+                        pauseTimer={this.pauseTimer}
+                        singleArticleMode={singleArticleMode}
+                    />
+                );
         }
     }
 
@@ -100,7 +95,7 @@ class App extends Component {
             initial: true,
             activeArticle: null,
         },
-        this.resetTimer);
+            this.resetTimer);
     }
 
     loadArticle(articleID) {
@@ -139,14 +134,14 @@ class App extends Component {
                         timeout={1000 * this.idleTimeout}
                     />
                     {env !== Environments.PRODUCTION
-                    && (
-                        <div className="DebugPanel">
-                            <p>{`Package Name: ${label}`}</p>
-                            <p>{`Package Version: ${version}`}</p>
-                            <p>{`Client Environment: ${env}`}</p>
-                            <p>{`Client Version: ${clientVersion}`}</p>
-                        </div>
-                    )
+                        && (
+                            <div className="DebugPanel">
+                                <p>{`Package Name: ${label}`}</p>
+                                <p>{`Package Version: ${version}`}</p>
+                                <p>{`Client Environment: ${env}`}</p>
+                                <p>{`Client Version: ${clientVersion}`}</p>
+                            </div>
+                        )
                     }
 
                     <TransitionGroup className="transition-group">
@@ -155,7 +150,7 @@ class App extends Component {
                             timeout={{ enter: 300, exit: 300 }}
                             classNames="fade"
                         >
-                            { this.getPage() }
+                            {this.getPage()}
                         </CSSTransition>
                     </TransitionGroup>
                 </div>

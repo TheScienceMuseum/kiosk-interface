@@ -174,8 +174,7 @@
                     "type": "string"
                 },
                 "image": {
-                    "oneOf": [
-                        {
+                    "oneOf": [{
                             "type": "null"
                         },
                         {
@@ -185,6 +184,9 @@
                 },
                 "attractor": {
                     "$ref": "#/definitions/AssetClass"
+                },
+                "idleTimeout": {
+                    "type": "integer"
                 }
             },
             "required": [
@@ -209,8 +211,7 @@
             "title": "Requirements"
         },
         "ImageUnion": {
-            "anyOf": [
-                {
+            "anyOf": [{
                     "$ref": "#/definitions/AssetClass"
                 },
                 {
@@ -222,9 +223,8 @@
             ],
             "title": "ImageUnion"
         },
-        "ContentUnion":{
-            "anyOf": [
-                {
+        "ContentUnion": {
+            "anyOf": [{
                     "type": "string"
                 },
                 {
