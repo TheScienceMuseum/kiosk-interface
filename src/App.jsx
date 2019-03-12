@@ -33,7 +33,7 @@ class App extends Component {
         this.onIdle = this.onIdle.bind(this);
 
         this.idleTimer = null;
-        this.idleTimeout = ((props.content.titles.idleTimeout || 6) * 100); // in seconds
+        this.idleTimeout = props.content.titles.idleTimeout || 6; // in seconds
 
     }
 
