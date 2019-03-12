@@ -135,7 +135,10 @@ class MenuPips extends React.Component {
 
 
         return (
-            <div className={`MenuPips MenuPips--${orientation}`} ref={(node) => { this.pipsContainer = node; }}>
+            <div
+                className={`MenuPips MenuPips--${orientation}`}
+                ref={(node) => { this.pipsContainer = node; }}
+            >
                 <div className="MenuPipHighlighter" style={this.highlighterStyle()} />
                 <div className="MenuPipsContainer">
                     {showTitlePip
