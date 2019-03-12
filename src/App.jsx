@@ -34,7 +34,6 @@ class App extends Component {
 
         this.idleTimer = null;
         this.idleTimeout = props.content.titles.idleTimeout || 6; // in seconds
-
     }
 
     onIdle(e) {
@@ -54,34 +53,34 @@ class App extends Component {
         const { content } = this.props;
 
         switch (location) {
-            case AppStates.ATTRACTOR:
-                return (
-                    <Attractor {...content.titles} start={this.onStart} />
-                );
-            case AppStates.MENU:
-                return (
-                    <Menu
-                        titles={content.titles}
-                        contents={content.contents}
-                        location={location}
-                        activeArticle={activeArticle}
-                        setActiveArticle={this.setActiveArticle}
-                        loadArticle={this.loadArticle}
-                        resetInactiveTimer={this.resetTimer}
-                        initial={initial}
-                    />
-                );
-            default:
-                return (
-                    <Article
-                        contents={content.contents}
-                        articleID={location}
-                        loadArticle={this.loadArticle}
-                        resetInactiveTimer={this.resetTimer}
-                        pauseTimer={this.pauseTimer}
-                        singleArticleMode={singleArticleMode}
-                    />
-                );
+        case AppStates.ATTRACTOR:
+            return (
+                <Attractor {...content.titles} start={this.onStart} />
+            );
+        case AppStates.MENU:
+            return (
+                <Menu
+                    titles={content.titles}
+                    contents={content.contents}
+                    location={location}
+                    activeArticle={activeArticle}
+                    setActiveArticle={this.setActiveArticle}
+                    loadArticle={this.loadArticle}
+                    resetInactiveTimer={this.resetTimer}
+                    initial={initial}
+                />
+            );
+        default:
+            return (
+                <Article
+                    contents={content.contents}
+                    articleID={location}
+                    loadArticle={this.loadArticle}
+                    resetInactiveTimer={this.resetTimer}
+                    pauseTimer={this.pauseTimer}
+                    singleArticleMode={singleArticleMode}
+                />
+            );
         }
     }
 
@@ -95,7 +94,7 @@ class App extends Component {
             initial: true,
             activeArticle: null,
         },
-            this.resetTimer);
+        this.resetTimer);
     }
 
     loadArticle(articleID) {
