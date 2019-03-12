@@ -15,10 +15,10 @@
             "attractor": {
                 "assetType": "video",
                 "assetSource": "./videos/stock-footage-dna-strand.mp4"
-            }
+            },
+            "idleTimeout": 9
         },
-        "contents": [
-            {
+        "contents": [{
                 "articleID": "1-1",
                 "type": "mixed",
                 "title": "James Watson: discovering the Double Helix",
@@ -26,11 +26,10 @@
                     "assetType": "image",
                     "assetSource": "./media/01.jpg"
                 },
-                "subpages": [
-                    {
+                "subpages": [{
                         "pageID": "1-1-1",
                         "type": "title",
-                        "asset":  {
+                        "asset": {
                             "assetType": "image",
                             "assetSource": "./media/01.jpg"
                         },
@@ -44,7 +43,7 @@
                         "asset": {
                             "assetSource": "./media/02.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -69,11 +68,10 @@
                     "assetType": "image",
                     "assetSource": "./media/03.jpg"
                 },
-                "subpages": [
-                    {
+                "subpages": [{
                         "pageID": "1-2-1",
                         "type": "title",
-                        "asset":  {
+                        "asset": {
                             "assetType": "image",
                             "assetSource": "./media/03.jpg"
                         },
@@ -87,7 +85,7 @@
                         "asset": {
                             "assetSource": "./media/03.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -97,7 +95,7 @@
                             "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
                         },
                         "title": "The search for the BRCA2 gene [introduction]",
-                        "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.","Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
+                        "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.", "Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
                     },
                     {
                         "pageID": "1-2-3",
@@ -106,7 +104,7 @@
                         "asset": {
                             "assetSource": "./media/04.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -129,7 +127,7 @@
                         "asset": {
                             "assetSource": "./media/05.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -152,7 +150,7 @@
                         "asset": {
                             "assetSource": "./media/05a.png",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -174,7 +172,7 @@
                         "asset": {
                             "assetSource": "./media/06.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -196,7 +194,7 @@
                         "asset": {
                             "assetSource": "./media/07.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -217,7 +215,7 @@
                         "asset": {
                             "assetSource": "./media/08.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
@@ -239,7 +237,7 @@
                         "asset": {
                             "assetSource": "./media/09.jpg",
                             "assetType": "image",
-                            "boundingBox" : {
+                            "boundingBox": {
                                 "x": 0.25,
                                 "y": 0.25,
                                 "width": 0.5,
