@@ -14,7 +14,7 @@
             "title": "Genetic Diagnosis",
             "attractor": {
                 "assetType": "video",
-                "assetSource": "./videos/stock-footage-dna-strand.mp4"
+                "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4"
             },
             "idleTimeout": 120
         },
@@ -263,7 +263,7 @@
                 },
                 "type": "video",
                 "asset": {
-                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video"
                 }
             },
@@ -276,7 +276,7 @@
                 },
                 "type": "video",
                 "asset": {
-                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video"
                 }
             },
@@ -289,7 +289,7 @@
                 },
                 "type": "video",
                 "asset": {
-                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video"
                 }
             },
@@ -302,7 +302,7 @@
                 },
                 "type": "video",
                 "asset": {
-                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video"
                 }
             },
@@ -315,7 +315,7 @@
                 },
                 "type": "video",
                 "asset": {
-                    "assetSource": "./videos/stock-footage-dna-strand.mp4",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video"
                 }
             }

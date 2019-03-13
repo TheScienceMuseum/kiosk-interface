@@ -84,7 +84,7 @@ class Article extends React.Component {
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
-            return <Video {...articleContent} />;
+            return <Video {...articleContent} handleCloseButton={this.handleHomeButton} />;
         default:
             return null;
         }
@@ -198,17 +198,19 @@ class Article extends React.Component {
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
-                    <NavBar
-                        showNav={(subpagesCount > 1)}
-                        onHomeClick={this.handleHomeButton}
-                        onPrev={this.prevPage}
-                        onNext={this.nextPage}
-                        orientation={Orientations.VERTICAL}
-                        currentPage={currentPage}
-                        totalPages={subpagesCount}
-                        hidden={navHidden}
-                        hideHome={singleArticleMode}
-                    />
+                    {this.articleContent.type != ArticleTypes.VIDEO && (
+                        <NavBar
+                            showNav={(subpagesCount > 1)}
+                            onHomeClick={this.handleHomeButton}
+                            onPrev={this.prevPage}
+                            onNext={this.nextPage}
+                            orientation={Orientations.VERTICAL}
+                            currentPage={currentPage}
+                            totalPages={subpagesCount}
+                            hidden={navHidden}
+                            hideHome={singleArticleMode}
+                        />
+                    )}
                 </article>
             </Hammer>
 
