@@ -27,6 +27,12 @@ class MenuPips extends React.Component {
         this.goToActive = this.goToActive.bind(this);
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.goToActive();
+        }, 100);
+    }
+
     componentWillUpdate(nextProps) {
         const { currentFocused } = this.props;
         if (nextProps.currentFocused !== currentFocused) {
