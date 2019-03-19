@@ -16,7 +16,6 @@ import propTypes from '../../propTypes';
 
 
 class Video extends React.Component {
-
     constructor(props) {
         super(props);
         this.asset = props.asset;
