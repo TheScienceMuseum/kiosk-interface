@@ -84,7 +84,7 @@ class Article extends React.Component {
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
-            return <Video {...articleContent} />;
+            return <Video {...articleContent} handleCloseButton={this.handleHomeButton} />;
         default:
             return null;
         }
@@ -174,18 +174,23 @@ class Article extends React.Component {
     }
 
     handleHomeButton() {
-        const { loadArticle } = this.props;
+        const { loadArticle, resetInactiveTimer } = this.props;
+        resetInactiveTimer();
         loadArticle('menu');
     }
 
     render() {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
-
-        const { currentPage, navHidden } = this.state;
+        let { navHidden } = this.state;
+        const { currentPage } = this.state;
         const { singleArticleMode } = this.props;
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
+
+        if (this.articleContent.type === ArticleTypes.VIDEO) {
+            navHidden = true;
+        }
 
         const articleClass = (navHidden) ? 'Article--fullScreen' : '';
 
@@ -198,17 +203,19 @@ class Article extends React.Component {
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         { this.article }
                     </div>
-                    <NavBar
-                        showNav={(subpagesCount > 1)}
-                        onHomeClick={this.handleHomeButton}
-                        onPrev={this.prevPage}
-                        onNext={this.nextPage}
-                        orientation={Orientations.VERTICAL}
-                        currentPage={currentPage}
-                        totalPages={subpagesCount}
-                        hidden={navHidden}
-                        hideHome={singleArticleMode}
-                    />
+                    {this.articleContent.type !== ArticleTypes.VIDEO && (
+                        <NavBar
+                            showNav={(subpagesCount > 1)}
+                            onHomeClick={this.handleHomeButton}
+                            onPrev={this.prevPage}
+                            onNext={this.nextPage}
+                            orientation={Orientations.VERTICAL}
+                            currentPage={currentPage}
+                            totalPages={subpagesCount}
+                            hidden={navHidden}
+                            hideHome={singleArticleMode}
+                        />
+                    )}
                 </article>
             </Hammer>
 
@@ -220,7 +227,7 @@ Article.propTypes = {
     articleID: PropTypes.string.isRequired,
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     loadArticle: PropTypes.func.isRequired,
-    // resetInactiveTimer: PropTypes.func.isRequired,
+    resetInactiveTimer: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
 };
