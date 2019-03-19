@@ -26,7 +26,7 @@ class Attractor extends React.Component {
         }
         return (
             <div className="Attractor__video Image--withGrad">
-                <video autoPlay loop controls={false}>
+                <video autoPlay loop controls={false} muted>
                     <source src={attractor.assetSource} type="video/mp4" />
                     <track kind="captions" />
                 </video>
