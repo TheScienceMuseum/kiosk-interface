@@ -34,7 +34,11 @@ class Video extends React.Component {
                         <button type="button" className="kioskPlayerControl end bsl">
                             Enable/Disable BSL
                         </button>
-                        <button type="button" className="kioskPlayerControl end close" onClick={this.handleCloseButton}>
+                        <button
+                            type="button"
+                            className="kioskPlayerControl end close"
+                            onClick={this.handleCloseButton}
+                        >
                             Close
                         </button>
                     </ControlBar>
