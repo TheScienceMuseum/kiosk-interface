@@ -77,14 +77,14 @@ class Article extends React.Component {
     makeArticle(articleContent) {
         // let pagesOutput;
 
-        const { pauseTimer } = this.props;
+        const { pauseTimer, resetInactiveTimer } = this.props;
 
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
-            return <Video {...articleContent} handleCloseButton={this.handleHomeButton} />;
+            return <Video {...articleContent} handleCloseButton={this.handleHomeButton} pauseTimer={pauseTimer} resetInactiveTimer={resetInactiveTimer} />;
         default:
             return null;
         }

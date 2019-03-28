@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Video.scss';
 import { Player, ControlBar } from 'video-react';
@@ -20,6 +20,33 @@ class Video extends React.Component {
         super(props);
         this.asset = props.asset;
         this.handleCloseButton = props.handleCloseButton;
+        this.onPause = this.onPause.bind(this);
+        this.onPlay = this.onPlay.bind(this);
+        this.handlePlayerState = this.handlePlayerState.bind(this);
+    }
+
+    componentDidMount() {
+        this.player.subscribeToStateChange(this.handlePlayerState);
+    }
+
+    onPause() {
+        const { resetInactiveTimer } = this.props;
+        resetInactiveTimer();
+    }
+
+    onPlay() {
+        const { pauseTimer } = this.props;
+        pauseTimer();
+    }
+
+    handlePlayerState(state, prevState) {
+        if (prevState.paused !== state.paused) {
+            if (!state.paused) {
+                this.onPlay();
+                return;
+            }
+            this.onPause();
+        }
     }
 
     render() {
@@ -51,6 +78,8 @@ class Video extends React.Component {
 Video.propTypes = {
     asset: propTypes.asset.isRequired,
     handleCloseButton: propTypes.isRequired,
+    pauseTimer: PropTypes.func.isRequired,
+    resetInactiveTimer: PropTypes.func.isRequired,
 };
 
 export default Video;
