@@ -28,6 +28,13 @@
             order:10;
         }
 
+        &.play {
+            background-image: url("../../../images/Buttons/Play/Default.png");
+            &.playing {
+                background-image: url("../../../images/Buttons/Pause/Default.png");
+            }
+        }
+
         &.subtitles {
             background-image: url("../../../images/Buttons/Subtitles/Default.png");
         }
