@@ -71,7 +71,8 @@
                     "enum": ["video", "mixed"]
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 72
                 },
                 "titleImage": {
                     "anyOf": [
@@ -225,7 +226,8 @@
                     "type": "string"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 72
                 },
                 "image": {
                     "oneOf": [{
