@@ -12,6 +12,8 @@ const asset = PropTypes.shape({
     }),
     nameText: PropTypes.string,
     sourceText: PropTypes.string,
+    bslSource: PropTypes.string,
+    subtitlesSource: PropTypes.string,
 });
 
 export default { asset };

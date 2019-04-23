@@ -74,7 +74,14 @@
                     "type": "string"
                 },
                 "titleImage": {
-                    "$ref": "#/definitions/AssetClass"
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 },
                 "subpages": {
                     "type": "array",
@@ -83,7 +90,14 @@
                     }
                 },
                 "asset": {
-                    "$ref": "#/definitions/AssetClass"
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -106,7 +120,14 @@
                     "enum": ["textImage", "title", "video", "image"]
                 },
                 "asset": {
-                    "$ref": "#/definitions/AssetClass"
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 },
                 "title": {
                     "type": "string",
@@ -132,7 +153,7 @@
             ],
             "title": "Subpage"
         },
-        "AssetClass": {
+        "ImageAssetClass": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -150,6 +171,39 @@
                     "type": "string"
                 },
                 "sourceText": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetType",
+                "assetSource"
+            ],
+            "title": "ImageClass"
+        },
+        "VideoAssetClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assetSource": {
+                    "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["video", "image"]
+                },
+                "boundingBox": {
+                    "$ref": "#/definitions/BoundingBox"
+                },
+                "nameText": {
+                    "type": "string"
+                },
+                "sourceText": {
+                    "type": "string"
+                },
+                "bslSource": {
+                    "type": "string"
+                },
+                "subtitlesSource": {
                     "type": "string"
                 }
             },
@@ -178,12 +232,22 @@
                             "type": "null"
                         },
                         {
-                            "$ref": "#/definitions/AssetClass",
+                            "$ref": "#/definitions/VideoAssetClass",
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass",
                         }
                     ]
                 },
                 "attractor": {
-                    "$ref": "#/definitions/AssetClass"
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 },
                 "idleTimeout": {
                     "type": "integer"
@@ -212,7 +276,10 @@
         },
         "ImageUnion": {
             "anyOf": [{
-                    "$ref": "#/definitions/AssetClass"
+                    "$ref": "#/definitions/VideoAssetClass"
+                },
+                {
+                    "$ref": "#/definitions/ImageAssetClass"
                 },
                 {
                     "type": "string"

@@ -28,11 +28,26 @@
             order:10;
         }
 
+        &.play {
+            background-image: url("../../../images/Buttons/Play/Default.png");
+            &.playing {
+                background-image: url("../../../images/Buttons/Pause/Default.png");
+            }
+        }
+
         &.subtitles {
             background-image: url("../../../images/Buttons/Subtitles/Default.png");
+            &.enabled {
+                background-color:#fff;
+                background-image: url("../../../images/Buttons/Subtitles/Selected.png");
+            }
         }
         &.bsl {
             background-image: url("../../../images/Buttons/BSL/Default.png");
+            &.enabled {
+                background-color:#fff;
+                background-image: url("../../../images/Buttons/BSL/Selected.png");
+            }
         }
         &.close {
             background-image: url("../../../images/Buttons/Close/Default.png");
