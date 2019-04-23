@@ -95,4 +95,13 @@
     .video-react-time-control {
         display:none;
     }
+
+    .video-react .video-react-progress-control:hover .video-react-mouse-display,
+    .video-react-play-progress .video-react-slider-bar,
+    .video-react .video-react-time-tooltip,
+    .video-react .video-react-mouse-display:after,
+    .video-react .video-react-play-progress:after {
+        display: none;
+    }
+
 }
