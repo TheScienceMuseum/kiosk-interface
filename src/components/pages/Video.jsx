@@ -43,7 +43,7 @@ class Video extends React.Component {
     }
 
     componentDidMount() {
-        this.player.subscribeToStateChange(this.handlePlayerState);
+        // this.player.subscribeToStateChange(this.handlePlayerState);
     }
 
     onPause() {
