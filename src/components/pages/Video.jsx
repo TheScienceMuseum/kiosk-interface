@@ -83,7 +83,7 @@ class Video extends React.Component {
         const { bslEnabled } = this.state;
 
         // get current play time
-        const playerState = this.player.getSate();
+        const playerState = this.player.getState();
 
         if (bslEnabled) {
             // disable
@@ -117,21 +117,37 @@ class Video extends React.Component {
 
     render() {
         const { showBSL, showSubtitles } = this.state;
+        console.log('this.asset: ', this.asset);
         return (
             <div className="Page PageVideo">
-                <Player ref={(node) => { this.player = node; }} autoPlay selectedTextTrack={this.getSubTrack()}>
+                <Player ref={(node) => { this.player = node; }} autoPlay selectedTextTrack={this.getSubTrack().value}>
                     <source src={this.asset.assetSource} type="video/mp4" />
+                    <track
+                        kind="subtitles"
+                        src="testing.vtt"
+                        srcLang="en"
+                        label="English"
+                        default
+                    />
                     <ControlBar autoHide={false} className="kioskControlBar">
                         {
                             showBSL && (
-                                <button type="button" className={`kioskPlayerControl end subtitles ${this.getBslClass()}`} onClick={this.handleBSL}>
+                                <button
+                                    type="button"
+                                    className={`kioskPlayerControl end subtitles ${this.getBslClass()}`}
+                                    onClick={this.handleBSL}
+                                >
                                     Enable/Disable subtitles
                                 </button>
                             )
                         }
                         {
                             showSubtitles && (
-                                <button type="button" className={`kioskPlayerControl end bsl ${this.getSubClass()}`} onClick={this.handleSubtitles}>
+                                <button
+                                    type="button"
+                                    className={`kioskPlayerControl end bsl ${this.getSubClass()}`}
+                                    onClick={this.handleSubtitles}
+                                >
                                     Enable/Disable BSL
                                 </button>
                             )

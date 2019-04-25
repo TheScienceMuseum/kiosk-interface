@@ -14,7 +14,8 @@
             "title": "Genetic Diagnosis",
             "attractor": {
                 "assetType": "video",
-                "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4"
+                "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                "subtitlesSource": "testing.vtt"
             },
             "idleTimeout": 120
         },
@@ -264,7 +265,8 @@
                 "type": "video",
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video"
+                    "assetType": "video",
+                    "subtitlesSource": "testing.vtt"
                 }
             },
             {
@@ -277,7 +279,8 @@
                 "type": "video",
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video"
+                    "assetType": "video",
+                    "subtitlesSource": "testing.vtt"
                 }
             },
             {
@@ -290,7 +293,8 @@
                 "type": "video",
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video"
+                    "assetType": "video",
+                    "subtitlesSource": "testing.vtt"
                 }
             },
             {
@@ -303,7 +307,8 @@
                 "type": "video",
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video"
+                    "assetType": "video",
+                    "subtitlesSource": "testing.vtt"
                 }
             },
             {
@@ -316,7 +321,8 @@
                 "type": "video",
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video"
+                    "assetType": "video",
+                    "subtitlesSource": "testing.vtt"
                 }
             }
 
