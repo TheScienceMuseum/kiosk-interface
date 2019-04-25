@@ -102,6 +102,31 @@ class Video extends React.Component {
     handleSubtitles() {
         const { subtitlesEnabled } = this.state;
 
+        // Get all text tracks for the current player.
+        // const tracks = this.player.textTracks();
+        //
+        // for (let i = 0; i < tracks.length; i += 1) {
+        //     const track = tracks[i];
+        //
+        //     // Find the English captions track and mark it as "showing".
+        //     if (track.kind === 'subtitles' && track.language === 'en') {
+        //         track.mode = 'showing';
+        //     }
+        // }
+
+        console.log('this.player: ', this.player);
+
+        console.log('subtitles: ');
+        if (this.player.video.video.textTracks[0].mode === 'disabled') {
+            console.log('now showing');
+            this.player.video.video.textTracks[0].mode = 'showing';
+        } else {
+            console.log('now disbled');
+            this.player.video.video.textTracks[0].mode = 'disabled';
+        }
+
+        console.log(this.player.video.video.textTracks);
+
         this.setState({ subtitlesEnabled: !subtitlesEnabled });
     }
 
@@ -117,13 +142,18 @@ class Video extends React.Component {
 
     render() {
         const { showBSL, showSubtitles } = this.state;
-        console.log('this.asset: ', this.asset);
+        // console.log('this.asset: ', this.asset);
         return (
             <div className="Page PageVideo">
-                <Player ref={(node) => { this.player = node; }} autoPlay selectedTextTrack={this.getSubTrack().value}>
+                <Player
+                    ref={(node) => { this.player = node; }}
+                    autoPlay
+                    // crossOrigin="anonymous"
+                    selectedTextTrack={this.getSubTrack().value}
+                >
                     <source src={this.asset.assetSource} type="video/mp4" />
                     <track
-                        kind="subtitles"
+                        kind="captions"
                         src="testing.vtt"
                         srcLang="en"
                         label="English"
