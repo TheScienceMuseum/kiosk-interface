@@ -87,46 +87,28 @@ class Video extends React.Component {
 
         if (bslEnabled) {
             // disable
+            this.player.video.video.src = this.asset.assetSource;
             this.player.load(this.asset.assetSource);
-            this.player.seek(playerState.currentTime);
+            this.player.seek(playerState.player.currentTime);
             this.setState({ bslEnabled: false });
             return;
         }
 
         // enable & change source
+        this.player.video.video.src = this.asset.bslSource;
         this.player.load(this.asset.bslSource);
-        this.player.seek(playerState.currentTime);
+        this.player.seek(playerState.player.currentTime);
         this.setState({ bslEnabled: true });
     }
 
     handleSubtitles() {
         const { subtitlesEnabled } = this.state;
 
-        // Get all text tracks for the current player.
-        // const tracks = this.player.textTracks();
-        //
-        // for (let i = 0; i < tracks.length; i += 1) {
-        //     const track = tracks[i];
-        //
-        //     // Find the English captions track and mark it as "showing".
-        //     if (track.kind === 'subtitles' && track.language === 'en') {
-        //         track.mode = 'showing';
-        //     }
-        // }
-
-        console.log('this.player: ', this.player);
-
-        console.log('subtitles: ');
         if (this.player.video.video.textTracks[0].mode === 'disabled') {
-            console.log('now showing');
             this.player.video.video.textTracks[0].mode = 'showing';
         } else {
-            console.log('now disbled');
             this.player.video.video.textTracks[0].mode = 'disabled';
         }
-
-        console.log(this.player.video.video.textTracks);
-
         this.setState({ subtitlesEnabled: !subtitlesEnabled });
     }
 
@@ -164,10 +146,12 @@ class Video extends React.Component {
                             showBSL && (
                                 <button
                                     type="button"
-                                    className={`kioskPlayerControl end subtitles ${this.getBslClass()}`}
+                                    className={`
+                                        kioskPlayerControl end bsl ${this.getBslClass()}
+                                    `}
                                     onClick={this.handleBSL}
                                 >
-                                    Enable/Disable subtitles
+                                    Enable/Disable BSL
                                 </button>
                             )
                         }
@@ -175,10 +159,12 @@ class Video extends React.Component {
                             showSubtitles && (
                                 <button
                                     type="button"
-                                    className={`kioskPlayerControl end bsl ${this.getSubClass()}`}
+                                    className={`
+                                        kioskPlayerControl end subtitles ${this.getSubClass()}
+                                    `}
                                     onClick={this.handleSubtitles}
                                 >
-                                    Enable/Disable BSL
+                                    Enable/Disable subtitles
                                 </button>
                             )
                         }

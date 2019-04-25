@@ -266,7 +266,8 @@
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
+                    "subtitlesSource": "testing.vtt",
+                    "bslSource": "media/video-historical-castle.mp4"
                 }
             },
             {
@@ -280,7 +281,8 @@
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
+                    "subtitlesSource": "testing.vtt",
+                    "bslSource": "media/video-historical-castle.mp4"
                 }
             },
             {
@@ -294,7 +296,8 @@
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
+                    "subtitlesSource": "testing.vtt",
+                    "bslSource": "media/video-historical-castle.mp4"
                 }
             },
             {
@@ -308,7 +311,8 @@
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
+                    "subtitlesSource": "testing.vtt",
+                    "bslSource": "media/video-historical-castle.mp4"
                 }
             },
             {
@@ -322,7 +326,8 @@
                 "asset": {
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
+                    "subtitlesSource": "testing.vtt",
+                    "bslSource": "media/video-historical-castle.mp4"
                 }
             }
 
