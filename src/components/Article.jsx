@@ -84,7 +84,14 @@ class Article extends React.Component {
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
-            return <Video {...articleContent} handleCloseButton={this.handleHomeButton} pauseTimer={pauseTimer} resetInactiveTimer={resetInactiveTimer} />;
+            return (
+                <Video
+                    {...articleContent}
+                    handleCloseButton={this.handleHomeButton}
+                    pauseTimer={pauseTimer}
+                    resetInactiveTimer={resetInactiveTimer}
+                />
+            );
         default:
             return null;
         }
