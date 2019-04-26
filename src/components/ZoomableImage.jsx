@@ -190,21 +190,10 @@ class ZoomableImage extends React.Component {
             y: (this.image.naturalHeight * this.asset.boundingBox.y),
         };
 
-        const scale = 1;
-
-        // console.log('pixels: ', pixels);
-        // console.log('this.image.naturalWidth | this.asset.boundingBox.width = pixels.width: ', this.image.naturalWidth, '|', this.asset.boundingBox.width, '| pixels.width = ', (this.image.naturalWidth * this.asset.boundingBox.width));
-        // console.log('this.image.naturalHeight | this.asset.boundingBox.height = pixels.height: ', this.image.naturalHeight, '|', this.asset.boundingBox.height, '| pixels.height = ', (this.image.naturalHeight * this.asset.boundingBox.height));
-        // console.log('this.asset.boundingBox.x: ', this.asset.boundingBox.x);
-        // console.log('this.asset.boundingBox.y: ', this.asset.boundingBox.y);
-        // console.log('this.container: ', this.container);
-        // console.log('this.container.offsetWidth: ', this.container.offsetWidth);
+        const scale = 1; // Not actually used at the minute...
 
         const difference = this.container.offsetWidth - pixels.width;
         const percentage = difference / pixels.width;
-
-        // console.log('this.imageContainer: ', this.imageContainer);
-
         this.imageContainer.style.width = `${pixels.width}px`;
         this.imageContainer.style.height = `${pixels.height}px`;
         this.imageContainer.style.transformOrigin = 'top left';
@@ -535,8 +524,6 @@ class ZoomableImage extends React.Component {
             height: this.curHeight,
             x: this.x,
             y: this.y,
-            left,
-            top,
         }, this.calculateImageStyle);
     }
 
