@@ -18,13 +18,13 @@
     */
 
     img {
-        //transition: all $transitionTime-showContent ease;
         //transform-origin: top left;
         //position: absolute;
         //top: 50%;
         //transform: translateY(-50%);
         //left: 50%;
-
+        //transition: margin-right $transitionTime-showContent ease, margin-left $transitionTime-showContent ease;
+        transition: all 0.5s ease;
     }
 
     & .Button {
@@ -103,6 +103,13 @@
 
     &--zoomedIn &__Debug {
         //display: block;
+    }
+
+    .innerContainer {
+        width:100%;
+        height:100%;
+        position:relative;
+        overflow:hidden;
     }
 
 }

@@ -45,10 +45,10 @@
                             "assetSource": "./media/02.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.2,
+                                "y": 0.2,
+                                "width": 0.26,
+                                "height": 0.55
                             },
                             "nameText": "James Watson (b. 1928) pictured in 2018.",
                             "sourceText": "Science Museum Group."
@@ -87,10 +87,10 @@
                             "assetSource": "./media/03.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "",
                             "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
@@ -106,10 +106,10 @@
                             "assetSource": "./media/04.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Sir Mike Stratton",
                             "sourceText": "Science Museum Group"
@@ -129,10 +129,10 @@
                             "assetSource": "./media/05.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Understanding the presence of disease across a family is essential to create genetic family tree-known as a pedigree ",
                             "sourceText": "GARO / PHANIE / SCIENCE PHOTO LIBRARY"
@@ -152,10 +152,10 @@
                             "assetSource": "./media/05a.png",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Ideogram of human chromosome. Chromosome 13 highlighted where the alterations can be found for BRCA2.",
                             "sourceText": "National Center for Biotechnology Information, U.S. National Library of Medicine"
@@ -174,10 +174,10 @@
                             "assetSource": "./media/06.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Concern about gene patenting",
                             "sourceText": "Getty Images"
@@ -196,10 +196,10 @@
                             "assetSource": "./media/07.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
                             "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
@@ -217,10 +217,10 @@
                             "assetSource": "./media/08.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Patient blood test taken for genetic screening.",
                             "sourceText": "BURGER / PHANIE / SCIENCE PHOTO LIBRARY"
@@ -239,10 +239,10 @@
                             "assetSource": "./media/09.jpg",
                             "assetType": "image",
                             "boundingBox": {
-                                "x": 0.25,
-                                "y": 0.25,
-                                "width": 0.5,
-                                "height": 0.5
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
                             },
                             "nameText": "Colour-enhanced image of a breast cancer cell.",
                             "sourceText": "Anne Weston, Francis Crick Institute"

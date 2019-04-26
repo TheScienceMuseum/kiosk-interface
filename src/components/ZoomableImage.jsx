@@ -17,6 +17,7 @@ import ZoomControls from './ZoomControls';
 class ZoomableImage extends React.Component {
     constructor(props) {
         super(props);
+        const { image } = props;
         this.state = {
             width: null,
             height: null,
@@ -24,12 +25,18 @@ class ZoomableImage extends React.Component {
             y: null,
             zoomable: false,
             fullscreen: false,
+            imgStyle: {
+                width: '100%',
+            },
+            imgSrc: image,
         };
+        this.asset = props.asset;
 
         // console.log('ZoomableImage: constructor');
 
         // this.MIN_SCALE = 1; // 1=scaling when first loaded
         this.imageMaxScale = 1;
+        this.imageCalculated = false;
 
         this.imageOrientation = null;
 
@@ -41,7 +48,6 @@ class ZoomableImage extends React.Component {
         this.scale = null;
         this.lastScale = null;
         this.container = null;
-        // this.img = null;
         this.x = 0;
         this.y = 0;
         this.lastX = 0;
@@ -62,6 +68,12 @@ class ZoomableImage extends React.Component {
         this.handleZoomChange = this.handleZoomChange.bind(this);
 
         this.handleToggleFullScreen = this.handleToggleFullScreen.bind(this);
+
+        this.getImageStyle = this.getImageStyle.bind(this);
+        this.calculateImageStyle = this.calculateImageStyle.bind(this);
+
+        this.thumbSrc = image;
+        this.fullSrc = image;
     }
 
     componentDidMount() {
@@ -81,6 +93,8 @@ class ZoomableImage extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // const { offsetWidth, offsetHeight } = this.container;
         const { fullscreen } = this.state;
+
+        // console.log(this.initialHeight, this.initialScale, this.initialWidth);
 
         if (fullscreen !== prevState.fullscreen) {
             // console.log('ZoomableImage: componentDidUpdate: change in fullscreen');
@@ -112,6 +126,118 @@ class ZoomableImage extends React.Component {
         return imageScale;
     }
 
+    getImageStyle() {
+        const { fullscreen } = this.state;
+        if (!fullscreen) {
+            const { imgStyle } = this.state;
+            return imgStyle;
+        }
+
+        const {
+            width,
+            height,
+            x,
+            y,
+        } = this.state;
+
+        return {
+            width: `${width}px`,
+            height: `${height}px`,
+            x: `${x}px`,
+            y: `${y}px`,
+            position: 'absolute',
+        };
+    }
+
+    static getImagePortion(imgObj, newWidth, newHeight, startX, startY, ratio) {
+        const tnCanvas = document.createElement('canvas');
+        const tnCanvasContext = tnCanvas.getContext('2d');
+        tnCanvas.width = newWidth; tnCanvas.height = newHeight;
+        const bufferCanvas = document.createElement('canvas');
+        const bufferContext = bufferCanvas.getContext('2d');
+        bufferCanvas.width = imgObj.width;
+        bufferCanvas.height = imgObj.height;
+        bufferContext.drawImage(imgObj, 0, 0);
+        tnCanvasContext.drawImage(
+            bufferCanvas,
+            startX,
+            startY,
+            newWidth * ratio,
+            newHeight * ratio,
+            0,
+            0,
+            newWidth,
+            newHeight,
+        );
+        return tnCanvas.toDataURL();
+    }
+
+    calculateImageStyle() {
+        if (this.imageCalculated) {
+            return;
+        }
+
+        if (
+            typeof this.asset === 'undefined'
+            || typeof this.asset.boundingBox === 'undefined'
+        ) {
+            return;
+        }
+        const pixels = {
+            width: (this.image.naturalWidth * this.asset.boundingBox.width),
+            height: (this.image.naturalHeight * this.asset.boundingBox.height),
+            x: (this.image.naturalWidth * this.asset.boundingBox.x),
+            y: (this.image.naturalHeight * this.asset.boundingBox.y),
+        };
+
+        const scale = 1;
+
+        // console.log('pixels: ', pixels);
+        // console.log('this.image.naturalWidth | this.asset.boundingBox.width = pixels.width: ', this.image.naturalWidth, '|', this.asset.boundingBox.width, '| pixels.width = ', (this.image.naturalWidth * this.asset.boundingBox.width));
+        // console.log('this.image.naturalHeight | this.asset.boundingBox.height = pixels.height: ', this.image.naturalHeight, '|', this.asset.boundingBox.height, '| pixels.height = ', (this.image.naturalHeight * this.asset.boundingBox.height));
+        // console.log('this.asset.boundingBox.x: ', this.asset.boundingBox.x);
+        // console.log('this.asset.boundingBox.y: ', this.asset.boundingBox.y);
+        // console.log('this.container: ', this.container);
+        // console.log('this.container.offsetWidth: ', this.container.offsetWidth);
+
+        const difference = this.container.offsetWidth - pixels.width;
+        const percentage = difference / pixels.width;
+
+        // console.log('this.imageContainer: ', this.imageContainer);
+
+        this.imageContainer.style.width = `${pixels.width}px`;
+        this.imageContainer.style.height = `${pixels.height}px`;
+        this.imageContainer.style.transformOrigin = 'top left';
+        this.imageContainer.style.transform = `scale(${percentage + 1})`;
+
+        const style = {
+            marginLeft: `-${(pixels.x)}px`,
+            marginTop: `-${(pixels.y)}px`,
+            transform: `scale(${scale})`,
+            transformOrigin: 'top left',
+        };
+
+        this.setState({ imgStyle: style });
+
+        // if (
+        //     typeof this.asset !== 'undefined'
+        //     && typeof this.asset.boundingBox !== 'undefined'
+        // ) {
+        //     const newImg = this.constructor.getImagePortion(
+        //         this.image,
+        //         (this.image.offsetWidth * this.asset.boundingBox.width),
+        //         (this.image.offsetHeight * this.asset.boundingBox.height),
+        //         (this.image.offsetWidth * this.asset.boundingBox.x),
+        //         (this.image.offsetHeight * this.asset.boundingBox.y),
+        //         1,
+        //     );
+        //     this.thumbSrc = newImg;
+        //     this.imgSrc = newImg;
+        //     this.setState({ imgSrc: this.imgSrc });
+        // }
+        this.imageCalculated = true;
+    }
+
     debugValues() {
         const {
             width, height, x, y, fullscreen,
@@ -136,19 +262,6 @@ class ZoomableImage extends React.Component {
         imageOrientation:   ${this.imageOrientation}
         `;
     }
-
-    /*
-    absolutePosition(el) {
-        const x = 0;
-        const y = 0;
-        while (el !== null) {
-            x += el.offsetLeft;
-            y += el.offsetTop;
-            el = el.offsetParent;
-        }
-        return { x, y };
-    }
-    */
 
     restrictScale(scale) {
         let newScale = scale;
@@ -270,14 +383,9 @@ class ZoomableImage extends React.Component {
         const rawCenterX = -this.x + Math.min(this.viewportWidth, this.curWidth) / 2 / this.scale;
         const rawCenterY = -this.y + Math.min(this.viewportHeight, this.curHeight) / 2 / this.scale;
 
-        console.log('ZoomableImage: zoomAround: rawZoomX, rawZoomY: ', rawZoomX, rawZoomY);
-        console.log('ZoomableImage: zoomAround: rawCenterX, rawCenterY: ', rawCenterX, rawCenterY);
-
         // Delta
         const deltaX = (rawCenterX - rawZoomX) * this.scale;
         const deltaY = (rawCenterY - rawZoomY) * this.scale;
-
-        console.log('ZoomableImage: zoomAround: deltaX, deltaY: ', deltaX, deltaY);
 
         // Translate back to zoom center
         // console.log('ZoomableImage: zoomAround:');
@@ -302,8 +410,6 @@ class ZoomableImage extends React.Component {
         // const zoomY = (-this.y + Math.min(this.viewportHeight, this.curHeight)) / 2 / this.scale;
         const zoomX = (-this.x + this.curWidth / this.scale) / 2;
         const zoomY = (-this.y + this.curHeight / this.scale) / 2;
-
-        console.log('ZoomableImage: zoomCenter: zoomX, zoomY: ', zoomX, zoomY);
 
         this.zoomAround(scaleBy, zoomX, zoomY);
     }
@@ -337,8 +443,8 @@ class ZoomableImage extends React.Component {
     }
 
     calculateImageRatios() {
-        const { offsetWidth, offsetHeight } = this.image;
-        const imageRatio = offsetWidth / offsetHeight;
+        const { naturalWidth, naturalHeight } = this.image;
+        const imageRatio = naturalWidth / naturalHeight;
         const screenRatio = this.viewportWidth / this.viewportHeight;
 
         if (imageRatio > screenRatio) {
@@ -358,12 +464,12 @@ class ZoomableImage extends React.Component {
     }
 
     handleImageLoad() {
-        const { offsetWidth, offsetHeight } = this.image;
+        const { naturalWidth, naturalHeight } = this.image;
 
         // console.log('ZoomableImage: handleImageLoad');
 
-        this.imgWidth = offsetWidth;
-        this.imgHeight = offsetHeight;
+        this.imgWidth = naturalWidth;
+        this.imgHeight = naturalHeight;
         // this.viewportWidth = 1920;
         // this.viewportHeight = 1080;
 
@@ -389,10 +495,14 @@ class ZoomableImage extends React.Component {
         this.calculateImageRatios();
         /* finish calculating */
 
+        this.initialScale = 1;
+
         this.scale = this.initialScale;
         this.lastScale = this.initialScale;
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
+
+        console.log('Logging curHeight, curWidth, imgWidth, imgHeight: ', this.curHeight, this.curWidth, this.imgWidth, this.imgHeight);
 
         this.x = Math.ceil((this.viewportWidth / 2) - (this.curWidth / 2));
         this.y = Math.ceil((this.viewportHeight / 2) - (this.curHeight / 2));
@@ -409,12 +519,25 @@ class ZoomableImage extends React.Component {
 
         // this.zoomCenter(this.initialScale);
 
+        let left = 0;
+        let top = 0;
+
+        if (
+            typeof this.asset !== 'undefined'
+            && typeof this.asset.boundingBox !== 'undefined'
+        ) {
+            left = (this.image.offsetWidth * this.asset.boundingBox.x);
+            top = (this.image.offsetHeight * this.asset.boundingBox.y);
+        }
+
         this.setState({
             width: this.curWidth,
             height: this.curHeight,
             x: this.x,
             y: this.y,
-        }, this.debugValues);
+            left,
+            top,
+        }, this.calculateImageStyle);
     }
 
 
@@ -476,11 +599,19 @@ class ZoomableImage extends React.Component {
         }
     }
 
+    switchImgSrc(fullscreen) {
+        this.imgSrc = (fullscreen ? this.fullSrc : this.thumbSrc);
+        this.setState({ imgSrc: this.imgSrc });
+    }
+
     handleToggleFullScreen() {
         let { fullscreen } = this.state;
         const { onZoom } = this.props;
 
         fullscreen = !fullscreen;
+
+        this.switchImgSrc(fullscreen);
+
         onZoom(fullscreen);
 
         // this.translate(0, 0);
@@ -489,56 +620,49 @@ class ZoomableImage extends React.Component {
 
     render() {
         const {
-            width,
-            height,
-            x,
-            y,
             zoomable,
             fullscreen,
+            imgSrc,
         } = this.state;
 
-        const { image } = this.props;
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
         const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-close';
 
-        const style = {
-            // transform: `scale(${imageScale})`,
-            // transform: `scale(${imageScale})`,
-            width: `${width}px`,
-            height: `${height}px`,
-            marginLeft: `${x}px`,
-            marginTop: `${y}px`,
-        };
 
         return (
             <div
                 className={`ZoomableImage ZoomableImage--${zoomed}`}
                 ref={(ref) => { this.container = ref; }}
             >
-                <Hammer
-                    onPinch={this.handlePinch}
-                    onPinchEnd={this.handlePinchEnd}
-                    onPan={this.handlePan}
-                    onPanEnd={this.handlePanEnd}
-                    onDoubleTap={this.handleDoubleTap}
-                    options={{
-                        recognizers: {
-                            pinch: { enable: true },
-                        },
-                    }}
+                <div
+                    className="imageContainer"
+                    ref={(ref) => { this.imageContainer = ref; }}
+                    style={{ height: '100%' }}
                 >
-                    <div>
-                        <img
-                            src={image}
-                            alt=""
-                            ref={(ref) => { this.image = ref; }}
-                            onLoad={this.handleImageLoad}
-                            style={style}
-                        />
-                    </div>
-
-                </Hammer>
+                    <Hammer
+                        onPinch={this.handlePinch}
+                        onPinchEnd={this.handlePinchEnd}
+                        onPan={this.handlePan}
+                        onPanEnd={this.handlePanEnd}
+                        onDoubleTap={this.handleDoubleTap}
+                        options={{
+                            recognizers: {
+                                pinch: { enable: true },
+                            },
+                        }}
+                    >
+                        <div className="innerContainer">
+                            <img
+                                src={imgSrc}
+                                alt=""
+                                ref={(ref) => { this.image = ref; }}
+                                onLoad={this.handleImageLoad}
+                                style={this.getImageStyle()}
+                            />
+                        </div>
+                    </Hammer>
+                </div>
 
                 <button
                     className="Button Button--icon ZoomableImage__ZoomButton"
@@ -574,6 +698,7 @@ class ZoomableImage extends React.Component {
 ZoomableImage.propTypes = {
     image: PropTypes.string.isRequired,
     onZoom: PropTypes.func.isRequired,
+    asset: PropTypes.isRequired,
 };
 
 export default ZoomableImage;

@@ -56,7 +56,7 @@ class TextImage extends React.Component {
         return (
             <div className={mainClass}>
                 <div className="ImageContainer">
-                    <ZoomableImage image={asset.assetSource} onZoom={this.handleHideContent} />
+                    <ZoomableImage image={asset.assetSource} asset={asset} onZoom={this.handleHideContent} />
                 </div>
                 <div className="ContentContainer">
                     <h2>{title}</h2>
