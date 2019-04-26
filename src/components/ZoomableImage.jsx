@@ -94,7 +94,7 @@ class ZoomableImage extends React.Component {
         // const { offsetWidth, offsetHeight } = this.container;
         const { fullscreen } = this.state;
 
-        console.log(this.initialHeight, this.initialScale, this.initialWidth);
+        // console.log(this.initialHeight, this.initialScale, this.initialWidth);
 
         if (fullscreen !== prevState.fullscreen) {
             // console.log('ZoomableImage: componentDidUpdate: change in fullscreen');
@@ -190,17 +190,29 @@ class ZoomableImage extends React.Component {
             y: (this.image.naturalHeight * this.asset.boundingBox.y),
         };
 
-        let scale = 1;
+        const scale = 1;
 
-        if (this.container.offsetWidth < pixels.width) {
-            scale = 1 - (1 - (this.container.offsetWidth / pixels.width));
-        } else if (this.container.offsetWidth > pixels.width) {
-            scale = 1 + (1 - (pixels.width / this.container.offsetWidth));
-        }
+        // console.log('pixels: ', pixels);
+        // console.log('this.image.naturalWidth | this.asset.boundingBox.width = pixels.width: ', this.image.naturalWidth, '|', this.asset.boundingBox.width, '| pixels.width = ', (this.image.naturalWidth * this.asset.boundingBox.width));
+        // console.log('this.image.naturalHeight | this.asset.boundingBox.height = pixels.height: ', this.image.naturalHeight, '|', this.asset.boundingBox.height, '| pixels.height = ', (this.image.naturalHeight * this.asset.boundingBox.height));
+        // console.log('this.asset.boundingBox.x: ', this.asset.boundingBox.x);
+        // console.log('this.asset.boundingBox.y: ', this.asset.boundingBox.y);
+        // console.log('this.container: ', this.container);
+        // console.log('this.container.offsetWidth: ', this.container.offsetWidth);
+
+        const difference = this.container.offsetWidth - pixels.width;
+        const percentage = difference / pixels.width;
+
+        // console.log('this.imageContainer: ', this.imageContainer);
+
+        this.imageContainer.style.width = `${pixels.width}px`;
+        this.imageContainer.style.height = `${pixels.height}px`;
+        this.imageContainer.style.transformOrigin = 'top left';
+        this.imageContainer.style.transform = `scale(${percentage + 1})`;
 
         const style = {
-            marginLeft: `-${(pixels.x * scale)}px`,
-            marginTop: `-${(pixels.y * scale)}px`,
+            marginLeft: `-${(pixels.x)}px`,
+            marginTop: `-${(pixels.y)}px`,
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
         };
@@ -490,7 +502,7 @@ class ZoomableImage extends React.Component {
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
 
-        console.log(this.curHeight, this.curWidth, this.imgWidth, this.imgHeight);
+        console.log('Logging curHeight, curWidth, imgWidth, imgHeight: ', this.curHeight, this.curWidth, this.imgWidth, this.imgHeight);
 
         this.x = Math.ceil((this.viewportWidth / 2) - (this.curWidth / 2));
         this.y = Math.ceil((this.viewportHeight / 2) - (this.curHeight / 2));
@@ -511,8 +523,8 @@ class ZoomableImage extends React.Component {
         let top = 0;
 
         if (
-            typeof this.asset != 'undefined' &&
-            typeof this.asset.boundingBox != 'undefined'
+            typeof this.asset !== 'undefined'
+            && typeof this.asset.boundingBox !== 'undefined'
         ) {
             left = (this.image.offsetWidth * this.asset.boundingBox.x);
             top = (this.image.offsetHeight * this.asset.boundingBox.y);
@@ -526,7 +538,6 @@ class ZoomableImage extends React.Component {
             left,
             top,
         }, this.calculateImageStyle);
-
     }
 
 
@@ -589,7 +600,6 @@ class ZoomableImage extends React.Component {
     }
 
     switchImgSrc(fullscreen) {
-
         this.imgSrc = (fullscreen ? this.fullSrc : this.thumbSrc);
         this.setState({ imgSrc: this.imgSrc });
     }
@@ -618,36 +628,41 @@ class ZoomableImage extends React.Component {
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
         const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-close';
-        
+
 
         return (
             <div
                 className={`ZoomableImage ZoomableImage--${zoomed}`}
                 ref={(ref) => { this.container = ref; }}
             >
-                <Hammer
-                    onPinch={this.handlePinch}
-                    onPinchEnd={this.handlePinchEnd}
-                    onPan={this.handlePan}
-                    onPanEnd={this.handlePanEnd}
-                    onDoubleTap={this.handleDoubleTap}
-                    options={{
-                        recognizers: {
-                            pinch: { enable: true },
-                        },
-                    }}
+                <div
+                    className="imageContainer"
+                    ref={(ref) => { this.imageContainer = ref; }}
+                    style={{ height: '100%' }}
                 >
-                    <div>
-                        <img
-                            src={imgSrc}
-                            alt=""
-                            ref={(ref) => { this.image = ref; }}
-                            onLoad={this.handleImageLoad}
-                            style={this.getImageStyle()}
-                        />
-                    </div>
-
-                </Hammer>
+                    <Hammer
+                        onPinch={this.handlePinch}
+                        onPinchEnd={this.handlePinchEnd}
+                        onPan={this.handlePan}
+                        onPanEnd={this.handlePanEnd}
+                        onDoubleTap={this.handleDoubleTap}
+                        options={{
+                            recognizers: {
+                                pinch: { enable: true },
+                            },
+                        }}
+                    >
+                        <div className="innerContainer">
+                            <img
+                                src={imgSrc}
+                                alt=""
+                                ref={(ref) => { this.image = ref; }}
+                                onLoad={this.handleImageLoad}
+                                style={this.getImageStyle()}
+                            />
+                        </div>
+                    </Hammer>
+                </div>
 
                 <button
                     className="Button Button--icon ZoomableImage__ZoomButton"
