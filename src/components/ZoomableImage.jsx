@@ -29,6 +29,9 @@ class ZoomableImage extends React.Component {
                 width: '100%',
             },
             imgSrc: image,
+            imgContainerStyle: {
+                height: '100%',
+            },
         };
         this.asset = props.asset;
 
@@ -130,6 +133,7 @@ class ZoomableImage extends React.Component {
         const { fullscreen } = this.state;
         if (!fullscreen) {
             const { imgStyle } = this.state;
+            console.log('imgStyle: ', imgStyle);
             return imgStyle;
         }
 
@@ -146,6 +150,29 @@ class ZoomableImage extends React.Component {
             x: `${x}px`,
             y: `${y}px`,
             position: 'absolute',
+        };
+    }
+
+    getImageContainerStyle() {
+        const { fullscreen } = this.state;
+        if (!fullscreen) {
+            const { imgContainerStyle } = this.state;
+            console.log('imgContainerStyle: ', imgContainerStyle);
+            return imgContainerStyle;
+        }
+
+        const {
+            width,
+            height,
+            transformOrigin,
+            transform,
+        } = this.state;
+
+        return {
+            width: `${width}px`,
+            height: `${height}px`,
+            transformOrigin: `${transformOrigin}`,
+            transform: `scale(${transform})`,
         };
     }
 
@@ -194,10 +221,12 @@ class ZoomableImage extends React.Component {
 
         const difference = this.container.offsetWidth - pixels.width;
         const percentage = difference / pixels.width;
-        this.imageContainer.style.width = `${pixels.width}px`;
-        this.imageContainer.style.height = `${pixels.height}px`;
-        this.imageContainer.style.transformOrigin = 'top left';
-        this.imageContainer.style.transform = `scale(${percentage + 1})`;
+        const imageContainerStyle = {
+            width: `${pixels.width}px`,
+            height: `${pixels.height}px`,
+            transformOrigin: 'top left',
+            transform: `scale(${percentage + 1})`,
+        };
 
         const style = {
             marginLeft: `-${(pixels.x)}px`,
@@ -206,7 +235,7 @@ class ZoomableImage extends React.Component {
             transformOrigin: 'top left',
         };
 
-        this.setState({ imgStyle: style });
+        this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
 
         // if (
         //     typeof this.asset !== 'undefined'
@@ -625,7 +654,7 @@ class ZoomableImage extends React.Component {
                 <div
                     className="imageContainer"
                     ref={(ref) => { this.imageContainer = ref; }}
-                    style={{ height: '100%' }}
+                    style={this.getImageContainerStyle()}
                 >
                     <Hammer
                         onPinch={this.handlePinch}
