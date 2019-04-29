@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
 
 import '../../styles/components/menuitems/MenuItems.scss';
@@ -15,7 +15,7 @@ import '../../styles/components/menuitems/MenuItems.scss';
 function LimitText(props) {
     const { text } = props;
     let aText = text;
-    
+
     if (text.length > 72) {
         aText = `${aText.substr(0, 71)}...`;
     }

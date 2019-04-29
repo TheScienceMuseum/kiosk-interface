@@ -491,8 +491,6 @@ class ZoomableImage extends React.Component {
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
 
-        console.log('Logging curHeight, curWidth, imgWidth, imgHeight: ', this.curHeight, this.curWidth, this.imgWidth, this.imgHeight);
-
         this.x = Math.ceil((this.viewportWidth / 2) - (this.curWidth / 2));
         this.y = Math.ceil((this.viewportHeight / 2) - (this.curHeight / 2));
 
@@ -508,15 +506,15 @@ class ZoomableImage extends React.Component {
 
         // this.zoomCenter(this.initialScale);
 
-        let left = 0;
-        let top = 0;
+        // let left = 0;
+        // let top = 0;
 
         if (
             typeof this.asset !== 'undefined'
             && typeof this.asset.boundingBox !== 'undefined'
         ) {
-            left = (this.image.offsetWidth * this.asset.boundingBox.x);
-            top = (this.image.offsetHeight * this.asset.boundingBox.y);
+            // left = (this.image.offsetWidth * this.asset.boundingBox.x);
+            // top = (this.image.offsetHeight * this.asset.boundingBox.y);
         }
 
         this.setState({
@@ -524,6 +522,8 @@ class ZoomableImage extends React.Component {
             height: this.curHeight,
             x: this.x,
             y: this.y,
+            // left,
+            // top,
         }, this.calculateImageStyle);
     }
 
