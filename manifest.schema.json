@@ -163,7 +163,7 @@
                 },
                 "assetType": {
                     "type": "string",
-                    "enum": ["video", "image"]
+                    "enum": ["image"]
                 },
                 "boundingBox": {
                     "$ref": "#/definitions/BoundingBox"
@@ -190,10 +190,7 @@
                 },
                 "assetType": {
                     "type": "string",
-                    "enum": ["video", "image"]
-                },
-                "boundingBox": {
-                    "$ref": "#/definitions/BoundingBox"
+                    "enum": ["video"]
                 },
                 "nameText": {
                     "type": "string"

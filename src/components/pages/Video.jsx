@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Video.scss';
 import { Player, ControlBar } from 'video-react';
+import has from 'lodash.has';
 import propTypes from '../../propTypes';
-
 
 /*
  * Video:
@@ -29,14 +29,8 @@ class Video extends React.Component {
         this.getSubClass = this.getSubClass.bind(this);
 
         this.state = {
-            showBSL: (!!(
-                typeof this.asset.bslSource !== 'undefined'
-                && this.asset.bslSource !== ''
-            )),
-            showSubtitles: (!!(
-                typeof this.asset.subtitlesSource !== 'undefined'
-                && this.asset.subtitlesSource !== ''
-            )),
+            showBSL: has(this.asset, 'bslSource'),
+            showSubtitles: has(this.asset, 'subtitlesSource'),
             bslEnabled: false,
             subtitlesEnabled: false,
         };
