@@ -17,6 +17,10 @@
     }
     */
 
+    .imageContainer {
+        transition: transform 0.5s ease 0s;
+    }
+
     &.ZoomableImage--zoomedIn {
         .imageContainer {
             transform: scale(1) !important;
@@ -31,7 +35,7 @@
         //left: 50%;
         //transition: margin-right $transitionTime-showContent ease, margin-left $transitionTime-showContent ease;
         .ZoomableImage--zoomedIn & {
-            transition: all 0.5s ease;
+            //transition: all 0.5s ease;
         }
     }
 
