@@ -229,7 +229,7 @@ class ZoomableImage extends React.Component {
             y: (this.image.naturalHeight * this.asset.boundingBox.y),
         };
 
-        const scale = 1; // Not actually used at the minute...
+        // const scale = 1; // Not actually used at the minute...
 
         const difference = this.container.offsetWidth - pixels.width;
         const percentage = difference / pixels.width;
@@ -448,7 +448,7 @@ class ZoomableImage extends React.Component {
         this.zoomToScale(e.target.value);
     }
 
-    handleZoomIn(e) {
+    handleZoomIn() {
         const imageScale = Math.min(this.scale + 0.1, 1);
         console.log('handle zoom in');
         // imageScale = Math.round(imageScale * 10) / 10;
