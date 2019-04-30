@@ -29,6 +29,9 @@ import NavBar from './navbar/NavBar';
 class Article extends React.Component {
     static pauseOnNavigation() {
         const videoPlayer = document.querySelector('.video-react-video');
+        if (videoPlayer === null) {
+            return;
+        }
         videoPlayer.pause();
     }
 
