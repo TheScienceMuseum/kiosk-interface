@@ -17,6 +17,12 @@
     }
     */
 
+    &.ZoomableImage--zoomedIn {
+        .imageContainer {
+            transform: scale(1) !important;
+        }
+    }
+
     img {
         //transform-origin: top left;
         //position: absolute;
@@ -24,7 +30,9 @@
         //transform: translateY(-50%);
         //left: 50%;
         //transition: margin-right $transitionTime-showContent ease, margin-left $transitionTime-showContent ease;
-        transition: all 0.5s ease;
+        .ZoomableImage--zoomedIn & {
+            transition: all 0.5s ease;
+        }
     }
 
     & .Button {

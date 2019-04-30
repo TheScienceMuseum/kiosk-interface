@@ -8,6 +8,7 @@
         "hammerjs": "^2.0.8",
         "json-stringify-safe": "^5.0.1",
         "lodash.has": "^4.5.2",
+        "lodash.isempty": "^4.4.0",
         "prop-types": "^15.6.2",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",

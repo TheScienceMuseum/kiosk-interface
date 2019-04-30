@@ -5,6 +5,7 @@ import Hammer from 'react-hammerjs';
 import '../styles/components/ZoomableImage.scss';
 import { Orientations, ScreenSize } from '../utils/Constants';
 import ZoomControls from './ZoomControls';
+import isEmpty from 'lodash.isempty';
 // import propTypes from '../propTypes';
 
 /*
@@ -56,7 +57,10 @@ class ZoomableImage extends React.Component {
         this.lastX = 0;
         this.lastY = 0;
         this.pinchCenter = null;
-
+        this.cropStyle = {
+            marginTop: null,
+            marginLeft: null,
+        };
 
         this.handleImageLoad = this.handleImageLoad.bind(this);
 
@@ -96,6 +100,7 @@ class ZoomableImage extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // const { offsetWidth, offsetHeight } = this.container;
         const { fullscreen } = this.state;
+        const { imgStyle } = this.state;
 
         // console.log(this.initialHeight, this.initialScale, this.initialWidth);
 
@@ -104,6 +109,9 @@ class ZoomableImage extends React.Component {
             this.viewportWidth = (fullscreen) ? ScreenSize.width : this.initialWidth;
             this.viewportHeight = (fullscreen) ? ScreenSize.height : this.initialHeight;
             const imageScale = (fullscreen) ? this.imageMinScale : this.initialScale;
+
+            this.image.style.marginTop = imgStyle.marginTop;
+            this.image.style.marginLeft = imgStyle.marginLeft;
 
             // console.log('ZoomableImage: didUpdate: imageScale: ', imageScale);
             // console.log('ZoomableImage: didUpdate: viewportHeight: ', this.viewportHeight);
@@ -131,11 +139,13 @@ class ZoomableImage extends React.Component {
 
     getImageStyle() {
         const { fullscreen } = this.state;
+        // console.log('getImageStyle POS');
         if (!fullscreen) {
             const { imgStyle } = this.state;
-            console.log('imgStyle: ', imgStyle);
+            // console.log('imgStyle: ', imgStyle);
             return imgStyle;
         }
+        // console.log('this.state: ', this.state);
 
         const {
             width,
@@ -150,6 +160,8 @@ class ZoomableImage extends React.Component {
             x: `${x}px`,
             y: `${y}px`,
             position: 'absolute',
+            marginTop: 0,
+            marginLeft: 0,
         };
     }
 
@@ -157,7 +169,7 @@ class ZoomableImage extends React.Component {
         const { fullscreen } = this.state;
         if (!fullscreen) {
             const { imgContainerStyle } = this.state;
-            console.log('imgContainerStyle: ', imgContainerStyle);
+            // console.log('imgContainerStyle: ', imgContainerStyle);
             return imgContainerStyle;
         }
 
@@ -228,12 +240,18 @@ class ZoomableImage extends React.Component {
             transform: `scale(${percentage + 1})`,
         };
 
-        const style = {
-            marginLeft: `-${(pixels.x)}px`,
-            marginTop: `-${(pixels.y)}px`,
-            transform: `scale(${scale})`,
-            transformOrigin: 'top left',
-        };
+        let style = {};
+        if (isEmpty(style)) {
+            console.log('is empty... updating style');
+            style = {
+                marginLeft: `-${(pixels.x)}px`,
+                marginTop: `-${(pixels.y)}px`,
+            };
+        } else {
+            console.log('has style; no update');
+        }
+
+        console.log('style RE-CALCULATED: ', style);
 
         this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
 
@@ -311,12 +329,11 @@ class ZoomableImage extends React.Component {
     }
 
     translate(deltaX, deltaY) {
+        const { fullscreen } = this.state;
         // console.log('ZoomableImage: translate: deltaX: ', deltaX);
         // console.log('ZoomableImage: translate: deltaY: ', deltaY);
 
-        // We restrict to the min of the viewport width/height or current width/height as the
-        // current width/height may be smaller than the viewport width/height
-
+        // console.log('translate fired:', deltaX, deltaY);
         // TODO: centre if image is smaller then dimension
         let newX = this.restrictRawPos(this.lastX + deltaX / this.scale,
             Math.min(this.viewportWidth, this.curWidth), this.imgWidth);
@@ -324,28 +341,21 @@ class ZoomableImage extends React.Component {
         let newY = this.restrictRawPos(this.lastY + deltaY / this.scale,
             Math.min(this.viewportHeight, this.curHeight), this.imgHeight);
 
-        // console.log('ZoomableImage: translate: newX: ', newX);
-        // console.log('ZoomableImage: translate: newY: ', newY);
-        //
-        // console.log('ZoomableImage: translate: this.imgWidth: ', this.imgWidth);
-        // console.log('ZoomableImage: translate: this.imgHeight: ', this.imgHeight);
-        // console.log('ZoomableImage: translate: this.curWidth: ', this.curWidth);
-        // console.log('ZoomableImage: translate: this.curHeight: ', this.curHeight);
-        // console.log('ZoomableImage: translate: this.viewportWidth: ', this.viewportWidth);
-        // console.log('ZoomableImage: translate: this.viewportHeight: ', this.viewportHeight);
-
         if (this.curWidth < this.viewportWidth) {
-        // console.log('ZoomableImage: recalculate x');
             newX += ((this.viewportWidth - this.curWidth) / 2) / this.scale;
         } else if (this.curHeight < this.viewportHeight) {
             newY += ((this.viewportHeight - this.curHeight) / 2) / this.scale;
         }
 
-        // console.log('ZoomableImage: translate: newX: ', newX);
-        // console.log('ZoomableImage: translate: newY: ', newY);
+        if (fullscreen) {
+            this.image.style.marginLeft = `${Math.ceil(newX * this.scale)}px`;
+            this.image.style.marginTop = `${Math.ceil(newY * this.scale)}px`;
+        }
 
         this.x = newX;
         this.y = newY;
+
+        // console.log(this.x, this.y);
 
         this.setState({
             x: Math.ceil(newX * this.scale),
@@ -354,26 +364,13 @@ class ZoomableImage extends React.Component {
     }
 
     zoom(scaleBy) {
-        // console.log('ZoomableImage: zoom: scaleBy: ', scaleBy);
-        // console.log('ZoomableImage: zoom: this.scale: ', this.scale);
-        // console.log('ZoomableImage: zoom: this.lastScale: ', this.lastScale);
-
         this.scale = this.restrictScale(this.lastScale * scaleBy);
-
-        // this.scale = Math.round(this.scale * 10) / 10;
 
         this.curWidth = Math.ceil(this.imgWidth * this.scale);
         this.curHeight = Math.ceil(this.imgHeight * this.scale);
 
-        // console.log('ZoomableImage: zoom: this.scale: ', this.scale);
-
-        // img.style.width = Math.ceil(curWidth) + 'px';
-        // img.style.height = Math.ceil(curHeight) + 'px';
-
         this.setState({ width: this.curWidth, height: this.curHeight }, this.debugValues);
 
-        // Adjust margins to make sure that we aren't out of bounds
-        // console.log('ZoomableImage: zoom:');
         this.translate(0, 0);
     }
 
@@ -396,6 +393,8 @@ class ZoomableImage extends React.Component {
     zoomAround(scaleBy, rawZoomX, rawZoomY, doNotUpdateLast) {
         // Zoom
         this.zoom(scaleBy);
+
+        // console.log('zoomAround fired');
 
         // New raw center of viewport
         const rawCenterX = -this.x + Math.min(this.viewportWidth, this.curWidth) / 2 / this.scale;
@@ -446,8 +445,9 @@ class ZoomableImage extends React.Component {
         this.zoomToScale(e.target.value);
     }
 
-    handleZoomIn() {
+    handleZoomIn(e) {
         const imageScale = Math.min(this.scale + 0.1, 1);
+        e.stopPropagation();
         // imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(1.1);
@@ -488,28 +488,7 @@ class ZoomableImage extends React.Component {
 
         this.imgWidth = naturalWidth;
         this.imgHeight = naturalHeight;
-        // this.viewportWidth = 1920;
-        // this.viewportHeight = 1080;
 
-
-        /* CALCULATE RATIOS AND SCALES */
-        /*
-        const imageRatio = offsetWidth / offsetHeight;
-        const screenRatio = this.viewportWidth / this.viewportHeight;
-
-        if (imageRatio > screenRatio) {
-            this.imageOrientation = Orientations.HORIZONTAL;
-        } else if (imageRatio < screenRatio) {
-            this.imageOrientation = Orientations.VERTICAL;
-        } else {
-            this.imageOrientation = Orientations.EXACT;
-        }
-
-
-        this.initialScale = this.getImageScale(false, this.imageOrientation);
-        this.imageMinScale = this.getImageScale(true, this.imageOrientation);
-
-       */
         this.calculateImageRatios();
         /* finish calculating */
 
@@ -525,18 +504,6 @@ class ZoomableImage extends React.Component {
 
         this.updateLastPos();
         this.updateLastScale();
-
-
-        /*
-        if (this.imageMinScale < 1) {
-            zoomable = true;
-        }
-        */
-
-        // this.zoomCenter(this.initialScale);
-
-        // let left = 0;
-        // let top = 0;
 
         if (
             typeof this.asset !== 'undefined'
@@ -609,8 +576,10 @@ class ZoomableImage extends React.Component {
         const { fullscreen } = this.state;
         if (fullscreen) {
             const c = this.rawCenter(e);
+            // console.log('handleDoubleTap fired - with fullscreen');
             this.zoomAround(1.1, c.x, c.y);
         } else {
+            // console.log('handleDoubleTap fired - without fullscreen');
             this.handleToggleFullScreen();
         }
     }
@@ -623,6 +592,7 @@ class ZoomableImage extends React.Component {
     handleToggleFullScreen() {
         let { fullscreen } = this.state;
         const { onZoom } = this.props;
+        // console.log('handleToggleFullScreen fired');
 
         fullscreen = !fullscreen;
 
@@ -644,7 +614,6 @@ class ZoomableImage extends React.Component {
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
         const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-close';
-
 
         return (
             <div
