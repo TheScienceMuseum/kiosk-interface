@@ -27,10 +27,16 @@ import NavBar from './navbar/NavBar';
  */
 
 class Article extends React.Component {
+    static pauseOnNavigation() {
+        const videoPlayer = document.querySelector('.video-react-video');
+        videoPlayer.pause();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
             currentPage: 0,
+            currentPageType: 'title',
             navHidden: false,
         };
 
@@ -41,6 +47,7 @@ class Article extends React.Component {
         // this.onJump = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
         this.handleHomeButton = this.handleHomeButton.bind(this);
+        Article.pauseOnNavigation = Article.pauseOnNavigation.bind(this);
         // this.article = null;
 
         const { articleID } = this.props;
@@ -99,6 +106,7 @@ class Article extends React.Component {
                     handleCloseButton={this.handleHomeButton}
                     pauseTimer={pauseTimer}
                     resetInactiveTimer={resetInactiveTimer}
+                    autoPlay
                 />
             );
         default:
@@ -125,14 +133,13 @@ class Article extends React.Component {
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
                 break;
             case PageTypes.VIDEO:
-                pauseTimer();
-                // console.log('PageType VIDEO articleContent: ', articleContent);
                 pageOut = (
                     <Video
                         {...page}
                         handleCloseButton={this.handleHomeButton}
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
+                        autoPlay={false}
                     />
                 );
                 break;
@@ -162,24 +169,38 @@ class Article extends React.Component {
         // console.log('Article: nextPage');
 
         let { currentPage } = this.state;
+        let { currentPageType } = this.state;
         const { navHidden } = this.state;
         const { subpages } = this.articleContent;
 
+        Article.pauseOnNavigation();
+
         if (currentPage === (subpages.length - 1) || navHidden) return;
-
         currentPage += 1;
+        currentPageType = subpages[currentPage].type;
 
-        this.setState({ currentPage }, this.scrollToPage);
+        // console.log(currentPageType);
+
+        this.setState({ currentPage, currentPageType }, this.scrollToPage);
     }
 
     prevPage() {
         // console.log('Article: prevPage');
+
+        let { currentPageType } = this.state;
         let { currentPage } = this.state;
         const { navHidden } = this.state;
+        const { subpages } = this.articleContent;
+
+        Article.pauseOnNavigation();
 
         if (currentPage === 0 || navHidden) return;
         currentPage -= 1;
-        this.setState({ currentPage }, this.scrollToPage);
+        currentPageType = subpages[currentPage].type;
+
+        // console.log(currentPageType);
+
+        this.setState({ currentPage, currentPageType }, this.scrollToPage);
     }
 
     // jumpToPage(pageID) {
@@ -213,7 +234,7 @@ class Article extends React.Component {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
         let { navHidden } = this.state;
-        const { currentPage } = this.state;
+        const { currentPage, currentPageType } = this.state;
         const { singleArticleMode } = this.props;
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
@@ -241,6 +262,7 @@ class Article extends React.Component {
                             onNext={this.nextPage}
                             orientation={Orientations.VERTICAL}
                             currentPage={currentPage}
+                            currentPageType={currentPageType}
                             totalPages={subpagesCount}
                             hidden={navHidden}
                             hideHome={singleArticleMode}

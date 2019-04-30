@@ -12,8 +12,16 @@ const asset = PropTypes.shape({
     }),
     nameText: PropTypes.string,
     sourceText: PropTypes.string,
-    bslSource: PropTypes.string,
-    subtitlesSource: PropTypes.string,
 });
 
-export default { asset };
+const videoAsset = PropTypes.shape({
+    assetSource: PropTypes.string.isRequired,
+    assetType: PropTypes.oneOf(Object.values(AssetTypes)).isRequired,
+    nameText: PropTypes.string,
+    sourceText: PropTypes.string,
+    bslSource: PropTypes.string,
+    subtitlesSource: PropTypes.string,
+    posterImage: PropTypes.string,
+});
+
+export default { asset, videoAsset };

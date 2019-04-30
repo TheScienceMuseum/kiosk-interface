@@ -104,4 +104,26 @@
         display: none;
     }
 
+    .video-react .video-react-big-play-button {
+        content: " ";
+        display: block;
+        width: 140px;
+        height: 140px;
+        background: url(/static/media/play.337f0fa4.svg) no-repeat;
+        background-size: contain;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+
+        &.big-play-button-hide {
+            display: none;
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+
 }

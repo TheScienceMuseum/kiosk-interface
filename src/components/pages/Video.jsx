@@ -118,14 +118,16 @@ class Video extends React.Component {
 
     render() {
         const { showBSL, showSubtitles } = this.state;
+        const { autoPlay } = this.props;
         // console.log('this.asset: ', this.asset);
         return (
             <div className="Page PageVideo">
                 <Player
                     ref={(node) => { this.player = node; }}
-                    autoPlay
+                    autoPlay={!!autoPlay}
                     // crossOrigin="anonymous"
                     selectedTextTrack={this.getSubTrack().value}
+                    poster={this.asset.posterImage ? this.asset.posterImage : null}
                 >
                     <source src={this.asset.assetSource} type="video/mp4" />
                     <track
@@ -177,10 +179,11 @@ class Video extends React.Component {
 }
 
 Video.propTypes = {
-    asset: propTypes.asset.isRequired,
+    asset: propTypes.videoAsset.isRequired,
     handleCloseButton: propTypes.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
+    autoPlay: PropTypes.bool.isRequired,
 };
 
 export default Video;
