@@ -64,6 +64,7 @@
                         "type": "video",
                         "asset": {
                             "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                            "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
                             "assetType": "video",
                             "subtitlesSource": "testing.vtt",
                             "bslSource": "media/video-historical-castle.mp4"
@@ -274,6 +275,7 @@
                 },
                 "type": "video",
                 "asset": {
+                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
                     "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                     "assetType": "video",
                     "subtitlesSource": "testing.vtt",

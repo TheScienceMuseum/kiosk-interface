@@ -203,6 +203,9 @@
                 },
                 "subtitlesSource": {
                     "type": "string"
+                },
+                "posterImage": {
+                    "type": "string"
                 }
             },
             "required": [
