@@ -9,6 +9,7 @@ export const PageTypes = {
     TITLE: 'title',
     IMAGE: 'image',
     AUDIO: 'audio',
+    VIDEO: 'video',
 };
 
 export const AssetTypes = {

@@ -55,7 +55,13 @@ class Article extends React.Component {
 
     componentDidMount() {
         // console.log('Article: componentDidMount: this.scrollElem: ', this.scrollElem);
+        // console.log(' articleID: ', articleID);
     }
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     // console.log(prevProps);
+    //     // console.log('this.articleContent: ', this.articleContent);
+    // }
 
     getArticleContents(articleID) {
         const { contents } = this.props;
@@ -79,11 +85,14 @@ class Article extends React.Component {
 
         const { pauseTimer, resetInactiveTimer } = this.props;
 
+        // console.log('articleConten: ', articleContent);
+
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
+            // console.log('VIDEO articleContent: ', articleContent);
             return (
                 <Video
                     {...articleContent}
@@ -99,9 +108,11 @@ class Article extends React.Component {
 
     makeMixedArticle(articleContent) {
         const pages = articleContent.subpages;
+        const { pauseTimer, resetInactiveTimer } = this.props;
         // console.log('Article: makeArticle: pages: ', pages);
         const pagesOutput = pages.map((page) => {
             const { pageID } = page;
+            // console.log('page: ', page);
             let pageOut;
             switch (page.type) {
             case PageTypes.TITLE:
@@ -112,6 +123,18 @@ class Article extends React.Component {
                 break;
             case PageTypes.IMAGE:
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
+                break;
+            case PageTypes.VIDEO:
+                pauseTimer();
+                // console.log('PageType VIDEO articleContent: ', articleContent);
+                pageOut = (
+                    <Video
+                        {...page}
+                        handleCloseButton={this.handleHomeButton}
+                        pauseTimer={pauseTimer}
+                        resetInactiveTimer={resetInactiveTimer}
+                    />
+                );
                 break;
             default:
                 break;
