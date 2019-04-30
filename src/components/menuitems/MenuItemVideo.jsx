@@ -20,10 +20,6 @@ class MenuItemVideo extends React.Component {
             title, articleID, onClick, asset,
         } = this.props;
 
-        console.log('asset: ', asset);
-        console.log('asset.posterImage: ', asset.posterImage);
-        console.log('asset === \'undefined\': ', asset === 'undefined');
-
         return (
             <li className="MenuItem MenuItem__Video">
                 <Hammer onTap={() => onClick(articleID)}>

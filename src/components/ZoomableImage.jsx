@@ -242,16 +242,19 @@ class ZoomableImage extends React.Component {
 
         let style = {};
         if (isEmpty(style)) {
-            console.log('is empty... updating style');
+            // console.log('is empty... updating style');
+
+            // could look at removing this isEmpty function
+            // as I believe it only actually runs once anyway...
             style = {
                 marginLeft: `-${(pixels.x)}px`,
                 marginTop: `-${(pixels.y)}px`,
             };
         } else {
-            console.log('has style; no update');
+            // console.log('has style; no update');
         }
 
-        console.log('style RE-CALCULATED: ', style);
+        // console.log('style RE-CALCULATED: ', style);
 
         this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
 
