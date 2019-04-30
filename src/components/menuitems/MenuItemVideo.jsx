@@ -37,7 +37,6 @@ class MenuItemVideo extends React.Component {
 
 MenuItemVideo.propTypes = {
     title: PropTypes.string.isRequired,
-    titleImage: propTypes.asset.isRequired,
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     asset: propTypes.videoAsset.isRequired,
