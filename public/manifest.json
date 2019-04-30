@@ -58,6 +58,16 @@
                             "James Watson speaks about the journey to discovering the double helix:",
                             "[Audio clip]"
                         ]
+                    },
+                    {
+                        "pageID": "1-1-3",
+                        "type": "video",
+                        "asset": {
+                            "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                            "assetType": "video",
+                            "subtitlesSource": "testing.vtt",
+                            "bslSource": "media/video-historical-castle.mp4"
+                        }
                     }
                 ]
             },
