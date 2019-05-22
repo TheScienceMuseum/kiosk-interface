@@ -20,6 +20,10 @@ h1 {
     height: 1080px;
     background-color: $appBackground;
     overflow: hidden;
+    &.portrait {
+        width:1080px;
+        height:1920px;
+    }
 }
 
 .DebugPanel {

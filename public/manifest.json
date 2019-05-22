@@ -2,11 +2,17 @@
     "short_name": "",
     "name": "genetic-diagnosis",
     "label": "Genetic Diagnosis",
+    "aspect_ratio": "9:16",
     "version": 1,
     "main": "",
     "requirements": {
         "client_version": "0.0.1"
     },
+    "styles": [
+        "default",
+        "verticalTabs",
+        "3d"
+    ],
     "content": {
         "titles": {
             "type": "text",

@@ -113,6 +113,44 @@ class App extends Component {
         this.idleTimer.reset();
     }
 
+    getAspectClass() {
+        let classes = '';
+        // eslint-disable-next-line camelcase
+        const { aspect_ratio } = this.props;
+        // eslint-disable-next-line camelcase
+        switch (aspect_ratio) {
+        case '16:9':
+            classes += 'landscape';
+            break;
+        case '9:16':
+            classes += 'portrait';
+            break;
+        default:
+            classes += 'landscape';
+            break;
+        }
+
+        return classes;
+    }
+
+    getStylesClasses() {
+        const { styles } = this.props;
+        let classes = '';
+        if (styles.length > 0) {
+            styles.forEach((s) => {
+                classes += ` ${s}`;
+            });
+        }
+        return classes;
+    }
+
+    appClasses() {
+        let classes = '';
+        classes += this.getAspectClass();
+        classes += this.getStylesClasses();
+        return classes;
+    }
+
 
     render() {
         const {
@@ -124,7 +162,7 @@ class App extends Component {
 
         return (
             <ErrorBoundary>
-                <div className="App">
+                <div className={`App ${this.appClasses()}`}>
                     <IdleTimer
                         ref={(ref) => { this.idleTimer = ref; }}
                         element={document}
