@@ -41,6 +41,37 @@ class App extends Component {
         this.setState({ location: AppStates.ATTRACTOR, initial: true });
     }
 
+    getAspectClass() {
+        let classes = '';
+        // eslint-disable-next-line camelcase
+        const { aspect_ratio } = this.props;
+        // eslint-disable-next-line camelcase
+        switch (aspect_ratio) {
+        case '16:9':
+            classes += 'landscape';
+            break;
+        case '9:16':
+            classes += 'portrait';
+            break;
+        default:
+            classes += 'landscape';
+            break;
+        }
+
+        return classes;
+    }
+
+    getStylesClasses() {
+        const { styles } = this.props;
+        let classes = '';
+        if (styles.length > 0) {
+            styles.forEach((s) => {
+                classes += ` ${s}`;
+            });
+        }
+        return classes;
+    }
+
     setActiveArticle(activeArticle) {
         // console.log('App: setActiveArticle: activeArticle: ', activeArticle);
         this.setState({ activeArticle });
@@ -84,6 +115,13 @@ class App extends Component {
         }
     }
 
+    appClasses() {
+        let classes = '';
+        classes += this.getAspectClass();
+        classes += this.getStylesClasses();
+        return classes;
+    }
+
     start() {
         const { content } = this.props;
         const { singleArticleMode } = this.state;
@@ -111,44 +149,6 @@ class App extends Component {
     resetTimer() {
         console.log('App: resetTimer: time: ', this.idleTimer.getRemainingTime());
         this.idleTimer.reset();
-    }
-
-    getAspectClass() {
-        let classes = '';
-        // eslint-disable-next-line camelcase
-        const { aspect_ratio } = this.props;
-        // eslint-disable-next-line camelcase
-        switch (aspect_ratio) {
-        case '16:9':
-            classes += 'landscape';
-            break;
-        case '9:16':
-            classes += 'portrait';
-            break;
-        default:
-            classes += 'landscape';
-            break;
-        }
-
-        return classes;
-    }
-
-    getStylesClasses() {
-        const { styles } = this.props;
-        let classes = '';
-        if (styles.length > 0) {
-            styles.forEach((s) => {
-                classes += ` ${s}`;
-            });
-        }
-        return classes;
-    }
-
-    appClasses() {
-        let classes = '';
-        classes += this.getAspectClass();
-        classes += this.getStylesClasses();
-        return classes;
     }
 
 
