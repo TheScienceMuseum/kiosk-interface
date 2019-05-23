@@ -249,6 +249,11 @@ class ZoomableImage extends React.Component {
             style = {
                 marginLeft: `-${(pixels.x)}px`,
                 marginTop: `-${(pixels.y)}px`,
+                width: this.image.naturalWidth,
+                height: this.image.naturalHeight,
+                x: 0,
+                y: 0,
+                position: 'absolute',
             };
         } else {
             // console.log('has style; no update');
