@@ -442,7 +442,6 @@ class ZoomableImage extends React.Component {
 
     zoomToScale(scaleTo) {
         const scaleBy = scaleTo / this.scale;
-        console.log('scaleBy: ', scaleBy);
         // scaleBy = Math.round(scaleBy * 10) / 10;
         // this.zoom(scaleBy);
         this.zoomCenter(scaleBy);
@@ -458,7 +457,6 @@ class ZoomableImage extends React.Component {
 
     handleZoomIn() {
         const imageScale = Math.min(this.scale + 0.1, 1);
-        console.log('handle zoom in');
         // imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(1.1);
@@ -576,7 +574,6 @@ class ZoomableImage extends React.Component {
     handlePan(e) {
         const { fullscreen } = this.state;
         if (!fullscreen) return;
-        console.log('handle pan');
         this.translate(e.deltaX, e.deltaY);
     }
 
