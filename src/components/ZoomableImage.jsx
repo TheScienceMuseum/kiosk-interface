@@ -162,6 +162,8 @@ class ZoomableImage extends React.Component {
             position: 'absolute',
             marginTop: 0,
             marginLeft: 0,
+            transform: 'translateX(0px) translateY(0px)',
+            willChange: 'transform',
         };
     }
 
@@ -247,13 +249,13 @@ class ZoomableImage extends React.Component {
             // could look at removing this isEmpty function
             // as I believe it only actually runs once anyway...
             style = {
-                marginLeft: `-${(pixels.x)}px`,
-                marginTop: `-${(pixels.y)}px`,
+                transform: `translateX(-${pixels.x}px) translateY(-${pixels.y}px)`,
                 width: this.image.naturalWidth,
                 height: this.image.naturalHeight,
                 x: 0,
                 y: 0,
                 position: 'absolute',
+                willChange: 'transform',
             };
         } else {
             // console.log('has style; no update');
