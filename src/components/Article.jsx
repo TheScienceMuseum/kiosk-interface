@@ -18,6 +18,7 @@ import '../styles/components/Article.scss';
 // import NavButtons from './navbar/NavButtons';
 // import MenuPips from './MenuPips';
 import NavBar from './navbar/NavBar';
+import Model from './pages/Model';
 
 /*
  * Article:
@@ -111,6 +112,12 @@ class Article extends React.Component {
                     resetInactiveTimer={resetInactiveTimer}
                     autoPlay
                 />
+            );
+        case ArticleTypes.MODEL:
+            console.log('MODEL articleContent: ', articleContent);
+
+            return (
+                <Model {...articleContent} />
             );
         default:
             return null;
@@ -255,7 +262,11 @@ class Article extends React.Component {
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
-                        { this.article }
+                        {(this.articleContent.type === ArticleTypes.MODEL
+                            && <Model currentSection={currentPage} {...this.articleContent} />
+                        ) || (
+                            this.article
+                        )}
                     </div>
                     {this.articleContent.type !== ArticleTypes.VIDEO && (
                         <NavBar

@@ -1,0 +1,24 @@
+@import "../../variables";
+@import "Page";
+
+.PageModel {
+    background-color: black !important;
+    display: flex;
+    flex: 0 0 100%;
+
+    .ModelViewer {
+        width: 1080px;
+        height: 1080px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .ModelText {
+        width: calc(1920px - 1180px);
+        height: 100%;
+        position: absolute;
+        padding: 130px 80px;
+        background: $pageBackground;
+        right: 0;
+    }
+}
