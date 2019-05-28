@@ -74,7 +74,7 @@ class MenuPips extends React.Component {
             contents, showTitlePip, currentFocused,
         } = this.props;
 
-        const output = contents.map((articleContent, idx) => {
+        return contents.map((articleContent, idx) => {
             const index = showTitlePip ? idx + 1 : idx;
             const key = articleContent.articleID ? articleContent.articleID : articleContent.pageID;
 
@@ -85,22 +85,19 @@ class MenuPips extends React.Component {
             const className = classList.join(' ');
 
             return (
-                <>
+                <React.Fragment key={`button_${key}`}>
                     <div className="spacer" />
                     <button
                         className={className}
                         type="button"
                         onClick={this.handleClick}
-                        key={`button_${key}`}
                         data-key={key}
                     >
                         {`Jump to ${articleContent.title}`}
                     </button>
-                </>
+                </React.Fragment>
             );
         });
-
-        return output;
     }
 
 
