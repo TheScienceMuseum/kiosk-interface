@@ -59,6 +59,7 @@ class Model extends React.Component {
 
         this.controls = new this.THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.addEventListener('change', () => {
+            this.renderer.render(this.scene, this.camera);
             this.setState(prevState => ({
                 ...prevState,
                 cameraPosition: this.camera.position,
@@ -134,7 +135,6 @@ class Model extends React.Component {
             .onUpdate(() => {
                 this.camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
                 this.controls.update();
-                this.renderer.render(this.scene, this.camera);
                 // console.log('tween update', currentPosition);
             })
             .onComplete(() => {
