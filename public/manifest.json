@@ -1,351 +1,434 @@
 {
-    "short_name": "",
-    "name": "genetic-diagnosis",
-    "label": "Genetic Diagnosis",
-    "version": 1,
-    "main": "",
-    "requirements": {
-        "client_version": "0.0.1"
+  "short_name": "",
+  "name": "test-model",
+  "label": "Test Model",
+  "version": 1,
+  "main": "index.html",
+  "requirements": {
+    "client_version": "0.0.1"
+  },
+  "content": {
+    "titles": {
+      "type": "text",
+      "galleryName": "The Medicine Gallery",
+      "title": "Genetic Diagnosis",
+      "attractor": {
+        "assetType": "video",
+        "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+        "subtitlesSource": "testing.vtt"
+      },
+      "idleTimeout": null
     },
-    "content": {
-        "titles": {
-            "type": "text",
-            "galleryName": "The Medicine Gallery",
-            "title": "Genetic Diagnosis",
-            "attractor": {
-                "assetType": "video",
-                "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                "subtitlesSource": "testing.vtt"
-            },
-            "idleTimeout": 120
+    "contents": [
+      {
+        "articleID": "1-1",
+        "type": "model",
+        "title": "Stephenson's Rocket",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/01.jpg"
         },
-        "contents": [{
-                "articleID": "1-1",
-                "type": "mixed",
-                "title": "James Watson: discovering the Double Helix",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/01.jpg"
-                },
-                "subpages": [{
-                        "pageID": "1-1-1",
-                        "type": "title",
-                        "asset": {
-                            "assetType": "image",
-                            "assetSource": "./media/01.jpg"
-                        },
-                        "title": "James Watson: discovering the Double Helix",
-                        "subtitle": ""
-                    },
-                    {
-                        "pageID": "1-1-2",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/02.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.2,
-                                "y": 0.2,
-                                "width": 0.26,
-                                "height": 0.55
-                            },
-                            "nameText": "James Watson (b. 1928) pictured in 2018.",
-                            "sourceText": "Science Museum Group."
-                        },
-                        "title": "James Watson: discovering the Double Helix",
-                        "content": [
-                            "James Watson speaks about the journey to discovering the double helix:",
-                            "[Audio clip]"
-                        ]
-                    },
-                    {
-                        "pageID": "1-1-3",
-                        "type": "video",
-                        "asset": {
-                            "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                            "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                            "assetType": "video",
-                            "subtitlesSource": "testing.vtt",
-                            "bslSource": "media/video-historical-castle.mp4"
-                        }
-                    }
-                ]
+        "asset": {
+          "assetDirectory": "./media/5091351053194fha0sdfn1234533/",
+          "obj": "146_SM_Rocket_1M.obj",
+          "mtl": "146_SM_Rocket_1M.mtl",
+          "assetType": "model",
+          "nameText": "Stephenson's Rocket",
+          "sourceText": "Science Museum Group - https://sketchfab.com/3d-models/stephensons-rocket-09d73611eeda4aa7a4f3643766b340da",
+          "position": [0, -1, 0],
+          "rotation": [90, 0, 0]
+        },
+        "subpages": [
+          {
+            "pageID": "1-1-1",
+            "type": "title",
+            "asset": {
+              "assetType": "image",
+              "assetSource": "./media/01.jpg"
             },
-            {
-                "articleID": "1-2",
-                "type": "mixed",
-                "title": "The search for the BRCA2 gene",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/03.jpg"
-                },
-                "subpages": [{
-                        "pageID": "1-2-1",
-                        "type": "title",
-                        "asset": {
-                            "assetType": "image",
-                            "assetSource": "./media/03.jpg"
-                        },
-                        "title": "The search for the BRCA2 gene",
-                        "subtitle": ""
-                    },
-                    {
-                        "pageID": "1-2-2",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/03.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "",
-                            "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
-                        },
-                        "title": "The search for the BRCA2 gene [introduction]",
-                        "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.", "Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
-                    },
-                    {
-                        "pageID": "1-2-3",
-                        "type": "textImage",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/04.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Sir Mike Stratton",
-                            "sourceText": "Science Museum Group"
-                        },
-                        "title": "The team that tracked BRCA2 down",
-                        "content": [
-                            "Professor Stratton and his team revealed the identity of BRCA2 in a paper published in the journal Nature at the end of 1995.",
-                            "Mike explains the significance of BRCA2:",
-                            "[Audio clip]"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-4",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/05.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Understanding the presence of disease across a family is essential to create genetic family tree-known as a pedigree ",
-                            "sourceText": "GARO / PHANIE / SCIENCE PHOTO LIBRARY"
-                        },
-                        "title": "A family history of breast cancer",
-                        "content": [
-                            "The team began to research large family trees where there was a history of cancer. The researchers analysed DNA from 15 families from around the world affected by early-onset breast cancer that wasn’t related to BRCA1.",
-                            "<i>“Over the period of about 18 months this huge family tree was put together with hundreds of people on the tree…very tellingly we then found an individual with male breast cancer”.</i>",
-                            "That was an important observation because male breast cancer did not seem to be a feature of BRCA1 based susceptibility to breast cancer and that added weight to the notion that this was a different gene. The team never met the family."
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-5",
-                        "type": "textImage",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/05a.png",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Ideogram of human chromosome. Chromosome 13 highlighted where the alterations can be found for BRCA2.",
-                            "sourceText": "National Center for Biotechnology Information, U.S. National Library of Medicine"
-                        },
-                        "title": "Finding the gene",
-                        "content": [
-                            "Using painstaking genetic techniques, the researchers pinpointed the location of BRCA2 to a region on one end of human chromosome 13 – a region known to contain a number of different genes.",
-                            "[Audio clip]"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-6",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/06.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Concern about gene patenting",
-                            "sourceText": "Getty Images"
-                        },
-                        "title": "A race to the gene",
-                        "content": [
-                            "Mike’s team wasn’t alone in looking to identify the BRCA2 gene. An American company called Myriad Genetics had been successful in isolating BRCA1 with the aim to provide tests for BRCA1. However, what was a cause of concern for Mike and other researchers was that the company had taken out patents essentially monopolising the usage of BRCA1.  They were looking to do the same with BRCA2.",
-                            "<i>“ DNA is in all of us, it belongs to humanity, …so what had previously been a collaboration to find the position of BRCA2 now became a competition and it became a race to actually identify the gene.”</i>"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-7",
-                        "type": "image",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/07.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
-                            "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
-                        },
-                        "title": "Sequenced at the Sanger Centre ",
-                        "content": [
-                            "Mike and his team had a secret weapon – the human genome project. The Sanger Centre was ready to embark on sequencing the human genome for the first time. Mike was able to collaborate so that the DNA of chromosome 13 - the location where Mike’s team suspected BRCA2 lay – was the first million letters of DNA to be sequenced."
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-8",
-                        "type": "textImage",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/08.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Patient blood test taken for genetic screening.",
-                            "sourceText": "BURGER / PHANIE / SCIENCE PHOTO LIBRARY"
-                        },
-                        "title": "The first patient to be tested for BRACA2",
-                        "content": [
-                            "Mike recalls how quickly the gene’s identification impacted potential patients.",
-                            "[Audio clip]"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-9",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/09.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Colour-enhanced image of a breast cancer cell.",
-                            "sourceText": "Anne Weston, Francis Crick Institute"
-                        },
-                        "title": "The legacy of BRACA2 and Cancer Genome project",
-                        "content": [
-                            "Since Mike’s team identified BRCA2, gene sequencing work has sequenced the DNA of around 25,000 human cancers.  This work is trying to reveal the genes that convert a normal cell into a cancer cell and these patterns of mutations that can tell us what causes a cancer.",
-                            "“Genetics has been driven by changes in technology and those changes in technology have allowed us to look through larger and larger and larger amounts of DNA to find the abnormalities, the changes, the mutations…When I first started researching we were looking at very small portions of DNA for abnormalities.  In the position that I’m in now we are sequencing hundreds of human genomes every week, a difference that I could not even have dreamt of when I started working in science 30 years ago”."
-                        ]
-                    }
-                ]
-            },
-            {
-                "articleID": "1-3",
-                "title": "Managing my risk: Caroline’s story of BRCA2 diagnosis",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-                },
-                "type": "video",
-                "asset": {
-                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video",
-                    "subtitlesSource": "testing.vtt",
-                    "bslSource": "media/video-historical-castle.mp4"
-                }
-            },
-            {
-                "articleID": "1-4",
-                "title": "Life-changing decisions: Deborah’s story",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-                },
-                "type": "video",
-                "asset": {
-                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video",
-                    "subtitlesSource": "testing.vtt",
-                    "bslSource": "media/video-historical-castle.mp4"
-                }
-            },
-            {
-                "articleID": "1-5",
-                "title": "Knowledge is power: Peter’s story",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-                },
-                "type": "video",
-                "asset": {
-                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video",
-                    "subtitlesSource": "testing.vtt"
-                }
-            },
-            {
-                "articleID": "1-6",
-                "title": "Looking for answers: Lisa, Ray & Michael’s story",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-                },
-                "type": "video",
-                "asset": {
-                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video",
-                    "subtitlesSource": "testing.vtt",
-                    "bslSource": "media/video-historical-castle.mp4"
-                }
-            },
-            {
-                "articleID": "1-7",
-                "title": "Helping families with nameless conditions: Anna, Clinical Nurse Specialist",
-                "titleImage": {
-                    "assetType": "image",
-                    "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-                },
-                "type": "video",
-                "asset": {
-                    "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-                    "assetType": "video",
-                    "subtitlesSource": "testing.vtt",
-                    "bslSource": "media/video-historical-castle.mp4"
-                }
+            "title": "Title Page",
+            "content": [
+              "Has he lost his mind?",
+              "Can he see or is he blind?",
+              "Can he walk at all,",
+              "Or if he moves will he fall?",
+              "Is he alive or dead?",
+              "Has he thoughts within his head?",
+              "We'll just pass him there",
+              "Why should we even care?"
+            ],
+            "camera": {
+              "position": [0, 2, 2],
+              "rotation": [0, 0, 0]
             }
-
+          },
+          {
+            "pageID": "1-1-2",
+            "type": "hotspot",
+            "title": "Hotspot Tag 1",
+            "content": [
+              "Has he lost his mind?",
+              "Can he see or is he blind?",
+              "Can he walk at all,",
+              "Or if he moves will he fall?",
+              "Is he alive or dead?",
+              "Has he thoughts within his head?",
+              "We'll just pass him there",
+              "Why should we even care?"
+            ],
+            "camera": {
+              "position": [-3, 1, -2],
+              "rotation": [0, 0, 0]
+            }
+          }
         ]
-    }
+      },
+      {
+        "articleID": "1-2",
+        "type": "model",
+        "title": "Iron Man",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/01.jpg"
+        },
+        "asset": {
+          "assetDirectory": "./media/a9f8as90f9nf4398t398anof/",
+          "obj": "IronMan.obj",
+          "mtl": "IronMan.mtl",
+          "assetType": "model",
+          "nameText": "Iron Pan",
+          "sourceText": "Free3D - https://free3d.com/3d-model/ironman-rigged-original-model--98611.html",
+          "position": [0, -120, 0],
+          "rotation": [0, 0, 0]
+        },
+        "subpages": [
+          {
+            "pageID": "1-2-1",
+            "type": "title",
+            "asset": {
+              "assetType": "image",
+              "assetSource": "./media/01.jpg"
+            },
+            "title": "Title Page",
+            "content": [
+              "Has he lost his mind?",
+              "Can he see or is he blind?",
+              "Can he walk at all,",
+              "Or if he moves will he fall?",
+              "Is he alive or dead?",
+              "Has he thoughts within his head?",
+              "We'll just pass him there",
+              "Why should we even care?"
+            ],
+            "camera": {
+              "position": [7, 90, 205],
+              "rotation": [0, 20, 200]
+            },
+            "hotspot": {
+              "position": [-10, 100, 300]
+            }
+          },
+          {
+            "pageID": "1-2-2",
+            "type": "hotspot",
+            "title": "Hotspot Tag 1",
+            "content": [
+              "He was turned to steel",
+              "In the great magnetic field",
+              "Where he traveled time",
+              "For the future of mankind"
+            ],
+            "camera": {
+              "position": [90, -120, -70],
+              "rotation": [0, 20, 200]
+            },
+            "hotspot": {
+              "position": [-10, 120, 300]
+            }
+          },
+          {
+            "pageID": "1-2-3",
+            "type": "hotspot",
+            "title": "Hotspot Tag 2",
+            "content": [
+              "Nobody wants him",
+              "He just stares at the world",
+              "Planning his vengeance",
+              "That he will soon unfold"
+            ],
+            "camera": {
+              "position": [90, 120, 70],
+              "rotation": [0, 20, 200]
+            },
+            "hotspot": {
+              "position": [-10, 100, 200]
+            }
+          }
+        ]
+      },
+      {
+        "articleID": "1-7",
+        "type": "mixed",
+        "title": "James Watson: discovering the Double Helix",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/01.jpg"
+        },
+        "subpages": [{
+          "pageID": "1-7-1",
+          "type": "title",
+          "asset": {
+            "assetType": "image",
+            "assetSource": "./media/01.jpg"
+          },
+          "title": "James Watson: discovering the Double Helix",
+          "subtitle": ""
+        },
+          {
+            "pageID": "1-7-2",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/02.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.2,
+                "y": 0.2,
+                "width": 0.26,
+                "height": 0.55
+              },
+              "nameText": "James Watson (b. 1928) pictured in 2018.",
+              "sourceText": "Science Museum Group."
+            },
+            "title": "James Watson: discovering the Double Helix",
+            "content": [
+              "James Watson speaks about the journey to discovering the double helix:",
+              "[Audio clip]"
+            ]
+          },
+          {
+            "pageID": "1-7-3",
+            "type": "video",
+            "asset": {
+              "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+              "assetType": "video",
+              "subtitlesSource": "testing.vtt",
+              "bslSource": "media/video-historical-castle.mp4"
+            }
+          }
+        ]
+      },
+      {
+        "articleID": "1-9",
+        "type": "mixed",
+        "title": "The search for the BRCA2 gene",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/03.jpg"
+        },
+        "subpages": [{
+          "pageID": "1-9-1",
+          "type": "title",
+          "asset": {
+            "assetType": "image",
+            "assetSource": "./media/03.jpg"
+          },
+          "title": "The search for the BRCA2 gene",
+          "subtitle": ""
+        },
+          {
+            "pageID": "1-9-2",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/03.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "",
+              "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
+            },
+            "title": "The search for the BRCA2 gene [introduction]",
+            "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.", "Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
+          },
+          {
+            "pageID": "1-9-3",
+            "type": "textImage",
+            "layout": "right",
+            "asset": {
+              "assetSource": "./media/04.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Sir Mike Stratton",
+              "sourceText": "Science Museum Group"
+            },
+            "title": "The team that tracked BRCA2 down",
+            "content": [
+              "Professor Stratton and his team revealed the identity of BRCA2 in a paper published in the journal Nature at the end of 1995.",
+              "Mike explains the significance of BRCA2:",
+              "[Audio clip]"
+            ]
+          },
+          {
+            "pageID": "1-9-4",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/05.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Understanding the presence of disease across a family is essential to create genetic family tree-known as a pedigree ",
+              "sourceText": "GARO / PHANIE / SCIENCE PHOTO LIBRARY"
+            },
+            "title": "A family history of breast cancer",
+            "content": [
+              "The team began to research large family trees where there was a history of cancer. The researchers analysed DNA from 15 families from around the world affected by early-onset breast cancer that wasn’t related to BRCA1.",
+              "<i>“Over the period of about 18 months this huge family tree was put together with hundreds of people on the tree…very tellingly we then found an individual with male breast cancer”.</i>",
+              "That was an important observation because male breast cancer did not seem to be a feature of BRCA1 based susceptibility to breast cancer and that added weight to the notion that this was a different gene. The team never met the family."
+            ]
+          },
+          {
+            "pageID": "1-9-5",
+            "type": "textImage",
+            "layout": "right",
+            "asset": {
+              "assetSource": "./media/05a.png",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Ideogram of human chromosome. Chromosome 13 highlighted where the alterations can be found for BRCA2.",
+              "sourceText": "National Center for Biotechnology Information, U.S. National Library of Medicine"
+            },
+            "title": "Finding the gene",
+            "content": [
+              "Using painstaking genetic techniques, the researchers pinpointed the location of BRCA2 to a region on one end of human chromosome 13 – a region known to contain a number of different genes.",
+              "[Audio clip]"
+            ]
+          },
+          {
+            "pageID": "1-9-6",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/06.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Concern about gene patenting",
+              "sourceText": "Getty Images"
+            },
+            "title": "A race to the gene",
+            "content": [
+              "Mike’s team wasn’t alone in looking to identify the BRCA2 gene. An American company called Myriad Genetics had been successful in isolating BRCA1 with the aim to provide tests for BRCA1. However, what was a cause of concern for Mike and other researchers was that the company had taken out patents essentially monopolising the usage of BRCA1.  They were looking to do the same with BRCA2.",
+              "<i>“ DNA is in all of us, it belongs to humanity, …so what had previously been a collaboration to find the position of BRCA2 now became a competition and it became a race to actually identify the gene.”</i>"
+            ]
+          },
+          {
+            "pageID": "1-9-7",
+            "type": "image",
+            "layout": "right",
+            "asset": {
+              "assetSource": "./media/07.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
+              "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
+            },
+            "title": "Sequenced at the Sanger Centre ",
+            "content": [
+              "Mike and his team had a secret weapon – the human genome project. The Sanger Centre was ready to embark on sequencing the human genome for the first time. Mike was able to collaborate so that the DNA of chromosome 13 - the location where Mike’s team suspected BRCA2 lay – was the first million letters of DNA to be sequenced."
+            ]
+          },
+          {
+            "pageID": "1-9-8",
+            "type": "textImage",
+            "layout": "right",
+            "asset": {
+              "assetSource": "./media/08.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Patient blood test taken for genetic screening.",
+              "sourceText": "BURGER / PHANIE / SCIENCE PHOTO LIBRARY"
+            },
+            "title": "The first patient to be tested for BRACA2",
+            "content": [
+              "Mike recalls how quickly the gene’s identification impacted potential patients.",
+              "[Audio clip]"
+            ]
+          },
+          {
+            "pageID": "1-9-9",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/09.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.1,
+                "y": 0.1,
+                "width": 0.45,
+                "height": 0.8
+              },
+              "nameText": "Colour-enhanced image of a breast cancer cell.",
+              "sourceText": "Anne Weston, Francis Crick Institute"
+            },
+            "title": "The legacy of BRACA2 and Cancer Genome project",
+            "content": [
+              "Since Mike’s team identified BRCA2, gene sequencing work has sequenced the DNA of around 25,000 human cancers.  This work is trying to reveal the genes that convert a normal cell into a cancer cell and these patterns of mutations that can tell us what causes a cancer.",
+              "“Genetics has been driven by changes in technology and those changes in technology have allowed us to look through larger and larger and larger amounts of DNA to find the abnormalities, the changes, the mutations…When I first started researching we were looking at very small portions of DNA for abnormalities.  In the position that I’m in now we are sequencing hundreds of human genomes every week, a difference that I could not even have dreamt of when I started working in science 30 years ago”."
+            ]
+          }
+        ]
+      },
+      {
+        "articleID": "1-4",
+        "title": "Managing my risk: Caroline’s story of BRCA2 diagnosis",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+        },
+        "type": "video",
+        "asset": {
+          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+          "assetType": "video",
+          "subtitlesSource": "testing.vtt",
+          "bslSource": "media/video-historical-castle.mp4"
+        }
+      }
+    ]
+  }
 }
