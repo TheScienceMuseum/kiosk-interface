@@ -28,6 +28,10 @@ class Model extends React.Component {
         OrbitController(THREE);
 
         this.THREE = THREE;
+
+        this.modelHasLoaded = this.modelHasLoaded.bind(this);
+        this.setCameraView = this.setCameraView.bind(this);
+        this.setDisplayedSection = this.setDisplayedSection.bind(this);
     }
 
     componentDidMount() {
@@ -81,27 +85,7 @@ class Model extends React.Component {
                 asset.obj,
                 // called when resource is loaded
                 (object) => {
-                    this.object = object;
-                    this.object.rotateX(this.THREE.Math.degToRad(asset.rotation[0]));
-                    this.object.rotateY(this.THREE.Math.degToRad(asset.rotation[1]));
-                    this.object.rotateZ(this.THREE.Math.degToRad(asset.rotation[2]));
-                    this.object.position.set(
-                        asset.position[0],
-                        asset.position[1],
-                        asset.position[2],
-                    );
-
-                    this.scene.add(this.object);
-                    const light = new this.THREE.AmbientLight(0xffffff, 1);
-                    this.scene.add(light);
-                    this.renderer.render(this.scene, this.camera);
-                    this.controls.update();
-
-
-                    const { subpages } = this.props;
-                    const currentView = subpages[0].camera;
-
-                    this.setCameraView(currentView.position, currentView.rotation);
+                    this.modelHasLoaded(object);
                 },
                 // called when loading is in progresses
                 (xhr) => {
@@ -150,6 +134,7 @@ class Model extends React.Component {
             .onUpdate(() => {
                 this.camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
                 this.controls.update();
+                this.renderer.render(this.scene, this.camera);
                 // console.log('tween update', currentPosition);
             })
             .onComplete(() => {
@@ -171,6 +156,24 @@ class Model extends React.Component {
         const subpage = subpages[section];
 
         this.setCameraView(subpage.camera.position, subpage.camera.rotation);
+    }
+
+    modelHasLoaded(object) {
+        const { asset } = this.props;
+        const [assetPosX, assetPosY, assetPosZ] = asset.position;
+
+        this.object = object;
+
+        this.object.rotateX(this.THREE.Math.degToRad(asset.rotation[0]));
+        this.object.rotateY(this.THREE.Math.degToRad(asset.rotation[1]));
+        this.object.rotateZ(this.THREE.Math.degToRad(asset.rotation[2]));
+        this.object.position.set(assetPosX, assetPosY, assetPosZ);
+        this.scene.add(this.object);
+
+        const light = new this.THREE.AmbientLight(0xffffff, 1);
+        this.scene.add(light);
+
+        this.setDisplayedSection(0);
     }
 
     render() {
