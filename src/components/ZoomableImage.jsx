@@ -6,7 +6,7 @@ import '../styles/components/ZoomableImage.scss';
 import isEmpty from 'lodash.isempty';
 import { Orientations, ScreenSize } from '../utils/Constants';
 import ZoomControls from './ZoomControls';
-// import propTypes from '../propTypes';
+import propTypes from '../propTypes';
 
 /*
  * NewZoomableImage:
@@ -690,7 +690,7 @@ class ZoomableImage extends React.Component {
 ZoomableImage.propTypes = {
     image: PropTypes.string.isRequired,
     onZoom: PropTypes.func.isRequired,
-    asset: PropTypes.isRequired,
+    asset: propTypes.asset.isRequired,
 };
 
 export default ZoomableImage;
