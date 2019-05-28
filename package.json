@@ -4,9 +4,11 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@tweenjs/tween.js": "^17.3.0",
         "gsap": "^2.0.2",
         "hammerjs": "^2.0.8",
         "json-stringify-safe": "^5.0.1",
+        "lodash": "^4.17.11",
         "lodash.has": "^4.5.2",
         "lodash.isempty": "^4.4.0",
         "prop-types": "^15.6.2",
@@ -20,6 +22,7 @@
         "react-transition-group": "^2.5.0",
         "redux": "^4.0.1",
         "shortid": "^2.2.13",
+        "three": "^0.104.0",
         "video-react": "^0.13.4"
     },
     "scripts": {
