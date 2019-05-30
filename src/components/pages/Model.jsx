@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { each } from 'lodash';
+import { each, has } from 'lodash';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
@@ -29,6 +29,7 @@ class Model extends React.Component {
 
         this.THREE = THREE;
 
+        this.createTriggers = this.createTriggers.bind(this);
         this.modelHasLoaded = this.modelHasLoaded.bind(this);
         this.setCameraView = this.setCameraView.bind(this);
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
@@ -54,6 +55,8 @@ class Model extends React.Component {
         this.renderer.setClearColor('#aaa');
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(width, height);
+
+        this.interaction = new Interaction(this.renderer, this.scene, this.camera);
 
         this.mount.appendChild(this.renderer.domElement);
 
@@ -173,7 +176,46 @@ class Model extends React.Component {
         const light = new this.THREE.AmbientLight(0xffffff, 1);
         this.scene.add(light);
 
+        this.createTriggers();
         this.setDisplayedSection(0);
+    }
+
+    createTriggers() {
+        const { subpages } = this.props;
+
+        each(subpages, (subpage, index) => {
+            if (!has(subpage, 'hotspot')) {
+                return;
+            }
+
+            const [posX, posY, posZ] = subpage.hotspot.position;
+
+            const geometry = new this.THREE.SphereGeometry(5, 32, 32);
+            const material = new this.THREE.MeshBasicMaterial({ color: 0xffff00 });
+            const sphere = new this.THREE.Mesh(geometry, material);
+            sphere.position.set(posX, posY, posZ);
+            this.scene.add(sphere);
+
+            sphere.on('click', () => {
+                console.log('clicked hotspot for page', subpage.pageID);
+                this.setDisplayedSection(index);
+            });
+
+            sphere.on('touchstart', () => {
+                console.log('touched hotspot for page', subpage.pageID);
+                this.setDisplayedSection(index);
+            });
+
+            sphere.on('mouseout', () => {
+                sphere.material.color.setHex(0xffff00);
+                this.renderer.render(this.scene, this.camera);
+            });
+
+            sphere.on('mouseover', () => {
+                sphere.material.color.setHex(0x0000ff);
+                this.renderer.render(this.scene, this.camera);
+            });
+        });
     }
 
     render() {
