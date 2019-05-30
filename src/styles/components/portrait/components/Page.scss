@@ -2,4 +2,13 @@
     .Page {
         height:1920px;
     }
+
+    .ZoomableImage.ZoomableImage--zoomedIn .imageContainer {
+        width: 1080px !important;
+        height: 1920px !important;
+    }
+
+    .PageTextImage--right .ImageContainer {
+        left:0;
+    }
 }
