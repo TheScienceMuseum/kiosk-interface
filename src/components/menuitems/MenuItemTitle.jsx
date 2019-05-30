@@ -10,7 +10,13 @@ import '../../styles/components/menuitems/MenuItems.scss';
  * @author Gavin Cockrem <gavin@joipolloi.com.
  * @package sciencemuseum-kiosk-interface
  */
+function CompressMenuTitle(t) {
+    if (t.length > 45) {
+        return t.substring(0, 45);
+    }
 
+    return t;
+}
 
 function MenuItemTitle(props) {
     const { title, galleryName } = props;
@@ -18,7 +24,7 @@ function MenuItemTitle(props) {
     return (
         <li className="MenuItem MenuItem__Title">
             <p>{ galleryName }</p>
-            <h1>{ title }</h1>
+            <h1>{ CompressMenuTitle(title) }</h1>
         </li>
     );
 }

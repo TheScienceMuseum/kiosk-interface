@@ -9,6 +9,16 @@
                 "short_name": {
                     "type": "string"
                 },
+                "aspect_ratio": {
+                    "type": "string",
+                    "enum": ["16:9", "9:16"]
+                },
+                "styles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "name": {
                     "type": "string"
                 },
