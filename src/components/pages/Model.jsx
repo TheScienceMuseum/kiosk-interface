@@ -97,7 +97,7 @@ class Model extends React.Component {
                 },
                 // called when loading has errors
                 (error) => {
-                    console.log(`An error happened: ${error.toString()}`);
+                    console.error(`An error happened: ${error.toString()}`);
                 },
             );
         });
