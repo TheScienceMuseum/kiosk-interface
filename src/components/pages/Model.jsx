@@ -115,12 +115,23 @@ class Model extends React.Component {
         this.mount.removeChild(this.renderer.domElement);
     }
 
-    setCameraView(position) {
+    setCameraView(position, target) {
         const currentPosition = {
             x: this.camera.position.x,
             y: this.camera.position.y,
             z: this.camera.position.z,
         };
+
+        const currentTarget = {
+            x: this.controls.target.x,
+            y: this.controls.target.y,
+            z: this.controls.target.z,
+        };
+
+        const [newTargetX, newTargetY, newTargetZ] = target;
+
+        this.controls.target = new this.THREE.Vector3(newTargetX, newTargetY, newTargetZ);
+
 
         // console.log('moving from', currentPosition, 'to', position);
 
@@ -158,7 +169,12 @@ class Model extends React.Component {
         const { subpages } = this.props;
         const subpage = subpages[section];
 
-        this.setCameraView(subpage.camera.position, subpage.camera.rotation);
+        this.setCameraView(
+            subpage.camera.position,
+            has(subpage, 'hotspot') ?
+                subpage.hotspot.position :
+                [0, 0, 0]
+        );
     }
 
     modelHasLoaded(object) {
