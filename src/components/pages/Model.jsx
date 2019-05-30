@@ -152,7 +152,8 @@ class Model extends React.Component {
                 x: newTargetX,
                 y: newTargetY,
                 z: newTargetZ,
-            }, 500)
+            }, 1000)
+            .easing(TWEEN.Easing.Linear.None)
             .onUpdate(() => {
                 this.controls.target = new this.THREE.Vector3(
                     currentTarget.x,
