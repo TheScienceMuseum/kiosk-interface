@@ -7,6 +7,7 @@
         left: 0;
         margin-top: -100px;
         flex-direction: row;
+        transition: all 0.2s;
     }
 
     .NavBar .NavButtonHome {
@@ -32,5 +33,28 @@
         &.Article--fullScreen {
             padding-bottom:0;
         }
+    }
+
+     .NavBar.NavBar--hidden {
+        transform: translateY(100px);
+    }
+
+    .PageTextImage--imageFull .ContentContainer {
+        left:0;
+        top:100%;
+    }
+
+    .PageTextImage--imageFull .ImageContainer {
+        height:100%;
+        position:absolute;
+    }
+
+    .ContentContainer {
+        transition: all 0.5s;
+        top:0;
+    }
+
+    .ZoomControls {
+        padding: 20px 250px;
     }
 }
