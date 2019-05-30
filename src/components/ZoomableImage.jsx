@@ -162,6 +162,8 @@ class ZoomableImage extends React.Component {
             position: 'absolute',
             marginTop: 0,
             marginLeft: 0,
+            transform: 'translateX(0px) translateY(0px)',
+            willChange: 'transform',
         };
     }
 
@@ -247,8 +249,13 @@ class ZoomableImage extends React.Component {
             // could look at removing this isEmpty function
             // as I believe it only actually runs once anyway...
             style = {
-                marginLeft: `-${(pixels.x)}px`,
-                marginTop: `-${(pixels.y)}px`,
+                transform: `translateX(-${pixels.x}px) translateY(-${pixels.y}px)`,
+                width: this.image.naturalWidth,
+                height: this.image.naturalHeight,
+                x: 0,
+                y: 0,
+                position: 'absolute',
+                willChange: 'transform',
             };
         } else {
             // console.log('has style; no update');
@@ -437,7 +444,6 @@ class ZoomableImage extends React.Component {
 
     zoomToScale(scaleTo) {
         const scaleBy = scaleTo / this.scale;
-        console.log('scaleBy: ', scaleBy);
         // scaleBy = Math.round(scaleBy * 10) / 10;
         // this.zoom(scaleBy);
         this.zoomCenter(scaleBy);
@@ -453,7 +459,6 @@ class ZoomableImage extends React.Component {
 
     handleZoomIn() {
         const imageScale = Math.min(this.scale + 0.1, 1);
-        console.log('handle zoom in');
         // imageScale = Math.round(imageScale * 10) / 10;
         this.zoomToScale(imageScale);
         // this.zoomCenter(1.1);
@@ -571,7 +576,6 @@ class ZoomableImage extends React.Component {
     handlePan(e) {
         const { fullscreen } = this.state;
         if (!fullscreen) return;
-        console.log('handle pan');
         this.translate(e.deltaX, e.deltaY);
     }
 
