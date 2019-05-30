@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { each, has } from 'lodash';
+import { each, has, pick } from 'lodash';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
@@ -116,20 +116,10 @@ class Model extends React.Component {
     }
 
     setCameraView(position, target) {
-        const currentPosition = {
-            x: this.camera.position.x,
-            y: this.camera.position.y,
-            z: this.camera.position.z,
-        };
-
+        const currentPosition = pick(this.camera.position, ['x', 'y', 'z']);
         const [newPosX, newPosY, newPosZ] = position;
 
-        const currentTarget = {
-            x: this.controls.target.x,
-            y: this.controls.target.y,
-            z: this.controls.target.z,
-        };
-
+        const currentTarget = pick(this.controls.target, ['x', 'y', 'z']);
         const [newTargetX, newTargetY, newTargetZ] = target;
 
 
