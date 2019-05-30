@@ -176,6 +176,9 @@ class Model extends React.Component {
         const { subpages } = this.props;
         const subpage = subpages[section];
 
+        this.renderer.render(this.scene, this.camera);
+        this.controls.update();
+
         this.setCameraView(
             subpage.camera.position,
             has(subpage, 'hotspot')
