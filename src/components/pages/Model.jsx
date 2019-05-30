@@ -122,6 +122,8 @@ class Model extends React.Component {
             z: this.camera.position.z,
         };
 
+        const [newPosX, newPosY, newPosZ] = position;
+
         const currentTarget = {
             x: this.controls.target.x,
             y: this.controls.target.y,
@@ -130,8 +132,6 @@ class Model extends React.Component {
 
         const [newTargetX, newTargetY, newTargetZ] = target;
 
-        this.controls.target = new this.THREE.Vector3(newTargetX, newTargetY, newTargetZ);
-
 
         // console.log('moving from', currentPosition, 'to', position);
 
@@ -139,12 +139,12 @@ class Model extends React.Component {
 
         let animationFrame = null;
 
-        const tween = new TWEEN.Tween(currentPosition)
+        const positionTween = new TWEEN.Tween(currentPosition)
             .to({
-                x: position[0],
-                y: position[1],
-                z: position[2],
-            }, 2000)
+                x: newPosX,
+                y: newPosY,
+                z: newPosZ,
+            }, 1000)
             .easing(TWEEN.Easing.Linear.None)
             .onUpdate(() => {
                 this.camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
@@ -157,9 +157,25 @@ class Model extends React.Component {
             })
             .start();
 
+        const targetTween = new TWEEN.Tween(currentTarget)
+            .to({
+                x: newTargetX,
+                y: newTargetY,
+                z: newTargetZ,
+            }, 500)
+            .onUpdate(() => {
+                this.controls.target = new this.THREE.Vector3(
+                    currentTarget.x,
+                    currentTarget.y,
+                    currentTarget.z,
+                );
+            })
+            .start();
+
         const animate = (time) => {
             animationFrame = window.requestAnimationFrame(animate);
-            tween.update(time);
+            targetTween.update(time);
+            positionTween.update(time);
         };
 
         animate();
@@ -171,9 +187,9 @@ class Model extends React.Component {
 
         this.setCameraView(
             subpage.camera.position,
-            has(subpage, 'hotspot') ?
-                subpage.hotspot.position :
-                [0, 0, 0]
+            has(subpage, 'hotspot')
+                ? subpage.hotspot.position
+                : [0, 0, 0],
         );
     }
 
