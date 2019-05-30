@@ -106,8 +106,8 @@ class ZoomableImage extends React.Component {
 
         if (fullscreen !== prevState.fullscreen) {
             // console.log('ZoomableImage: componentDidUpdate: change in fullscreen');
-            this.viewportWidth = (fullscreen) ? ScreenSize.width : this.initialWidth;
-            this.viewportHeight = (fullscreen) ? ScreenSize.height : this.initialHeight;
+            this.viewportWidth = (fullscreen) ? ScreenSize[window.appJson.aspect_ratio].width : this.initialWidth;
+            this.viewportHeight = (fullscreen) ? ScreenSize[window.appJson.aspect_ratio].height : this.initialHeight;
             const imageScale = (fullscreen) ? this.imageMinScale : this.initialScale;
 
             this.image.style.marginTop = imgStyle.marginTop;

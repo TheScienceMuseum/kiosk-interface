@@ -2,7 +2,7 @@
     "short_name": "",
     "name": "genetic-diagnosis",
     "label": "Genetic Diagnosis",
-    "aspect_ratio": "16:9",
+    "aspect_ratio": "9:16",
     "version": 1,
     "main": "",
     "requirements": {
@@ -23,7 +23,7 @@
                 "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                 "subtitlesSource": "testing.vtt"
             },
-            "idleTimeout": 120
+            "idleTimeout": 12000
         },
         "contents": [{
                 "articleID": "1-1",

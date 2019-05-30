@@ -219,7 +219,7 @@ class Article extends React.Component {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
         const { currentPage } = this.state;
         // const { resetInactiveTimer } = this.props;
-        const targetScroll = currentPage * ScreenSize.height;
+        const targetScroll = currentPage * ScreenSize[window.appJson.aspect_ratio].height;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);

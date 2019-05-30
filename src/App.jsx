@@ -41,24 +41,22 @@ class App extends Component {
         this.setState({ location: AppStates.ATTRACTOR, initial: true });
     }
 
-    getAspectClass() {
-        let classes = '';
+    getAspectRotation() {
         // eslint-disable-next-line camelcase
         const { aspect_ratio } = this.props;
         // eslint-disable-next-line camelcase
         switch (aspect_ratio) {
         case '16:9':
-            classes += 'landscape';
-            break;
+            return 'landscape';
         case '9:16':
-            classes += 'portrait';
-            break;
+            return 'portrait';
         default:
-            classes += 'landscape';
-            break;
+            return 'landscape';
         }
+    }
 
-        return classes;
+    getAspectClass() {
+        return this.getAspectRotation();
     }
 
     getStylesClasses() {
@@ -82,6 +80,7 @@ class App extends Component {
             activeArticle, location, singleArticleMode, initial,
         } = this.state;
         const { content } = this.props;
+        
 
         switch (location) {
         case AppStates.ATTRACTOR:
@@ -99,6 +98,7 @@ class App extends Component {
                     loadArticle={this.loadArticle}
                     resetInactiveTimer={this.resetTimer}
                     initial={initial}
+                    aspect={this.getAspectRotation()}
                 />
             );
         default:

@@ -1,0 +1,35 @@
+.portrait {
+    .Menu__Container {
+        height: 1600px;
+    }
+
+    .MenuItem__Video, .MenuItem__Mixed {
+        width:800px;
+    }
+
+    .MenuItem__Video img, .MenuItem__Mixed img {
+        width:100%;
+    }
+
+    .MenuItem__Title {
+        height: 1600px;
+    }
+
+    .MenuPips__Button {
+        height:80px;
+    }
+
+    .MenuPips__Button:not(:first-child) {
+        width: 40px;
+    }
+
+    .MenuPips .spacer {
+        width:35px;
+        height:82px;
+    }
+
+    .MenuPips .MenuPipHighlighter {
+        height:80px;
+        width:40px;
+    }
+}
