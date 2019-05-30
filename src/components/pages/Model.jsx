@@ -45,7 +45,7 @@ class Model extends React.Component {
 
         this.scene = new this.THREE.Scene();
         this.camera = new this.THREE.PerspectiveCamera(
-            75,
+            45,
             width / height,
             0.1,
             1000,
