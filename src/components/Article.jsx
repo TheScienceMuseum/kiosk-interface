@@ -113,12 +113,6 @@ class Article extends React.Component {
                     autoPlay
                 />
             );
-        case ArticleTypes.MODEL:
-            console.log('MODEL articleContent: ', articleContent);
-
-            return (
-                <Model {...articleContent} />
-            );
         default:
             return null;
         }
