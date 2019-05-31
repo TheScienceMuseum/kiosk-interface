@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { each, has, pick } from 'lodash';
+import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
 import * as OBJLoader from './Model/OBJLoader';
 import * as MTLLoader from './Model/MTLLoader';
 import * as OrbitController from './Model/OrbitController';
+import { ScreenSize } from '../../utils/Constants';
 import propTypes from '../../propTypes';
 
 import '../../styles/components/pages/Model.scss';
@@ -36,8 +38,8 @@ class Model extends React.Component {
     }
 
     componentDidMount() {
-        const width = this.mount.clientWidth;
-        const height = this.mount.clientHeight;
+        const width = this.viewerElem.clientWidth;
+        const height = this.viewerElem.clientHeight;
         const { asset, subpages } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
@@ -58,7 +60,7 @@ class Model extends React.Component {
 
         this.interaction = new Interaction(this.renderer, this.scene, this.camera);
 
-        this.mount.appendChild(this.renderer.domElement);
+        this.viewerElem.appendChild(this.renderer.domElement);
 
         this.controls = new this.THREE.OrbitControls(this.camera, this.renderer.domElement);
         this.controls.addEventListener('change', () => {
@@ -105,14 +107,13 @@ class Model extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         const { currentSection } = this.props;
-
         if (nextProps.currentSection !== currentSection) {
             this.setDisplayedSection(nextProps.currentSection);
         }
     }
 
     componentWillUnmount() {
-        this.mount.removeChild(this.renderer.domElement);
+        this.viewerElem.removeChild(this.renderer.domElement);
     }
 
     setCameraView(position, target) {
@@ -179,6 +180,10 @@ class Model extends React.Component {
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
 
+        const targetScroll = section * ScreenSize.height;
+        const options = { scrollTop: targetScroll, ease: Ease.easeOut };
+        TweenLite.to(this.scrollElem, 0.5, options);
+
         this.setCameraView(
             subpage.camera.position,
             has(subpage, 'hotspot')
@@ -207,7 +212,7 @@ class Model extends React.Component {
     }
 
     createTriggers() {
-        const { subpages } = this.props;
+        const { subpages, onChangeCurrentPage } = this.props;
 
         each(subpages, (subpage, index) => {
             if (!has(subpage, 'hotspot')) {
@@ -224,12 +229,12 @@ class Model extends React.Component {
 
             sphere.on('click', () => {
                 console.log('clicked hotspot for page', subpage.pageID);
-                this.setDisplayedSection(index);
+                onChangeCurrentPage(index);
             });
 
             sphere.on('touchstart', () => {
                 console.log('touched hotspot for page', subpage.pageID);
-                this.setDisplayedSection(index);
+                onChangeCurrentPage(index);
             });
 
             sphere.on('mouseout', () => {
@@ -249,29 +254,23 @@ class Model extends React.Component {
         const { cameraPosition } = this.state;
 
         return (
-            <div
-                className="Page PageModel"
-                ref={(mount) => {
-                    if (mount) {
-                        const [viewer] = mount.getElementsByClassName('ModelViewer');
-                        this.mount = viewer;
-                    } else {
-                        this.mount = null;
-                    }
-                }}
-            >
-                <div className="ModelViewer" />
-                <div className="ModelText">
+            <div className="Page PageModel">
+                <div className="ModelViewer" ref={(ref) => { this.viewerElem = ref; }} />
+                <div className="ModelControls">
+
+                </div>
+                <div className="ModelText" ref={(ref) => { this.scrollElem = ref; }}>
                     {subpages.map(subpage => (
-                        <div key={subpage.pageID}>
+                        <div key={subpage.pageID} id={`article-subpage-${subpage.pageID}`}>
                             <h2>{subpage.title}</h2>
+                            {/* eslint-disable react/no-array-index-key */}
                             {subpage.content.map((line, idx) => (
                                 <p
                                     key={`page-${subpage.pageID}-${idx}`}
-                                >
-                                    {line}
-                                </p>
+                                    dangerouslySetInnerHTML={{__html: line}}
+                                />
                             ))}
+                            {/* eslint-enable react/no-array-index-key */}
                         </div>
                     ))}
                 </div>
@@ -291,9 +290,16 @@ class Model extends React.Component {
 }
 
 Model.propTypes = {
-    // currentSection: PropTypes.number,
+    currentSection: PropTypes.number,
     asset: propTypes.modelAsset.isRequired,
-    subpages: PropTypes.array.isRequired,
+    subpages: PropTypes.arrayOf(PropTypes.shape({
+        pageID: PropTypes.string.isRequired,
+    })).isRequired,
+    onChangeCurrentPage: PropTypes.func.isRequired,
+};
+
+Model.defaultProps = {
+    currentSection: 0,
 };
 
 export default Model;
