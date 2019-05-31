@@ -17,8 +17,14 @@
         width: calc(1920px - 1180px);
         height: 100%;
         position: absolute;
-        padding: 130px 80px;
         background: $pageBackground;
         right: 0;
+        //overflow-y: scroll;
+        overflow: hidden;
+
+        > div {
+            padding: 130px 80px;
+            height: 100vh;
+        }
     }
 }

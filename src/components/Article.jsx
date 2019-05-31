@@ -51,6 +51,7 @@ class Article extends React.Component {
         // this.onJump = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
         this.handleHomeButton = this.handleHomeButton.bind(this);
+        this.handleChangeCurrentPage = this.handleChangeCurrentPage.bind(this);
         Article.pauseOnNavigation = Article.pauseOnNavigation.bind(this);
         // this.article = null;
 
@@ -234,6 +235,13 @@ class Article extends React.Component {
         loadArticle('menu');
     }
 
+    handleChangeCurrentPage(currentPage) {
+        this.setState(prevState => ({
+            ...prevState,
+            currentPage,
+        }));
+    }
+
     render() {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
@@ -257,7 +265,13 @@ class Article extends React.Component {
                 <article className={`Article ${articleClass}`}>
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         {(this.articleContent.type === ArticleTypes.MODEL
-                            && <Model currentSection={currentPage} {...this.articleContent} />
+                            && (
+                                <Model
+                                    currentSection={currentPage}
+                                    onChangeCurrentPage={this.handleChangeCurrentPage}
+                                    {...this.articleContent}
+                                />
+                            )
                         ) || (
                             this.article
                         )}
