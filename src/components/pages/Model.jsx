@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { each, has, pick } from 'lodash';
+import { each, has, pick, throttle } from 'lodash';
 import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
@@ -12,10 +12,18 @@ import { ScreenSize } from '../../utils/Constants';
 import propTypes from '../../propTypes';
 
 import '../../styles/components/pages/Model.scss';
+import ZoomControls from '../ZoomControls';
 
 class Model extends React.Component {
     constructor(props) {
         super(props);
+
+
+        OBJLoader(THREE);
+        MTLLoader(THREE);
+        OrbitController(THREE);
+
+        this.THREE = THREE;
 
         this.state = {
             cameraPosition: {
@@ -25,16 +33,21 @@ class Model extends React.Component {
             },
         };
 
-        OBJLoader(THREE);
-        MTLLoader(THREE);
-        OrbitController(THREE);
-
-        this.THREE = THREE;
+        this.lastScale = 1;
+        this.scale = 1;
+        this.minZoom = 1;
+        this.maxZoom = 10;
+        this.initialPositionVector = new this.THREE.Vector3(0, 0, 0);
 
         this.createTriggers = this.createTriggers.bind(this);
+        this.handleZoomChange = this.handleZoomChange.bind(this);
+        this.handleZoomIn = this.handleZoomIn.bind(this);
+        this.handleZoomOut = this.handleZoomOut.bind(this);
         this.modelHasLoaded = this.modelHasLoaded.bind(this);
         this.setCameraView = this.setCameraView.bind(this);
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
+        this.setZoomToScale = this.setZoomToScale.bind(this);
+        this.throttledSetZoomToScale = throttle(this.setZoomToScale.bind(this), 500);
     }
 
     componentDidMount() {
@@ -116,15 +129,14 @@ class Model extends React.Component {
         this.viewerElem.removeChild(this.renderer.domElement);
     }
 
-    setCameraView(position, target) {
+    setCameraView(position, target, speed = 1000) {
         const currentPosition = pick(this.camera.position, ['x', 'y', 'z']);
         const [newPosX, newPosY, newPosZ] = position;
 
         const currentTarget = pick(this.controls.target, ['x', 'y', 'z']);
         const [newTargetX, newTargetY, newTargetZ] = target;
 
-
-        // console.log('moving from', currentPosition, 'to', position);
+        console.log('moving from', currentPosition, 'to', position);
 
         TWEEN.removeAll();
 
@@ -135,7 +147,7 @@ class Model extends React.Component {
                 x: newPosX,
                 y: newPosY,
                 z: newPosZ,
-            }, 1000)
+            }, speed)
             .easing(TWEEN.Easing.Linear.None)
             .onUpdate(() => {
                 this.camera.position.set(currentPosition.x, currentPosition.y, currentPosition.z);
@@ -153,7 +165,7 @@ class Model extends React.Component {
                 x: newTargetX,
                 y: newTargetY,
                 z: newTargetZ,
-            }, 1000)
+            }, speed)
             .easing(TWEEN.Easing.Linear.None)
             .onUpdate(() => {
                 this.controls.target = new this.THREE.Vector3(
@@ -184,12 +196,48 @@ class Model extends React.Component {
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         TweenLite.to(this.scrollElem, 0.5, options);
 
+        this.lastScale = 1;
+        this.scale = 1;
+        this.minZoom = 1;
+        this.maxZoom = 10;
+        this.initialPositionVector = (new this.THREE.Vector3(0, 0, 0))
+            .fromArray(subpage.camera.position);
+
         this.setCameraView(
             subpage.camera.position,
             has(subpage, 'hotspot')
                 ? subpage.hotspot.position
                 : [0, 0, 0],
         );
+    }
+
+    setZoomToScale() {
+        if (
+            this.scale < this.minZoom
+            || this.scale > this.maxZoom
+        ) {
+            return;
+        }
+
+        const lineFromInitialPositionToTarget = new this.THREE.Line3(
+            this.initialPositionVector,
+            this.controls.target,
+        );
+
+        const maximalZoomDistance = new this.THREE.Vector3();
+
+        lineFromInitialPositionToTarget.at(0.66, maximalZoomDistance);
+
+        const lineFromInitialPositionToMaximalZoomDistance = new this.THREE.Line3(
+            this.initialPositionVector,
+            maximalZoomDistance,
+        );
+
+        const newCameraPosition = new this.THREE.Vector3();
+
+        lineFromInitialPositionToMaximalZoomDistance.at((this.scale - 1) / 10, newCameraPosition);
+
+        this.setCameraView(newCameraPosition.toArray(), this.controls.target.toArray(), 100);
     }
 
     modelHasLoaded(object) {
@@ -249,6 +297,30 @@ class Model extends React.Component {
         });
     }
 
+    handleZoomIn() {
+        if (this.scale >= this.maxZoom) {
+            return;
+        }
+
+        this.scale += 1;
+        this.setZoomToScale();
+    }
+
+    handleZoomOut() {
+        if (this.scale <= this.minZoom) {
+            return;
+        }
+
+        this.scale -= 1;
+        this.setZoomToScale();
+    }
+
+    handleZoomChange(event) {
+        this.scale = parseInt(event.target.value, 10);
+
+        this.throttledSetZoomToScale();
+    }
+
     render() {
         const { subpages } = this.props;
         const { cameraPosition } = this.state;
@@ -257,7 +329,15 @@ class Model extends React.Component {
             <div className="Page PageModel">
                 <div className="ModelViewer" ref={(ref) => { this.viewerElem = ref; }} />
                 <div className="ModelControls">
-
+                    <ZoomControls
+                        zoomIn={this.handleZoomIn}
+                        zoomOut={this.handleZoomOut}
+                        imageMinZoom={this.minZoom}
+                        imageMaxZoom={this.maxZoom}
+                        handleZoomChange={this.handleZoomChange}
+                        currentScale={this.scale}
+                        step={1}
+                    />
                 </div>
                 <div className="ModelText" ref={(ref) => { this.scrollElem = ref; }}>
                     {subpages.map(subpage => (
