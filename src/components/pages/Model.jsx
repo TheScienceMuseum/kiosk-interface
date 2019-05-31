@@ -67,7 +67,7 @@ class Model extends React.Component {
         );
 
         this.renderer = new this.THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setClearColor('#aaa');
+        this.renderer.setClearColor(asset.background || '#aaa');
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(width, height);
 
