@@ -104,7 +104,8 @@
           "nameText": "Iron Pan",
           "sourceText": "Free3D - https://free3d.com/3d-model/ironman-rigged-original-model--98611.html",
           "position": [0, -120, 0],
-          "rotation": [0, 0, 0]
+          "rotation": [0, 0, 0],
+          "background": "#eee"
         },
         "subpages": [
           {
