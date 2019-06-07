@@ -343,14 +343,14 @@ class Model extends React.Component {
                     {subpages.map(subpage => (
                         <div key={subpage.pageID} id={`article-subpage-${subpage.pageID}`}>
                             <h2>{subpage.title}</h2>
-                            {/* eslint-disable react/no-array-index-key */}
+                            {/* eslint-disable react/no-array-index-key, react/no-danger */}
                             {subpage.content.map((line, idx) => (
                                 <p
                                     key={`page-${subpage.pageID}-${idx}`}
-                                    dangerouslySetInnerHTML={{__html: line}}
+                                    dangerouslySetInnerHTML={{ __html: line }}
                                 />
                             ))}
-                            {/* eslint-enable react/no-array-index-key */}
+                            {/* eslint-enable react/no-array-index-key, react/no-danger */}
                         </div>
                     ))}
                 </div>
