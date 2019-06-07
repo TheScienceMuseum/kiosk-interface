@@ -298,7 +298,9 @@ class Model extends React.Component {
         }
     }
 
-        this.throttledSetZoomToScale();
+    handleRotate90() {
+        this.THREE.rotateLeft(0.25);
+        this.controls.update();
     }
 
     render() {
@@ -309,6 +311,13 @@ class Model extends React.Component {
             <div className="Page PageModel">
                 <div className="ModelViewer" ref={(ref) => { this.viewerElem = ref; }} />
                 <div className="ModelControls">
+                    <button
+                        className="Button Button--icon"
+                        type="button"
+                        onClick={this.handleRotate90}
+                    >
+                        <i className="icon-rotate" />
+                    </button>
                     <ZoomControls
                         zoomIn={this.handleZoomIn}
                         zoomOut={this.handleZoomOut}
