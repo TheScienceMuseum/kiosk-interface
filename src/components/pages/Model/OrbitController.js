@@ -97,12 +97,28 @@ module.exports = (THREE) => {
         // public methods
         //
 
-        this.getPolarAngle = function () {
-            return spherical.phi;
+        THREE.dollyIn = function() {
+
+            dollyIn( getZoomScale() );
+            scope.update();
         };
 
-        this.getAzimuthalAngle = function () {
-            return spherical.theta;
+        THREE.dollyOut = function() {
+
+            dollyOut( getZoomScale() );
+            scope.update();
+        };
+
+        THREE.rotateLeft = function( angle ) {
+
+            rotateLeft( angle );
+            scope.update();
+        };
+
+        THREE.rotateUp = function( angle ) {
+
+            rotateUp( angle );
+            scope.update();
         };
 
         this.saveState = function () {
