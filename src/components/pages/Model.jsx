@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { each, has, pick, throttle } from 'lodash';
+import {
+    each, has, pick,
+} from 'lodash';
 import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
@@ -33,21 +35,18 @@ class Model extends React.Component {
             },
         };
 
-        this.lastScale = 1;
         this.scale = 1;
         this.minZoom = 1;
-        this.maxZoom = 10;
-        this.initialPositionVector = new this.THREE.Vector3(0, 0, 0);
+        this.maxZoom = 20;
 
         this.createTriggers = this.createTriggers.bind(this);
+        this.handleRotate90 = this.handleRotate90.bind(this);
         this.handleZoomChange = this.handleZoomChange.bind(this);
         this.handleZoomIn = this.handleZoomIn.bind(this);
         this.handleZoomOut = this.handleZoomOut.bind(this);
         this.modelHasLoaded = this.modelHasLoaded.bind(this);
         this.setCameraView = this.setCameraView.bind(this);
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
-        this.setZoomToScale = this.setZoomToScale.bind(this);
-        this.throttledSetZoomToScale = throttle(this.setZoomToScale.bind(this), 500);
     }
 
     componentDidMount() {
@@ -86,7 +85,7 @@ class Model extends React.Component {
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.25;
         this.controls.screenSpacePanning = false;
-        this.controls.minDistance = 2;
+        this.controls.minDistance = 60;
         this.controls.maxDistance = 500;
         this.controls.update();
 
@@ -211,35 +210,6 @@ class Model extends React.Component {
         );
     }
 
-    setZoomToScale() {
-        if (
-            this.scale < this.minZoom
-            || this.scale > this.maxZoom
-        ) {
-            return;
-        }
-
-        const lineFromInitialPositionToTarget = new this.THREE.Line3(
-            this.initialPositionVector,
-            this.controls.target,
-        );
-
-        const maximalZoomDistance = new this.THREE.Vector3();
-
-        lineFromInitialPositionToTarget.at(0.66, maximalZoomDistance);
-
-        const lineFromInitialPositionToMaximalZoomDistance = new this.THREE.Line3(
-            this.initialPositionVector,
-            maximalZoomDistance,
-        );
-
-        const newCameraPosition = new this.THREE.Vector3();
-
-        lineFromInitialPositionToMaximalZoomDistance.at((this.scale - 1) / 10, newCameraPosition);
-
-        this.setCameraView(newCameraPosition.toArray(), this.controls.target.toArray(), 100);
-    }
-
     modelHasLoaded(object) {
         const { asset } = this.props;
         const [assetPosX, assetPosY, assetPosZ] = asset.position;
@@ -303,7 +273,7 @@ class Model extends React.Component {
         }
 
         this.scale += 1;
-        this.setZoomToScale();
+        this.THREE.dollyOut();
     }
 
     handleZoomOut() {
@@ -312,11 +282,21 @@ class Model extends React.Component {
         }
 
         this.scale -= 1;
-        this.setZoomToScale();
+        this.THREE.dollyIn();
     }
 
     handleZoomChange(event) {
-        this.scale = parseInt(event.target.value, 10);
+        const newScale = parseInt(event.target.value, 10);
+        const oldScale = this.scale;
+
+        const diff = newScale - oldScale;
+
+        if (diff < 0) {
+            this.handleZoomOut();
+        } else if (diff > 0) {
+            this.handleZoomIn();
+        }
+    }
 
         this.throttledSetZoomToScale();
     }
