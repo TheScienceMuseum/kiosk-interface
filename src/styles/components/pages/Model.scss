@@ -35,6 +35,12 @@
             padding: 20px 0px;
             max-width: 500px;
         }
+
+        > .Button {
+            background-color: $black;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
     }
 
     .ModelText {
