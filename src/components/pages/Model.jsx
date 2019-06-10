@@ -314,7 +314,16 @@ class Model extends React.Component {
 
         return (
             <div className="Page PageModel">
-                <div className="ModelViewer" ref={(ref) => { this.viewerElem = ref; }} />
+                <div
+                    className="ModelViewer"
+                    ref={(ref) => {
+                        this.viewerElem = ref;
+                    }}
+                    onPointerUp={(e) => {
+                        // Ignore pointer up for hammerjs swiping on the model viewer
+                        e.stopPropagation();
+                    }}
+                />
                 <div className="ModelControls">
                     <button
                         className="Button Button--icon"
