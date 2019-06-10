@@ -1,9 +1,10 @@
 {
   "short_name": "",
-  "name": "test-model",
-  "label": "Test Model",
+  "name": "genetic-diagnosis",
+  "label": "Genetic Diagnosis",
+  "aspect_ratio": "16:9",
   "version": 1,
-  "main": "index.html",
+  "main": "",
   "requirements": {
     "client_version": "0.0.1"
   },
@@ -22,26 +23,16 @@
         "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
         "subtitlesSource": "testing.vtt"
       },
-      "idleTimeout": null
+      "idleTimeout": 120
     },
     "contents": [
       {
         "articleID": "1-1",
-        "type": "model",
-        "title": "Stephenson's Rocket",
+        "type": "mixed",
+        "title": "James Watson: discovering the Double Helix",
         "titleImage": {
           "assetType": "image",
           "assetSource": "./media/01.jpg"
-        },
-        "asset": {
-          "assetDirectory": "./media/5091351053194fha0sdfn1234533/",
-          "obj": "146_SM_Rocket_1M.obj",
-          "mtl": "146_SM_Rocket_1M.mtl",
-          "assetType": "model",
-          "nameText": "Stephenson's Rocket",
-          "sourceText": "Science Museum Group - https://sketchfab.com/3d-models/stephensons-rocket-09d73611eeda4aa7a4f3643766b340da",
-          "position": [0, -1, 0],
-          "rotation": [90, 0, 0]
         },
         "subpages": [
           {
@@ -51,45 +42,46 @@
               "assetType": "image",
               "assetSource": "./media/01.jpg"
             },
-            "title": "Title Page",
-            "content": [
-              "Has he lost his mind?",
-              "Can he see or is he blind?",
-              "Can he walk at all,",
-              "Or if he moves will he fall?",
-              "Is he alive or dead?",
-              "Has he thoughts within his head?",
-              "We'll just pass him there",
-              "Why should we even care?"
-            ],
-            "camera": {
-              "position": [0, 2, 2],
-              "rotation": [0, 0, 0]
-            }
+            "title": "James Watson: discovering the Double Helix",
+            "subtitle": ""
           },
           {
             "pageID": "1-1-2",
-            "type": "hotspot",
-            "title": "Hotspot Tag 1",
+            "type": "textImage",
+            "layout": "left",
+            "asset": {
+              "assetSource": "./media/02.jpg",
+              "assetType": "image",
+              "boundingBox": {
+                "x": 0.2,
+                "y": 0.2,
+                "width": 0.26,
+                "height": 0.55
+              },
+              "nameText": "James Watson (b. 1928) pictured in 2018.",
+              "sourceText": "Science Museum Group."
+            },
+            "title": "James Watson: discovering the Double Helix",
             "content": [
-              "Has he lost his mind?",
-              "Can he see or is he blind?",
-              "Can he walk at all,",
-              "Or if he moves will he fall?",
-              "Is he alive or dead?",
-              "Has he thoughts within his head?",
-              "We'll just pass him there",
-              "Why should we even care?"
-            ],
-            "camera": {
-              "position": [-3, 1, -2],
-              "rotation": [0, 0, 0]
+              "James Watson speaks about the journey to discovering the double helix:",
+              "[Audio clip]"
+            ]
+          },
+          {
+            "pageID": "1-1-3",
+            "type": "video",
+            "asset": {
+              "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+              "assetType": "video",
+              "subtitlesSource": "testing.vtt",
+              "bslSource": "media/video-historical-castle.mp4"
             }
           }
         ]
       },
       {
-        "articleID": "1-2",
+        "articleID": "5-2",
         "type": "model",
         "title": "Iron Man",
         "titleImage": {
@@ -109,7 +101,7 @@
         },
         "subpages": [
           {
-            "pageID": "1-2-1",
+            "pageID": "5-2-1",
             "type": "title",
             "asset": {
               "assetType": "image",
@@ -132,7 +124,7 @@
             }
           },
           {
-            "pageID": "1-2-2",
+            "pageID": "5-2-2",
             "type": "hotspot",
             "title": "Hotspot Tag 1",
             "content": [
@@ -151,7 +143,7 @@
             }
           },
           {
-            "pageID": "1-2-3",
+            "pageID": "5-2-3",
             "type": "hotspot",
             "title": "Hotspot Tag 2",
             "content": [
@@ -172,78 +164,26 @@
         ]
       },
       {
-        "articleID": "1-7",
-        "type": "mixed",
-        "title": "James Watson: discovering the Double Helix",
-        "titleImage": {
-          "assetType": "image",
-          "assetSource": "./media/01.jpg"
-        },
-        "subpages": [{
-          "pageID": "1-7-1",
-          "type": "title",
-          "asset": {
-            "assetType": "image",
-            "assetSource": "./media/01.jpg"
-          },
-          "title": "James Watson: discovering the Double Helix",
-          "subtitle": ""
-        },
-          {
-            "pageID": "1-7-2",
-            "type": "textImage",
-            "layout": "left",
-            "asset": {
-              "assetSource": "./media/02.jpg",
-              "assetType": "image",
-              "boundingBox": {
-                "x": 0.2,
-                "y": 0.2,
-                "width": 0.26,
-                "height": 0.55
-              },
-              "nameText": "James Watson (b. 1928) pictured in 2018.",
-              "sourceText": "Science Museum Group."
-            },
-            "title": "James Watson: discovering the Double Helix",
-            "content": [
-              "James Watson speaks about the journey to discovering the double helix:",
-              "[Audio clip]"
-            ]
-          },
-          {
-            "pageID": "1-7-3",
-            "type": "video",
-            "asset": {
-              "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
-              "assetType": "video",
-              "subtitlesSource": "testing.vtt",
-              "bslSource": "media/video-historical-castle.mp4"
-            }
-          }
-        ]
-      },
-      {
-        "articleID": "1-9",
+        "articleID": "1-2",
         "type": "mixed",
         "title": "The search for the BRCA2 gene",
         "titleImage": {
           "assetType": "image",
           "assetSource": "./media/03.jpg"
         },
-        "subpages": [{
-          "pageID": "1-9-1",
-          "type": "title",
-          "asset": {
-            "assetType": "image",
-            "assetSource": "./media/03.jpg"
-          },
-          "title": "The search for the BRCA2 gene",
-          "subtitle": ""
-        },
+        "subpages": [
           {
-            "pageID": "1-9-2",
+            "pageID": "1-2-1",
+            "type": "title",
+            "asset": {
+              "assetType": "image",
+              "assetSource": "./media/03.jpg"
+            },
+            "title": "The search for the BRCA2 gene",
+            "subtitle": ""
+          },
+          {
+            "pageID": "1-2-2",
             "type": "textImage",
             "layout": "left",
             "asset": {
@@ -259,10 +199,13 @@
               "sourceText": "WLADIMIR BULGAR / SCIENCE PHOTO LIBRARY"
             },
             "title": "The search for the BRCA2 gene [introduction]",
-            "content": ["BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.", "Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "]
+            "content": [
+              "BRCA1 and 2 testing are some of the most prevalently used genetic tests in the world. Today hundreds of thousands, if not millions of [men and ?] women have been tested for the presence of a BRCA2 mutation.",
+              "Consequences can pose difficult choices from preventative surgery to remove breasts and ovaries or a lifetime of frequent screening. "
+            ]
           },
           {
-            "pageID": "1-9-3",
+            "pageID": "1-2-3",
             "type": "textImage",
             "layout": "right",
             "asset": {
@@ -285,7 +228,7 @@
             ]
           },
           {
-            "pageID": "1-9-4",
+            "pageID": "1-2-4",
             "type": "textImage",
             "layout": "left",
             "asset": {
@@ -308,7 +251,7 @@
             ]
           },
           {
-            "pageID": "1-9-5",
+            "pageID": "1-2-5",
             "type": "textImage",
             "layout": "right",
             "asset": {
@@ -330,7 +273,7 @@
             ]
           },
           {
-            "pageID": "1-9-6",
+            "pageID": "1-2-6",
             "type": "textImage",
             "layout": "left",
             "asset": {
@@ -352,7 +295,7 @@
             ]
           },
           {
-            "pageID": "1-9-7",
+            "pageID": "1-2-7",
             "type": "image",
             "layout": "right",
             "asset": {
@@ -373,7 +316,7 @@
             ]
           },
           {
-            "pageID": "1-9-8",
+            "pageID": "1-2-8",
             "type": "textImage",
             "layout": "right",
             "asset": {
@@ -395,7 +338,7 @@
             ]
           },
           {
-            "pageID": "1-9-9",
+            "pageID": "1-2-9",
             "type": "textImage",
             "layout": "left",
             "asset": {
@@ -419,8 +362,71 @@
         ]
       },
       {
-        "articleID": "1-4",
+        "articleID": "1-3",
         "title": "Managing my risk: Caroline’s story of BRCA2 diagnosis",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+        },
+        "type": "video",
+        "asset": {
+          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+          "assetType": "video",
+          "subtitlesSource": "testing.vtt",
+          "bslSource": "media/video-historical-castle.mp4"
+        }
+      },
+      {
+        "articleID": "1-4",
+        "title": "Life-changing decisions: Deborah’s story",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+        },
+        "type": "video",
+        "asset": {
+          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+          "assetType": "video",
+          "subtitlesSource": "testing.vtt",
+          "bslSource": "media/video-historical-castle.mp4"
+        }
+      },
+      {
+        "articleID": "1-5",
+        "title": "Knowledge is power: Peter’s story",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+        },
+        "type": "video",
+        "asset": {
+          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+          "assetType": "video",
+          "subtitlesSource": "testing.vtt"
+        }
+      },
+      {
+        "articleID": "1-6",
+        "title": "Looking for answers: Lisa, Ray & Michael’s story",
+        "titleImage": {
+          "assetType": "image",
+          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+        },
+        "type": "video",
+        "asset": {
+          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+          "assetType": "video",
+          "subtitlesSource": "testing.vtt",
+          "bslSource": "media/video-historical-castle.mp4"
+        }
+      },
+      {
+        "articleID": "1-7",
+        "title": "Helping families with nameless conditions: Anna, Clinical Nurse Specialist",
         "titleImage": {
           "assetType": "image",
           "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
