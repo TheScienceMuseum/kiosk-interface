@@ -9,8 +9,6 @@ import '../../styles/components/pages/TextImage.scss';
 import propTypes from '../../propTypes';
 import createBodyTag from '../../utils/createBodyTag';
 
-
-
 /*
  * :
  *
@@ -154,7 +152,6 @@ class TextVideo extends React.Component {
                 <div className="ImageContainer">
                     <Player
                         ref={(node) => { this.player = node; }}
-                        
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
                         poster={this.asset.posterImage ? this.asset.posterImage : null}

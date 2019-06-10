@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -98,7 +99,7 @@ class TextImage extends React.Component {
                     )}
                     <div className="ImageCaption">
                         <h3>{asset.nameText}</h3>
-                        <p>{asset.sourceText}</p>    
+                        <p>{asset.sourceText}</p>
                     </div>
                 </div>
             </div>
@@ -117,10 +118,12 @@ TextImage.propTypes = {
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
     date: PropTypes.string,
+    audio: PropTypes.any,
 };
 
 TextImage.defaultProps = {
     date: undefined,
+    audio: undefined,
 };
 
 export default TextImage;
