@@ -84,7 +84,6 @@ class App extends Component {
         } = this.state;
         const { content } = this.props;
 
-
         switch (location) {
         case AppStates.ATTRACTOR:
             return (
