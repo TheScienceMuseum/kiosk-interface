@@ -9,6 +9,14 @@ import data from '../../public/manifest';
 const { articleID } = data.content.contents[0];
 
 it('renders', () => {
-    const article = shallow(<Article articleID={articleID} contents={data.content.contents} loadArticle={() => {}} />);
+    const article = shallow(
+        <Article
+            articleID={articleID}
+            contents={data.content.contents}
+            loadArticle={() => {}}
+            pauseTimer={() => {}}
+            resetInactiveTimer={() => {}}
+        />
+    );
     // console.log(article.debug());
 });

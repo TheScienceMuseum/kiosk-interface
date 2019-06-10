@@ -237,6 +237,16 @@ class Menu extends React.Component {
                     />
                 );
                 break;
+            case ArticleTypes.MODEL:
+                output = (
+                    <MenuItemMixed
+                        key={id}
+                        articleID={id}
+                        {...item}
+                        onClick={this.itemClick}
+                    />
+                );
+                break;
             default:
                 output = '';
             }

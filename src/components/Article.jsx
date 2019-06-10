@@ -19,6 +19,7 @@ import '../styles/components/Article.scss';
 // import NavButtons from './navbar/NavButtons';
 // import MenuPips from './MenuPips';
 import NavBar from './navbar/NavBar';
+import Model from './pages/Model';
 
 /*
  * Article:
@@ -53,6 +54,7 @@ class Article extends React.Component {
         // this.onJump = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
         this.handleHomeButton = this.handleHomeButton.bind(this);
+        this.handleChangeCurrentPage = this.handleChangeCurrentPage.bind(this);
         Article.pauseOnNavigation = Article.pauseOnNavigation.bind(this);
         // this.article = null;
 
@@ -60,7 +62,7 @@ class Article extends React.Component {
         // const articleID = location;
 
         this.articleContent = this.getArticleContents(articleID);
-        
+
         // this.articleTween = null;
         this.scrollElem = null;
     }
@@ -84,7 +86,7 @@ class Article extends React.Component {
         return thisContent[0];
     }
 
-    getDateLineClass() {    
+    getDateLineClass() {
 
         const { currentPage, firstDate } = this.state;
         // const { resetInactiveTimer } = this.props;
@@ -176,7 +178,15 @@ class Article extends React.Component {
                 pageOut = <TextImage key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
                 break;
             case PageTypes.VIDEO_TEXT:
-                pageOut = <TextVideo key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
+                pageOut = (
+                    <TextVideo
+                        key={pageID}
+                        toggleNavHide={this.toggleNavHide}
+                        pauseTimer={pauseTimer}
+                        resetInactiveTimer={resetInactiveTimer}
+                        {...page}
+                    />
+                );
                 break;
             case PageTypes.IMAGE:
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
@@ -185,6 +195,7 @@ class Article extends React.Component {
                 pageOut = (
                     <Video
                         {...page}
+                        key={pageID}
                         handleCloseButton={this.handleHomeButton}
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
@@ -293,6 +304,13 @@ class Article extends React.Component {
         loadArticle('menu');
     }
 
+    handleChangeCurrentPage(currentPage) {
+        this.setState(prevState => ({
+            ...prevState,
+            currentPage,
+        }));
+    }
+
     render() {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
@@ -315,12 +333,24 @@ class Article extends React.Component {
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
-                        { firstDate > -1 && (
+                        {(this.articleContent.type === ArticleTypes.MODEL
+                            && (
+                                <Model
+                                    currentSection={currentPage}
+                                    onChangeCurrentPage={this.handleChangeCurrentPage}
+                                    {...this.articleContent}
+                                />
+                            )
+                        ) || (
                             <React.Fragment>
-                                <div className='dateLine' style={this.getDateLineClass()} />
+                                { firstDate > -1 && (
+                                    <React.Fragment>
+                                        <div className="dateLine" style={this.getDateLineClass()} />
+                                    </React.Fragment>
+                                )}
+                                { this.article }
                             </React.Fragment>
                         )}
-                        { this.article }
                     </div>
                     {this.articleContent.type !== ArticleTypes.VIDEO && (
                         <NavBar

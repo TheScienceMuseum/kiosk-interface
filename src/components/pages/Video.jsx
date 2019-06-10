@@ -185,7 +185,7 @@ class Video extends React.Component {
 
 Video.propTypes = {
     asset: propTypes.videoAsset.isRequired,
-    handleCloseButton: propTypes.isRequired,
+    handleCloseButton: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
     autoPlay: PropTypes.bool.isRequired,
