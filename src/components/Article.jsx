@@ -141,6 +141,7 @@ class Article extends React.Component {
                 pageOut = (
                     <Video
                         {...page}
+                        key={pageID}
                         handleCloseButton={this.handleHomeButton}
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
