@@ -24,4 +24,14 @@ const videoAsset = PropTypes.shape({
     posterImage: PropTypes.string,
 });
 
-export default { asset, videoAsset };
+const modelAsset = PropTypes.shape({
+    obj: PropTypes.string.isRequired,
+    mtl: PropTypes.string.isRequired,
+    assetType: PropTypes.oneOf(Object.values(AssetTypes)).isRequired,
+    nameText: PropTypes.string,
+    sourceText: PropTypes.string,
+    position: PropTypes.arrayOf(PropTypes.number).isRequired,
+    rotation: PropTypes.arrayOf(PropTypes.number).isRequired,
+});
+
+export default { asset, videoAsset, modelAsset };

@@ -39,11 +39,7 @@ MenuItemVideo.propTypes = {
     title: PropTypes.string.isRequired,
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-    asset: propTypes.videoAsset,
-};
-
-MenuItemVideo.defaultProps = {
-    asset: '',
+    asset: propTypes.videoAsset.isRequired,
 };
 
 export default MenuItemVideo;

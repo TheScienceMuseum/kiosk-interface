@@ -4,6 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@tweenjs/tween.js": "^17.3.0",
         "gsap": "^2.0.2",
         "hammerjs": "^2.0.8",
         "json-stringify-safe": "^5.0.1",
@@ -24,11 +25,14 @@
         "react-transition-group": "^2.5.0",
         "redux": "^4.0.1",
         "shortid": "^2.2.13",
+        "three": "^0.104.0",
+        "three.interaction": "^0.2.2",
         "video-react": "^0.13.4"
     },
     "scripts": {
         "start": "node scripts/start.js",
         "build": "node scripts/build.js",
+        "build:package": "scripts/build-package.sh",
         "test": "node scripts/test.js",
         "lint": "./node_modules/.bin/eslint --ignore-pattern '*.test.js' ./src --ext .js,.jsx",
         "fix": "./node_modules/.bin/eslint --fix --ignore-pattern '*.test.js' ./src --ext .js,.jsx"
