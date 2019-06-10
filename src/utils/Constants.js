@@ -2,6 +2,7 @@ export const ArticleTypes = {
     TITLE: 'title',
     VIDEO: 'video',
     MIXED: 'mixed',
+    TIMELINE: 'timeline',
 };
 
 export const PageTypes = {
@@ -10,6 +11,8 @@ export const PageTypes = {
     IMAGE: 'image',
     AUDIO: 'audio',
     VIDEO: 'video',
+    VIDEO_TEXT: 'textVideo',
+    TEXT_AUDIO: 'textAudio',
 };
 
 export const AssetTypes = {

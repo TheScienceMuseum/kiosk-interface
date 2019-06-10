@@ -53,7 +53,7 @@
         flex: 1 0 auto;
         position: relative;
         .Button {
-            top: 50%;
+            bottom:0;
             position: absolute;
             font-size: 36px;
         }
@@ -61,6 +61,15 @@
 
     .NavButtons {
         flex: 0 0 auto;
+        &:before {
+            display: block;
+            content: '';
+            height:1px;
+            background: #fff;
+            width:60%;
+            margin:auto;
+            opacity: 0.5;
+        }
     }
 
     &--noHome {

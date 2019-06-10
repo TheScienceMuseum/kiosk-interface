@@ -227,6 +227,7 @@ class Menu extends React.Component {
                 );
                 break;
             case ArticleTypes.MIXED:
+            case ArticleTypes.TIMELINE:
                 output = (
                     <MenuItemMixed
                         key={id}

@@ -7,7 +7,7 @@ import propTypes from '../../propTypes';
 import createBodyTag from '../../utils/createBodyTag';
 
 import ZoomableImage from '../ZoomableImage';
-
+import Audio from './Audio';
 /*
  * :
  *
@@ -28,6 +28,19 @@ class TextImage extends React.Component {
         this.handleHideContent = this.handleHideContent.bind(this);
     }
 
+    getAnimationClasses() {
+        const { nextBack, active } = this.state;
+        let animationClass;
+        if (nextBack) {
+            animationClass += ' reverse';
+        }
+        if (active) {
+            animationClass += ' pageActive';
+        }
+
+        return animationClass;
+    }
+
     handleHideContent(imageZoomed) {
         let { contentHidden } = this.state;
         const { toggleNavHide } = this.props;
@@ -44,17 +57,23 @@ class TextImage extends React.Component {
 
     render() {
         const {
-            title, content, asset, layout,
+            title, content, asset, layout, date, audio,
         } = this.props;
 
         const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
-        const mainClass = 'Page PageTextImage '
-            + `PageTextImage--${layout} PageTextImage--${imageState}`;
+        const mainClass = `${'Page PageTextImage '
+            + `PageTextImage--${layout} PageTextImage--${imageState}`}`;
 
         /* eslint-disable react/no-danger */
         return (
             <div className={mainClass}>
+                { typeof date !== 'undefined' && (
+                    <div className="dateCircle">
+                        { date }
+                    </div>
+                ) }
+
                 <div className="ImageContainer">
                     <ZoomableImage
                         image={asset.assetSource}
@@ -63,14 +82,23 @@ class TextImage extends React.Component {
                     />
                 </div>
                 <div className="ContentContainer">
-                    <h2>{title}</h2>
-                    <div
-                        className="ContentContainer__body"
-                        dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
-                    />
+                    {typeof audio === 'undefined' && (
+                        <React.Fragment>
+                            <h2>{title}</h2>
+                            <div
+                                className="ContentContainer__body"
+                                dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
+                            />
+                        </React.Fragment>
+                    )}
+                    {typeof audio !== 'undefined' && (
+                        <React.Fragment>
+                            <Audio nameText={title} sourceText={content} audio={audio} />
+                        </React.Fragment>
+                    )}
                     <div className="ImageCaption">
                         <h3>{asset.nameText}</h3>
-                        <p>{asset.sourceText}</p>
+                        <p>{asset.sourceText}</p>    
                     </div>
                 </div>
             </div>
@@ -88,6 +116,11 @@ TextImage.propTypes = {
     asset: propTypes.asset.isRequired,
     layout: PropTypes.oneOf(Object.values(Layouts)).isRequired,
     toggleNavHide: PropTypes.func.isRequired,
+    date: PropTypes.string,
+};
+
+TextImage.defaultProps = {
+    date: undefined,
 };
 
 export default TextImage;

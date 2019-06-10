@@ -2,6 +2,36 @@
 @import "Page";
 @import '../portrait/components/TextImage';
 
+.dateCircle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    background: $red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.8em;
+    margin-top: -50px;
+}
+
+.dateLine {
+    width: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 0%;
+    background: $red;
+    z-index: 99;
+    margin-left: -5px;
+    transition: all 0.3s;
+}
+
 .PageTextImage {
 
     display: flex;

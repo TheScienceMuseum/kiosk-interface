@@ -1,6 +1,10 @@
 .portrait {
+    .Menu {
+        padding: 240px 0;
+        padding-bottom:0;
+    }
     .Menu__Container {
-        height: 1600px;
+        height: 1460px;
     }
 
     .MenuItem__Video, .MenuItem__Mixed {
@@ -16,20 +20,20 @@
     }
 
     .MenuPips__Button {
-        height:80px;
+        height:51px;
     }
 
     .MenuPips__Button:not(:first-child) {
-        width: 40px;
+        width: 30px;
     }
 
     .MenuPips .spacer {
         width:35px;
-        height:82px;
+        height:52px;
     }
 
     .MenuPips .MenuPipHighlighter {
-        height:80px;
-        width:40px;
+        height:51px;
+        width:30px;
     }
 }
