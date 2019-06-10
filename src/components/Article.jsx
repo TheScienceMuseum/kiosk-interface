@@ -342,12 +342,14 @@ class Article extends React.Component {
                                 />
                             )
                         ) || (
-                            firstDate > -1 && (
-                                <React.Fragment>
-                                    <div className='dateLine' style={this.getDateLineClass()} />
-                                </React.Fragment>
-                            )
-                            && this.article
+                            <React.Fragment>
+                                { firstDate > -1 && (
+                                    <React.Fragment>
+                                        <div className="dateLine" style={this.getDateLineClass()} />
+                                    </React.Fragment>
+                                )}
+                                { this.article }
+                            </React.Fragment>
                         )}
                     </div>
                     {this.articleContent.type !== ArticleTypes.VIDEO && (
