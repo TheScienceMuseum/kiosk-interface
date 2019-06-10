@@ -80,6 +80,7 @@
     &--zoomedIn {
 
         overflow: scroll;
+        z-index: 999;
 
         &::-webkit-scrollbar {
             display: none;
