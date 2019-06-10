@@ -118,10 +118,15 @@ class Video extends React.Component {
 
     render() {
         const { showBSL, showSubtitles } = this.state;
-        const { autoPlay } = this.props;
+        const { autoPlay, date } = this.props;
         // console.log('this.asset: ', this.asset);
         return (
             <div className="Page PageVideo">
+                { typeof date !== 'undefined' && (
+                    <div className="dateCircle">
+                        { date }
+                    </div>
+                ) }
                 <Player
                     ref={(node) => { this.player = node; }}
                     autoPlay={!!autoPlay}
@@ -184,6 +189,11 @@ Video.propTypes = {
     pauseTimer: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
     autoPlay: PropTypes.bool.isRequired,
+    date: PropTypes.bool,
+};
+
+Video.defaultProps = {
+    date: undefined,
 };
 
 export default Video;
