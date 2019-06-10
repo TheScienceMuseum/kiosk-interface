@@ -24,27 +24,6 @@ import MenuNav from './MenuNav';
  */
 
 class Menu extends React.Component {
-    static getScrollAmount(index) {
-        let targetScroll;
-
-        // the width of the menu title item
-        const menuTitleOffset = Dimensions.MENU_ITEM_PADDING
-            + Dimensions.TITLE_ITEM_WIDTH
-            + Dimensions.MENU_ITEM_SPACING;
-
-        // the space to the left and right of the active menu item
-        const activeItemSpacing = (ScreenSize.width - Dimensions.MENU_ITEM_WIDTH) / 2;
-        const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
-
-        if (index === 0) {
-            targetScroll = 0;
-        } else {
-            targetScroll = firstItemLeftOffset + ((index - 1) * (
-                Dimensions.MENU_ITEM_WIDTH + Dimensions.MENU_ITEM_SPACING)
-            );
-        }
-        return targetScroll;
-    }
 
     constructor(props) {
         super(props);
@@ -116,6 +95,29 @@ class Menu extends React.Component {
         }
     }
 
+    getScrollAmount(index) {
+        let targetScroll;
+        // eslint-disable-next-line react/destructuring-assignment
+        const dimension = Dimensions[this.props.aspect];
+
+        // the width of the menu title item
+        const menuTitleOffset = dimension.MENU_ITEM_PADDING
+            + dimension.TITLE_ITEM_WIDTH
+            + dimension.MENU_ITEM_SPACING;
+
+        // the space to the left and right of the active menu item
+        const activeItemSpacing = (ScreenSize[window.appJson.aspect_ratio].width - dimension.MENU_ITEM_WIDTH) / 2;
+        const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
+
+        if (index === 0) {
+            targetScroll = 0;
+        } else {
+            targetScroll = firstItemLeftOffset + ((index - 1) * (
+                dimension.MENU_ITEM_WIDTH + dimension.MENU_ITEM_SPACING)
+            );
+        }
+        return targetScroll;
+    }
 
     getIndexFromID(articleID) {
         const { contents } = this.props;
@@ -184,7 +186,7 @@ class Menu extends React.Component {
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
 
-        const options = { scrollLeft: Menu.getScrollAmount(index), ease: Ease.easeOut };
+        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeOut };
         this.scrollTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
 
@@ -192,7 +194,7 @@ class Menu extends React.Component {
     jumpToItem(itemNum) {
         // console.log('Menu: jumpToItem: itemNum: ', itemNum);
         // console.log('Menu: jumpToItem: targetScroll: ', Menu.getScrollAmount(itemNum));
-        this.scrollElem.scrollLeft = Menu.getScrollAmount(itemNum);
+        this.scrollElem.scrollLeft = this.getScrollAmount(itemNum);
     }
 
 
@@ -225,6 +227,7 @@ class Menu extends React.Component {
                 );
                 break;
             case ArticleTypes.MIXED:
+            case ArticleTypes.TIMELINE:
                 output = (
                     <MenuItemMixed
                         key={id}
