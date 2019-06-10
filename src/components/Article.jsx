@@ -87,9 +87,8 @@ class Article extends React.Component {
     }
 
     getDateLineClass() {
-
         const { currentPage, firstDate } = this.state;
-        // const { resetInactiveTimer } = this.props;
+
         // eslint-disable-next-line max-len
         const targetHeight = ((currentPage - firstDate) * ScreenSize[window.appJson.aspect_ratio].height);
         // eslint-disable-next-line max-len

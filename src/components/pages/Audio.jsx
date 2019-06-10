@@ -1,8 +1,13 @@
+/* eslint-disable spaced-comment */
+/* eslint-disable react/sort-comp */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// eslint-disable-next-line object-curly-newline
 import { Media, Player, controls, utils } from 'react-media-player';
 
 import propTypes from '../../propTypes';
@@ -87,11 +92,9 @@ class Audio extends React.Component {
     }
 
     onPlay(d) {
-
     }
 
     onPause(d) {
-
     }
 
     onTimeUpdate(d) {
@@ -116,11 +119,10 @@ class Audio extends React.Component {
                 <div className="audio">
                     <Media>
                         <div className="media">
-                            <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause}  className="media-player" />
+                            <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause} className="media-player" />
                             <div className="media-controls">
                                 <div className="audioIcon" />
                                 <PlayPause className="playPause" />
-                                
                                 <Progress />
                                 <SeekBar />
                                 <Duration />

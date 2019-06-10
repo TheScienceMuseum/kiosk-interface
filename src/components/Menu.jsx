@@ -24,7 +24,6 @@ import MenuNav from './MenuNav';
  */
 
 class Menu extends React.Component {
-
     constructor(props) {
         super(props);
 
