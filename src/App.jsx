@@ -83,7 +83,7 @@ class App extends Component {
             activeArticle, location, singleArticleMode, initial,
         } = this.state;
         const { content } = this.props;
-        
+
 
         switch (location) {
         case AppStates.ATTRACTOR:
