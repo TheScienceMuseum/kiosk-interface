@@ -128,7 +128,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "enum": ["textImage", "title", "video", "image"]
+                    "enum": ["textImage", "title", "video", "image", "textVideo", "textAudio"]
                 },
                 "asset": {
                     "anyOf": [
@@ -137,6 +137,13 @@
                         },
                         {
                             "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
+                },
+                "audio": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AudioAssetClass"
                         }
                     ]
                 },
@@ -163,6 +170,30 @@
                 "type"
             ],
             "title": "Subpage"
+        },
+        "AudioAssetClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assetSource": {
+                    "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["audio"]
+                },
+                "soundTitle": {
+                    "type": "string"
+                },
+                "transcript": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetType",
+                "assetSource"
+            ],
+            "title": "ImageClass"
         },
         "ImageAssetClass": {
             "type": "object",

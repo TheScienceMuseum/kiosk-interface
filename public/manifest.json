@@ -23,10 +23,88 @@
                 "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                 "subtitlesSource": "testing.vtt"
             },
-            "idleTimeout": 120
+            "idleTimeout": 12000
         },
         "contents": [{
                 "articleID": "1-1",
+                "type": "mixed",
+                "title": "James Watson: discovering the Double Helix",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": "./media/01.jpg"
+                },
+                "subpages": [{
+                        "pageID": "1-1-1",
+                        "type": "title",
+                        "asset": {
+                            "assetType": "image",
+                            "assetSource": "./media/01.jpg"
+                        },
+                        "title": "James Watson: discovering the Double Helix",
+                        "subtitle": ""
+                    },
+                    {
+                        "pageID": "1-1-2",
+                        "type": "textAudio",
+                        "layout": "left",
+                        "audio": {
+                            "assetSource": "./media/audio-test.mp3",
+                            "assetType": "audio",
+                            "soundTitle": "James Watson (b. 1928) pictured in 2018.",
+                            "transcript": "Science Museum Group."
+                        },
+                        "asset": {
+                            "assetSource": "./media/02.jpg",
+                            "assetType": "image",
+                            "boundingBox": {
+                                "x": 0.2,
+                                "y": 0.2,
+                                "width": 0.26,
+                                "height": 0.55
+                            },
+                            "nameText": "James Watson (b. 1928) pictured in 2018.",
+                            "sourceText": "Science Museum Group."
+                        },
+                        "title": "James Watson: discovering the Double Helix",
+                        "content": [
+                            "James Watson speaks about the journey to discovering the double helix:",
+                            "[Audio clip]"
+                        ]
+                    },
+                    {
+                        "pageID": "1-1-3",
+                        "type": "textVideo",
+                        "asset": {
+                            "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                            "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "assetType": "video",
+                            "subtitlesSource": "testing.vtt",
+                            "bslSource": "media/video-historical-castle.mp4"
+                        },
+                        "title": "Video 50/50",
+                        "content": [
+                            "Some content here"
+                        ]
+                    },
+                    {
+                        "pageID": "1-1-4",
+                        "type": "textVideo",
+                        "asset": {
+                            "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                            "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "assetType": "video",
+                            "subtitlesSource": "testing.vtt",
+                            "bslSource": "media/video-historical-castle.mp4"
+                        },
+                        "title": "Video 50/50 second",
+                        "content": [
+                            "Some more content here"
+                        ]
+                    }
+                ]
+            },
+            {
+                "articleID": "1-1-1",
                 "type": "mixed",
                 "title": "James Watson: discovering the Double Helix",
                 "titleImage": {
@@ -67,20 +145,60 @@
                     },
                     {
                         "pageID": "1-1-3",
-                        "type": "video",
+                        "type": "textVideo",
                         "asset": {
                             "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
                             "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
                             "assetType": "video",
                             "subtitlesSource": "testing.vtt",
                             "bslSource": "media/video-historical-castle.mp4"
-                        }
+                        },
+                        "title": "Video 50/50",
+                        "content": [
+                            "Some content here"
+                        ]
+                    },
+                    {
+                        "pageID": "1-1-4",
+                        "type": "textVideo",
+                        "asset": {
+                            "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                            "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
+                            "assetType": "video",
+                            "subtitlesSource": "testing.vtt",
+                            "bslSource": "media/video-historical-castle.mp4"
+                        },
+                        "title": "Video 50/50 second",
+                        "content": [
+                            "Some more content here"
+                        ]
+                    },
+                    {
+                        "pageID": "1-2-7",
+                        "type": "image",
+                        "layout": "right",
+                        "asset": {
+                            "assetSource": "./media/07.jpg",
+                            "assetType": "image",
+                            "boundingBox": {
+                                "x": 0.1,
+                                "y": 0.1,
+                                "width": 0.45,
+                                "height": 0.8
+                            },
+                            "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
+                            "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
+                        },
+                        "title": "Sequenced at the Sanger Centre ",
+                        "content": [
+                            "Mike and his team had a secret weapon – the human genome project. The Sanger Centre was ready to embark on sequencing the human genome for the first time. Mike was able to collaborate so that the DNA of chromosome 13 - the location where Mike’s team suspected BRCA2 lay – was the first million letters of DNA to be sequenced."
+                        ]
                     }
                 ]
             },
             {
                 "articleID": "1-2",
-                "type": "mixed",
+                "type": "timeline",
                 "title": "The search for the BRCA2 gene",
                 "titleImage": {
                     "assetType": "image",
@@ -100,6 +218,7 @@
                         "pageID": "1-2-2",
                         "type": "textImage",
                         "layout": "left",
+                        "date": "1960",
                         "asset": {
                             "assetSource": "./media/03.jpg",
                             "assetType": "image",
@@ -119,6 +238,7 @@
                         "pageID": "1-2-3",
                         "type": "textImage",
                         "layout": "right",
+                        "date": "1972",
                         "asset": {
                             "assetSource": "./media/04.jpg",
                             "assetType": "image",
@@ -142,6 +262,7 @@
                         "pageID": "1-2-4",
                         "type": "textImage",
                         "layout": "left",
+                        "date": "1976",
                         "asset": {
                             "assetSource": "./media/05.jpg",
                             "assetType": "image",
@@ -165,6 +286,7 @@
                         "pageID": "1-2-5",
                         "type": "textImage",
                         "layout": "right",
+                        "date": "1978",
                         "asset": {
                             "assetSource": "./media/05a.png",
                             "assetType": "image",
@@ -187,6 +309,7 @@
                         "pageID": "1-2-6",
                         "type": "textImage",
                         "layout": "left",
+                        "date": "1980",
                         "asset": {
                             "assetSource": "./media/06.jpg",
                             "assetType": "image",
@@ -203,27 +326,6 @@
                         "content": [
                             "Mike’s team wasn’t alone in looking to identify the BRCA2 gene. An American company called Myriad Genetics had been successful in isolating BRCA1 with the aim to provide tests for BRCA1. However, what was a cause of concern for Mike and other researchers was that the company had taken out patents essentially monopolising the usage of BRCA1.  They were looking to do the same with BRCA2.",
                             "<i>“ DNA is in all of us, it belongs to humanity, …so what had previously been a collaboration to find the position of BRCA2 now became a competition and it became a race to actually identify the gene.”</i>"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-7",
-                        "type": "image",
-                        "layout": "right",
-                        "asset": {
-                            "assetSource": "./media/07.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Sequencing technology at the Sanger Centre, Cambridge.",
-                            "sourceText": "DAVID PARKER / SCIENCE PHOTO LIBRARY"
-                        },
-                        "title": "Sequenced at the Sanger Centre ",
-                        "content": [
-                            "Mike and his team had a secret weapon – the human genome project. The Sanger Centre was ready to embark on sequencing the human genome for the first time. Mike was able to collaborate so that the DNA of chromosome 13 - the location where Mike’s team suspected BRCA2 lay – was the first million letters of DNA to be sequenced."
                         ]
                     },
                     {
@@ -246,28 +348,6 @@
                         "content": [
                             "Mike recalls how quickly the gene’s identification impacted potential patients.",
                             "[Audio clip]"
-                        ]
-                    },
-                    {
-                        "pageID": "1-2-9",
-                        "type": "textImage",
-                        "layout": "left",
-                        "asset": {
-                            "assetSource": "./media/09.jpg",
-                            "assetType": "image",
-                            "boundingBox": {
-                                "x": 0.1,
-                                "y": 0.1,
-                                "width": 0.45,
-                                "height": 0.8
-                            },
-                            "nameText": "Colour-enhanced image of a breast cancer cell.",
-                            "sourceText": "Anne Weston, Francis Crick Institute"
-                        },
-                        "title": "The legacy of BRACA2 and Cancer Genome project",
-                        "content": [
-                            "Since Mike’s team identified BRCA2, gene sequencing work has sequenced the DNA of around 25,000 human cancers.  This work is trying to reveal the genes that convert a normal cell into a cancer cell and these patterns of mutations that can tell us what causes a cancer.",
-                            "“Genetics has been driven by changes in technology and those changes in technology have allowed us to look through larger and larger and larger amounts of DNA to find the abnormalities, the changes, the mutations…When I first started researching we were looking at very small portions of DNA for abnormalities.  In the position that I’m in now we are sequencing hundreds of human genomes every week, a difference that I could not even have dreamt of when I started working in science 30 years ago”."
                         ]
                     }
                 ]

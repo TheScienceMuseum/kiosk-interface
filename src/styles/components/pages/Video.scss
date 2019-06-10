@@ -2,7 +2,7 @@
 @import "Page";
 @import "~video-react/styles/scss/video-react";
 
-.PageVideo {
+.PageVideo, .PageTextVideo {
     background-color: black !important;
     video {
         width: 100%;

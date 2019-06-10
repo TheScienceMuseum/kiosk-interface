@@ -24,6 +24,8 @@
     &.ZoomableImage--zoomedIn {
         .imageContainer {
             transform: scale(1) !important;
+            width: 100% !important;
+            height: 100% !important;
         }
     }
 
@@ -78,6 +80,7 @@
     &--zoomedIn {
 
         overflow: scroll;
+        z-index: 999;
 
         &::-webkit-scrollbar {
             display: none;

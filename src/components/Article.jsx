@@ -12,6 +12,7 @@ import Title from './pages/Title';
 import Video from './pages/Video';
 import TextImage from './pages/TextImage';
 import Image from './pages/Image';
+import TextVideo from './pages/TextVideo';
 
 import '../styles/components/Article.scss';
 
@@ -41,6 +42,8 @@ class Article extends React.Component {
             currentPage: 0,
             currentPageType: 'title',
             navHidden: false,
+            dateLineClosed: true,
+            firstDate: -1,
         };
 
         this.handleSwipe = this.handleSwipe.bind(this);
@@ -57,7 +60,7 @@ class Article extends React.Component {
         // const articleID = location;
 
         this.articleContent = this.getArticleContents(articleID);
-        this.article = this.makeArticle(this.articleContent);
+        
         // this.articleTween = null;
         this.scrollElem = null;
     }
@@ -66,6 +69,7 @@ class Article extends React.Component {
     componentDidMount() {
         // console.log('Article: componentDidMount: this.scrollElem: ', this.scrollElem);
         // console.log(' articleID: ', articleID);
+        this.article = this.makeArticle(this.articleContent);
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -78,6 +82,37 @@ class Article extends React.Component {
         const thisContent = contents.filter(item => (item.articleID === articleID));
         // console.log('Article: getArticleContents: thisContent: ', thisContent);
         return thisContent[0];
+    }
+
+    getDateLineClass() {    
+
+        const { currentPage, firstDate } = this.state;
+        // const { resetInactiveTimer } = this.props;
+        // eslint-disable-next-line max-len
+        const targetHeight = ((currentPage - firstDate) * ScreenSize[window.appJson.aspect_ratio].height);
+        // eslint-disable-next-line max-len
+        const targetTop = (firstDate * ScreenSize[window.appJson.aspect_ratio].height) + (ScreenSize[window.appJson.aspect_ratio].height / 2);
+
+        const { dateLineClosed } = this.state;
+        if (dateLineClosed) {
+            return {
+                height: '0px',
+                top: `${targetTop}px`,
+            };
+        }
+
+        return {
+            height: `${targetHeight}px`,
+            top: `${targetTop}px`,
+        };
+    }
+
+    getFirstDateLineClass() {
+        const { dateLineClosed } = this.state;
+        if (!dateLineClosed) {
+            return 'open';
+        }
+        return '';
     }
 
     toggleNavHide(forceHidden = null) {
@@ -99,6 +134,7 @@ class Article extends React.Component {
 
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
+        case ArticleTypes.TIMELINE:
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
@@ -121,16 +157,26 @@ class Article extends React.Component {
         const pages = articleContent.subpages;
         const { pauseTimer, resetInactiveTimer } = this.props;
         // console.log('Article: makeArticle: pages: ', pages);
-        const pagesOutput = pages.map((page) => {
+        let firstDateSet = false;
+
+        const pagesOutput = pages.map((page, n) => {
             const { pageID } = page;
             // console.log('page: ', page);
             let pageOut;
+            if (typeof page.date !== 'undefined' && !firstDateSet) {
+                this.setState({ firstDate: n });
+                firstDateSet = true;
+            }
             switch (page.type) {
             case PageTypes.TITLE:
                 pageOut = <Title key={pageID} {...page} />;
                 break;
             case PageTypes.TEXT_IMAGE:
+            case PageTypes.TEXT_AUDIO:
                 pageOut = <TextImage key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
+                break;
+            case PageTypes.VIDEO_TEXT:
+                pageOut = <TextVideo key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
                 break;
             case PageTypes.IMAGE:
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
@@ -183,8 +229,15 @@ class Article extends React.Component {
         currentPageType = subpages[currentPage].type;
 
         // console.log(currentPageType);
+        const { firstDate } = this.state;
+        let { dateLineClosed } = this.state;
+        if (currentPage <= firstDate) {
+            dateLineClosed = true;
+        } else {
+            dateLineClosed = false;
+        }
 
-        this.setState({ currentPage, currentPageType }, this.scrollToPage);
+        this.setState({ currentPage, currentPageType, dateLineClosed }, this.scrollToPage);
     }
 
     prevPage() {
@@ -202,8 +255,15 @@ class Article extends React.Component {
         currentPageType = subpages[currentPage].type;
 
         // console.log(currentPageType);
+        const { firstDate } = this.state;
+        let { dateLineClosed } = this.state;
+        if (currentPage <= firstDate) {
+            dateLineClosed = true;
+        } else {
+            dateLineClosed = false;
+        }
 
-        this.setState({ currentPage, currentPageType }, this.scrollToPage);
+        this.setState({ currentPage, currentPageType, dateLineClosed }, this.scrollToPage);
     }
 
     // jumpToPage(pageID) {
@@ -219,7 +279,7 @@ class Article extends React.Component {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
         const { currentPage } = this.state;
         // const { resetInactiveTimer } = this.props;
-        const targetScroll = currentPage * ScreenSize.height;
+        const targetScroll = currentPage * ScreenSize[window.appJson.aspect_ratio].height;
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
@@ -250,11 +310,16 @@ class Article extends React.Component {
 
         // console.log('Article: render: subpages: ', subpages);
         // console.log('Article: render: subpagesCount: ', subpagesCount);
-
+        const { firstDate } = this.state;
         return (
             <Hammer onSwipe={this.handleSwipe} direction="DIRECTION_VERTICAL">
                 <article className={`Article ${articleClass}`}>
                     <div className="Article__Container" ref={(ref) => { this.scrollElem = ref; }}>
+                        { firstDate > -1 && (
+                            <React.Fragment>
+                                <div className='dateLine' style={this.getDateLineClass()} />
+                            </React.Fragment>
+                        )}
                         { this.article }
                     </div>
                     {this.articleContent.type !== ArticleTypes.VIDEO && (
