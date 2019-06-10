@@ -178,7 +178,15 @@ class Article extends React.Component {
                 pageOut = <TextImage key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
                 break;
             case PageTypes.VIDEO_TEXT:
-                pageOut = <TextVideo key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
+                pageOut = (
+                    <TextVideo
+                        key={pageID}
+                        toggleNavHide={this.toggleNavHide}
+                        pauseTimer={pauseTimer}
+                        resetInactiveTimer={resetInactiveTimer}
+                        {...page}
+                    />
+                );
                 break;
             case PageTypes.IMAGE:
                 pageOut = <Image key={pageID} toggleNavHide={this.toggleNavHide} {...page} />;
