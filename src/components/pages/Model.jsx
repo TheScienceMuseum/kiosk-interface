@@ -195,13 +195,6 @@ class Model extends React.Component {
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         TweenLite.to(this.scrollElem, 0.5, options);
 
-        this.lastScale = 1;
-        this.scale = 1;
-        this.minZoom = 1;
-        this.maxZoom = 10;
-        this.initialPositionVector = (new this.THREE.Vector3(0, 0, 0))
-            .fromArray(subpage.camera.position);
-
         this.setCameraView(
             subpage.camera.position,
             has(subpage, 'hotspot')
@@ -299,8 +292,20 @@ class Model extends React.Component {
     }
 
     handleRotate90() {
-        this.THREE.rotateLeft(0.25);
-        this.controls.update();
+        this.THREE.rotateLeft(0.393); // trial and error figure (degrees of theta)
+
+        let animationFrame = null;
+
+        const animate = () => {
+            animationFrame = window.requestAnimationFrame(animate);
+            this.controls.update();
+        };
+
+        animate();
+
+        setTimeout(() => {
+            window.cancelAnimationFrame(animationFrame);
+        }, 500);
     }
 
     render() {
