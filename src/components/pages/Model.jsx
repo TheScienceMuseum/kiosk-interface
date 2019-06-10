@@ -191,7 +191,7 @@ class Model extends React.Component {
         this.renderer.render(this.scene, this.camera);
         this.controls.update();
 
-        const targetScroll = section * ScreenSize.height;
+        const targetScroll = section * ScreenSize[window.appJson.aspect_ratio].height;
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
         TweenLite.to(this.scrollElem, 0.5, options);
 
