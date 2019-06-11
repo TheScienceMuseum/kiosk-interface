@@ -10,6 +10,7 @@ import Article from './components/Article';
 import { AppStates, Environments } from './utils/Constants';
 import Attractor from './components/Attractor';
 import ErrorBoundary from './components/ErrorBoundary';
+import ModelLoader from './components/pages/Model/PreLoader';
 
 
 class App extends Component {
@@ -34,6 +35,8 @@ class App extends Component {
 
         this.idleTimer = null;
         this.idleTimeout = props.content.titles.idleTimeout || 120; // in seconds
+
+        ModelLoader.loadModels();
     }
 
     onIdle(e) {

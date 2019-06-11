@@ -96,8 +96,8 @@ class Menu extends React.Component {
 
     getScrollAmount(index) {
         let targetScroll;
-        // eslint-disable-next-line react/destructuring-assignment
-        const dimension = Dimensions[this.props.aspect];
+        const { aspect } = this.props;
+        const dimension = Dimensions[aspect];
 
         // the width of the menu title item
         const menuTitleOffset = dimension.MENU_ITEM_PADDING
@@ -105,7 +105,9 @@ class Menu extends React.Component {
             + dimension.MENU_ITEM_SPACING;
 
         // the space to the left and right of the active menu item
-        const activeItemSpacing = (ScreenSize[window.appJson.aspect_ratio].width - dimension.MENU_ITEM_WIDTH) / 2;
+        const activeItemSpacing = (
+            ScreenSize[dimension.ASPECT_RATIO].width - dimension.MENU_ITEM_WIDTH
+        ) / 2;
         const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
 
         if (index === 0) {
@@ -296,6 +298,7 @@ Menu.propTypes = {
         galleryName: PropTypes.string,
         title: PropTypes.string,
     }).isRequired,
+    aspect: PropTypes.oneOf(Object.keys(Dimensions)).isRequired,
 };
 
 Menu.defaultProps = {

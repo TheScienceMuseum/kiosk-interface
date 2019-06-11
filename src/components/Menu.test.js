@@ -11,6 +11,7 @@ it('renders', () => {
         <Menu
             titles={data.content.titles}
             contents={data.content.contents}
+            aspect="landscape"
             initial
         />
     );
@@ -21,6 +22,7 @@ it('renders a menu item for each entry in data', () => {
         <Menu
             titles={data.content.titles}
             contents={data.content.contents}
+            aspect="landscape"
             initial
         />
     );

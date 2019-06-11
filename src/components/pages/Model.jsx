@@ -7,9 +7,8 @@ import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
-import * as OBJLoader from './Model/OBJLoader';
-import * as MTLLoader from './Model/MTLLoader';
 import * as OrbitController from './Model/OrbitController';
+import PreLoader from './Model/PreLoader';
 import { ScreenSize } from '../../utils/Constants';
 import propTypes from '../../propTypes';
 
@@ -20,9 +19,6 @@ class Model extends React.Component {
     constructor(props) {
         super(props);
 
-
-        OBJLoader(THREE);
-        MTLLoader(THREE);
         OrbitController(THREE);
 
         this.THREE = THREE;
@@ -52,7 +48,7 @@ class Model extends React.Component {
     componentDidMount() {
         const width = this.viewerElem.clientWidth;
         const height = this.viewerElem.clientHeight;
-        const { asset, subpages } = this.props;
+        const { asset, subpages, articleID } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
         console.log('starting position', [posX, posY, posZ]);
@@ -89,32 +85,7 @@ class Model extends React.Component {
         this.controls.maxDistance = 500;
         this.controls.update();
 
-        const mtlLoader = new this.THREE.MTLLoader();
-
-        mtlLoader.setPath(asset.assetDirectory);
-        mtlLoader.load(asset.mtl, (materials) => {
-            materials.preload();
-            const objLoader = new this.THREE.OBJLoader();
-
-            objLoader.setMaterials(materials);
-            objLoader.setPath(asset.assetDirectory);
-            objLoader.load(
-                // resource URL
-                asset.obj,
-                // called when resource is loaded
-                (object) => {
-                    this.modelHasLoaded(object);
-                },
-                // called when loading is in progresses
-                (xhr) => {
-                    console.log(`${xhr.loaded / xhr.total * 100}% loaded`);
-                },
-                // called when loading has errors
-                (error) => {
-                    console.error(`An error happened: ${error.toString()}`);
-                },
-            );
-        });
+        this.modelHasLoaded(PreLoader.getModel(articleID).object);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -378,6 +349,7 @@ Model.propTypes = {
     subpages: PropTypes.arrayOf(PropTypes.shape({
         pageID: PropTypes.string.isRequired,
     })).isRequired,
+    articleID: PropTypes.string.isRequired,
     onChangeCurrentPage: PropTypes.func.isRequired,
 };
 
