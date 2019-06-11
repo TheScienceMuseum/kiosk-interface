@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Buttons/Sound/Pause/Default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="22" cy="22" r="22"></circle>
+        <path d="M23,46 C10.3025307,46 0,35.7078759 0,23 C0,10.2921241 10.3025307,0 23,0 C35.6974693,0 46,10.2921241 46,23 C46,35.7078759 35.6974693,46 23,46 Z M23,43.9555556 C34.6030597,43.9555556 44,34.5681071 44,23 C44,11.4318929 34.6030597,2.04444444 23,2.04444444 C11.3969403,2.04444444 2,11.4318929 2,23 C2,34.5681071 11.3969403,43.9555556 23,43.9555556 Z M16.1856335,14.3638801 L16.1856335,31.6361199 L18.3256335,31.6361199 L18.3256335,14.3638801 L16.1856335,14.3638801 Z M20.011267,12.5610119 L20.011267,33.4389881 L14.5,33.4389881 L14.5,12.5610119 L20.011267,12.5610119 Z M27.1700666,14.3638801 L27.1700666,31.6361199 L29.3098931,31.6361199 L29.3098931,14.3638801 L27.1700666,14.3638801 Z M30.9956134,12.5610119 L30.9956134,33.4389881 L25.4843464,33.4389881 L25.4843464,12.5610119 L30.9956134,12.5610119 Z" id="path-3"></path>
+    </defs>
+    <g id="Buttons/Sound/Pause/Default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BG" transform="translate(1.000000, 1.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Oval" fill-rule="nonzero"></g>
+            <g id="Colours/Flat/Transp" opacity="0.5" mask="url(#mask-2)"></g>
+        </g>
+        <mask id="mask-4" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <use id="Oval-4" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+        <g id="Colours/Flat/Black" mask="url(#mask-4)" fill="#111111" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="46" height="45"></rect>
+        </g>
+    </g>
+</svg>

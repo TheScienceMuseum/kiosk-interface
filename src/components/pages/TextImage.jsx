@@ -63,8 +63,9 @@ class TextImage extends React.Component {
 
         const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
+        const isAudioClass = typeof audio !== 'undefined' ? 'PageTextAudio' : 'PageTextNoAudio';
         const mainClass = `${'Page PageTextImage '
-            + `PageTextImage--${layout} PageTextImage--${imageState}`}`;
+            + `PageTextImage--${layout} PageTextImage--${imageState} ${isAudioClass}`}`;
 
         /* eslint-disable react/no-danger */
         return (

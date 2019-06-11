@@ -5,6 +5,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
+import ScrollArea from 'react-scrollbar';
 import PropTypes from 'prop-types';
 
 // eslint-disable-next-line object-curly-newline
@@ -15,6 +16,7 @@ import propTypes from '../../propTypes';
 import '../../styles/components/pages/Image.scss';
 import '../../styles/components/pages/Audio.scss';
 import createBodyTag from '../../utils/createBodyTag';
+
 
 const {
     PlayPause,
@@ -41,10 +43,19 @@ class Audio extends React.Component {
         super(props);
         this.state = {
             transcriptShowing: false,
+            trackPercentage: 0,
+            playing: false,
+            playButtonClasses: 'playPauseContainer',
         };
         this.onTimeUpdate = this.onTimeUpdate.bind(this);
         this.onPause = this.onPause.bind(this);
         this.onPlay = this.onPlay.bind(this);
+        this.getBarStyle = this.getBarStyle.bind(this);
+        this.getPlayStyle = this.getPlayStyle.bind(this);
+    }
+
+    componentDidMount() {
+        this.getPlayStyle();
     }
 
     getSourceTextStyle() {
@@ -52,12 +63,16 @@ class Audio extends React.Component {
 
         if (transcriptShowing) {
             return {
-                height: 0,
-                overflow: 'hidden',
+                opacity: 0,
+                display: 'none',
+                visibility: 'hidden',
             };
         }
 
-        return {};
+        return {
+            opacity: 1,
+            visibility: 'visible',
+        };
     }
 
 
@@ -65,11 +80,15 @@ class Audio extends React.Component {
         const { transcriptShowing } = this.state;
 
         if (transcriptShowing) {
-            return {};
+            return {
+                visibility: 'visible',
+                opacity: 1,
+            };
         }
 
         return {
-            height: 0,
+            opacity: 0,
+            visibility: 'hidden',
             overflow: 'hidden',
         };
     }
@@ -92,20 +111,51 @@ class Audio extends React.Component {
     }
 
     onPlay(d) {
+        this.setState({ playing: true }, () => {
+            this.getPlayStyle();
+        });
     }
 
     onPause(d) {
+        this.setState({ playing: false }, () => {
+            this.getPlayStyle();
+        });
     }
 
     onTimeUpdate(d) {
-        console.log(d);
-        //d.currentTime
-        //d.duration
+        const perc = (d.currentTime / d.duration) * 100;
+        this.setState({ trackPercentage: perc });
+        this.getPlayStyle();
+    }
+
+    getBarStyle() {
+        const { trackPercentage } = this.state;
+        // console.log(trackPercentage);
+        return {
+            width: `${trackPercentage}%`,
+        };
+    }
+
+    getPlayStyle() {
+        let classes = 'playPauseContainer';
+        const { playing } = this.state;
+        if (!playing) {
+            classes = `${classes} paused`;
+        }
+        this.setState({ playButtonClasses: classes });
+    }
+
+    getAudioContainerClass() {
+        const { transcriptShowing } = this.state;
+        if (transcriptShowing) {
+            return 'audio transcript-open';
+        }
+        return 'audio';
     }
 
     render() {
         const { nameText, sourceText, audio } = this.props;
-        console.log(audio);
+        const { transcriptShowing, playButtonClasses } = this.state;
         /* eslint-disable react/no-danger */
         return (
             <div>
@@ -116,24 +166,53 @@ class Audio extends React.Component {
                         dangerouslySetInnerHTML={{ __html: createBodyTag(sourceText) }}
                     />
                 </div>
-                <div className="audio">
-                    <Media>
-                        <div className="media">
-                            <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause} className="media-player" />
-                            <div className="media-controls">
-                                <div className="audioIcon" />
-                                <PlayPause className="playPause" />
-                                <Progress />
-                                <SeekBar />
-                                <Duration />
+                <div className={this.getAudioContainerClass()}>
+                    <h3>{audio.soundTitle}</h3>
+                    <div className="controller">
+                        <Media>
+                            <div className="media">
+                                <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause} className="media-player" />
+                                <div className="media-controls">
+                                    <div className="audioIcon" />
+                                    <div className={playButtonClasses}>
+                                        <PlayPause className="playPause" />
+                                    </div>
+                                    <Progress />
+                                    <div className="seekBarProgress">
+                                        <SeekBar />
+                                        <div className="bar" style={this.getBarStyle()} />
+                                    </div>
+                                    <Duration />
+                                </div>
                             </div>
-                        </div>
-                    </Media>
-                    <button type="button" className="transcriptBtn" onClick={this.openTranscript.bind(this)}>
-                        transcript
-                    </button>
-                    <div className="transcript" style={this.getAudioStyle()}>
-                        Something
+                        </Media>
+                        { !transcriptShowing && (
+                            <button type="button" className="transcriptBtn" onClick={this.openTranscript.bind(this)}>
+                                transcript
+                            </button>
+                        )}
+                        { transcriptShowing && (
+                            <button type="button" className="transcriptBtn open" onClick={this.closeTranscript.bind(this)}>
+                                close transcript
+                            </button>
+                        )}
+                    </div>
+                    <div
+                        className="transcript"
+                        style={this.getAudioStyle()}
+                        onPointerUp={(e) => {
+                            // Ignore pointer up for hammerjs swiping on the model viewer
+                            e.stopPropagation();
+                        }}
+                    >
+                        <ScrollArea
+                            speed={0.8}
+                            className="area"
+                            contentClassName="content"
+                            horizontal={false}
+                        >
+                            <div>{audio.transcript}</div>
+                        </ScrollArea>
                     </div>
                 </div>
             </div>
