@@ -38,8 +38,12 @@ definitions:
       - aws s3 cp ../kiosk-interface-$VERSION.tar.gz s3://$S3_BUCKET/
 
 pipelines:
+  default:
+    - step: *setup
+    - step: *tests
+    - step: *build
   branches:
-    develop:
+    master:
     - step: *setup
     - step: *tests
     - step: *build
