@@ -119,7 +119,13 @@ class Audio extends React.Component {
                 <div className="audio">
                     <Media>
                         <div className="media">
-                            <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause} className="media-player" />
+                            <Player
+                                src={audio.assetSource}
+                                onTimeUpdate={this.onTimeUpdate}
+                                onPlay={this.onPlay}
+                                onPause={this.onPause}
+                                className="media-player"
+                            />
                             <div className="media-controls">
                                 <div className="audioIcon" />
                                 <PlayPause className="playPause" />
@@ -129,7 +135,11 @@ class Audio extends React.Component {
                             </div>
                         </div>
                     </Media>
-                    <button type="button" className="transcriptBtn" onClick={this.openTranscript.bind(this)}>
+                    <button
+                        type="button"
+                        className="transcriptBtn"
+                        onClick={this.openTranscript.bind(this)}
+                    >
                         transcript
                     </button>
                     <div className="transcript" style={this.getAudioStyle()}>
