@@ -1,7 +1,7 @@
 import { each, get, has, set } from 'lodash';
 import * as three from 'three';
-import * as OBJLoader from './OBJLoader';
-import * as MTLLoader from './MTLLoader';
+import OBJLoader from './OBJLoader';
+import MTLLoader from './MTLLoader';
 import { ArticleTypes } from '../../../utils/Constants';
 
 if (has(window, 'ModelStore')) {
@@ -11,10 +11,11 @@ if (has(window, 'ModelStore')) {
 export default {
     loadModels: () => {
         const THREE = three;
+
         OBJLoader(THREE);
         MTLLoader(THREE);
 
-        each(window.appJson.content.contents, (article) => {
+        each(get(window, 'appJson.content.contents', []), (article) => {
             if (article.type !== ArticleTypes.MODEL) {
                 return;
             }
