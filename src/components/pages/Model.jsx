@@ -7,8 +7,6 @@ import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
-import * as OBJLoader from './Model/OBJLoader';
-import * as MTLLoader from './Model/MTLLoader';
 import * as OrbitController from './Model/OrbitController';
 import PreLoader from './Model/PreLoader';
 import { ScreenSize } from '../../utils/Constants';
@@ -21,8 +19,6 @@ class Model extends React.Component {
     constructor(props) {
         super(props);
 
-        OBJLoader(THREE);
-        MTLLoader(THREE);
         OrbitController(THREE);
 
         this.THREE = THREE;
