@@ -144,7 +144,10 @@ class Audio extends React.Component {
 
 Audio.propTypes = {
     nameText: PropTypes.string.isRequired,
-    sourceText: PropTypes.string.isRequired,
+    sourceText: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+    ]).isRequired,
     audio: PropTypes.any.isRequired,
 };
 
