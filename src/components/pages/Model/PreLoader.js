@@ -1,4 +1,6 @@
-import { each, get, has, set } from 'lodash';
+import {
+    each, get, has, set,
+} from 'lodash';
 import * as three from 'three';
 import OBJLoader from './OBJLoader';
 import MTLLoader from './MTLLoader';
