@@ -58,12 +58,14 @@ export const Dimensions = {
         MENU_ITEM_SPACING: 20,
         MENU_ITEM_PADDING: 100,
         TITLE_ITEM_WIDTH: 800,
+        ASPECT_RATIO: '16:9',
     },
     portrait: {
         MENU_ITEM_WIDTH: 800,
         MENU_ITEM_SPACING: 20,
         MENU_ITEM_PADDING: 100,
         TITLE_ITEM_WIDTH: 800,
+        ASPECT_RATIO: '9:16',
     },
 };
 
