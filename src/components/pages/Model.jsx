@@ -349,6 +349,7 @@ Model.propTypes = {
     subpages: PropTypes.arrayOf(PropTypes.shape({
         pageID: PropTypes.string.isRequired,
     })).isRequired,
+    articleID: PropTypes.string.isRequired,
     onChangeCurrentPage: PropTypes.func.isRequired,
 };
 
