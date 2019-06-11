@@ -105,7 +105,9 @@ class Menu extends React.Component {
             + dimension.MENU_ITEM_SPACING;
 
         // the space to the left and right of the active menu item
-        const activeItemSpacing = (ScreenSize[dimension.ASPECT_RATIO].width - dimension.MENU_ITEM_WIDTH) / 2;
+        const activeItemSpacing = (
+            ScreenSize[dimension.ASPECT_RATIO].width - dimension.MENU_ITEM_WIDTH
+        ) / 2;
         const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
 
         if (index === 0) {
