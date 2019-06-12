@@ -95,7 +95,13 @@ class TextImage extends React.Component {
                     )}
                     {typeof audio !== 'undefined' && (
                         <React.Fragment>
-                            <Audio nameText={title} sourceText={content} audio={audio} pauseTimer={pauseTimer} resetInactiveTimer={resetInactiveTimer} />
+                            <Audio
+                                nameText={title}
+                                sourceText={content}
+                                audio={audio}
+                                pauseTimer={pauseTimer}
+                                resetInactiveTimer={resetInactiveTimer}
+                            />
                         </React.Fragment>
                     )}
                     <div className="ImageCaption">
