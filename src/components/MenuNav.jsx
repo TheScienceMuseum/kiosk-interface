@@ -27,7 +27,11 @@ class MenuNav extends React.Component {
                     <i className="icon-arrow" />
 
                 </button>
-                <MenuPips contents={contents} onJump={onJump} currentFocused={currentFocused} />
+                <MenuPips
+                    contents={contents}
+                    onJump={onJump}
+                    currentFocused={currentFocused}
+                />
                 <button
                     className="Button Button--icon MenuNav__Button MenuNav__Button--Next"
                     type="button"
@@ -46,6 +50,9 @@ MenuNav.propTypes = {
     contents: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     onJump: PropTypes.func.isRequired,
     currentFocused: PropTypes.number.isRequired,
+};
+
+MenuNav.defaultProps = {
 };
 
 export default MenuNav;

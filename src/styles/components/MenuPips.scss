@@ -6,12 +6,43 @@
     //left: 0;
     //right: 0;
     //text-align: center;
+    position: relative;
+
+    .MenuPipsContainer {
+        display: flex;
+    }
+
+    .spacer {
+        width: 25px;
+        height: 32px;
+        background: $white;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-indent: 999px;
+        white-space: nowrap;
+    }
+
+    .MenuPipHighlighter {
+        display: block;
+        content: "";
+        background: $red;
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.5s;
+    }
 
     &__Button {
-        border: 3px solid $red;
-        background-color: $white;
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
         width: 30px;
         height: 30px;
+
+        position: relative;
 
         &:not(:first-child) {
             width: 50px;
@@ -22,14 +53,17 @@
         text-indent: 999px;
         white-space: nowrap;
 
-        &:not(:first-of-type) {
-            margin-left: 25px;
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid $red;
+            top: 0;
+            left: 0;
+            transition: left 350ms ease;
+            box-sizing: border-box;
         }
-
-        &--active {
-            background-color: $red;
-        }
-
     }
 
     &--vertical {

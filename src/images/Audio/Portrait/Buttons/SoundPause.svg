@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="45px" viewBox="0 0 46 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Buttons/SoundPlay</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="22" cy="21.5217391" rx="22" ry="21.5217391"></ellipse>
+        <path d="M23,45 C10.3025307,45 0,34.9316177 0,22.5 C0,10.0683823 10.3025307,0 23,0 C35.6974693,0 46,10.0683823 46,22.5 C46,34.9316177 35.6974693,45 23,45 Z M23,43 C34.6030597,43 44,33.8166266 44,22.5 C44,11.1833734 34.6030597,2 23,2 C11.3969403,2 2,11.1833734 2,22.5 C2,33.8166266 11.3969403,43 23,43 Z M16.1856335,14.0516218 L16.1856335,30.9483782 L18.3256335,30.9483782 L18.3256335,14.0516218 L16.1856335,14.0516218 Z M20.011267,12.2879464 L20.011267,32.7120536 L14.5,32.7120536 L14.5,12.2879464 L20.011267,12.2879464 Z M27.1700666,14.0516218 L27.1700666,30.9483782 L29.3098931,30.9483782 L29.3098931,14.0516218 L27.1700666,14.0516218 Z M30.9956134,12.2879464 L30.9956134,32.7120536 L25.4843464,32.7120536 L25.4843464,12.2879464 L30.9956134,12.2879464 Z" id="path-3"></path>
+    </defs>
+    <g id="Build-assets-800x1280" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Audio-with-transcript-open" transform="translate(-30.000000, -524.000000)">
+            <g id="Buttons/Sound/Pause/Default" transform="translate(30.000000, 524.000000)">
+                <g id="BG" stroke-width="1" fill-rule="evenodd" transform="translate(1.000000, 0.978261)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Oval" fill-rule="nonzero"></g>
+                    <g id="Colours/Flat/Black" opacity="0.5" mask="url(#mask-2)" fill="#111111" fill-rule="nonzero">
+                        <rect id="Rectangle" x="0" y="0" width="44" height="43"></rect>
+                    </g>
+                </g>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Oval-4" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+                <g id="Colours/Flat/White" mask="url(#mask-4)" fill="#FFFFFF" fill-rule="nonzero">
+                    <rect id="Rectangle" x="0" y="0" width="46" height="44"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

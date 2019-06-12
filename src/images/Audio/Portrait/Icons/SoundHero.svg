@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icons/SoundHero</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M39.6363636,0 L42.6363636,0 L42.6363636,80 L39.6363636,80 L39.6363636,0 Z M22.7424242,14.5454545 L25.7424242,14.5454545 L25.7424242,65.4545455 L22.7424242,65.4545455 L22.7424242,14.5454545 Z M56.6818182,14.5454545 L59.6818182,14.5454545 L59.6818182,65.4545455 L56.6818182,65.4545455 L56.6818182,14.5454545 Z M5.77272727,29.0909091 L8.77272727,29.0909091 L8.77272727,48.4848485 L5.77272727,48.4848485 L5.77272727,29.0909091 Z M71.2272727,29.0909091 L74.2272727,29.0909091 L74.2272727,48.4848485 L71.2272727,48.4848485 L71.2272727,29.0909091 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons/SoundHero" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+        <g id="Colours/Flat/White" mask="url(#mask-2)" fill="#FFFFFF" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+        </g>
+    </g>
+</svg>

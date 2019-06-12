@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import propTypes from '../propTypes';
+
 import '../styles/components/Attractor.scss';
+import { AssetTypes } from '../utils/Constants';
 
 /*
  * Attractor:
@@ -11,16 +14,34 @@ import '../styles/components/Attractor.scss';
  */
 
 class Attractor extends React.Component {
+    makeAttractor() {
+        const { attractor } = this.props;
+
+        if (attractor.assetType === AssetTypes.IMAGE) {
+            return (
+                <div className="Attractor__image Image--withGrad">
+                    <img src={attractor.assetSource} alt="" />
+                </div>
+            );
+        }
+        return (
+            <div className="Attractor__video Image--withGrad">
+                <video autoPlay loop controls={false} muted>
+                    <source src={attractor.assetSource} type="video/mp4" />
+                    <track kind="captions" />
+                </video>
+            </div>
+        );
+    }
+
     render() {
         const {
-            attractorImage, galleryName, title, start,
+            galleryName, title, start,
         } = this.props;
 
         return (
             <div className="Attractor">
-                <div className="Image--withGrad">
-                    <img src={attractorImage} alt="" />
-                </div>
+                {this.makeAttractor()}
                 <div className="Attractor__details">
                     <p>{ galleryName }</p>
                     <h1>{ title }</h1>
@@ -33,7 +54,7 @@ class Attractor extends React.Component {
 }
 
 Attractor.propTypes = {
-    attractorImage: PropTypes.string.isRequired,
+    attractor: propTypes.asset.isRequired,
     title: PropTypes.string.isRequired,
     galleryName: PropTypes.string.isRequired,
     start: PropTypes.func.isRequired,

@@ -1,0 +1,17 @@
+.portrait {
+    .PageTextImage {
+        display:flex;
+        flex-direction: column;
+        .ImageContainer {
+            height:50%;
+            width:100%;
+            position:relative;
+        }
+        .ContentContainer {
+            height:50%;
+            position:relative;
+            left:0;
+            width:100%;
+        }
+    }
+}

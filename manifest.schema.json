@@ -9,6 +9,16 @@
                 "short_name": {
                     "type": "string"
                 },
+                "aspect_ratio": {
+                    "type": "string",
+                    "enum": ["16:9", "9:16"]
+                },
+                "styles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "name": {
                     "type": "string"
                 },
@@ -71,10 +81,18 @@
                     "enum": ["video", "mixed"]
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 72
                 },
                 "titleImage": {
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 },
                 "subpages": {
                     "type": "array",
@@ -82,11 +100,15 @@
                         "$ref": "#/definitions/Subpage"
                     }
                 },
-                "videoSrc": {
-                    "type": "string"
-                },
-                "image": {
-                    "$ref": "#/definitions/ImageClass"
+                "asset": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -106,10 +128,24 @@
                 },
                 "type": {
                     "type": "string",
-                    "enum": ["textImage", "title", "video", "image"]
+                    "enum": ["textImage", "title", "video", "image", "textVideo", "textAudio"]
                 },
-                "image": {
-                    "$ref": "#/definitions/ImageUnion"
+                "asset": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
+                },
+                "audio": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AudioAssetClass"
+                        }
+                    ]
                 },
                 "title": {
                     "type": "string",
@@ -128,19 +164,47 @@
                 }
             },
             "required": [
-                "image",
+                "asset",
                 "pageID",
                 "title",
                 "type"
             ],
             "title": "Subpage"
         },
-        "ImageClass": {
+        "AudioAssetClass": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "imageSource": {
+                "assetSource": {
                     "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["audio"]
+                },
+                "soundTitle": {
+                    "type": "string"
+                },
+                "transcript": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetType",
+                "assetSource"
+            ],
+            "title": "ImageClass"
+        },
+        "ImageAssetClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assetSource": {
+                    "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["image"]
                 },
                 "boundingBox": {
                     "$ref": "#/definitions/BoundingBox"
@@ -153,10 +217,41 @@
                 }
             },
             "required": [
-                "imageSource",
-                "boundingBox",
-                "nameText",
-                "sourceText"
+                "assetType",
+                "assetSource"
+            ],
+            "title": "ImageClass"
+        },
+        "VideoAssetClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "assetSource": {
+                    "type": "string"
+                },
+                "assetType": {
+                    "type": "string",
+                    "enum": ["video"]
+                },
+                "nameText": {
+                    "type": "string"
+                },
+                "sourceText": {
+                    "type": "string"
+                },
+                "bslSource": {
+                    "type": "string"
+                },
+                "subtitlesSource": {
+                    "type": "string"
+                },
+                "posterImage": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "assetType",
+                "assetSource"
             ],
             "title": "ImageClass"
         },
@@ -172,20 +267,40 @@
                     "type": "string"
                 },
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 72
                 },
                 "image": {
-                    "$ref": "#/definitions/ImageUnion"
+                    "oneOf": [{
+                            "type": "null"
+                        },
+                        {
+                            "$ref": "#/definitions/VideoAssetClass",
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass",
+                        }
+                    ]
                 },
-                "attractorImage": {
-                    "$ref": "#/definitions/ImageUnion"
+                "attractor": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VideoAssetClass"
+                        },
+                        {
+                            "$ref": "#/definitions/ImageAssetClass"
+                        }
+                    ]
+                },
+                "idleTimeout": {
+                    "type": "integer"
                 }
             },
             "required": [
                 "galleryName",
-                "image",
                 "title",
-                "type"
+                "type",
+                "attractor"
             ],
             "title": "Titles"
         },
@@ -203,9 +318,11 @@
             "title": "Requirements"
         },
         "ImageUnion": {
-            "anyOf": [
+            "anyOf": [{
+                    "$ref": "#/definitions/VideoAssetClass"
+                },
                 {
-                    "$ref": "#/definitions/ImageClass"
+                    "$ref": "#/definitions/ImageAssetClass"
                 },
                 {
                     "type": "string"
@@ -216,15 +333,14 @@
             ],
             "title": "ImageUnion"
         },
-        "ContentUnion":{
-            "anyOf": [
-                {
+        "ContentUnion": {
+            "anyOf": [{
                     "type": "string"
                 },
                 {
                     "type": "array",
                     "items": {
-                        "type": "array"
+                        "type": "string"
                     }
                 }
             ]

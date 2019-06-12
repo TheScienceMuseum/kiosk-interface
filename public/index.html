@@ -39,6 +39,7 @@
     -->
   </body>
 <script>
+    // Setup and retrieve config
     try {
         const Config = require('electron').remote.require('electron-config');
         const config = new Config();
@@ -48,6 +49,22 @@
         //window.electon_env = 'browser';
     }
 
+    // Setup ipc emitter and hijack consoles
+    try {
+        const ipc = require('electron').ipcRenderer;
+
+        const clientEmitter = function (event, payload) {
+            ipc.send(event, payload);
+        };
+
+        const ce = console.error;
+        console.error = function () {
+            clientEmitter('interface-error', [arguments]);
+            ce.apply(this, arguments);
+        };
+    } catch ( e ) {
+        console.warn('could not hijack console functions, errors will not be sent to the kms server');
+    }
 
 
 </script>

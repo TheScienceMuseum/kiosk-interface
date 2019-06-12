@@ -10,7 +10,9 @@ import MenuItemTitle from './menuitems/MenuItemTitle';
 import MenuItemMixed from './menuitems/MenuItemMixed';
 import MenuItemVideo from './menuitems/MenuItemVideo';
 
-import { ArticleTypes, Dimensions, ScreenSize } from '../Constants';
+import {
+    ArticleTypes, Dimensions, ScreenSize,
+} from '../utils/Constants';
 import MenuNav from './MenuNav';
 
 
@@ -22,32 +24,12 @@ import MenuNav from './MenuNav';
  */
 
 class Menu extends React.Component {
-    static getScrollAmount(index) {
-        let targetScroll;
-
-        // the width of the menu title item
-        const menuTitleOffset = Dimensions.MENU_ITEM_PADDING
-            + Dimensions.TITLE_ITEM_WIDTH
-            + Dimensions.MENU_ITEM_SPACING;
-
-        // the space to the left and right of the active menu item
-        const activeItemSpacing = (ScreenSize.width - Dimensions.MENU_ITEM_WIDTH) / 2;
-        const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
-
-        if (index === 0) {
-            targetScroll = 0;
-        } else {
-            targetScroll = firstItemLeftOffset + ((index - 1) * (
-                Dimensions.MENU_ITEM_WIDTH + Dimensions.MENU_ITEM_SPACING)
-            );
-        }
-        return targetScroll;
-    }
-
     constructor(props) {
         super(props);
 
-        const currentFocused = (props.activeArticle)
+        const { initial } = props;
+
+        const currentFocused = (!initial || props.activeArticle)
             ? props.activeArticle
             : 0;
 
@@ -63,12 +45,33 @@ class Menu extends React.Component {
         this.itemClick = this.onItemClick.bind(this);
 
         this.scrollElem = null;
-        this.scrollTween = null;
+        // this.scrollTween = null;
+        // console.log('Menu: constructor: props.initial: ', initial);
+        // console.log('Menu: constructor: currentFocused: ', currentFocused);
+
+        // this.moveDirection = MoveDiections.RIGHT;
     }
 
     componentDidMount() {
         const { currentFocused } = this.state;
         this.jumpToItem(currentFocused);
+    }
+
+    componentWillUpdate(nextProps) {
+        // console.log('Menu: componentWillUpdate: nextProps.initial: ', nextProps.initial);
+
+        // console.log('Menu: componentWillUpdate: nextProps: ', nextProps);
+        // console.log('Menu: componentWillUpdate: this.props: ', this.props);
+
+        if (nextProps.initial) {
+            this.state = {
+                currentFocused: 0,
+            };
+        }
+    }
+
+    componentWillUnmount() {
+        // console.log('Menu: componentWillUnmount:');
     }
 
     onItemClick(articleID) {
@@ -91,6 +94,31 @@ class Menu extends React.Component {
         }
     }
 
+    getScrollAmount(index) {
+        let targetScroll;
+        const { aspect } = this.props;
+        const dimension = Dimensions[aspect];
+
+        // the width of the menu title item
+        const menuTitleOffset = dimension.MENU_ITEM_PADDING
+            + dimension.TITLE_ITEM_WIDTH
+            + dimension.MENU_ITEM_SPACING;
+
+        // the space to the left and right of the active menu item
+        const activeItemSpacing = (
+            ScreenSize[dimension.ASPECT_RATIO].width - dimension.MENU_ITEM_WIDTH
+        ) / 2;
+        const firstItemLeftOffset = menuTitleOffset - activeItemSpacing;
+
+        if (index === 0) {
+            targetScroll = 0;
+        } else {
+            targetScroll = firstItemLeftOffset + ((index - 1) * (
+                dimension.MENU_ITEM_WIDTH + dimension.MENU_ITEM_SPACING)
+            );
+        }
+        return targetScroll;
+    }
 
     getIndexFromID(articleID) {
         const { contents } = this.props;
@@ -101,6 +129,7 @@ class Menu extends React.Component {
         // console.log('Menu: nextItem');
         const { contents } = this.props;
         let { currentFocused } = this.state;
+        // this.moveDirection = MoveDiections.RIGHT;
         // console.log('Menu: nextItem: currentFocused: ', currentFocused);
 
         if (currentFocused === (contents.length)) return;
@@ -117,6 +146,7 @@ class Menu extends React.Component {
     previousItem() {
         const { contents } = this.props;
         let { currentFocused } = this.state;
+        // this.moveDirection = MoveDiections.LEFT;
         // console.log('Menu: previousItem: currentFocused: ', currentFocused);
 
         if (currentFocused === null || currentFocused === 0) return;
@@ -150,14 +180,14 @@ class Menu extends React.Component {
             index = this.getIndexFromID(targetID);
         }
 
-        const { setActiveArticle, resetInactiveTimer } = this.props;
+        const { setActiveArticle } = this.props;
         setActiveArticle(index);
-        resetInactiveTimer(true);
+        // resetInactiveTimer(true);
 
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
 
-        const options = { scrollLeft: Menu.getScrollAmount(index), ease: Ease.easeOut };
+        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeOut };
         this.scrollTween = TweenLite.to(this.scrollElem, 0.25, options);
     }
 
@@ -165,13 +195,16 @@ class Menu extends React.Component {
     jumpToItem(itemNum) {
         // console.log('Menu: jumpToItem: itemNum: ', itemNum);
         // console.log('Menu: jumpToItem: targetScroll: ', Menu.getScrollAmount(itemNum));
-        this.scrollElem.scrollLeft = Menu.getScrollAmount(itemNum);
+        this.scrollElem.scrollLeft = this.getScrollAmount(itemNum);
     }
 
 
     render() {
         const { contents, titles } = this.props;
         const { currentFocused } = this.state;
+
+        // console.log('Menu: render: location: ', location);
+
         // const startState = { autoAlpha: 0, y: -50 };
 
         // if (redirect) {
@@ -195,6 +228,17 @@ class Menu extends React.Component {
                 );
                 break;
             case ArticleTypes.MIXED:
+            case ArticleTypes.TIMELINE:
+                output = (
+                    <MenuItemMixed
+                        key={id}
+                        articleID={id}
+                        {...item}
+                        onClick={this.itemClick}
+                    />
+                );
+                break;
+            case ArticleTypes.MODEL:
                 output = (
                     <MenuItemMixed
                         key={id}
@@ -230,13 +274,6 @@ class Menu extends React.Component {
                         <MenuItemTitle {...titles} />
                         {menuItems}
                     </ul>
-                    {/* <MenuPips */}
-                    {/* onJump={this.onJump} */}
-                    {/* contents={contents} */}
-                    {/* currentFocused={currentFocused} */}
-                    {/* showTitlePip */}
-                    {/* /> */}
-                    {/* <NavButtons onPrev={this.onPrev} onNext={this.onNext} /> */}
 
                     <MenuNav
                         onNext={this.onNext}
@@ -261,6 +298,7 @@ Menu.propTypes = {
         galleryName: PropTypes.string,
         title: PropTypes.string,
     }).isRequired,
+    aspect: PropTypes.oneOf(Object.keys(Dimensions)).isRequired,
 };
 
 Menu.defaultProps = {
