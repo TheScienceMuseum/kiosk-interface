@@ -176,7 +176,13 @@ class Audio extends React.Component {
                     <div className="controller">
                         <Media>
                             <div className="media">
-                                <Player src={audio.assetSource} onTimeUpdate={this.onTimeUpdate} onPlay={this.onPlay} onPause={this.onPause} className="media-player" />
+                                <Player
+                                    src={audio.assetSource}
+                                    onTimeUpdate={this.onTimeUpdate}
+                                    onPlay={this.onPlay}
+                                    onPause={this.onPause}
+                                    className="media-player"
+                                />
                                 <div className="media-controls">
                                     <div className="audioIcon" />
                                     <div className={playButtonClasses}>
@@ -192,12 +198,20 @@ class Audio extends React.Component {
                             </div>
                         </Media>
                         { !transcriptShowing && (
-                            <button type="button" className="transcriptBtn" onClick={this.openTranscript.bind(this)}>
+                            <button
+                                type="button"
+                                className="transcriptBtn"
+                                onClick={this.openTranscript.bind(this)}
+                            >
                                 transcript
                             </button>
                         )}
                         { transcriptShowing && (
-                            <button type="button" className="transcriptBtn open" onClick={this.closeTranscript.bind(this)}>
+                            <button
+                                type="button"
+                                className="transcriptBtn open"
+                                onClick={this.closeTranscript.bind(this)}
+                            >
                                 close transcript
                             </button>
                         )}
