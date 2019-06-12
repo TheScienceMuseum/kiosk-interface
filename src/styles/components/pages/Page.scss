@@ -1,12 +1,13 @@
 @import "../../variables";
+@import "../portrait/components/Page";
 
 .Page {
     //position: absolute;
     //top: 0;
     //left: 0;
     position: relative;
-    //background: $pageBackground;
-    background: red;
+    background: $pageBackground;
+    //background: red;
 
     width: 100%;
     height: 1080px;
@@ -45,6 +46,7 @@
     p {
         font-size: 26px;
         line-height: 36px;
+        margin-bottom: 20px;
     }
 }
 

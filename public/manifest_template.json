@@ -1,0 +1,63 @@
+{
+    "short_name": "",
+    "name": "",
+    "label": "",
+    "version": 1,
+    "main": "",
+    "requirements": {
+        "client_version": "0.0.1"
+    },
+    "content": {
+        "titles": {
+            "type": "text",
+            "galleryName": "",
+            "title": "",
+            "attractor": {
+                "assetType": "image",
+                "assetSource": ""
+            }
+        },
+        "contents": [
+            {
+                "articleID": "1-1",
+                "type": "mixed",
+                "title": "",
+                "titleImage": {
+                    "assetType": "image",
+                    "assetSource": ""
+                },
+                "subpages": [
+                    {
+                        "pageID": "1-1-1",
+                        "type": "title",
+                        "asset":  {
+                            "assetType": "image",
+                            "assetSource": ""
+                        },
+                        "title": "",
+                        "subtitle": ""
+                    },
+                    {
+                        "pageID": "1-1-2",
+                        "type": "textImage",
+                        "layout": "left",
+                        "asset": {
+                            "assetSource": "",
+                            "assetType": "image",
+                            "boundingBox" : {
+                                "x": 0.25,
+                                "y": 0.25,
+                                "width": 0.5,
+                                "height": 0.5
+                            },
+                            "nameText": "",
+                            "sourceText": ""
+                        },
+                        "title": "",
+                        "content": ""
+                    }
+                ]
+            }
+        ]
+    }
+}

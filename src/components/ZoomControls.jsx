@@ -19,6 +19,7 @@ class ZoomControls extends React.Component {
             imageMaxZoom,
             handleZoomChange,
             currentScale,
+            step,
         } = this.props;
 
         return (
@@ -36,7 +37,7 @@ class ZoomControls extends React.Component {
                     type="range"
                     min={imageMinZoom}
                     max={imageMaxZoom}
-                    step="0.01"
+                    step={step}
                     onChange={handleZoomChange}
                     value={currentScale}
                 />
@@ -60,6 +61,11 @@ ZoomControls.propTypes = {
     imageMinZoom: PropTypes.number.isRequired,
     imageMaxZoom: PropTypes.number.isRequired,
     currentScale: PropTypes.number.isRequired,
+    step: PropTypes.number,
+};
+
+ZoomControls.defaultProps = {
+    step: 0.01,
 };
 
 export default ZoomControls;

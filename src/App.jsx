@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import IdleTimer from 'react-idle-timer';
 
 import './styles/App.scss';
 
 import Menu from './components/Menu';
 import Article from './components/Article';
-import { AppStates, Environments } from './Constants';
+import { AppStates, Environments } from './utils/Constants';
 import Attractor from './components/Attractor';
+import ErrorBoundary from './components/ErrorBoundary';
+import ModelLoader from './components/pages/Model/PreLoader';
 
 
 class App extends Component {
@@ -19,17 +22,55 @@ class App extends Component {
         this.state = {
             activeArticle: null,
             location: AppStates.ATTRACTOR,
-            inactiveTime: 0,
             singleArticleMode,
+            initial: true,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
         this.onStart = this.start.bind(this);
-        this.startInactiveTimer = this.startInactiveTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
 
-        this.inactiveTimer = null;
-        this.timeout = 999;
+        this.pauseTimer = this.pauseTimer.bind(this);
+        this.resetTimer = this.resetTimer.bind(this);
+        this.onIdle = this.onIdle.bind(this);
+
+        this.idleTimer = null;
+        this.idleTimeout = props.content.titles.idleTimeout || 120; // in seconds
+
+        ModelLoader.loadModels();
+    }
+
+    onIdle(e) {
+        console.log('user is idle', e);
+        this.setState({ location: AppStates.ATTRACTOR, initial: true });
+    }
+
+    getAspectRotation() {
+        // eslint-disable-next-line camelcase
+        const { aspect_ratio } = this.props;
+        // eslint-disable-next-line camelcase
+        switch (aspect_ratio) {
+        case '16:9':
+            return 'landscape';
+        case '9:16':
+            return 'portrait';
+        default:
+            return 'landscape';
+        }
+    }
+
+    getAspectClass() {
+        return this.getAspectRotation();
+    }
+
+    getStylesClasses() {
+        const { styles } = this.props;
+        let classes = '';
+        if (styles.length > 0) {
+            styles.forEach((s) => {
+                classes += ` ${s}`;
+            });
+        }
+        return classes;
     }
 
     setActiveArticle(activeArticle) {
@@ -38,7 +79,9 @@ class App extends Component {
     }
 
     getPage() {
-        const { activeArticle, location, singleArticleMode } = this.state;
+        const {
+            activeArticle, location, singleArticleMode, initial,
+        } = this.state;
         const { content } = this.props;
 
         switch (location) {
@@ -55,7 +98,9 @@ class App extends Component {
                     activeArticle={activeArticle}
                     setActiveArticle={this.setActiveArticle}
                     loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.startInactiveTimer}
+                    resetInactiveTimer={this.resetTimer}
+                    initial={initial}
+                    aspect={this.getAspectRotation()}
                 />
             );
         default:
@@ -64,54 +109,50 @@ class App extends Component {
                     contents={content.contents}
                     articleID={location}
                     loadArticle={this.loadArticle}
-                    resetInactiveTimer={this.startInactiveTimer}
-                    stopTimer={this.stopTimer}
+                    resetInactiveTimer={this.resetTimer}
+                    pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
                 />
             );
         }
     }
 
-    startInactiveTimer(reset) {
-        let { inactiveTime } = this.state;
-        inactiveTime = (reset) ? 0 : inactiveTime + 1;
-
-        if (this.inactiveTimer) clearTimeout(this.inactiveTimer);
-
-        if (inactiveTime > this.timeout) {
-            this.kioskTimeout();
-        } else {
-            this.setState({ inactiveTime });
-            this.inactiveTimer = setTimeout(this.startInactiveTimer.bind(this), 1000);
-        }
-    }
-
-    stopTimer() {
-        clearTimeout(this.inactiveTimer);
-        // this.setState( {inactive})
-    }
-
-    kioskTimeout() {
-        this.setState({ location: AppStates.ATTRACTOR, inactiveTime: 0 });
+    appClasses() {
+        let classes = '';
+        classes += this.getAspectClass();
+        classes += this.getStylesClasses();
+        return classes;
     }
 
     start() {
         const { content } = this.props;
         const { singleArticleMode } = this.state;
-
         console.log('App: start: ', content.contents.length);
-
         const startState = !singleArticleMode ? AppStates.MENU : content.contents[0].articleID;
-
-
-        this.setState({ location: startState }, this.startInactiveTimer);
+        this.setState({
+            location: startState,
+            initial: true,
+            activeArticle: null,
+        },
+        this.resetTimer);
     }
 
     loadArticle(articleID) {
         // console.log('App: loadArticle: articleID: ', articleID);
-        this.startInactiveTimer(true);
-        this.setState({ location: articleID });
+        // this.startInactiveTimer(true);
+        this.setState({ location: articleID, initial: false });
     }
+
+    pauseTimer() {
+        console.log('App: pauseTimer: time: ', this.idleTimer.getRemainingTime());
+        this.idleTimer.pause();
+    }
+
+    resetTimer() {
+        console.log('App: resetTimer: time: ', this.idleTimer.getRemainingTime());
+        this.idleTimer.reset();
+    }
+
 
     render() {
         const {
@@ -119,31 +160,40 @@ class App extends Component {
         } = this.props;
         const { location } = this.state;
 
+        // console.log('App: render: ', this.state.inactiveTime);
+
         return (
+            <ErrorBoundary>
+                <div className={`App ${this.appClasses()}`}>
+                    <IdleTimer
+                        ref={(ref) => { this.idleTimer = ref; }}
+                        element={document}
+                        onIdle={this.onIdle}
+                        debounce={250}
+                        timeout={1000 * this.idleTimeout}
+                    />
+                    {env !== Environments.PRODUCTION
+                        && (
+                            <div className="DebugPanel">
+                                <p>{`Package Name: ${label}`}</p>
+                                <p>{`Package Version: ${version}`}</p>
+                                <p>{`Client Environment: ${env}`}</p>
+                                <p>{`Client Version: ${clientVersion}`}</p>
+                            </div>
+                        )
+                    }
 
-            <div className="App">
-                {env !== Environments.PRODUCTION
-                && (
-                    <div className="DebugPanel">
-                        <p>{`Package Name: ${label}`}</p>
-                        <p>{`Package Version: ${version}`}</p>
-                        <p>{`Client Environment: ${env}`}</p>
-                        <p>{`Client Version: ${clientVersion}`}</p>
-                    </div>
-                )
-                }
-
-                <TransitionGroup className="transition-group">
-                    <CSSTransition
-                        key={location}
-                        timeout={{ enter: 300, exit: 300 }}
-                        classNames="fade"
-                    >
-                        { this.getPage() }
-                    </CSSTransition>
-                </TransitionGroup>
-            </div>
-
+                    <TransitionGroup className="transition-group">
+                        <CSSTransition
+                            key={location}
+                            timeout={{ enter: 300, exit: 300 }}
+                            classNames="fade"
+                        >
+                            {this.getPage()}
+                        </CSSTransition>
+                    </TransitionGroup>
+                </div>
+            </ErrorBoundary>
         );
     }
 }

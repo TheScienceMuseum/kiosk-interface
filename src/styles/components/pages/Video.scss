@@ -1,9 +1,129 @@
 @import "../../variables";
 @import "Page";
+@import "~video-react/styles/scss/video-react";
 
-.PageVideo {
+.PageVideo, .PageTextVideo {
+    background-color: black !important;
     video {
         width: 100%;
         height: 100%;
     }
+
+    .kioskPlayerControl {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+
+        width:100px;
+        height:100px;
+
+        text-indent: -999999px;
+
+        transition: all 0.3s;
+
+        &.start {
+            order:0;
+        }
+        &.end {
+            order:10;
+        }
+
+        &.play {
+            background-image: url("../../../images/Buttons/Play/Default.png");
+            &.playing {
+                background-image: url("../../../images/Buttons/Pause/Default.png");
+            }
+        }
+
+        &.subtitles {
+            background-image: url("../../../images/Buttons/Subtitles/Default.png");
+            &.enabled {
+                background-color:#fff;
+                background-image: url("../../../images/Buttons/Subtitles/Selected.png");
+            }
+        }
+        &.bsl {
+            background-image: url("../../../images/Buttons/BSL/Default.png");
+            &.enabled {
+                background-color:#fff;
+                background-image: url("../../../images/Buttons/BSL/Selected.png");
+            }
+        }
+        &.close {
+            background-image: url("../../../images/Buttons/Close/Default.png");
+        }
+
+        &:active {
+            transform: scale(1.1);
+        }
+    }
+
+    .video-react {
+        padding-top: 0 !important;
+        height:100%;
+        .video-react-control-bar {
+            height:100px;
+            background: rgba(0,0,0,0.7);
+            .video-react-volume-menu-button {
+                display:none;
+            }
+            .video-react-control {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+                &.video-react-play-control {
+                    &:before {
+                        display:none;
+                    }
+                    width:100px;
+                    background-image: url("../../../images/Buttons/Play/Default.png");
+                    &.video-react-playing {
+                        background-image: url("../../../images/Buttons/Pause/Default.png");
+                    }
+                    &:active {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+
+    .video-react-icon-fullscreen {
+        display:none;
+    }
+
+    .video-react-time-control {
+        display:none;
+    }
+
+    .video-react .video-react-progress-control:hover .video-react-mouse-display,
+    .video-react-play-progress .video-react-slider-bar,
+    .video-react .video-react-time-tooltip,
+    .video-react .video-react-mouse-display:after,
+    .video-react .video-react-play-progress:after {
+        display: none;
+    }
+
+    .video-react .video-react-big-play-button {
+        content: " ";
+        display: block;
+        width: 140px;
+        height: 140px;
+        background: url(/static/media/play.337f0fa4.svg) no-repeat;
+        background-size: contain;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+
+        &.big-play-button-hide {
+            display: none;
+        }
+
+        &:before {
+            display: none;
+        }
+    }
+
 }

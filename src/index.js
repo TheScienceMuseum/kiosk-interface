@@ -11,6 +11,7 @@ fetch('manifest.json').then(resp => resp.json()).then(json => {
         console.log('JSON data version:', json.version);
         // console.log('Package version:', packageFile.version);
     }
+    window.appJson = json;
     ReactDOM.render(<App {...json} env={window.electon_env} clientVersion={window.client_ver} />, document.getElementById('root'));
 });
 

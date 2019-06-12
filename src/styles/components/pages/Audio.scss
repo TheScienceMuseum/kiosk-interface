@@ -1,0 +1,256 @@
+@import "../../variables";
+@import "Page";
+
+audio {
+    padding: 0;
+    margin: 0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    border:0;
+    -webkit-appearance: none;
+}
+
+audio::-webkit-media-controls-panel {
+    background: $corianBone;
+    box-shadow: none;
+    padding:0;
+    margin:0;
+    border-radius:0;
+}
+
+audio::-webkit-media-controls-play-button {}
+
+audio::-webkit-media-controls-volume-slider {
+    display: none;
+}
+
+audio::-webkit-media-controls-volume-slider-container {
+    display:none;
+}
+
+audio::-webkit-media-controls-mute-button {
+    display: none;
+}
+
+
+.audioIcon {
+    background: url("../../../images/Audio/Icons/Sound.svg") no-repeat;
+    width:50px;
+    height:50px;
+    background-size:100%;
+}
+
+.seekBarProgress {
+    width: 233px;
+    min-width:233px;
+    input[type=range] {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        margin-left: 0 !important;
+        z-index: 99;
+    }
+    height:5px;
+    background:rgba(0,0,0,0.2);
+    margin-left:16px;
+    position:relative;
+    .bar {
+        height:100%;
+        background: rgba(0,0,0,1);
+        position:absolute;
+        left:0;
+        top:0;
+        transition:all 0.3s;
+    }
+}
+
+.audio {
+    h3 {
+        margin-bottom:40px;
+        margin-top:50px;
+    }
+
+    &.transcript-open {
+        h3 {
+            margin-top:0;
+        }
+    }
+
+    .controller {
+        display:flex;
+        align-items: center;
+    }
+
+    .transcript {
+        display:block;
+        transition: all 0.5s;
+        margin-top: 50px;
+        font-size: 1.2em;
+        .scrollarea {
+            height: 550px;
+            .scrollbar-container {
+                opacity:1;
+                background: rgba(0,0,0,0.2);
+                width:5px;
+                .scrollbar {
+                    background: #000;
+                }
+            }
+        }
+    }
+
+    .media {
+        display:flex;
+        align-items: center;
+        .media-controls {
+            display:flex;
+            align-items: center;
+            progress {
+                display:none;
+            }
+            time {
+                margin-left:16px;
+            }
+            time:first-child {
+                display:none;
+            }
+            input[type=range] {
+                -webkit-appearance: none;
+                background:transparent;
+                margin-left:16px;
+            }
+            input[type=range]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 3px;
+                background: #ffffff;
+                cursor: pointer;
+                margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+              }
+            input[type=range]::-ms-track {
+                width: 100%;
+                cursor: pointer;
+              
+                /* Hides the slider so custom styles can be added */
+                background: transparent; 
+                border-color: transparent;
+                color: transparent;
+              }
+        }
+    }
+
+    .paused {
+        .playPause {
+            background: url("../../../images/Audio/Buttons/SoundPlay.svg") no-repeat;
+        }
+    }
+
+    .playPause {
+        background: url("../../../images/Audio/Buttons/Sound/Pause/Default.svg") no-repeat;
+        min-width:46px;
+        width:46px;
+        height:45px;
+        text-indent:-999px;
+        overflow:hidden;
+        background-size:100%;
+        border:0;
+        -webkit-appearance: none;
+        box-shadow:none;
+        margin-left:16px;
+    }
+
+    .transcriptBtn {
+        background: rgba(0,0,0,0.1);
+        border:0;
+        height:20px;
+        margin-left:20px;
+        &.open {
+            background: rgba(0,0,0,1);
+            color: #fff;
+        }
+    }
+}
+
+.portrait {
+    .PageTextAudio {
+        .ContentContainer {
+            position: unset;
+        }
+        .ZoomableImage__ZoomButton {
+            display:none;
+        }
+
+        .audio {
+            h3 {
+                display:none;
+            }
+            .media {
+                position:unset;
+
+                .audioIcon {
+                    position:absolute;
+                    margin-left:-125px;
+                    width:251px;
+                    height:281px;
+                    left:50%;
+                    top:25%;
+                    margin-top: -140px;
+                    background: url("../../../images/Audio/Portrait/Icons/SoundHero.svg") no-repeat;
+                    background-size:100%;
+                }
+
+                .playPauseContainer {
+                    position:absolute;
+                    margin-left:-100px;
+                    width:200px;
+                    height:200px;
+                    left:10%;
+                    top:50%;
+                    margin-top:-70px;
+                    .playPause {
+                        background: url("../../../images/Audio/Portrait/Buttons/SoundPause.svg") no-repeat;
+                    }
+                    &.paused {
+                        .playPause {
+                            background: url("../../../images/Audio/Portrait/Buttons/SoundPlay.svg") no-repeat;
+                        }
+                    }
+                }
+
+                .seekBarProgress {
+                    position:absolute;
+                    left:0;
+                    width:100%;
+                    top:50%;
+                    margin-left:0;
+                    height:8px;
+                    margin-top:-4px;
+                    background:#fff;
+                    .bar {
+                        background: $red;
+                    }
+                    input[type=range] {
+                        height: 8px;
+                    }
+                }
+
+                time {
+                    position: absolute;
+                    right:0;
+                    top:50%;
+                    margin-top:-40px;
+                    font-size:1.5em;
+                    margin-right:20px;
+                    color:#fff;
+                    text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+                }
+            }
+        }
+    }
+}
