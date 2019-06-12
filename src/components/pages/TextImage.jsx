@@ -58,7 +58,7 @@ class TextImage extends React.Component {
 
     render() {
         const {
-            title, content, asset, layout, date, audio,
+            title, content, asset, layout, date, audio, pauseTimer, resetInactiveTimer,
         } = this.props;
 
         const { contentHidden } = this.state;
@@ -95,7 +95,7 @@ class TextImage extends React.Component {
                     )}
                     {typeof audio !== 'undefined' && (
                         <React.Fragment>
-                            <Audio nameText={title} sourceText={content} audio={audio} />
+                            <Audio nameText={title} sourceText={content} audio={audio} pauseTimer={pauseTimer} resetInactiveTimer={resetInactiveTimer} />
                         </React.Fragment>
                     )}
                     <div className="ImageCaption">
@@ -120,6 +120,8 @@ TextImage.propTypes = {
     toggleNavHide: PropTypes.func.isRequired,
     date: PropTypes.string,
     audio: PropTypes.any,
+    pauseTimer: PropTypes.func.isRequired,
+    resetInactiveTimer: PropTypes.func.isRequired,
 };
 
 TextImage.defaultProps = {
