@@ -110,13 +110,18 @@ class Audio extends React.Component {
         this.setState({ transcriptShowing: false });
     }
 
+
     onPlay(d) {
+        const { pauseTimer } = this.props;
+        pauseTimer();
         this.setState({ playing: true }, () => {
             this.getPlayStyle();
         });
     }
 
     onPause(d) {
+        const { resetInactiveTimer } = this.props;
+        resetInactiveTimer();
         this.setState({ playing: false }, () => {
             this.getPlayStyle();
         });
@@ -228,6 +233,8 @@ Audio.propTypes = {
         PropTypes.arrayOf(PropTypes.string),
     ]).isRequired,
     audio: PropTypes.any.isRequired,
+    pauseTimer: PropTypes.func.isRequired,
+    resetInactiveTimer: PropTypes.func.isRequired,
 };
 
 export default Audio;
