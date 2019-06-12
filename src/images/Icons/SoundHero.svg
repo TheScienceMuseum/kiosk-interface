@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="131px" height="181px" viewBox="0 0 131 181" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Icons/SoundHero</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M74.8136364,0 L80.4761364,0 L80.4761364,181 L74.8136364,181 L74.8136364,0 Z M42.9263258,32.9090909 L48.5888258,32.9090909 L48.5888258,148.090909 L42.9263258,148.090909 L42.9263258,32.9090909 Z M106.986932,32.9090909 L112.649432,32.9090909 L112.649432,148.090909 L106.986932,148.090909 L106.986932,32.9090909 Z M10.8960227,65.8181818 L16.5585227,65.8181818 L16.5585227,109.69697 L10.8960227,109.69697 L10.8960227,65.8181818 Z M134.441477,65.8181818 L140.103977,65.8181818 L140.103977,109.69697 L134.441477,109.69697 L134.441477,65.8181818 Z" id="path-1"></path>
+    </defs>
+    <g id="Build-assets-800x1280" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Audio" transform="translate(-334.000000, -193.000000)">
+            <g id="Icons/SoundHero" transform="translate(324.000000, 193.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                <g id="Colours/Flat/White" mask="url(#mask-2)" fill="#FFFFFF" fill-rule="nonzero">
+                    <rect id="Rectangle" x="0" y="0" width="151" height="181"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
