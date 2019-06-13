@@ -11,19 +11,32 @@
     .ContentContainer {
         position: absolute;
         width: 650px;
-        left: 0;
-        bottom: 0;
+        top: 0;
         background: $pageBackground;
-
-        transition: transform 350ms ease-out;
+        z-index: 99999;
+        transition: all 350ms ease-out;
+        transform: translateX(0);
         &--zoomedOut {
-
+            transform: translateX(0);
         }
 
         &--zoomedIn {
             transform: translateX(-100%);
         }
 
+        &--right {
+            right:0;
+        }
+
+        &--left {
+            left: 0;
+        }
+
+    }
+    .ContentContainer--right {
+        &.ContentContainer--zoomedIn {
+            transform: translateX(100%);
+        }
     }
 
     .ImageCaption {
