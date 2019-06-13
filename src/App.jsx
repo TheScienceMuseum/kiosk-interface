@@ -62,17 +62,6 @@ class App extends Component {
         return this.getAspectRotation();
     }
 
-    getStylesClasses() {
-        const { styles } = this.props;
-        let classes = '';
-        if (styles.length > 0) {
-            styles.forEach((s) => {
-                classes += ` ${s}`;
-            });
-        }
-        return classes;
-    }
-
     setActiveArticle(activeArticle) {
         // console.log('App: setActiveArticle: activeArticle: ', activeArticle);
         this.setState({ activeArticle });
@@ -120,7 +109,6 @@ class App extends Component {
     appClasses() {
         let classes = '';
         classes += this.getAspectClass();
-        classes += this.getStylesClasses();
         return classes;
     }
 

@@ -41,7 +41,12 @@ class Image extends React.Component {
     }
 
     render() {
-        const { title, content, asset } = this.props;
+        const {
+            title,
+            content,
+            asset,
+            layout,
+        } = this.props;
         const { contentHidden } = this.state;
 
         const zoomed = contentHidden ? 'zoomedIn' : 'zoomedOut';
@@ -55,7 +60,11 @@ class Image extends React.Component {
                         onZoom={this.handleHideContent}
                     />
                 </div>
-                <div className={`ContentContainer ContentContainer--${zoomed}`}>
+                <div
+                    className={`
+                        ContentContainer ContentContainer--${zoomed} ContentContainer--${layout}
+                    `}
+                >
                     <h2>{title}</h2>
                     <p>{content}</p>
                     <div className="ImageCaption">
@@ -76,6 +85,7 @@ Image.propTypes = {
         .isRequired,
     asset: propTypes.asset.isRequired,
     toggleNavHide: PropTypes.func.isRequired,
+    layout: PropTypes.string.isRequired,
 };
 
 export default Image;

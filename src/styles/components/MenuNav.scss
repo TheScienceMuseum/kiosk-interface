@@ -19,7 +19,10 @@
 
         &--Next {
             margin-left: 40px;
-            transform: rotate(180deg);
+            transform: rotate(180deg) !important;
+            &:active {
+                transform: rotate(180deg) scale(1.1) !important;
+            }
         }
 
     }
