@@ -183,7 +183,7 @@
           {
             "pageID": "1-2-7",
             "type": "image",
-            "layout": "right",
+            "layout": "left",
             "asset": {
               "assetSource": "./media/07.jpg",
               "assetType": "image",

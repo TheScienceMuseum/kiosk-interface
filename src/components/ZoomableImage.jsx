@@ -628,7 +628,7 @@ class ZoomableImage extends React.Component {
 
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
-        const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-close';
+        const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-reduce-img';
 
         return (
             <div
