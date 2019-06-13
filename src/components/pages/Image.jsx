@@ -61,7 +61,9 @@ class Image extends React.Component {
                     />
                 </div>
                 <div
-                    className={`ContentContainer ContentContainer--${zoomed} ContentContainer--${layout}`}
+                    className={`
+                        ContentContainer ContentContainer--${zoomed} ContentContainer--${layout}
+                    `}
                 >
                     <h2>{title}</h2>
                     <p>{content}</p>
