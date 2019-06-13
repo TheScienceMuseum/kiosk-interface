@@ -32,7 +32,7 @@ class Video extends React.Component {
             showBSL: has(this.asset, 'bslSource'),
             showSubtitles: has(this.asset, 'subtitlesSource'),
             bslEnabled: false,
-            subtitlesEnabled: false,
+            subtitlesEnabled: true,
         };
     }
 

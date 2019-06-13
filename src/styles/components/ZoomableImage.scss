@@ -55,11 +55,11 @@
         left: 0;
         bottom: 0;
         z-index: 500;
-
-        transition: left $transitionTime-showContent ease;
+        font-size: 2em;
+        transition: all $transitionTime-showContent ease;
 
         .PageImage & {
-            left: 650px;
+            
         }
     }
 
