@@ -8,11 +8,6 @@
   "requirements": {
     "client_version": "0.0.1"
   },
-  "styles": [
-    "default",
-    "verticalTabs",
-    "3d"
-  ],
   "content": {
     "titles": {
       "type": "text",
