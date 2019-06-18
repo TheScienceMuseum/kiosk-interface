@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = { hasError: false, errorMessage: '' };
     }
 
-    static getDerivedStateFromError() {
-        return { hasError: true };
+    static getDerivedStateFromError(error) {
+        return { hasError: true, errorMessage: JSON.stringify([error.message, error.stack]) };
     }
 
     componentDidCatch(error, info) {
