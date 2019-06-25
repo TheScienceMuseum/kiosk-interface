@@ -2,6 +2,15 @@
 @import "Page";
 @import '../portrait/components/TextImage';
 
+.Article--fullScreen {
+    .dateCircle {
+        transform: scale(0);
+    }
+    .dateLine {
+        height:0 !important;
+    }
+}
+
 .dateCircle {
     position: absolute;
     left: 50%;
@@ -18,6 +27,8 @@
     color: #fff;
     font-size: 1.8em;
     margin-top: -50px;
+    transition: all 0.3s;
+    z-index: 9999;
 }
 
 .portrait {

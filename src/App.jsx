@@ -70,7 +70,7 @@ class App extends Component {
 
     getPage() {
         const {
-            activeArticle, location, singleArticleMode, initial, autoPlayNext
+            activeArticle, location, singleArticleMode, initial, autoPlayNext,
         } = this.state;
         const { content } = this.props;
 
