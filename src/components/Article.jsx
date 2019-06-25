@@ -303,7 +303,7 @@ class Article extends React.Component {
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
+        this.articleTween = TweenLite.to(this.scrollElem, 0.4, options);
     }
 
     handleHomeButton() {

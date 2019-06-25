@@ -137,7 +137,7 @@ class Video extends React.Component {
     }
 
     render() {
-        const { showBSL, showSubtitles, played} = this.state;
+        const { showBSL, showSubtitles, played } = this.state;
         const { autoPlay, date, title } = this.props;
         // console.log('this.asset: ', this.asset);
         let showVideo = '';
@@ -156,7 +156,12 @@ class Video extends React.Component {
                             { date }
                         </div>
                     ) }
-                    <button type="button" className={showPoster} onClick={this.beginPlay} style={this.getPosterStyle()}>
+                    <button
+                        type="button"
+                        className={showPoster}
+                        onClick={this.beginPlay}
+                        style={this.getPosterStyle()}
+                    >
                         <div className="PageTitle__Content">
                             <h1>{title}</h1>
                         </div>
@@ -226,10 +231,12 @@ Video.propTypes = {
     resetInactiveTimer: PropTypes.func.isRequired,
     autoPlay: PropTypes.bool.isRequired,
     date: PropTypes.bool,
+    title: PropTypes.string,
 };
 
 Video.defaultProps = {
     date: undefined,
+    title: '',
 };
 
 export default Video;

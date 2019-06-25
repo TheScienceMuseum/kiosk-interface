@@ -83,6 +83,14 @@ class TextVideo extends React.Component {
         };
     }
 
+
+    getPosterStyle() {
+        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
+        return {
+            backgroundImage: `url('${posterImg}')`,
+        };
+    }
+
     disableSubTitles() {
         this.player.video.video.textTracks[0].mode = 'disabled';
     }
@@ -144,13 +152,6 @@ class TextVideo extends React.Component {
         }
     }
 
-    getPosterStyle() {
-        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
-        return {
-            backgroundImage: `url('${posterImg}')`,
-        };
-    }
-
     beginPlay() {
         this.setState({ played: true });
         this.player.play();
@@ -162,7 +163,7 @@ class TextVideo extends React.Component {
         } = this.props;
 
         const { contentHidden } = this.state;
-        const imageState = contentHidden ? 'imageFull' : 'imageWindowed';        
+        const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
 
         const { showBSL, showSubtitles, played } = this.state;
 
