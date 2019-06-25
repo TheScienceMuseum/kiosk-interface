@@ -212,7 +212,7 @@ audio::-webkit-media-controls-mute-button {
                     height:200px;
                     left:10%;
                     top:50%;
-                    margin-top:-70px;
+                    margin-top:-120px;
                     .playPause {
                         background: url("../../../images/Audio/Portrait/Buttons/SoundPause.svg") no-repeat;
                     }
@@ -230,7 +230,7 @@ audio::-webkit-media-controls-mute-button {
                     top:50%;
                     margin-left:0;
                     height:8px;
-                    margin-top:-4px;
+                    margin-top:-54px;
                     background:#fff;
                     .bar {
                         background: $red;
@@ -244,7 +244,7 @@ audio::-webkit-media-controls-mute-button {
                     position: absolute;
                     right:0;
                     top:50%;
-                    margin-top:-40px;
+                    margin-top:-90px;
                     font-size:1.5em;
                     margin-right:20px;
                     color:#fff;
