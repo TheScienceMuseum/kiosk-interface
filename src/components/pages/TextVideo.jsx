@@ -28,7 +28,8 @@ class TextVideo extends React.Component {
             showBSL: has(this.asset, 'bslSource'),
             showSubtitles: has(this.asset, 'subtitlesSource'),
             bslEnabled: false,
-            subtitlesEnabled: has(this.asset, 'subtitlesSource'),
+            subtitlesEnabled: false,
+            played: false,
         };
 
         this.handleHideContent = this.handleHideContent.bind(this);
@@ -40,8 +41,14 @@ class TextVideo extends React.Component {
         this.handleSubtitles = this.handleSubtitles.bind(this);
         this.getBslClass = this.getBslClass.bind(this);
         this.getSubClass = this.getSubClass.bind(this);
+        this.beginPlay = this.beginPlay.bind(this);
     }
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.disableSubTitles();
+        }, 100);
+    }
 
     onPause() {
         const { resetInactiveTimer } = this.props;
@@ -74,6 +81,10 @@ class TextVideo extends React.Component {
             type: 'title',
             value: this.asset.subtitlesSource,
         };
+    }
+
+    disableSubTitles() {
+        this.player.video.video.textTracks[0].mode = 'disabled';
     }
 
     handleHideContent(imageZoomed) {
@@ -113,14 +124,14 @@ class TextVideo extends React.Component {
     }
 
     handleSubtitles() {
-        const { subtitlesEnabled } = this.state;
-
-        if (this.player.video.video.textTracks[0].mode === 'disabled') {
+        let { subtitlesEnabled } = this.state;
+        subtitlesEnabled = !subtitlesEnabled;
+        if (subtitlesEnabled) {
             this.player.video.video.textTracks[0].mode = 'showing';
         } else {
             this.player.video.video.textTracks[0].mode = 'disabled';
         }
-        this.setState({ subtitlesEnabled: !subtitlesEnabled });
+        this.setState({ subtitlesEnabled });
     }
 
     handlePlayerState(state, prevState) {
@@ -133,6 +144,17 @@ class TextVideo extends React.Component {
         }
     }
 
+    getPosterStyle() {
+        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
+        return {
+            backgroundImage: `url('${posterImg}')`,
+        };
+    }
+
+    beginPlay() {
+        this.setState({ played: true });
+        this.player.play();
+    }
 
     render() {
         const {
@@ -140,21 +162,33 @@ class TextVideo extends React.Component {
         } = this.props;
 
         const { contentHidden } = this.state;
-        const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
-        const mainClass = 'Page PageTextVideo PageTextImage '
-            + `PageTextVideo--${layout} PageTextVideo--${imageState}`;
+        const imageState = contentHidden ? 'imageFull' : 'imageWindowed';        
 
-        const { showBSL, showSubtitles } = this.state;
+        const { showBSL, showSubtitles, played } = this.state;
+
+        let showVideo = '';
+        let showPoster = 'poster ';
+        let articleStyle = '';
+        if (played) {
+            showVideo = 'show';
+            showPoster = 'poster hide';
+            articleStyle = 'open';
+        }
+
+        const mainClass = 'Page PageTextVideo PageTextImage '
+            + `PageTextVideo--${layout} PageTextVideo--${imageState} ${articleStyle}`;
 
         /* eslint-disable react/no-danger */
         return (
             <div className={mainClass}>
                 <div className="ImageContainer">
+                    <button type="button" className={showPoster} onClick={this.beginPlay} style={this.getPosterStyle()} />
                     <Player
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
                         poster={this.asset.posterImage ? this.asset.posterImage : null}
+                        className={showVideo}
                     >
                         <source src={this.asset.assetSource} type="video/mp4" />
                         <track
