@@ -190,6 +190,7 @@ class TextVideo extends React.Component {
                         selectedTextTrack={this.getSubTrack().value}
                         poster={this.asset.posterImage ? this.asset.posterImage : null}
                         className={showVideo}
+                        onEnded={this.onPause}
                     >
                         <source src={this.asset.assetSource} type="video/mp4" />
                         <track
