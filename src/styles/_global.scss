@@ -76,6 +76,14 @@ a {
             transform: translateY(150px);
         }
     }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(0);
+    }
+}
+
+.MenuNav {
+    transition: all 0.3s;
 }
 
 @keyframes fadeInUp {
@@ -125,6 +133,10 @@ a {
             z-index:10;
         }
     }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(200px);
+    }
 }
 
 .grow-exit {
@@ -144,6 +156,9 @@ a {
             transition: all 0.5s;
             transform: translateY(0px);
         }
+    }
+    .MenuNav {
+        transform: translateY(200px);
     }
 }
 
@@ -174,6 +189,9 @@ a {
             transition: all 0.5s;
             transform: translateY(150px);
         }
+    }
+    .MenuNav {
+        transform: translateY(0px);
     }
 }
 
