@@ -24,6 +24,7 @@ class App extends Component {
             location: AppStates.ATTRACTOR,
             singleArticleMode,
             initial: true,
+            autoPlayNext: false,
         };
         this.setActiveArticle = this.setActiveArticle.bind(this);
         this.loadArticle = this.loadArticle.bind(this);
@@ -69,7 +70,7 @@ class App extends Component {
 
     getPage() {
         const {
-            activeArticle, location, singleArticleMode, initial,
+            activeArticle, location, singleArticleMode, initial, autoPlayNext,
         } = this.state;
         const { content } = this.props;
 
@@ -101,6 +102,7 @@ class App extends Component {
                     resetInactiveTimer={this.resetTimer}
                     pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
+                    autoPlay={autoPlayNext}
                 />
             );
         }
@@ -125,10 +127,10 @@ class App extends Component {
         this.resetTimer);
     }
 
-    loadArticle(articleID) {
+    loadArticle(articleID, autoPlay = false) {
         // console.log('App: loadArticle: articleID: ', articleID);
         // this.startInactiveTimer(true);
-        this.setState({ location: articleID, initial: false });
+        this.setState({ location: articleID, initial: false, autoPlayNext: autoPlay });
     }
 
     pauseTimer() {
@@ -175,7 +177,7 @@ class App extends Component {
                         <CSSTransition
                             key={location}
                             timeout={{ enter: 300, exit: 300 }}
-                            classNames="fade"
+                            classNames="grow"
                         >
                             {this.getPage()}
                         </CSSTransition>

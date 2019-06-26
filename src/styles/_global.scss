@@ -47,6 +47,154 @@ a {
     -webkit-user-drag: none;
 }
 
+.grow-enter, .grow-exit {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.grow-enter {
+    z-index:9;
+    .Article__Container {
+        transform: scale(0.7);
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(150px);
+            opacity:0;
+        }
+    }
+    .NavBar {
+        transform: translateX(100px);
+    }
+    .MenuItem {
+        h2 {
+            opacity:0;
+            transition: all 0.5s;
+            transform: translateY(150px);
+        }
+    }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(0);
+    }
+}
+
+.MenuNav {
+    transition: all 0.3s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity:0;
+        transition: all 0.5s;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity:1;
+        transition: all 0.5s;
+        transform: translateY(0px);
+    }
+}
+
+.MenuItem {
+    h2 {
+        opacity:1;
+        transition: all 0.5s;
+        transform: translateY(0px);
+        animation: fadeInUp 0.5s;
+    }
+}
+
+
+.grow-enter.grow-enter-active {
+    z-index:9;
+    .Article__Container {
+        transform: scale(1);
+        transition: all 0.3s;
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(0px);
+            opacity:1;
+        }
+    }
+    .NavBar {
+        transform: translateX(0px);
+        transition: all 0.3s;
+    }
+    .MenuItem {
+        h2 {
+            opacity:1;
+            transition: all 0.3s;
+            transform: translateY(0px);
+            z-index:10;
+        }
+    }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(200px);
+    }
+}
+
+.grow-exit {
+    transition: all 0.3s;
+    .Article__Container {
+        transition: all 0.3s;
+        transform: scale(1);
+        
+    }
+    .NavBar {
+        transition: all 0.3s;
+        transform: translateX(0px);
+    }
+    .MenuItem {
+        h2 {
+            opacity:1;
+            transition: all 0.5s;
+            transform: translateY(0px);
+        }
+    }
+    .MenuNav {
+        transform: translateY(200px);
+    }
+}
+
+.grow-exit-active {
+    .Menu {
+        z-index:8;
+    }
+    .Article__Container {
+        transition: all 0.5s;
+        transform: scale(0.7) translateX(30px) translateY(-40px);
+        opacity:0;
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(150px);
+            opacity:0;
+        }
+        
+    }
+    .NavBar {
+        transition: all 0.3s;
+        transform: translateX(1000px);
+        z-index:9;
+    }
+    .MenuItem {
+        h2 {
+            opacity:0;
+            transition: all 0.5s;
+            transform: translateY(150px);
+        }
+    }
+    .MenuNav {
+        transform: translateY(0px);
+    }
+}
+
 
 .fade-enter, .fade-exit {
     position: absolute;
