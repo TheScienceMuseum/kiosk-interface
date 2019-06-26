@@ -145,7 +145,7 @@
           },
           {
             "pageID": "1-1-3",
-            "type": "textVideo",
+            "type": "video",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
               "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",

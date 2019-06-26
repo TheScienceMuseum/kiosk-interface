@@ -5,7 +5,6 @@ import '../../styles/components/pages/Video.scss';
 import { Player, ControlBar } from 'video-react';
 import has from 'lodash.has';
 import propTypes from '../../propTypes';
-
 /*
  * Video:
  *
@@ -27,17 +26,21 @@ class Video extends React.Component {
         this.handleSubtitles = this.handleSubtitles.bind(this);
         this.getBslClass = this.getBslClass.bind(this);
         this.getSubClass = this.getSubClass.bind(this);
+        this.beginPlay = this.beginPlay.bind(this);
 
         this.state = {
             showBSL: has(this.asset, 'bslSource'),
             showSubtitles: has(this.asset, 'subtitlesSource'),
             bslEnabled: false,
-            subtitlesEnabled: true,
+            subtitlesEnabled: false,
+            played: false,
         };
     }
 
     componentDidMount() {
-        // this.player.subscribeToStateChange(this.handlePlayerState);
+        setTimeout(() => {
+            this.disableSubTitles();
+        }, 100);
     }
 
     onPause() {
@@ -73,6 +76,13 @@ class Video extends React.Component {
         };
     }
 
+    getPosterStyle() {
+        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
+        return {
+            backgroundImage: `url('${posterImg}')`,
+        };
+    }
+
     handleBSL() {
         const { bslEnabled } = this.state;
 
@@ -96,14 +106,15 @@ class Video extends React.Component {
     }
 
     handleSubtitles() {
-        const { subtitlesEnabled } = this.state;
+        let { subtitlesEnabled } = this.state;
+        subtitlesEnabled = !subtitlesEnabled;
 
-        if (this.player.video.video.textTracks[0].mode === 'disabled') {
+        if (subtitlesEnabled) {
             this.player.video.video.textTracks[0].mode = 'showing';
         } else {
             this.player.video.video.textTracks[0].mode = 'disabled';
         }
-        this.setState({ subtitlesEnabled: !subtitlesEnabled });
+        this.setState({ subtitlesEnabled });
     }
 
     handlePlayerState(state, prevState) {
@@ -116,69 +127,100 @@ class Video extends React.Component {
         }
     }
 
+    disableSubTitles() {
+        this.player.video.video.textTracks[0].mode = 'disabled';
+    }
+
+    beginPlay() {
+        this.setState({ played: true });
+        this.player.play();
+    }
+
     render() {
-        const { showBSL, showSubtitles } = this.state;
-        const { autoPlay, date } = this.props;
+        const { showBSL, showSubtitles, played } = this.state;
+        const { autoPlay, date, title } = this.props;
         // console.log('this.asset: ', this.asset);
+        let showVideo = '';
+        let showPoster = 'poster ';
+        let articleStyle = '';
+        if (autoPlay || played) {
+            showVideo = 'show';
+            showPoster = 'poster hide';
+            articleStyle = 'open';
+        }
         return (
-            <div className="Page PageVideo">
-                { typeof date !== 'undefined' && (
-                    <div className="dateCircle">
-                        { date }
-                    </div>
-                ) }
-                <Player
-                    ref={(node) => { this.player = node; }}
-                    autoPlay={!!autoPlay}
-                    // crossOrigin="anonymous"
-                    selectedTextTrack={this.getSubTrack().value}
-                    poster={this.asset.posterImage ? this.asset.posterImage : null}
-                >
-                    <source src={this.asset.assetSource} type="video/mp4" />
-                    <track
-                        kind="captions"
-                        src="testing.vtt"
-                        srcLang="en"
-                        label="English"
-                        default
-                    />
-                    <ControlBar autoHide={false} className="kioskControlBar">
-                        {
-                            showBSL && (
-                                <button
-                                    type="button"
-                                    className={`
-                                        kioskPlayerControl end bsl ${this.getBslClass()}
-                                    `}
-                                    onClick={this.handleBSL}
-                                >
-                                    Enable/Disable BSL
-                                </button>
-                            )
-                        }
-                        {
-                            showSubtitles && (
-                                <button
-                                    type="button"
-                                    className={`
-                                        kioskPlayerControl end subtitles ${this.getSubClass()}
-                                    `}
-                                    onClick={this.handleSubtitles}
-                                >
-                                    Enable/Disable subtitles
-                                </button>
-                            )
-                        }
-                        <button
-                            type="button"
-                            className="kioskPlayerControl end close"
-                            onClick={this.handleCloseButton}
-                        >
-                            Close
-                        </button>
-                    </ControlBar>
-                </Player>
-            </div>
+            <React.Fragment>
+                <div className={`Page PageVideo ${articleStyle}`}>
+                    { typeof date !== 'undefined' && (
+                        <div className="dateCircle">
+                            { date }
+                        </div>
+                    ) }
+                    <button
+                        type="button"
+                        className={showPoster}
+                        onClick={this.beginPlay}
+                        style={this.getPosterStyle()}
+                    >
+                        <div className="PageTitle__Content">
+                            <h1>{title}</h1>
+                        </div>
+                    </button>
+                    <Player
+                        ref={(node) => { this.player = node; }}
+                        autoPlay={!!autoPlay}
+                        // crossOrigin="anonymous"
+                        selectedTextTrack={this.getSubTrack().value}
+                        poster={this.asset.posterImage ? this.asset.posterImage : null}
+                        className={showVideo}
+                        onEnded={this.onPause}
+                    >
+                        <source src={this.asset.assetSource} type="video/mp4" />
+                        <track
+                            kind="captions"
+                            src="testing.vtt"
+                            srcLang="en"
+                            label="English"
+                            default
+                        />
+                        <ControlBar autoHide={false} className="kioskControlBar">
+                            {
+                                showBSL && (
+                                    <button
+                                        type="button"
+                                        className={`
+                                            kioskPlayerControl end bsl ${this.getBslClass()}
+                                        `}
+                                        onClick={this.handleBSL}
+                                    >
+                                        Enable/Disable BSL
+                                    </button>
+                                )
+                            }
+                            {
+                                showSubtitles && (
+                                    <button
+                                        type="button"
+                                        className={`
+                                            kioskPlayerControl end subtitles ${this.getSubClass()}
+                                        `}
+                                        onClick={this.handleSubtitles}
+                                    >
+                                        Enable/Disable subtitles
+                                    </button>
+                                )
+                            }
+                            <button
+                                type="button"
+                                className="kioskPlayerControl end close"
+                                onClick={this.handleCloseButton}
+                            >
+                                Close
+                            </button>
+                        </ControlBar>
+                    </Player>
+                </div>
+            </React.Fragment>
         );
     }
 }
@@ -190,10 +232,12 @@ Video.propTypes = {
     resetInactiveTimer: PropTypes.func.isRequired,
     autoPlay: PropTypes.bool.isRequired,
     date: PropTypes.bool,
+    title: PropTypes.string,
 };
 
 Video.defaultProps = {
     date: undefined,
+    title: '',
 };
 
 export default Video;

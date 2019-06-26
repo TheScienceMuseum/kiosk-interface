@@ -129,8 +129,8 @@ class Article extends React.Component {
     makeArticle(articleContent) {
         // let pagesOutput;
 
-        const { pauseTimer, resetInactiveTimer } = this.props;
-
+        const { pauseTimer, resetInactiveTimer, autoPlay } = this.props;
+        console.log(articleContent);
         // console.log('articleConten: ', articleContent);
 
         switch (articleContent.type) {
@@ -146,7 +146,8 @@ class Article extends React.Component {
                     handleCloseButton={this.handleHomeButton}
                     pauseTimer={pauseTimer}
                     resetInactiveTimer={resetInactiveTimer}
-                    autoPlay
+                    autoPlay={autoPlay}
+                    showNav
                 />
             );
         default:
@@ -302,7 +303,7 @@ class Article extends React.Component {
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
+        this.articleTween = TweenLite.to(this.scrollElem, 0.4, options);
     }
 
     handleHomeButton() {
@@ -373,6 +374,19 @@ class Article extends React.Component {
                             hideHome={singleArticleMode}
                         />
                     )}
+                    {this.articleContent.type === ArticleTypes.VIDEO && (
+                        <NavBar
+                            showNav={false}
+                            onHomeClick={this.handleHomeButton}
+                            onPrev={() => {}}
+                            onNext={() => {}}
+                            orientation={Orientations.VERTICAL}
+                            currentPage={0}
+                            totalPages={0}
+                            hidden={false}
+                            hideHome={false}
+                        />
+                    )}
                 </article>
             </Hammer>
 
@@ -387,10 +401,12 @@ Article.propTypes = {
     resetInactiveTimer: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
+    autoPlay: PropTypes.bool,
 };
 
 Article.defaultProps = {
     singleArticleMode: false,
+    autoPlay: false,
 };
 
 export default Article;

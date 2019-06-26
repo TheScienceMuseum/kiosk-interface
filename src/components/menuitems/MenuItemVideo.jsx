@@ -17,18 +17,21 @@ import propTypes from '../../propTypes';
 class MenuItemVideo extends React.Component {
     render() {
         const {
-            title, articleID, onClick, asset,
+            title, articleID, onClick, onClickAuto, asset,
         } = this.props;
 
         return (
             <li className="MenuItem MenuItem__Video">
-                <Hammer onTap={() => onClick(articleID)}>
-                    <button type="button">
-                        <div className="Image--withGrad">
-                            <img src={asset.posterImage} alt="" draggable="false" />
-                        </div>
-                        <h2>{title}</h2>
-                    </button>
+                <Hammer>
+                    <div className="buttonsContainer">
+                        <button type="button" onClick={() => onClick(articleID)}>
+                            <div className="Image--withGrad">
+                                <img src={asset.posterImage} alt="" draggable="false" />
+                            </div>
+                            <h2>{title}</h2>
+                        </button>
+                        <button type="button" className="playButton" onClick={() => onClickAuto(articleID)} />
+                    </div>
                 </Hammer>
             </li>
         );
@@ -40,6 +43,7 @@ MenuItemVideo.propTypes = {
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     asset: propTypes.videoAsset.isRequired,
+    onClickAuto: PropTypes.func.isRequired,
 };
 
 export default MenuItemVideo;
