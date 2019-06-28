@@ -29,7 +29,10 @@
             //background-color: green;
 
             margin-right: 20px;
-
+            &.hidden {
+                width: 530px;
+                background: rgba(0,0,0,0.1);
+            }
         }
     }
 
