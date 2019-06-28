@@ -176,7 +176,7 @@ class App extends Component {
                     <TransitionGroup className="transition-group">
                         <CSSTransition
                             key={location}
-                            timeout={{ enter: 300, exit: 300 }}
+                            timeout={{ enter: 1000, exit: 1000 }}
                             classNames="grow"
                         >
                             {this.getPage()}
