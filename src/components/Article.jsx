@@ -52,6 +52,7 @@ class Article extends React.Component {
         this.prevPage = this.prevPage.bind(this);
         this.nextPage = this.nextPage.bind(this);
         // this.onJump = this.jumpToPage.bind(this);
+        this.jumpToPage = this.jumpToPage.bind(this);
         this.toggleNavHide = this.toggleNavHide.bind(this);
         this.handleHomeButton = this.handleHomeButton.bind(this);
         this.handleChangeCurrentPage = this.handleChangeCurrentPage.bind(this);
@@ -129,8 +130,8 @@ class Article extends React.Component {
     makeArticle(articleContent) {
         // let pagesOutput;
 
-        const { pauseTimer, resetInactiveTimer } = this.props;
-
+        const { pauseTimer, resetInactiveTimer, autoPlay } = this.props;
+        console.log(articleContent);
         // console.log('articleConten: ', articleContent);
 
         switch (articleContent.type) {
@@ -146,7 +147,8 @@ class Article extends React.Component {
                     handleCloseButton={this.handleHomeButton}
                     pauseTimer={pauseTimer}
                     resetInactiveTimer={resetInactiveTimer}
-                    autoPlay
+                    autoPlay={autoPlay}
+                    showNav
                 />
             );
         default:
@@ -207,6 +209,7 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         autoPlay={false}
+                        singlePage
                     />
                 );
                 break;
@@ -292,6 +295,35 @@ class Article extends React.Component {
     //     this.setState({ currentPage }, this.scrollToPage);
     // }
 
+    jumpToPage(n, done) {
+        let { currentPageType } = this.state;
+        let { currentPage } = this.state;
+        const { navHidden } = this.state;
+        const { subpages } = this.articleContent;
+
+        Article.pauseOnNavigation();
+
+        if (currentPage === n || navHidden) return;
+        currentPage = n;
+        currentPageType = subpages[currentPage].type;
+
+        // console.log(currentPageType);
+        const { firstDate } = this.state;
+        let { dateLineClosed } = this.state;
+        if (currentPage <= firstDate) {
+            dateLineClosed = true;
+        } else {
+            dateLineClosed = false;
+        }
+
+        this.setState({ currentPage, currentPageType, dateLineClosed }, () => {
+            this.scrollToPage();
+            setTimeout(() => {
+                done();
+            }, 600);
+        });
+    }
+
 
     scrollToPage() {
         // console.log('Article: scrollToPage: this.scrollElem: ', this.scrollElem);
@@ -302,13 +334,24 @@ class Article extends React.Component {
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        this.articleTween = TweenLite.to(this.scrollElem, 0.25, options);
+        this.articleTween = TweenLite.to(this.scrollElem, 0.6, options);
     }
 
     handleHomeButton() {
-        const { loadArticle, resetInactiveTimer } = this.props;
-        resetInactiveTimer();
-        loadArticle('menu');
+        const { currentPage } = this.state;
+
+        if (currentPage === 0) {
+            const { loadArticle, resetInactiveTimer } = this.props;
+            resetInactiveTimer();
+            loadArticle('menu');
+            return;
+        }
+
+        this.jumpToPage(0, () => {
+            const { loadArticle, resetInactiveTimer } = this.props;
+            resetInactiveTimer();
+            loadArticle('menu');
+        });
     }
 
     handleChangeCurrentPage(currentPage) {
@@ -373,6 +416,19 @@ class Article extends React.Component {
                             hideHome={singleArticleMode}
                         />
                     )}
+                    {this.articleContent.type === ArticleTypes.VIDEO && (
+                        <NavBar
+                            showNav={false}
+                            onHomeClick={this.handleHomeButton}
+                            onPrev={() => {}}
+                            onNext={() => {}}
+                            orientation={Orientations.VERTICAL}
+                            currentPage={0}
+                            totalPages={0}
+                            hidden={false}
+                            hideHome={false}
+                        />
+                    )}
                 </article>
             </Hammer>
 
@@ -387,10 +443,12 @@ Article.propTypes = {
     resetInactiveTimer: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
+    autoPlay: PropTypes.bool,
 };
 
 Article.defaultProps = {
     singleArticleMode: false,
+    autoPlay: false,
 };
 
 export default Article;

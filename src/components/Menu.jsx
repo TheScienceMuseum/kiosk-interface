@@ -43,6 +43,7 @@ class Menu extends React.Component {
 
         this.handleSwipe = this.handleSwipe.bind(this);
         this.itemClick = this.onItemClick.bind(this);
+        this.itemClickAuto = this.onItemClickAuto.bind(this);
 
         this.scrollElem = null;
         // this.scrollTween = null;
@@ -74,6 +75,22 @@ class Menu extends React.Component {
         // console.log('Menu: componentWillUnmount:');
     }
 
+    onItemClickAuto(articleID) {
+        const { currentFocused } = this.state;
+        const { loadArticle } = this.props;
+        // console.log('Menu: onItemClick: articleID: ', articleID);
+        if (this.getIndexFromID(articleID) === currentFocused) {
+            // console.log('Menu: onItemClick: navigate to article');
+            // console.log('Menu: onItemClick: this.context: ', this.context.router);
+            // this.setState({ redirect: `/article/${articleID}` });
+            // history.push(`./article/${articleID}`);
+            loadArticle(articleID, true);
+        } else {
+            // console.log('Menu: onItemClick: scroll to article');
+            this.scrollToItem(articleID);
+        }
+    }
+
     onItemClick(articleID) {
         // console.log('Menu: onItemClick: e: ', e);
         // console.log('Menu: onItemClick: e.target: ', e.target);
@@ -87,7 +104,7 @@ class Menu extends React.Component {
             // console.log('Menu: onItemClick: this.context: ', this.context.router);
             // this.setState({ redirect: `/article/${articleID}` });
             // history.push(`./article/${articleID}`);
-            loadArticle(articleID);
+            loadArticle(articleID, false);
         } else {
             // console.log('Menu: onItemClick: scroll to article');
             this.scrollToItem(articleID);
@@ -224,6 +241,7 @@ class Menu extends React.Component {
                         articleID={id}
                         {...item}
                         onClick={this.itemClick}
+                        onClickAuto={this.itemClickAuto}
                     />
                 );
                 break;
@@ -273,6 +291,7 @@ class Menu extends React.Component {
                     <ul className="Menu__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         <MenuItemTitle {...titles} />
                         {menuItems}
+                        <li className="MenuItem hidden" />
                     </ul>
 
                     <MenuNav

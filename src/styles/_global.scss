@@ -47,6 +47,212 @@ a {
     -webkit-user-drag: none;
 }
 
+.portrait {
+    .grow-enter, .grow-exit-active {
+        .Article__Container {
+            transform: scale(0.63) translateX(0px) translateY(0px);
+        }
+    }
+
+    .grow-enter {
+        .NavBar {
+            transform: translateY(100px);
+            transition-delay: 0.7s !important;
+        }
+    }
+
+    .grow-enter.grow-enter-active {
+        .NavBar {
+            transform: translateY(0px);
+            transition: all 0.3s;
+        }
+    }
+
+    .grow-exit {
+        .NavBar {
+            transform: translateY(0px);
+            transition: all 0.3s;
+        }
+    }
+
+    .grow-exit-active {
+        .NavBar {
+            transition: all 0.3s;
+            transform: translateY(100px);
+            z-index:9;
+        }
+    }
+}
+
+.grow-enter, .grow-exit {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.MenuItem__Video h2, .MenuItem__Mixed h2 {
+    z-index: 99999;
+}
+
+.grow-enter-done {
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(0);
+    }
+    .MenuItem {
+        h2 {
+            opacity:1;
+            transition: all 0.5s;
+            transform: translateY(0px);
+            transition-delay: 0s !important;
+        }
+    }
+}
+
+.grow-enter {
+    z-index:9;
+    .Article__Container {
+        transform: scale(0.74) translateX(0px) translateY(-55px);
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(40px);
+            transition-delay: 0.5s !important;
+            opacity:0;
+        }
+    }
+    .NavBar {
+        transform: translateX(100px);
+        transition-delay: 0.7s !important;
+    }
+    .MenuItem {
+        h2 {
+            opacity:0;
+            transition: all 0.5s;
+            transform: translateY(30px);
+            transition-delay: 0.5s !important;
+        }
+    }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(0);
+    }
+}
+
+.MenuNav {
+    transition: all 0.3s;
+    transition-timing-function: ease-in-out !important;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity:0;
+        transition: all 0.5s;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity:1;
+        transition: all 0.5s;
+        transform: translateY(0px);
+    }
+}
+
+.Article__Container {
+    transition-delay: 0.3s !important;
+    transition-duration: 0.3s;
+}
+
+
+.grow-enter.grow-enter-active {
+    z-index:9;
+    .Article__Container {
+        transform: scale(1);
+        transition: all 0.3s;
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(0px);
+            opacity:1;
+        }
+    }
+    .NavBar {
+        transform: translateX(0px);
+        transition: all 0.3s;
+    }
+    .MenuItem {
+        h2 {
+            opacity:0;
+            transition: all 0.3s;
+            transform: translateY(30px);
+            z-index:10;
+            transition-delay: 0.5s !important;
+        }
+    }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(200px);
+    }
+}
+
+.grow-exit {
+    transition: all 0.3s;
+    .Article__Container {
+        transition: all 0.3s;
+        transform: scale(1);
+        
+    }
+    .NavBar {
+        transition: all 0.3s;
+        transform: translateX(0px);
+    }
+    .MenuItem {
+        h2 {
+            transition-delay: 0s !important;
+            opacity:0;
+            transition: all 0.5s;
+            transform: translateY(30px);
+        }
+    }
+    .MenuNav {
+        transform: translateY(200px);
+    }
+}
+
+.grow-exit-active {
+    .Menu {
+        z-index:8;
+    }
+    .Article__Container {
+        transition: all 0.5s;
+        transform: scale(0.74) translateX(0px) translateY(-55px);
+        opacity:1;
+        z-index:9;
+        .PageTitle__Content {
+            transition: all 0.3s;
+            transform: translateY(40px);
+            opacity:0;
+        }
+        
+    }
+    .NavBar {
+        transition: all 0.3s;
+        transform: translateX(100px);
+        z-index:9;
+    }
+    .MenuItem {
+        h2 {
+            opacity:0;
+            transition: all 0.5s;
+            transform: translateY(30px);
+        }
+    }
+    .MenuNav {
+        transform: translateY(200px);
+    }
+}
+
 
 .fade-enter, .fade-exit {
     position: absolute;
