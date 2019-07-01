@@ -22,8 +22,8 @@ h1 {
     background-color: $appBackground;
     overflow: hidden;
     &.portrait {
-        width:1080px;
-        height:1920px;
+        width:$portraitWidth;
+        height: $portraitHeight;
     }
 }
 
@@ -69,7 +69,7 @@ h1 {
 .popOut {
     transition: all 0.3s;
     &:active {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 
@@ -100,7 +100,7 @@ h1 {
     }
 
     &:active {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 /*

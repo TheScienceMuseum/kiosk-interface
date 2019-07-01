@@ -27,5 +27,5 @@ it('renders a menu item for each entry in data', () => {
         />
     );
     // expect(menu.find('ul').children()).toHaveLength(data.content.contents.length);
-    expect(menu.find('li')).toHaveLength(data.content.contents.length + 1);
+    expect(menu.find('li')).toHaveLength(data.content.contents.length + 2);
 });

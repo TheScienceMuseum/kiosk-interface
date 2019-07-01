@@ -50,7 +50,7 @@
     background: $red;
     z-index: 99;
     margin-left: -5px;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .PageTextImage {
@@ -98,6 +98,7 @@
             right: 0;
             left: 50%;
             transition: left $transitionTime-showContent ease-out;
+            padding-right:180px;
         }
     }
 
