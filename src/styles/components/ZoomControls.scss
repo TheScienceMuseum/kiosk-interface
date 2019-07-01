@@ -62,6 +62,9 @@ input[type=range] {
 input[type=range]:focus {
     outline: none;
     //background: red;
+    // &::-webkit-slider-thumb {
+    //     transform: scale(1.2);
+    // }
 }
 input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
@@ -82,13 +85,17 @@ input[type=range]::-webkit-slider-thumb {
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -15px;
+    transition: transform 0.3s;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
     //background: #ffffff;
     background: rgba(255,255,255, 0.5);
     //background: red;
 }
-
+input[type=range]:active::-webkit-slider-thumb {
+    background: white;
+    transform: scale(1.2);
+}
 input[type=range]:hover::-webkit-slider-thumb {
     background: white;
 }
