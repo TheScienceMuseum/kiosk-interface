@@ -183,7 +183,12 @@ class TextVideo extends React.Component {
         return (
             <div className={mainClass}>
                 <div className="ImageContainer">
-                    <button type="button" className={showPoster} onClick={this.beginPlay} style={this.getPosterStyle()} />
+                    <button
+                        type="button"
+                        className={showPoster}
+                        onClick={this.beginPlay}
+                        style={this.getPosterStyle()}
+                    />
                     <Player
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"

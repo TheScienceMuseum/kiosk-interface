@@ -30,7 +30,11 @@ class MenuItemVideo extends React.Component {
                             </div>
                             <h2>{title}</h2>
                         </button>
-                        <button type="button" className="playButton" onClick={() => onClickAuto(articleID)} />
+                        <button
+                            type="button"
+                            className="playButton"
+                            onClick={() => onClickAuto(articleID)}
+                        />
                     </div>
                 </Hammer>
             </li>
