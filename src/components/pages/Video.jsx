@@ -162,6 +162,7 @@ class Video extends React.Component {
                         onClick={this.beginPlay}
                         style={this.getPosterStyle()}
                     >
+                        <div className="Image--withGrad" />
                         <div className="PageTitle__Content">
                             <h1>{title}</h1>
                         </div>
