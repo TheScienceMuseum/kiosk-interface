@@ -209,6 +209,7 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         autoPlay={false}
+                        singlePage
                     />
                 );
                 break;
@@ -333,7 +334,7 @@ class Article extends React.Component {
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
         const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        this.articleTween = TweenLite.to(this.scrollElem, 0.4, options);
+        this.articleTween = TweenLite.to(this.scrollElem, 0.6, options);
     }
 
     handleHomeButton() {
