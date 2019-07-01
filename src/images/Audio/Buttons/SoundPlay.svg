@@ -1,34 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="46px" height="45px" viewBox="0 0 46 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    <title>Buttons/SoundPlay</title>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Oval 4</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <ellipse id="path-1" cx="22" cy="21.5217391" rx="22" ry="21.5217391"></ellipse>
-        <path d="M23,45 C10.3025307,45 0,34.9316177 0,22.5 C0,10.0683823 10.3025307,0 23,0 C35.6974693,0 46,10.0683823 46,22.5 C46,34.9316177 35.6974693,45 23,45 Z M23,43.0434783 C34.6030597,43.0434783 44,33.8406279 44,22.5 C44,11.1593721 34.6030597,1.95652174 23,1.95652174 C11.3969403,1.95652174 2,11.1593721 2,22.5 C2,33.8406279 11.3969403,43.0434783 23,43.0434783 Z M19,15.9231759 L19,29.0768241 L30.0731365,22.5 L19,15.9231759 Z M17,32.5536107 L17,12.4463893 L33.9268635,22.5 L17,32.5536107 Z" id="path-3"></path>
+        <path d="M23,46 C10.3025307,46 0,35.7078759 0,23 C0,10.2921241 10.3025307,0 23,0 C35.6974693,0 46,10.2921241 46,23 C46,35.7078759 35.6974693,46 23,46 Z M23,44 C34.6030597,44 44,34.5926418 44,23 C44,11.4073582 34.6030597,2 23,2 C11.3969403,2 2,11.4073582 2,23 C2,34.5926418 11.3969403,44 23,44 Z M19,16.2770242 L19,29.7229758 L30.0731365,23 L19,16.2770242 Z M17,33.2770242 L17,12.7229758 L33.9268635,23 L17,33.2770242 Z" id="path-1"></path>
     </defs>
     <g id="Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Widgets/Sound" transform="translate(-52.000000, -62.000000)">
-            <g id="Group-6" transform="translate(0.000000, 2.000000)">
-                <g id="Buttons/Sound/Play/Default" transform="translate(52.000000, 60.000000)">
-                    <g id="BG" stroke-width="1" fill-rule="evenodd" transform="translate(1.000000, 0.978261)">
-                        <mask id="mask-2" fill="white">
-                            <use xlink:href="#path-1"></use>
-                        </mask>
-                        <g id="Oval" fill-rule="nonzero"></g>
-                        <g id="Colours/Flat/Transp" opacity="0.5" mask="url(#mask-2)">
-                            <g transform="translate(-1.000000, -0.978261)"></g>
-                        </g>
-                    </g>
-                    <mask id="mask-4" fill="white">
-                        <use xlink:href="#path-3"></use>
-                    </mask>
-                    <use id="Oval-4" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
-                    <g id="Colours/Flat/Black" mask="url(#mask-4)" fill="#111111" fill-rule="nonzero">
-                        <rect id="Rectangle" x="0" y="0" width="46" height="45"></rect>
-                    </g>
-                </g>
-            </g>
+        <g id="Buttons/Sound/Play/Default">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Oval-4" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
         </g>
     </g>
 </svg>

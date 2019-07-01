@@ -3,10 +3,19 @@
 @import "~video-react/styles/scss/video-react";
 body .Page.PageVideo {
     z-index:11;
-    width:1820px;
+    width:1920px;
     transition: width 0.3s;
     &.open {
         width: 100%;
+        z-index:20;
+        .video-react {
+            width: 1920px;
+            z-index:20;
+        }
+    }
+    .video-react {
+        width: 1820px;
+       
     }
 }
 .PageVideo, .PageTextVideo {
@@ -100,7 +109,7 @@ body .Page.PageVideo {
         }
 
         &:active {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
     }
 
@@ -137,7 +146,7 @@ body .Page.PageVideo {
                         background-image: url("../../../images/Buttons/Pause/Default.png");
                     }
                     &:active {
-                        transform: scale(1.1);
+                        transform: scale(1.2);
                     }
                 }
             }

@@ -291,6 +291,7 @@ class Menu extends React.Component {
                     <ul className="Menu__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         <MenuItemTitle {...titles} />
                         {menuItems}
+                        <li className="MenuItem hidden" />
                     </ul>
 
                     <MenuNav
