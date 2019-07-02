@@ -179,7 +179,7 @@ class Video extends React.Component {
                         <source src={this.asset.assetSource} type="video/mp4" />
                         <track
                             kind="captions"
-                            src="testing.vtt"
+                            src={this.asset.subtitlesSource}
                             srcLang="en"
                             label="English"
                             default
