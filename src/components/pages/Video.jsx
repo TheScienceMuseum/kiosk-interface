@@ -177,13 +177,17 @@ class Video extends React.Component {
                         onEnded={this.onPause}
                     >
                         <source src={this.asset.assetSource} type="video/mp4" />
-                        <track
-                            kind="captions"
-                            src="testing.vtt"
-                            srcLang="en"
-                            label="English"
-                            default
-                        />
+                        {
+                            showSubtitles && (
+                                <track
+                                    kind="captions"
+                                    src={this.asset.subtitlesSource}
+                                    srcLang="en"
+                                    label="English"
+                                    default
+                                />
+                            )
+                        }
                         <ControlBar autoHide={false} className="kioskControlBar">
                             {
                                 showBSL && (
