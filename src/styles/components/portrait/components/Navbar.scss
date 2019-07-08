@@ -8,6 +8,12 @@
         margin-top: -100px;
         flex-direction: row;
         transition: all 0.2s;
+        &.NavBar--noNav {
+            .NavButtonHome .Button {
+                padding-left:0;
+                padding-right:0;
+            }
+        }
     }
 
     .NavBar .NavButtonHome {

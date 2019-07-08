@@ -202,6 +202,7 @@ a {
     &.Attractor {
         opacity:1;
         transition: all 0.8s;
+        z-index:20;
     }
     transition: all 0.3s;
     .Article__Container {
@@ -231,6 +232,7 @@ a {
     &.Attractor {
         opacity:0;
         transition: all 0.8s;
+        z-index:20;
     }
 
     .Menu {
