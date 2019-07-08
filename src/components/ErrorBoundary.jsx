@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = { hasError: false, errorMessage: '' };
     }
 
-    static getDerivedStateFromError() {
-        return { hasError: true };
+    static getDerivedStateFromError(error) {
+        return { hasError: true, errorMessage: JSON.stringify([error.message, error.stack]) };
     }
 
     componentDidCatch(error, info) {
@@ -19,7 +19,7 @@ class ErrorBoundary extends Component {
     }
 
     render() {
-        const { hasError } = this.state;
+        const { hasError, errorMessage } = this.state;
         const { children } = this.props;
 
         if (hasError) {
@@ -29,6 +29,7 @@ class ErrorBoundary extends Component {
                     <small>
                         Something went wrong, we are aware and will resolve the issue shortly.
                     </small>
+                    <input type="hidden" value={errorMessage} />
                 </div>
             );
         }
