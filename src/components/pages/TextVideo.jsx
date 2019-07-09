@@ -22,7 +22,7 @@ class TextVideo extends React.Component {
     constructor(props) {
         super(props);
         this.asset = props.asset;
-
+        this.titleImage = props.titleImage;
         this.state = {
             contentHidden: false,
             showBSL: has(this.asset, 'bslSource'),
@@ -85,7 +85,7 @@ class TextVideo extends React.Component {
 
 
     getPosterStyle() {
-        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
+        const posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         return {
             backgroundImage: `url('${posterImg}')`,
         };
@@ -193,7 +193,7 @@ class TextVideo extends React.Component {
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={this.asset.posterImage ? this.asset.posterImage : null}
+                        poster={this.titleImage.assetSource ? this.titleImage.assetSource : null}
                         className={showVideo}
                         onEnded={this.onPause}
                     >
@@ -263,6 +263,7 @@ TextVideo.propTypes = {
     toggleNavHide: PropTypes.func.isRequired,
     pauseTimer: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
+    titleImage: propTypes.titleImage.isRequired,
 };
 
 export default TextVideo;

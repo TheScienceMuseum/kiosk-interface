@@ -18,6 +18,7 @@ class Video extends React.Component {
     constructor(props) {
         super(props);
         this.asset = props.asset;
+        this.titleImage = props.titleImage;
         this.handleCloseButton = props.handleCloseButton;
         this.onPause = this.onPause.bind(this);
         this.onPlay = this.onPlay.bind(this);
@@ -77,7 +78,7 @@ class Video extends React.Component {
     }
 
     getPosterStyle() {
-        const posterImg = this.asset.posterImage ? this.asset.posterImage : null;
+        const posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         return {
             backgroundImage: `url('${posterImg}')`,
         };
@@ -172,7 +173,7 @@ class Video extends React.Component {
                         autoPlay={!!autoPlay}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={this.asset.posterImage ? this.asset.posterImage : null}
+                        poster={this.titleImage.assetSource ? this.titleImage.assetSource : null}
                         className={showVideo}
                         onEnded={this.onPause}
                     >
@@ -238,6 +239,7 @@ Video.propTypes = {
     autoPlay: PropTypes.bool.isRequired,
     date: PropTypes.bool,
     title: PropTypes.string,
+    titleImage: propTypes.titleImage.isRequired,
 };
 
 Video.defaultProps = {
