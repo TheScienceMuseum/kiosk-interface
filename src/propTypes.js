@@ -34,4 +34,14 @@ const modelAsset = PropTypes.shape({
     rotation: PropTypes.arrayOf(PropTypes.number).isRequired,
 });
 
-export default { asset, videoAsset, modelAsset };
+const titleImage = PropTypes.shape({
+    assetSource: PropTypes.string.isRequired,
+    assetType: PropTypes.string.isRequired,
+});
+
+export default {
+    asset,
+    videoAsset,
+    modelAsset,
+    titleImage,
+};
