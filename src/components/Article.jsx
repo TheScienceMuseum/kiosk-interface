@@ -379,8 +379,8 @@ class Article extends React.Component {
     render() {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
-        let { navHidden, showPages } = this.state;
-        const { currentPage, currentPageType } = this.state;
+        let { navHidden } = this.state;
+        const { currentPage, currentPageType, showPages } = this.state;
         const { singleArticleMode } = this.props;
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
