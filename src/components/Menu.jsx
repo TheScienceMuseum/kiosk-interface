@@ -204,8 +204,8 @@ class Menu extends React.Component {
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
 
-        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeOut };
-        this.scrollTween = TweenLite.to(this.scrollElem, 0.25, options);
+        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeIn };
+        this.scrollTween = TweenLite.to(this.scrollElem, 0.4, options);
     }
 
 

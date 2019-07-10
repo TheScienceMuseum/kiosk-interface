@@ -2,7 +2,7 @@
   "short_name": "",
   "name": "genetic-diagnosis",
   "label": "Genetic Diagnosis",
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "version": 13,
   "main": "index.html",
   "requirements": {
@@ -74,10 +74,13 @@
             "layout": "left",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
               "assetType": "video",
               "subtitlesSource": "testing.vtt",
               "bslSource": "media/video-historical-castle.mp4"
+            },
+            "titleImage": {
+              "assetType": "image",
+              "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
             },
             "title": "Video 50/50",
             "content": [
@@ -90,10 +93,13 @@
             "layout": "right",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
               "assetType": "video",
               "subtitlesSource": "testing.vtt",
               "bslSource": "media/video-historical-castle.mp4"
+            },
+            "titleImage": {
+              "assetType": "image",
+              "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
             },
             "title": "Video 50/50 second",
             "content": [
@@ -148,10 +154,13 @@
             "type": "video",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
               "assetType": "video",
               "subtitlesSource": "testing.vtt",
               "bslSource": "media/video-historical-castle.mp4"
+            },
+            "titleImage": {
+              "assetType": "image",
+              "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
             },
             "layout": "left",
             "title": "Video 50/50",
@@ -164,10 +173,13 @@
             "type": "textVideo",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-              "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
               "assetType": "video",
               "subtitlesSource": "testing.vtt",
               "bslSource": "media/video-historical-castle.mp4"
+            },
+            "titleImage": {
+              "assetType": "image",
+              "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
             },
             "layout": "right",
             "title": "Video 50/50 second",
@@ -490,7 +502,6 @@
         },
         "type": "video",
         "asset": {
-          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
           "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
@@ -506,7 +517,6 @@
         },
         "type": "video",
         "asset": {
-          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
           "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
@@ -522,7 +532,6 @@
         },
         "type": "video",
         "asset": {
-          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
           "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
           "assetType": "video",
           "subtitlesSource": "testing.vtt"
@@ -537,7 +546,6 @@
         },
         "type": "video",
         "asset": {
-          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
           "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
@@ -553,7 +561,6 @@
         },
         "type": "video",
         "asset": {
-          "posterImage": "./media/3d-science-animation-footage-000458869_prevstill.jpeg",
           "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
