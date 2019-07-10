@@ -73,6 +73,14 @@ h1 {
     }
 }
 
+.Attractor__details {
+    .Button {
+        &:active {
+            transform: scale(1.1);
+        }
+    }
+}
+
 .Button {
     background: $red;
     color: $white;
