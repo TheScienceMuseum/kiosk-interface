@@ -28,6 +28,7 @@ class Video extends React.Component {
         this.getBslClass = this.getBslClass.bind(this);
         this.getSubClass = this.getSubClass.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
+        this.endPlay = this.endPlay.bind(this);
 
         this.state = {
             showBSL: has(this.asset, 'bslSource'),
@@ -137,6 +138,11 @@ class Video extends React.Component {
         this.player.play();
     }
 
+    endPlay() {
+        this.setState({ played: false });
+        this.player.pause();
+    }
+
     render() {
         const { showBSL, showSubtitles, played } = this.state;
         const { autoPlay, date, title } = this.props;
@@ -219,7 +225,7 @@ class Video extends React.Component {
                             <button
                                 type="button"
                                 className="kioskPlayerControl end close"
-                                onClick={this.handleCloseButton}
+                                onClick={this.endPlay}
                             >
                                 Close
                             </button>

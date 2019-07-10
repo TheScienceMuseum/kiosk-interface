@@ -45,6 +45,7 @@ class Article extends React.Component {
             navHidden: false,
             dateLineClosed: true,
             firstDate: -1,
+            showPages: false,
         };
 
         this.handleSwipe = this.handleSwipe.bind(this);
@@ -72,7 +73,11 @@ class Article extends React.Component {
     componentDidMount() {
         // console.log('Article: componentDidMount: this.scrollElem: ', this.scrollElem);
         // console.log(' articleID: ', articleID);
+        this.articlePages = null;
         this.article = this.makeArticle(this.articleContent);
+        setTimeout(() => {
+            this.setState({ showPages: true });
+        }, 1000);
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {
@@ -131,12 +136,12 @@ class Article extends React.Component {
         // let pagesOutput;
 
         const { pauseTimer, resetInactiveTimer, autoPlay } = this.props;
-        console.log(articleContent);
         // console.log('articleConten: ', articleContent);
 
         switch (articleContent.type) {
         case ArticleTypes.MIXED:
         case ArticleTypes.TIMELINE:
+            this.articlePages = this.makeMixedArticle(articleContent, true);
             return this.makeMixedArticle(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
@@ -156,13 +161,23 @@ class Article extends React.Component {
         }
     }
 
-    makeMixedArticle(articleContent) {
+    makeMixedArticle(articleContent, secondary = false) {
         const pages = articleContent.subpages;
         const { pauseTimer, resetInactiveTimer } = this.props;
         // console.log('Article: makeArticle: pages: ', pages);
         let firstDateSet = false;
 
         const pagesOutput = pages.map((page, n) => {
+            if (secondary) {
+                if (n < 1) {
+                    return '';
+                }
+            }
+            if (!secondary) {
+                if (n > 0) {
+                    return '';
+                }
+            }
             const { pageID } = page;
             // console.log('page: ', page);
             let pageOut;
@@ -333,7 +348,7 @@ class Article extends React.Component {
         // console.log('Article: scrollToPage: targetScroll: ', targetScroll);
         // this.scrollElem.scrollTop = targetScroll;
         // resetInactiveTimer(true);
-        const options = { scrollTop: targetScroll, ease: Ease.easeOut };
+        const options = { scrollTop: targetScroll, ease: Ease.easeIn };
         this.articleTween = TweenLite.to(this.scrollElem, 0.6, options);
     }
 
@@ -365,7 +380,7 @@ class Article extends React.Component {
         // const { show } = this.props;
         // const startState = { autoAlpha: 0, y: -50 };
         let { navHidden } = this.state;
-        const { currentPage, currentPageType } = this.state;
+        const { currentPage, currentPageType, showPages } = this.state;
         const { singleArticleMode } = this.props;
         const { subpages } = this.articleContent;
         const subpagesCount = (subpages) ? subpages.length : 1;
@@ -399,6 +414,12 @@ class Article extends React.Component {
                                     </React.Fragment>
                                 )}
                                 { this.article }
+                                {showPages && (
+                                    <React.Fragment>
+                                        { this.articlePages }
+                                    </React.Fragment>
+                                )
+                                }
                             </React.Fragment>
                         )}
                     </div>
