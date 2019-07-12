@@ -1,8 +1,11 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import '../../styles/components/pages/Title.scss';
 import propTypes from '../../propTypes';
+
+import createBodyTag from '../../utils/createBodyTag';
 
 /*
  * Title:
@@ -27,7 +30,11 @@ function Title(props) {
             }
             <div className="PageTitle__Content">
                 <h1>{ title }</h1>
-                <h2>{ subtitle }</h2>
+                {subtitle && (
+                    <h3
+                        dangerouslySetInnerHTML={{ __html: createBodyTag(subtitle) }}
+                    />
+                )}
             </div>
         </div>
     );
@@ -35,12 +42,14 @@ function Title(props) {
 
 Title.propTypes = {
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string,
+    subtitle: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)])
+        .isRequired,
     asset: propTypes.asset,
 };
 
 Title.defaultProps = {
-    subtitle: '',
     asset: null,
 };
 
