@@ -2,7 +2,7 @@
   "short_name": "",
   "name": "genetic-diagnosis",
   "label": "Genetic Diagnosis",
-  "aspect_ratio": "9:16",
+  "aspect_ratio": "16:9",
   "version": 13,
   "main": "index.html",
   "requirements": {
@@ -83,6 +83,7 @@
               "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
             },
             "title": "Video 50/50",
+            "subtitle": "fjsrgljrdg",
             "content": [
               "Some content here"
             ]
@@ -164,6 +165,7 @@
             },
             "layout": "left",
             "title": "Video 50/50",
+            "subtitle": "fjsrgljrdg",
             "content": [
               "Some content here"
             ]
@@ -227,7 +229,7 @@
               "assetSource": "./media/03.jpg"
             },
             "title": "The search for the BRCA2 gene",
-            "subtitle": ""
+            "subtitle": "Something something subtitle something. Something subtitle, some thing something some sub title. Title-sub thing some subtitle."
           },
           {
             "pageID": "1-2-2",
@@ -506,7 +508,10 @@
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
           "bslSource": "media/video-historical-castle.mp4"
-        }
+        },
+        "subtitle": [
+          "some subtitle, some subtitle, some subtitle, some subtitle, some subtitle, some subtitle"
+        ]
       },
       {
         "articleID": "1-4",
@@ -521,51 +526,10 @@
           "assetType": "video",
           "subtitlesSource": "testing.vtt",
           "bslSource": "media/video-historical-castle.mp4"
-        }
-      },
-      {
-        "articleID": "1-5",
-        "title": "Knowledge is power: Peter’s story",
-        "titleImage": {
-          "assetType": "image",
-          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
         },
-        "type": "video",
-        "asset": {
-          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-          "assetType": "video",
-          "subtitlesSource": "testing.vtt"
-        }
-      },
-      {
-        "articleID": "1-6",
-        "title": "Looking for answers: Lisa, Ray & Michael’s story",
-        "titleImage": {
-          "assetType": "image",
-          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-        },
-        "type": "video",
-        "asset": {
-          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-          "assetType": "video",
-          "subtitlesSource": "testing.vtt",
-          "bslSource": "media/video-historical-castle.mp4"
-        }
-      },
-      {
-        "articleID": "1-7",
-        "title": "Helping families with nameless conditions: Anna, Clinical Nurse Specialist",
-        "titleImage": {
-          "assetType": "image",
-          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
-        },
-        "type": "video",
-        "asset": {
-          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-          "assetType": "video",
-          "subtitlesSource": "testing.vtt",
-          "bslSource": "media/video-historical-castle.mp4"
-        }
+        "subtitle": [
+          "some subtitle, some subtitle, some subtitle, some subtitle, some subtitle, some subtitle"
+        ]
       }
     ]
   }

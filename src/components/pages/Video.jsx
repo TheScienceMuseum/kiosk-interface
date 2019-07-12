@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,6 +6,7 @@ import '../../styles/components/pages/Video.scss';
 import { Player, ControlBar } from 'video-react';
 import has from 'lodash.has';
 import propTypes from '../../propTypes';
+import createBodyTag from '../../utils/createBodyTag';
 /*
  * Video:
  *
@@ -29,7 +31,6 @@ class Video extends React.Component {
         this.getSubClass = this.getSubClass.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
         this.endPlay = this.endPlay.bind(this);
-
         this.state = {
             showBSL: has(this.asset, 'bslSource'),
             showSubtitles: has(this.asset, 'subtitlesSource'),
@@ -145,7 +146,9 @@ class Video extends React.Component {
 
     render() {
         const { showBSL, showSubtitles, played } = this.state;
-        const { autoPlay, date, title } = this.props;
+        const {
+            autoPlay, date, title, subtitle,
+        } = this.props;
         // console.log('this.asset: ', this.asset);
         let showVideo = '';
         let showPoster = 'poster ';
@@ -172,6 +175,11 @@ class Video extends React.Component {
                         <div className="Image--withGrad" />
                         <div className="PageTitle__Content">
                             <h1>{title}</h1>
+                            {subtitle && (
+                                <h3
+                                    dangerouslySetInnerHTML={{ __html: createBodyTag(subtitle) }}
+                                />
+                            )}
                         </div>
                     </button>
                     <Player
@@ -246,6 +254,10 @@ Video.propTypes = {
     date: PropTypes.bool,
     title: PropTypes.string,
     titleImage: propTypes.titleImage.isRequired,
+    subtitle: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string)])
+        .isRequired,
 };
 
 Video.defaultProps = {
