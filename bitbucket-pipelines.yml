@@ -12,6 +12,7 @@ definitions:
     caches:
       - node
     script:
+      - rm -rf media/*
       - yarn
     artifacts:
       - node_modules/**
@@ -32,7 +33,6 @@ definitions:
     image: atlassian/pipelines-awscli
     script:
       - cd build
-      - rm -rf media/*
       - VERSION=$BITBUCKET_BUILD_NUMBER
       - tar -zcvf ../kiosk-interface-$VERSION.tar.gz .
       - echo "Copy to S3"
