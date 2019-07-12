@@ -3,7 +3,7 @@
   "name": "genetic-diagnosis",
   "label": "Genetic Diagnosis",
   "aspect_ratio": "16:9",
-  "version": 13,
+  "version": 14,
   "main": "index.html",
   "requirements": {
     "client_version": "0.0.1"
