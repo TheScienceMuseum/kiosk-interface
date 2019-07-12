@@ -11,11 +11,20 @@
     &__Content {
         position: absolute;
         bottom: 100px;
-        left: 70px;
+        left: 100px;
         width: 1060px;
         color: white;
         h1 {
             font-size: 86px;
+            max-width:850px;
+        }
+        h3 {
+            text-transform: none;
+            font-weight:300;
+            text-align:left;
+            font-size:26px;
+            padding-top:55px;
+            max-width:850px;
         }
     }
 }
