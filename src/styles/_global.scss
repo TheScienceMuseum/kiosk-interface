@@ -92,7 +92,7 @@ a {
     top: 0;
 }
 
-.MenuItem__Video h2, .MenuItem__Mixed h2 {
+.MenuItem__Video.MenuItem__Selected h2, .MenuItem__Mixed.MenuItem__Selected h2 {
     z-index: 99999;
 }
 
@@ -101,7 +101,7 @@ a {
         transition: all 0.3s;
         transform: translateY(0);
     }
-    .MenuItem {
+    .MenuItem__Selected {
         h2 {
             opacity:1;
             transition: all 0.5s;
@@ -115,7 +115,9 @@ a {
     z-index:9;
     .Attractor {
         opacity:1;
+        transition-delay: 1s !important;
     }
+    
     .Article__Container {
         transform: scale(0.74) translateX(0px) translateY(-55px);
         z-index:9;
@@ -130,7 +132,7 @@ a {
         transform: translateX(100px);
         transition-delay: 0.7s !important;
     }
-    .MenuItem {
+    .MenuItem__Selected {
         h2 {
             opacity:0;
             transition: all 0.5s;
@@ -172,6 +174,7 @@ a {
     z-index:9;
     .Attractor {
         opacity:0;
+        transition-delay: 1s !important;
     }
     .Article__Container {
         transform: scale(1);
@@ -187,7 +190,7 @@ a {
         transform: translateX(0px);
         transition: all 0.3s;
     }
-    .MenuItem {
+    .MenuItem__Selected {
         h2 {
             opacity:0;
             transition: all 0.3s;
@@ -201,8 +204,13 @@ a {
 .grow-exit {
     &.Attractor {
         opacity:1;
-        transition: all 0.8s;
+        transition: all 1s;
         z-index:20;
+        transition-delay: 0.4s;
+        .Attractor__details {
+            transition: all 0.5s;
+            opacity:1;
+        }
     }
     transition: all 0.3s;
     .Article__Container {
@@ -214,7 +222,7 @@ a {
         transition: all 0.3s;
         transform: translateX(0px);
     }
-    .MenuItem {
+    .MenuItem__Selected {
         h2 {
             transition-delay: 0s !important;
             opacity:0;
@@ -231,8 +239,13 @@ a {
 
     &.Attractor {
         opacity:0;
-        transition: all 0.8s;
+        transition: all 1s;
         z-index:20;
+        transition-delay: 0.4s;
+        .Attractor__details {
+            transition: all 0.5s;
+            opacity:0;
+        }
     }
 
     .Menu {
@@ -255,7 +268,7 @@ a {
         transform: translateX(100px);
         z-index:9;
     }
-    .MenuItem {
+    .MenuItem__Selected {
         h2 {
             opacity:0;
             transition: all 0.5s;

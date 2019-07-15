@@ -134,12 +134,10 @@ class App extends Component {
     }
 
     pauseTimer() {
-        console.log('App: pauseTimer: time: ', this.idleTimer.getRemainingTime());
         this.idleTimer.pause();
     }
 
     resetTimer() {
-        console.log('App: resetTimer: time: ', this.idleTimer.getRemainingTime());
         this.idleTimer.reset();
     }
 
@@ -176,7 +174,7 @@ class App extends Component {
                     <TransitionGroup className="transition-group">
                         <CSSTransition
                             key={location}
-                            timeout={{ enter: 1000, exit: 1000 }}
+                            timeout={{ enter: 1200, exit: 1200 }}
                             classNames="grow"
                         >
                             {this.getPage()}
