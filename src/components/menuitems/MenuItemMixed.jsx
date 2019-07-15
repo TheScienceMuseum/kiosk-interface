@@ -17,11 +17,13 @@ import '../../styles/components/menuitems/MenuItems.scss';
 class MenuItemMixed extends React.Component {
     render() {
         const {
-            title, titleImage, articleID, onClick,
+            title, titleImage, articleID, onClick, selected,
         } = this.props;
 
+        const isSelectedClass = selected ? 'MenuItem__Selected' : '';
+
         return (
-            <li className="MenuItem MenuItem__Mixed">
+            <li className={`MenuItem MenuItem__Mixed ${isSelectedClass}`}>
                 <Hammer onTap={() => onClick(articleID)}>
                     <button type="button">
                         <div className="Image--withGrad">
@@ -40,6 +42,11 @@ MenuItemMixed.propTypes = {
     titleImage: propTypes.asset.isRequired,
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
+    selected: PropTypes.bool,
+};
+
+MenuItemMixed.defaultProps = {
+    selected: false,
 };
 
 export default MenuItemMixed;
