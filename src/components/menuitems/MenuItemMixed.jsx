@@ -17,7 +17,7 @@ import '../../styles/components/menuitems/MenuItems.scss';
 class MenuItemMixed extends React.Component {
     render() {
         const {
-            title, titleImage, articleID, onClick, selected
+            title, titleImage, articleID, onClick, selected,
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
