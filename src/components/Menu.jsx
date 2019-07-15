@@ -230,9 +230,10 @@ class Menu extends React.Component {
         // }
 
 
-        const menuItems = contents.map((item) => {
+        const menuItems = contents.map((item, i) => {
             const id = item.articleID;
             let output;
+            const selected = (i + 1) === currentFocused;
             switch (item.type) {
             case ArticleTypes.VIDEO:
                 output = (
@@ -242,6 +243,7 @@ class Menu extends React.Component {
                         {...item}
                         onClick={this.itemClick}
                         onClickAuto={this.itemClickAuto}
+                        selected={selected}
                     />
                 );
                 break;
@@ -253,6 +255,7 @@ class Menu extends React.Component {
                         articleID={id}
                         {...item}
                         onClick={this.itemClick}
+                        selected={selected}
                     />
                 );
                 break;
@@ -263,6 +266,7 @@ class Menu extends React.Component {
                         articleID={id}
                         {...item}
                         onClick={this.itemClick}
+                        selected={selected}
                     />
                 );
                 break;
@@ -273,19 +277,6 @@ class Menu extends React.Component {
             return output;
         });
         return (
-            // <Transition
-            //    unmountOnExit
-            // in={show}
-            //     timeout={1000}
-            //     onEnter={node => TweenMax.set(node, startState)}
-            //     addEndListener={(node, done) => {
-            //         TweenMax.to(node, 0.5, {
-            //             autoAlpha: show ? 1 : 0,
-            //             y: show ? 0 : 50,
-            //             onComplete: done,
-            //         });
-            //     }}
-            // >
             <Hammer onSwipe={this.handleSwipe}>
                 <nav className="Menu">
                     <ul className="Menu__Container" ref={(ref) => { this.scrollElem = ref; }}>
@@ -303,7 +294,6 @@ class Menu extends React.Component {
                     />
                 </nav>
             </Hammer>
-            // </Transition>
         );
     }
 }

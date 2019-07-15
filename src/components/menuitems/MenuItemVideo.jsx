@@ -17,11 +17,13 @@ import propTypes from '../../propTypes';
 class MenuItemVideo extends React.Component {
     render() {
         const {
-            title, articleID, onClick, onClickAuto, titleImage,
+            title, articleID, onClick, onClickAuto, titleImage, selected,
         } = this.props;
 
+        const isSelectedClass = selected ? 'MenuItem__Selected' : '';
+
         return (
-            <li className="MenuItem MenuItem__Video">
+            <li className={`MenuItem MenuItem__Video ${isSelectedClass}`}>
                 <Hammer>
                     <div className="buttonsContainer">
                         <button type="button" onClick={() => onClick(articleID)}>
@@ -48,6 +50,11 @@ MenuItemVideo.propTypes = {
     onClick: PropTypes.func.isRequired,
     onClickAuto: PropTypes.func.isRequired,
     titleImage: propTypes.titleImage.isRequired,
+    selected: PropTypes.bool,
+};
+
+MenuItemVideo.defaultProps = {
+    selected: false,
 };
 
 export default MenuItemVideo;
