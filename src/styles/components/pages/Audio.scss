@@ -36,8 +36,8 @@ audio::-webkit-media-controls-mute-button {
 
 .audioIcon {
     background: url("../../../images/Audio/Icons/Sound.svg") no-repeat;
-    width:50px;
-    height:50px;
+    width:30px;
+    height:33px;
     background-size:100%;
 }
 
@@ -89,15 +89,23 @@ audio::-webkit-media-controls-mute-button {
         transition: all 0.5s;
         margin-top: 50px;
         font-size: 1.2em;
-        .scrollarea {
+        .scrollbar-container {
             height: 550px;
-            .scrollbar-container {
-                opacity:1;
-                background: rgba(0,0,0,0.2);
+            opacity:1;
+            background: transparent;
+            .ps__rail-y {
+                opacity:1 !important;
+                background:rgba(0,0,0,0.2);
                 width:5px;
-                .scrollbar {
-                    background: #000;
-                }
+            }
+            .ps__thumb-y {
+                opacity:1;
+                background: rgba(0,0,0,1);
+                width:5px;
+                right:0;
+            }
+            .scrollbar {
+                background: #000;
             }
         }
     }
@@ -155,7 +163,7 @@ audio::-webkit-media-controls-mute-button {
         background: url("../../../images/Audio/Buttons/Sound/Pause/Default.svg") no-repeat;
         min-width:46px;
         width:46px;
-        height:45px;
+        height:46px;
         text-indent:-999px;
         overflow:hidden;
         background-size:100%;
@@ -191,7 +199,7 @@ audio::-webkit-media-controls-mute-button {
                 display:none;
             }
             .transcript {
-                .scrollarea {
+                .scrollbar-container {
                     height: 320px;
                 }
             }
@@ -200,12 +208,12 @@ audio::-webkit-media-controls-mute-button {
 
                 .audioIcon {
                     position:absolute;
-                    margin-left:-125px;
-                    width:251px;
-                    height:281px;
+                    margin-left:-75px;
+                    width:151px;
+                    height:181px;
                     left:50%;
                     top:25%;
-                    margin-top: -140px;
+                    margin-top: -90px;
                     background: url("../../../images/Audio/Portrait/Icons/SoundHero.svg") no-repeat;
                     background-size:100%;
                 }
