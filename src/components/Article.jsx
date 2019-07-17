@@ -353,20 +353,23 @@ class Article extends React.Component {
     }
 
     handleHomeButton() {
-        const { currentPage } = this.state;
+        const { loadArticle, resetInactiveTimer } = this.props;
+        resetInactiveTimer();
+        loadArticle('menu');
 
-        if (currentPage === 0) {
-            const { loadArticle, resetInactiveTimer } = this.props;
-            resetInactiveTimer();
-            loadArticle('menu');
-            return;
-        }
+        // scroll functionality?
+        // if (currentPage === 0) {
+        //     const { loadArticle, resetInactiveTimer } = this.props;
+        //     resetInactiveTimer();
+        //     loadArticle('menu');
+        //     return;
+        // }
 
-        this.jumpToPage(0, () => {
-            const { loadArticle, resetInactiveTimer } = this.props;
-            resetInactiveTimer();
-            loadArticle('menu');
-        });
+        // this.jumpToPage(0, () => {
+        //     const { loadArticle, resetInactiveTimer } = this.props;
+        //     resetInactiveTimer();
+        //     loadArticle('menu');
+        // });
     }
 
     handleChangeCurrentPage(currentPage) {

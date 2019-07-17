@@ -51,6 +51,7 @@ class Menu extends React.Component {
         // console.log('Menu: constructor: currentFocused: ', currentFocused);
 
         // this.moveDirection = MoveDiections.RIGHT;
+        this.scrolling = false;
     }
 
     componentDidMount() {
@@ -107,6 +108,8 @@ class Menu extends React.Component {
             loadArticle(articleID, false);
         } else {
             // console.log('Menu: onItemClick: scroll to article');
+            // only if not scrolling
+            if (this.scrolling) return;
             this.scrollToItem(articleID);
         }
     }
@@ -143,13 +146,14 @@ class Menu extends React.Component {
     }
 
     nextItem() {
-        // console.log('Menu: nextItem');
         const { contents } = this.props;
         let { currentFocused } = this.state;
         // this.moveDirection = MoveDiections.RIGHT;
         // console.log('Menu: nextItem: currentFocused: ', currentFocused);
 
-        if (currentFocused === (contents.length)) return;
+        if (currentFocused === (contents.length)) {
+            return;
+        }
 
         currentFocused += 1;
 
@@ -178,7 +182,6 @@ class Menu extends React.Component {
     }
 
     handleSwipe(e) {
-        // console.log('Menu: handleSwipe: e: ', e);
         if (e.direction === HammerJS.DIRECTION_LEFT) {
             this.nextItem();
         } else if (e.direction === HammerJS.DIRECTION_RIGHT) {
@@ -187,9 +190,8 @@ class Menu extends React.Component {
     }
 
     scrollToItem(targetID) {
-        // console.log('Menu: jumpToItem: targetID: ', targetID);
-
         // let targetScroll;
+        this.scrolling = true;
         let index;
         if (targetID === ArticleTypes.TITLE) {
             index = 0;
@@ -204,7 +206,11 @@ class Menu extends React.Component {
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
 
-        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeIn };
+        const options = {
+            scrollLeft: this.getScrollAmount(index),
+            ease: Ease.easeIn,
+            onComplete: () => { this.scrolling = false; },
+        };
         this.scrollTween = TweenLite.to(this.scrollElem, 0.4, options);
     }
 
