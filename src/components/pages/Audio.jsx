@@ -5,7 +5,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
-import ScrollArea from 'react-scrollbar';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 
 // eslint-disable-next-line object-curly-newline
@@ -13,6 +13,7 @@ import { Media, Player, controls, utils } from 'react-media-player';
 
 import propTypes from '../../propTypes';
 
+import 'react-perfect-scrollbar/dist/css/styles.css';
 import '../../styles/components/pages/Image.scss';
 import '../../styles/components/pages/Audio.scss';
 import createBodyTag from '../../utils/createBodyTag';
@@ -224,14 +225,14 @@ class Audio extends React.Component {
                             e.stopPropagation();
                         }}
                     >
-                        <ScrollArea
-                            speed={0.8}
+                        <PerfectScrollbar
+                            options={{
+                                suppressScrollX: true,
+                            }}
                             className="area"
-                            contentClassName="content"
-                            horizontal={false}
                         >
-                            <div>{audio.transcript}</div>
-                        </ScrollArea>
+                            <div className="content">{audio.transcript}</div>
+                        </PerfectScrollbar>
                     </div>
                 </div>
             </div>
