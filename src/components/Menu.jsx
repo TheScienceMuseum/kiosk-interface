@@ -206,7 +206,11 @@ class Menu extends React.Component {
         this.setState({ currentFocused: index });
         // this.jumpToItem(index);
 
-        const options = { scrollLeft: this.getScrollAmount(index), ease: Ease.easeIn, onComplete: () => { this.scrolling = false; } };
+        const options = {
+            scrollLeft: this.getScrollAmount(index),
+            ease: Ease.easeIn,
+            onComplete: () => { this.scrolling = false; },
+        };
         this.scrollTween = TweenLite.to(this.scrollElem, 0.4, options);
     }
 
