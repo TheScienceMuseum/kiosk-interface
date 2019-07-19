@@ -37,6 +37,7 @@ class Video extends React.Component {
             bslEnabled: false,
             subtitlesEnabled: false,
             played: false,
+            hasClosed: false,
         };
     }
 
@@ -44,6 +45,15 @@ class Video extends React.Component {
         setTimeout(() => {
             this.disableSubTitles();
         }, 100);
+        const {
+            autoPlay, resetInactiveTimer, pauseTimer,
+        } = this.props;
+
+        if (!autoPlay) {
+            resetInactiveTimer();
+        } else {
+            pauseTimer();
+        }
     }
 
     onPause() {
@@ -135,17 +145,23 @@ class Video extends React.Component {
     }
 
     beginPlay() {
-        this.setState({ played: true });
+        this.setState({ played: true, hasClosed: false });
+        const { pauseTimer } = this.props;
+        pauseTimer();
         this.player.play();
     }
 
     endPlay() {
-        this.setState({ played: false });
+        this.setState({ played: false, hasClosed: true });
+        const { resetInactiveTimer } = this.props;
+        resetInactiveTimer();
         this.player.pause();
     }
 
     render() {
-        const { showBSL, showSubtitles, played } = this.state;
+        const {
+            showBSL, showSubtitles, played, hasClosed,
+        } = this.state;
         const {
             autoPlay, date, title, subtitle,
         } = this.props;
@@ -153,7 +169,7 @@ class Video extends React.Component {
         let showVideo = '';
         let showPoster = 'poster ';
         let articleStyle = '';
-        if (autoPlay || played) {
+        if ((autoPlay || played) && !hasClosed) {
             showVideo = 'show';
             showPoster = 'poster hide';
             articleStyle = 'open';

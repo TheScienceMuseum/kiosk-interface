@@ -113,9 +113,9 @@ a {
 
 .grow-enter {
     z-index:9;
-    .Attractor {
-        opacity:1;
-        transition-delay: 1s !important;
+    &.Attractor {
+        opacity:0;
+        transition: all 1s;
     }
     
     .Article__Container {
@@ -169,14 +169,21 @@ a {
     transition-delay: 0.3s !important;
     transition-duration: 0.3s;
 }
-
+.grow-enter-done {
+    &.Attractor {
+        opacity:1;
+        transition: all 1s;
+    }
+}
+.grow-enter-active {
+    &.Attractor {
+        opacity:1;
+        transition: all 1s;
+    }
+}
 
 .grow-enter.grow-enter-active {
     z-index:9;
-    .Attractor {
-        opacity:0;
-        transition-delay: 1s !important;
-    }
     .Article__Container {
         transform: scale(1);
         transition: all 0.3s;
@@ -206,7 +213,6 @@ a {
     &.Attractor {
         opacity:1;
         transition: all 1s;
-        z-index:20;
         transition-delay: 0.4s;
         .Attractor__details {
             transition: all 0.5s;
@@ -256,12 +262,17 @@ a {
     }
 }
 
+.grow-exit-done {
+    &.Attractor {
+        opacity:0;
+    }
+}
+
 .grow-exit-active {
 
     &.Attractor {
         opacity:0;
         transition: all 1s;
-        z-index:20;
         transition-delay: 0.4s;
         .Attractor__details {
             transition: all 0.5s;
