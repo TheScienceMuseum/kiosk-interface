@@ -78,7 +78,7 @@
 
     &--zoomedIn {
 
-        overflow: scroll;
+        overflow: hidden;
         z-index: 999;
 
         &::-webkit-scrollbar {
