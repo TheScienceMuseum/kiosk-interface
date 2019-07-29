@@ -229,52 +229,52 @@ class ZoomableImage extends React.Component {
             return;
         }
 
-        if (
-            typeof this.asset === 'undefined'
-            || typeof this.asset.boundingBox === 'undefined'
-        ) {
-            return;
-        }
-        const pixels = {
-            width: (this.image.naturalWidth * this.asset.boundingBox.width),
-            height: (this.image.naturalHeight * this.asset.boundingBox.height),
-            x: (this.image.naturalWidth * this.asset.boundingBox.x),
-            y: (this.image.naturalHeight * this.asset.boundingBox.y),
-        };
+        // if (
+        //     typeof this.asset === 'undefined'
+        //     || typeof this.asset.boundingBox === 'undefined'
+        // ) {
+        //     return;
+        // }
+        // const pixels = {
+        //     width: (this.image.naturalWidth * this.asset.boundingBox.width),
+        //     height: (this.image.naturalHeight * this.asset.boundingBox.height),
+        //     x: (this.image.naturalWidth * this.asset.boundingBox.x),
+        //     y: (this.image.naturalHeight * this.asset.boundingBox.y),
+        // };
 
-        // const scale = 1; // Not actually used at the minute...
+        // // const scale = 1; // Not actually used at the minute...
 
-        const difference = this.container.offsetWidth - pixels.width;
-        const percentage = difference / pixels.width;
-        const imageContainerStyle = {
-            width: `${pixels.width}px`,
-            height: `${pixels.height}px`,
-            transformOrigin: 'top left',
-            transform: `scale(${percentage + 1})`,
-        };
+        // const difference = this.container.offsetWidth - pixels.width;
+        // const percentage = difference / pixels.width;
+        // const imageContainerStyle = {
+        //     width: `${pixels.width}px`,
+        //     height: `${pixels.height}px`,
+        //     transformOrigin: 'top left',
+        //     transform: `scale(${percentage + 1})`,
+        // };
 
-        let style = {};
-        if (isEmpty(style)) {
-            // console.log('is empty... updating style');
+        // let style = {};
+        // if (isEmpty(style)) {
+        //     // console.log('is empty... updating style');
 
-            // could look at removing this isEmpty function
-            // as I believe it only actually runs once anyway...
-            style = {
-                transform: `translateX(-${pixels.x}px) translateY(-${pixels.y}px)`,
-                width: this.image.naturalWidth,
-                height: this.image.naturalHeight,
-                x: 0,
-                y: 0,
-                position: 'absolute',
-                willChange: 'transform',
-            };
-        } else {
-            // console.log('has style; no update');
-        }
+        //     // could look at removing this isEmpty function
+        //     // as I believe it only actually runs once anyway...
+        //     style = {
+        //         transform: `translateX(-${pixels.x}px) translateY(-${pixels.y}px)`,
+        //         width: this.image.naturalWidth,
+        //         height: this.image.naturalHeight,
+        //         x: 0,
+        //         y: 0,
+        //         position: 'absolute',
+        //         willChange: 'transform',
+        //     };
+        // } else {
+        //     // console.log('has style; no update');
+        // }
 
-        // console.log('style RE-CALCULATED: ', style);
+        // // console.log('style RE-CALCULATED: ', style);
 
-        this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
+        // this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
 
         if (
             typeof this.asset !== 'undefined'
