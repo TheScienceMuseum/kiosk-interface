@@ -1,13 +1,108 @@
 @import "../variables";
+.zoomableWrapper {
+    width:100%;
+    height:100%;
+    .thumbContainer {
+        background:#000;
+        position: absolute;
+        z-index:10;
+        transition: all 0.5s;
+        overflow: hidden;
+        position:absolute;
+        .imgThumb {
+            background-size:cover;
+            background-position: center center;
+            height:100%;
+            width:100%;
+            transition: opacity 1s, transform 0.8s;
+            opacity: 1;
+            will-change: transform;
+            transform-origin: 50% 50%;
+            transition-delay: 0.5s;
+        }
+        img {
+            opacity: 1;
+            transition: opacity 1s;
+        }
+        &.fadeInFull {
+            width:100% !important;
+            img {
+                opacity:0;
+                width: 150% !important;
+            }
+            .imgThumb {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+    }
+
+    .Button {
+
+        //width: 80px;
+        //height: 80px;
+        background-color: $black;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        &__ZoomButton {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 9991;
+            font-size: 2em;
+            transition: all $transitionTime-showContent ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.PageTextImage .ImageContainer {
+    transition: all 1s;
+}
+.PageTextImage--imageFull {
+    .thumbContainer {
+        width:100%;
+    }
+    .imgThumb {
+        transition-delay: 0s !important;
+    }
+}
+.PageTextImage--imageFull.PageTextImage--right {
+    .thumbContainer {
+        left:0%;
+        position: absolute;
+        transition: left 1s;
+        width:100% !important;
+        .imgThumb {
+            left:0%;
+            position:absolute;
+            transition-delay: 0s;
+            transform-origin: 0% 50%;
+        }
+    }
+}
 
 .ZoomableImage {
 
-    position: relative;
+    &.zoomingOut--true {
+        .ZoomControls {
+            transform: translateY(100px);
+            transition: all 0.5s;
+            transition-delay: 0.3s;
+        }
+    }
+
+    position: absolute;
+    left:0;
+    top:0;
 
     width: 100%;
     height: 100%;
 
-    background-color: $imageBackground;
+    
     /*
     img {
         width: 100%;
@@ -17,7 +112,7 @@
     */
 
     .imageContainer {
-        transition: all 0.5s;
+        transition: none;
     }
 
     &.ZoomableImage--zoomedIn {
@@ -53,7 +148,7 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        z-index: 500;
+        z-index: 9991;
         font-size: 2em;
         transition: all $transitionTime-showContent ease;
 
@@ -119,12 +214,48 @@
         //display: block;
     }
 
+    &--zoomedIn {
+        .innerContainer {
+            opacity:1 !important;
+            position:absolute !important;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            .imgFull {
+                transition-delay: 0.8s !important;
+                opacity:1 !important;
+            }
+        }
+    }
+
+    .thumbContainer {
+        background: #000;
+        position:absolute;
+    }
+
     .innerContainer {
+        background: #000;
         width:100%;
         height:100%;
-        position:relative;
+        position: absolute;
+        opacity:0;
+        transition: all 0.5s;
+        &.fadeOutFull {
+            opacity: 0 !important;
+            transition: opacity 0.5s;
+            transition-delay: 0.5s !important;
+            .imgFull {
+                opacity: 0 !important;
+                transition-delay: 0s !important;
+            }
+        }
         img {
             transition: all 0.5s;
+            z-index:2;
+        }
+        .imgFull {
+            opacity:0;
         }
     }
 
