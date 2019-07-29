@@ -187,7 +187,10 @@ class Audio extends React.Component {
                                 <div className="media-controls">
                                     <div className="audioIcon" />
                                     <div className={playButtonClasses}>
-                                        <PlayPause className="playPause" />
+                                        <PlayPause className="playPause">
+                                            <i className="icon-SoundPlay" />
+                                        </PlayPause>
+                                        <i className="icon-SoundPlay" />
                                     </div>
                                     <Progress />
                                     <div className="seekBarProgress">
