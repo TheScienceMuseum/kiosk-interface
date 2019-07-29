@@ -180,6 +180,10 @@ a {
         opacity:1;
         transition: all 1s;
     }
+    .MenuNav {
+        transition: all 0.3s;
+        transform: translateY(0);
+    }
 }
 
 .grow-enter.grow-enter-active {

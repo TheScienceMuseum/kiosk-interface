@@ -64,8 +64,9 @@
         width: 50%;
         height: 100%;
         overflow: hidden;
-        transition: all $transitionTime-showContent ease-out;
+        transition: none;
         position: absolute;
+
     }
 
     .ContentContainer {
@@ -112,7 +113,8 @@
             //order: 0;
             //right: auto;
             left: 0;
-            transition: left $transitionTime-showContent ease-out,
+            transition: left $transitionTime-showContent ease-out;
+            
         }
 
         .ImageCaption {
@@ -139,13 +141,13 @@
 
     &--left.PageTextImage--imageFull {
         .ContentContainer {
-            left: 100%;
+            // left: 100%;
         }
     }
 
     &--right.PageTextImage--imageFull {
         .ContentContainer {
-            left: -50%;
+            // left: -50%;
         }
     }
 

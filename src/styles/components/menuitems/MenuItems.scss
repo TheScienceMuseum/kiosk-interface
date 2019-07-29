@@ -21,7 +21,7 @@
             display: block;
             width: 104px;
             height: 104px;
-            background: url(/static/media/play.337f0fa4.svg) no-repeat;
+            background: url('../../../images/play.svg') no-repeat;
             background-size: contain;
             position: relative;
             left: 50%;
@@ -56,7 +56,7 @@
 
 
         p {
-            font-family: $fontMedium;
+            font-family: $fontLight;
             font-size: 20px;
             text-transform: uppercase;
             margin-bottom: 30px;
