@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
@@ -151,7 +152,6 @@ class ZoomableImage extends React.Component {
         const { fullscreen } = this.state;
         // console.log('getImageStyle POS');
         if (!fullscreen) {
-            const { imgStyle } = this.state;
             // console.log('imgStyle: ', imgStyle);
             return {};
             // return imgStyle;
@@ -614,7 +614,6 @@ class ZoomableImage extends React.Component {
 
     switchImgSrc(fullscreen) {
         this.imgSrc = (fullscreen ? this.fullSrc : this.thumbSrc);
-        this.setState({ imgSrc: this.imgSrc });
     }
 
     handleToggleFullScreen() {
