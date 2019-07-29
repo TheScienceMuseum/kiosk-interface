@@ -4,18 +4,27 @@
 body .Page.PageVideo {
     z-index:11;
     width:1920px;
-    transition: width 0.3s;
+    transition: width 0s;
     &.open {
         width: 100%;
         z-index:20;
         .video-react {
+            transition: all 1s;
             width: 1920px;
             z-index:20;
+        }
+        .kioskControlBar {
+            transition-delay: 1s !important;
+            transform: translateY(0px);
         }
     }
     .video-react {
         width: 1820px;
-       
+    }
+    .kioskControlBar {
+        transition: all 0.5s;
+        transition-delay: 0s !important;
+        transform: translateY(100px);
     }
 }
 .PageVideo, .PageTextVideo {
