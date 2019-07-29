@@ -77,7 +77,7 @@ class Article extends React.Component {
         this.article = this.makeArticle(this.articleContent);
         setTimeout(() => {
             this.setState({ showPages: true });
-        }, 1000);
+        }, 300);
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot) {

@@ -29,10 +29,14 @@ class ZoomableImage extends React.Component {
             imgStyle: {
                 width: '100%',
             },
-            imgSrc: image,
             imgContainerStyle: {
                 height: '100%',
             },
+            fullSrc: image,
+            thumbSrc: '',
+            thumbWidth: 0,
+            thumbHeight: 0,
+            fadeOutFullscreen: false,
         };
         this.asset = props.asset;
 
@@ -61,6 +65,8 @@ class ZoomableImage extends React.Component {
             marginTop: null,
             marginLeft: null,
         };
+
+        this.animating = false;
 
         this.handleImageLoad = this.handleImageLoad.bind(this);
 
@@ -147,7 +153,8 @@ class ZoomableImage extends React.Component {
         if (!fullscreen) {
             const { imgStyle } = this.state;
             // console.log('imgStyle: ', imgStyle);
-            return imgStyle;
+            return {};
+            // return imgStyle;
         }
         // console.log('this.state: ', this.state);
 
@@ -269,22 +276,28 @@ class ZoomableImage extends React.Component {
 
         this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
 
-        // if (
-        //     typeof this.asset !== 'undefined'
-        //     && typeof this.asset.boundingBox !== 'undefined'
-        // ) {
-        //     const newImg = this.constructor.getImagePortion(
-        //         this.image,
-        //         (this.image.offsetWidth * this.asset.boundingBox.width),
-        //         (this.image.offsetHeight * this.asset.boundingBox.height),
-        //         (this.image.offsetWidth * this.asset.boundingBox.x),
-        //         (this.image.offsetHeight * this.asset.boundingBox.y),
-        //         1,
-        //     );
-        //     this.thumbSrc = newImg;
-        //     this.imgSrc = newImg;
-        //     this.setState({ imgSrc: this.imgSrc });
-        // }
+        if (
+            typeof this.asset !== 'undefined'
+            && typeof this.asset.boundingBox !== 'undefined'
+        ) {
+            const newImg = this.constructor.getImagePortion(
+                this.image,
+                (this.image.offsetWidth * this.asset.boundingBox.width),
+                (this.image.offsetHeight * this.asset.boundingBox.height),
+                (this.image.offsetWidth * this.asset.boundingBox.x),
+                (this.image.offsetHeight * this.asset.boundingBox.y),
+                1,
+            );
+            const newWidth = this.container.offsetWidth;
+            this.thumbSrc = newImg;
+            this.imgSrc = newImg;
+            this.setState({
+                thumbSrc: newImg,
+                fullSrc: this.fullSrc,
+                thumbWidth: newWidth,
+                thumbHeight: this.container.offsetHeight,
+            });
+        }
         this.imageCalculated = true;
     }
 
@@ -605,11 +618,31 @@ class ZoomableImage extends React.Component {
     }
 
     handleToggleFullScreen() {
+        if (this.animating) {
+            return;
+        }
+
         let { fullscreen } = this.state;
         const { onZoom } = this.props;
         // console.log('handleToggleFullScreen fired');
 
         fullscreen = !fullscreen;
+
+        if (!fullscreen) {
+            // zooming out
+            this.setState({
+                fadeOutFullscreen: true,
+            });
+            this.animating = true;
+            setTimeout(() => {
+                this.switchImgSrc(fullscreen);
+                this.animating = false;
+                onZoom(fullscreen);
+                // this.translate(0, 0);
+                this.setState({ fullscreen, fadeOutFullscreen: false });
+            }, 1000);
+            return;
+        }
 
         this.switchImgSrc(fullscreen);
 
@@ -623,47 +656,83 @@ class ZoomableImage extends React.Component {
         const {
             zoomable,
             fullscreen,
-            imgSrc,
+            thumbSrc,
+            fullSrc,
+            thumbWidth,
+            thumbHeight,
+            fadeOutFullscreen,
         } = this.state;
 
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
         const zoomIconClass = (!fullscreen) ? 'icon-enlarge-img' : 'icon-reduce-img';
 
-        return (
-            <div
-                className={`ZoomableImage ZoomableImage--${zoomed}`}
-                ref={(ref) => { this.container = ref; }}
-            >
-                <div
-                    className="imageContainer"
-                    ref={(ref) => { this.imageContainer = ref; }}
-                    style={this.getImageContainerStyle()}
-                >
-                    <Hammer
-                        onPinch={this.handlePinch}
-                        onPinchEnd={this.handlePinchEnd}
-                        onPan={this.handlePan}
-                        onPanEnd={this.handlePanEnd}
-                        onDoubleTap={this.handleDoubleTap}
-                        options={{
-                            recognizers: {
-                                pinch: { enable: true },
-                            },
-                        }}
-                    >
-                        <div className="innerContainer">
-                            <img
-                                src={imgSrc}
-                                alt=""
-                                ref={(ref) => { this.image = ref; }}
-                                onLoad={this.handleImageLoad}
-                                style={this.getImageStyle()}
-                            />
-                        </div>
-                    </Hammer>
-                </div>
+        const innerContainerClass = fadeOutFullscreen ? 'innerContainer fadeOutFull' : 'innerContainer';
+        const thumbContainerClass = fullscreen ? 'thumbContainer fadeInFull' : 'thumbContainer';
 
+        const zoomingOut = fadeOutFullscreen ? 'true' : 'false';
+        return (
+            <div className="zoomableWrapper">
+                <div className={thumbContainerClass} style={{ width: `${thumbWidth}px`, height: `${thumbHeight}px` }}>
+                    <div className="imgThumb" style={{ backgroundImage: `url(${thumbSrc})`, width: `${thumbWidth}px` }} />
+                    {/* <img
+                        src={thumbSrc}
+                        alt=""
+                        className="imgThumb"
+                        style={{ width: `${thumbWidth}px` }}
+                    /> */}
+                </div>
+                <div
+                    className={`ZoomableImage ZoomableImage--${zoomed} zoomingOut--${zoomingOut}`}
+                    ref={(ref) => { this.container = ref; }}
+                >
+                    <div
+                        className="imageContainer"
+                        ref={(ref) => { this.imageContainer = ref; }}
+                    >
+                        <Hammer
+                            onPinch={this.handlePinch}
+                            onPinchEnd={this.handlePinchEnd}
+                            onPan={this.handlePan}
+                            onPanEnd={this.handlePanEnd}
+                            onDoubleTap={this.handleDoubleTap}
+                            options={{
+                                recognizers: {
+                                    pinch: { enable: true },
+                                },
+                            }}
+                        >
+                            <div className={innerContainerClass}>
+                                <img
+                                    src={fullSrc}
+                                    alt=""
+                                    ref={(ref) => { this.image = ref; }}
+                                    onLoad={this.handleImageLoad}
+                                    style={this.getImageStyle()}
+                                    className="imgFull"
+                                />
+                            </div>
+                        </Hammer>
+                    </div>
+                    <textarea
+                        className="ZoomableImage__Debug"
+                        ref={(ref) => { this.debugText = ref; }}
+                    />
+
+                    {zoomable && fullscreen
+                    && (
+                        <ZoomControls
+                            zoomIn={this.handleZoomIn}
+                            zoomOut={this.handleZoomOut}
+                            imageMinZoom={this.imageMinScale}
+                            imageMaxZoom={this.imageMaxScale}
+                            handleZoomChange={this.handleZoomChange}
+                            currentScale={this.scale}
+                        />
+                    )
+                    }
+
+                </div>
                 <button
                     className="Button Button--icon ZoomableImage__ZoomButton"
                     type="button"
@@ -671,25 +740,6 @@ class ZoomableImage extends React.Component {
                 >
                     <i className={zoomIconClass} />
                 </button>
-
-                <textarea
-                    className="ZoomableImage__Debug"
-                    ref={(ref) => { this.debugText = ref; }}
-                />
-
-                {zoomable && fullscreen
-                && (
-                    <ZoomControls
-                        zoomIn={this.handleZoomIn}
-                        zoomOut={this.handleZoomOut}
-                        imageMinZoom={this.imageMinScale}
-                        imageMaxZoom={this.imageMaxScale}
-                        handleZoomChange={this.handleZoomChange}
-                        currentScale={this.scale}
-                    />
-                )
-                }
-
             </div>
         );
     }

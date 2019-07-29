@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Buttons/Sound/Play/Default</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Buttons/Sound/Play/Default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" stroke="#000000" stroke-width="2" cx="23" cy="23" r="22"></circle>
+        <polygon id="Triangle" stroke="#000000" stroke-width="2" transform="translate(25.500000, 23.500000) rotate(-270.000000) translate(-25.500000, -23.500000) " points="25.5 15 34 32 17 32"></polygon>
+    </g>
+</svg>
