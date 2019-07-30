@@ -224,7 +224,6 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         autoPlay={false}
-                        singlePage
                     />
                 );
                 break;
