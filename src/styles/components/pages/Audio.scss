@@ -221,13 +221,21 @@ audio::-webkit-media-controls-mute-button {
             display:none;
         }
 
+        .transcriptBtn {
+            margin-left:0;
+            &.open {
+                margin-left:0;
+            }
+        }
+
         .audio {
             h3 {
                 display:none;
             }
             .transcript {
+                margin-top:20px;
                 .scrollbar-container {
-                    height: 320px;
+                    height: 300px;
                 }
             }
             .media {
@@ -240,7 +248,7 @@ audio::-webkit-media-controls-mute-button {
                     height:181px;
                     left:50%;
                     top:25%;
-                    margin-top: -90px;
+                    margin-top: -550px;
                     background: url("../../../images/Audio/Portrait/Icons/SoundHero.svg") no-repeat;
                     background-size:100%;
                 }
@@ -252,7 +260,7 @@ audio::-webkit-media-controls-mute-button {
                     height:50px;
                     left:10%;
                     top:50%;
-                    margin-top:-120px;
+                    margin-top:-380px;
                     .playPause {
                         background: url("../../../images/Audio/Portrait/Buttons/SoundPause.svg") no-repeat;
                     }
@@ -270,7 +278,7 @@ audio::-webkit-media-controls-mute-button {
                     top:50%;
                     margin-left:0;
                     height:8px;
-                    margin-top:-54px;
+                    margin-top:-320px;
                     background:#fff;
                     .bar {
                         background: $red;
@@ -284,7 +292,7 @@ audio::-webkit-media-controls-mute-button {
                     position: absolute;
                     right:0;
                     top:50%;
-                    margin-top:-100px;
+                    margin-top:-360px;
                     font-size:1.5em;
                     margin-right:20px;
                     color:#fff;

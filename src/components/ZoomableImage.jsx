@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 
 import '../styles/components/ZoomableImage.scss';
-import isEmpty from 'lodash.isempty';
 import { Orientations, ScreenSize } from '../utils/Constants';
 import ZoomControls from './ZoomControls';
 import propTypes from '../propTypes';
-
+import getThumb from './generic/getThumb';
 /*
  * NewZoomableImage:
  *
@@ -34,7 +33,6 @@ class ZoomableImage extends React.Component {
                 height: '100%',
             },
             fullSrc: image,
-            thumbSrc: '',
             thumbWidth: 0,
             thumbHeight: 0,
             fadeOutFullscreen: false,
@@ -228,76 +226,11 @@ class ZoomableImage extends React.Component {
         if (this.imageCalculated) {
             return;
         }
-
-        if (
-            typeof this.asset === 'undefined'
-            || typeof this.asset.boundingBox === 'undefined'
-        ) {
-            return;
-        }
-        const pixels = {
-            width: (this.image.naturalWidth * this.asset.boundingBox.width),
-            height: (this.image.naturalHeight * this.asset.boundingBox.height),
-            x: (this.image.naturalWidth * this.asset.boundingBox.x),
-            y: (this.image.naturalHeight * this.asset.boundingBox.y),
-        };
-
-        // const scale = 1; // Not actually used at the minute...
-
-        const difference = this.container.offsetWidth - pixels.width;
-        const percentage = difference / pixels.width;
-        const imageContainerStyle = {
-            width: `${pixels.width}px`,
-            height: `${pixels.height}px`,
-            transformOrigin: 'top left',
-            transform: `scale(${percentage + 1})`,
-        };
-
-        let style = {};
-        if (isEmpty(style)) {
-            // console.log('is empty... updating style');
-
-            // could look at removing this isEmpty function
-            // as I believe it only actually runs once anyway...
-            style = {
-                transform: `translateX(-${pixels.x}px) translateY(-${pixels.y}px)`,
-                width: this.image.naturalWidth,
-                height: this.image.naturalHeight,
-                x: 0,
-                y: 0,
-                position: 'absolute',
-                willChange: 'transform',
-            };
-        } else {
-            // console.log('has style; no update');
-        }
-
-        // console.log('style RE-CALCULATED: ', style);
-
-        this.setState({ imgStyle: style, imgContainerStyle: imageContainerStyle });
-
-        if (
-            typeof this.asset !== 'undefined'
-            && typeof this.asset.boundingBox !== 'undefined'
-        ) {
-            const newImg = this.constructor.getImagePortion(
-                this.image,
-                (this.image.offsetWidth * this.asset.boundingBox.width),
-                (this.image.offsetHeight * this.asset.boundingBox.height),
-                (this.image.offsetWidth * this.asset.boundingBox.x),
-                (this.image.offsetHeight * this.asset.boundingBox.y),
-                1,
-            );
-            const newWidth = this.container.offsetWidth;
-            this.thumbSrc = newImg;
-            this.imgSrc = newImg;
-            this.setState({
-                thumbSrc: newImg,
-                fullSrc: this.fullSrc,
-                thumbWidth: newWidth,
-                thumbHeight: this.container.offsetHeight,
-            });
-        }
+        this.setState({
+            fullSrc: this.fullSrc,
+            thumbWidth: this.container.offsetWidth,
+            thumbHeight: this.container.offsetHeight,
+        });
         this.imageCalculated = true;
     }
 
@@ -655,12 +588,13 @@ class ZoomableImage extends React.Component {
         const {
             zoomable,
             fullscreen,
-            thumbSrc,
             fullSrc,
             thumbWidth,
             thumbHeight,
             fadeOutFullscreen,
         } = this.state;
+
+        const thumbSrc = getThumb({ fullSrc });
 
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
@@ -674,12 +608,6 @@ class ZoomableImage extends React.Component {
             <div className="zoomableWrapper">
                 <div className={thumbContainerClass} style={{ width: `${thumbWidth}px`, height: `${thumbHeight}px` }}>
                     <div className="imgThumb" style={{ backgroundImage: `url(${thumbSrc})`, width: `${thumbWidth}px` }} />
-                    {/* <img
-                        src={thumbSrc}
-                        alt=""
-                        className="imgThumb"
-                        style={{ width: `${thumbWidth}px` }}
-                    /> */}
                 </div>
                 <div
                     className={`ZoomableImage ZoomableImage--${zoomed} zoomingOut--${zoomingOut}`}
