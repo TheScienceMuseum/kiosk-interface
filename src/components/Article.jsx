@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -45,7 +46,7 @@ class Article extends React.Component {
             navHidden: false,
             dateLineClosed: true,
             firstDate: -1,
-            showPages: false,
+            showPages: props.aspect === 'portrait',
         };
 
         this.handleSwipe = this.handleSwipe.bind(this);
@@ -142,7 +143,7 @@ class Article extends React.Component {
         case ArticleTypes.MIXED:
         case ArticleTypes.TIMELINE:
             this.articlePages = this.makeMixedArticle(articleContent, true);
-            return this.makeMixedArticle(articleContent);
+            return this.makeInitialPage(articleContent);
         case ArticleTypes.VIDEO:
             pauseTimer();
             // console.log('VIDEO articleContent: ', articleContent);
@@ -161,25 +162,20 @@ class Article extends React.Component {
         }
     }
 
-    makeMixedArticle(articleContent, secondary = false) {
+    makeInitialPage(articleContent) {
+        const { aspect } = this.props;
+        if (aspect === 'portrait') { return ''; }
+        return <Title title={articleContent.title} subtitle="" asset={articleContent.titleImage} />;
+    }
+
+    makeMixedArticle(articleContent) {
         const pages = articleContent.subpages;
         const { pauseTimer, resetInactiveTimer } = this.props;
         // console.log('Article: makeArticle: pages: ', pages);
         let firstDateSet = false;
 
         const pagesOutput = pages.map((page, n) => {
-            if (secondary) {
-                if (n < 1) {
-                    return '';
-                }
-            }
-            if (!secondary) {
-                if (n > 0) {
-                    return '';
-                }
-            }
             const { pageID } = page;
-            // console.log('page: ', page);
             let pageOut;
             if (typeof page.date !== 'undefined' && !firstDateSet) {
                 this.setState({ firstDate: n });
@@ -187,8 +183,8 @@ class Article extends React.Component {
             }
             switch (page.type) {
             case PageTypes.TITLE:
-                pageOut = <Title key={pageID} {...page} />;
-                break;
+                // pageOut = <Title key={pageID} {...page} />;
+                return '';
             case PageTypes.TEXT_IMAGE:
             case PageTypes.TEXT_AUDIO:
                 pageOut = (
@@ -224,7 +220,6 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         autoPlay={false}
-                        singlePage
                     />
                 );
                 break;
@@ -384,9 +379,14 @@ class Article extends React.Component {
         // const startState = { autoAlpha: 0, y: -50 };
         let { navHidden } = this.state;
         const { currentPage, currentPageType, showPages } = this.state;
-        const { singleArticleMode } = this.props;
+        const { singleArticleMode, aspect } = this.props;
         const { subpages } = this.articleContent;
-        const subpagesCount = (subpages) ? subpages.length : 1;
+        let subpagesCount;
+        if (aspect === 'landscape') {
+            subpagesCount = (subpages) ? (subpages.length + 1) : 1;
+        } else {
+            subpagesCount = 1;
+        }
 
         if (this.articleContent.type === ArticleTypes.VIDEO) {
             navHidden = true;
@@ -417,7 +417,7 @@ class Article extends React.Component {
                                     </React.Fragment>
                                 )}
                                 { this.article }
-                                {showPages && (
+                                {(showPages || aspect === 'portrait') && (
                                     <React.Fragment>
                                         { this.articlePages }
                                     </React.Fragment>
@@ -468,6 +468,7 @@ Article.propTypes = {
     pauseTimer: PropTypes.func.isRequired,
     singleArticleMode: PropTypes.bool,
     autoPlay: PropTypes.bool,
+    aspect: PropTypes.string.isRequired,
 };
 
 Article.defaultProps = {
