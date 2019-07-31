@@ -103,6 +103,7 @@ class App extends Component {
                     pauseTimer={this.pauseTimer}
                     singleArticleMode={singleArticleMode}
                     autoPlay={autoPlayNext}
+                    aspect={this.getAspectRotation()}
                 />
             );
         }
