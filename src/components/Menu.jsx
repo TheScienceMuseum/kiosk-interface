@@ -223,7 +223,7 @@ class Menu extends React.Component {
 
 
     render() {
-        const { contents, titles } = this.props;
+        const { contents, titles, aspect } = this.props;
         const { currentFocused } = this.state;
 
         // console.log('Menu: render: location: ', location);
@@ -250,6 +250,7 @@ class Menu extends React.Component {
                         onClick={this.itemClick}
                         onClickAuto={this.itemClickAuto}
                         selected={selected}
+                        aspect={aspect}
                     />
                 );
                 break;
@@ -262,6 +263,8 @@ class Menu extends React.Component {
                         {...item}
                         onClick={this.itemClick}
                         selected={selected}
+                        aspect={aspect}
+                        subpages={item.subpages}
                     />
                 );
                 break;
@@ -273,6 +276,8 @@ class Menu extends React.Component {
                         {...item}
                         onClick={this.itemClick}
                         selected={selected}
+                        aspect={aspect}
+                        subpages={item.subpages}
                     />
                 );
                 break;
