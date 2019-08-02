@@ -7,8 +7,8 @@
     flex: 0 0 100%;
 
     .ModelViewer {
-        width: 1080px;
-        height: 1080px;
+        width: 1180px;
+        height: 980px;
         position: relative;
         display: inline-block;
     }
@@ -20,7 +20,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        width: 1080px;
+        width: 1180px;
         height: 100px;
 
         display: flex;
@@ -44,17 +44,27 @@
     }
 
     .ModelText {
-        width: calc(1920px - 1180px);
+        width: calc(1920px - 1280px);
         height: 100%;
         position: absolute;
         background: $pageBackground;
         right: 0;
-        //overflow-y: scroll;
+        margin-right: 100px;
         overflow: hidden;
 
         > div {
-            padding: 130px 80px;
+            padding: 80px;
             height: 100vh;
+
+            h2 {
+                font-size: 2.5rem;
+                margin-bottom: 25px;
+            }
+
+            p {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
         }
     }
 }
