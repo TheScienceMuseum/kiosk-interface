@@ -30,6 +30,9 @@ class ErrorBoundary extends Component {
                         Something went wrong, we are aware and will resolve the issue shortly.
                     </small>
                     <input type="hidden" value={errorMessage} />
+                    <button type="button" onClick={() => { window.location.reload(); }}>
+                        Refresh Screen
+                    </button>
                 </div>
             );
         }
