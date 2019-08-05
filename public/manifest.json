@@ -31,16 +31,6 @@
         },
         "subpages": [
           {
-            "pageID": "1-1-1",
-            "type": "title",
-            "asset": {
-              "assetType": "image",
-              "assetSource": "./media/01.jpg"
-            },
-            "title": "James Watson: discovering the Double Helix",
-            "subtitle": ""
-          },
-          {
             "pageID": "1-1-2",
             "type": "textAudio",
             "layout": "left",
@@ -70,7 +60,7 @@
           },
           {
             "pageID": "1-1-3",
-            "type": "textVideo",
+            "type": "video",
             "layout": "left",
             "asset": {
               "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
@@ -118,16 +108,6 @@
           "assetSource": "./media/01.jpg"
         },
         "subpages": [
-          {
-            "pageID": "1-1-1",
-            "type": "title",
-            "asset": {
-              "assetType": "image",
-              "assetSource": "./media/01.jpg"
-            },
-            "title": "James Watson: discovering the Double Helix",
-            "subtitle": ""
-          },
           {
             "pageID": "1-1-2",
             "type": "textImage",
@@ -192,7 +172,7 @@
           {
             "pageID": "1-2-7",
             "type": "image",
-            "layout": "left",
+            "layout": "right",
             "asset": {
               "assetSource": "./media/07.jpg",
               "assetType": "image",
@@ -221,16 +201,6 @@
           "assetSource": "./media/03.jpg"
         },
         "subpages": [
-          {
-            "pageID": "1-2-1",
-            "type": "title",
-            "asset": {
-              "assetType": "image",
-              "assetSource": "./media/03.jpg"
-            },
-            "title": "The search for the BRCA2 gene",
-            "subtitle": "Something something subtitle something. Something subtitle, some thing something some sub title. Title-sub thing some subtitle."
-          },
           {
             "pageID": "1-2-2",
             "type": "textImage",

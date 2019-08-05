@@ -4,6 +4,7 @@ import Hammer from 'react-hammerjs';
 
 import '../../styles/components/menuitems/MenuItems.scss';
 import propTypes from '../../propTypes';
+import getThumb from '../generic/getThumb';
 
 /*
  * MenuItem-Video.jsx:
@@ -28,7 +29,7 @@ class MenuItemVideo extends React.Component {
                     <div className="buttonsContainer">
                         <button type="button" onClick={() => onClick(articleID)}>
                             <div className="Image--withGrad">
-                                <img src={titleImage.assetSource} alt="" draggable="false" />
+                                <img src={getThumb({ fullSrc: titleImage.assetSource })} alt="" draggable="false" />
                             </div>
                             <h2>{title}</h2>
                         </button>
