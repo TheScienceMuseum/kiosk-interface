@@ -22,14 +22,14 @@ class MenuItemVideo extends React.Component {
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
-
+        const thumbImg = getThumb({ fullSrc: titleImage.assetSource });
         return (
             <li className={`MenuItem MenuItem__Video ${isSelectedClass}`}>
                 <Hammer>
                     <div className="buttonsContainer">
                         <button type="button" onClick={() => onClick(articleID)}>
                             <div className="Image--withGrad">
-                                <img src={getThumb({ fullSrc: titleImage.assetSource })} alt="" draggable="false" />
+                                <img src={thumbImg} alt="" draggable="false" />
                             </div>
                             <h2>{title}</h2>
                         </button>
