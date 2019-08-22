@@ -95,7 +95,6 @@ class Article extends React.Component {
 
     getDateLineClass() {
         const { currentPage, firstDate } = this.state;
-
         // eslint-disable-next-line max-len
         const targetHeight = ((currentPage - firstDate) * ScreenSize[window.appJson.aspect_ratio].height);
         // eslint-disable-next-line max-len
@@ -178,7 +177,7 @@ class Article extends React.Component {
             const { pageID } = page;
             let pageOut;
             if (typeof page.date !== 'undefined' && !firstDateSet) {
-                this.setState({ firstDate: n });
+                this.setState({ firstDate: (n + 1) });
                 firstDateSet = true;
             }
             switch (page.type) {
@@ -254,10 +253,9 @@ class Article extends React.Component {
         const { subpages } = this.articleContent;
 
         Article.pauseOnNavigation();
-
-        if (currentPage === (subpages.length - 1) || navHidden) return;
+        if (currentPage === (subpages.length) || navHidden) return;
         currentPage += 1;
-        currentPageType = subpages[currentPage].type;
+        currentPageType = subpages[currentPage - 1].type;
 
         // console.log(currentPageType);
         const { firstDate } = this.state;
