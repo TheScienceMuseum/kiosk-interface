@@ -191,6 +191,7 @@ class Model extends React.Component {
         this.object.rotateY(this.THREE.Math.degToRad(asset.rotation[1]));
         this.object.rotateZ(this.THREE.Math.degToRad(asset.rotation[2]));
         this.object.position.set(assetPosX, assetPosY, assetPosZ);
+        this.object.scale.set(asset.scale, asset.scale, asset.scale);
         this.scene.add(this.object);
 
         const light = new this.THREE.AmbientLight(0xffffff, 1);
