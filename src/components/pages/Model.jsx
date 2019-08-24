@@ -182,17 +182,7 @@ class Model extends React.Component {
     }
 
     modelHasLoaded(object) {
-        const { asset } = this.props;
-        const [assetPosX, assetPosY, assetPosZ] = asset.position;
-
-        this.object = object;
-
-        this.object.rotateX(this.THREE.Math.degToRad(asset.rotation[0]));
-        this.object.rotateY(this.THREE.Math.degToRad(asset.rotation[1]));
-        this.object.rotateZ(this.THREE.Math.degToRad(asset.rotation[2]));
-        this.object.position.set(assetPosX, assetPosY, assetPosZ);
-        this.object.scale.set(asset.scale, asset.scale, asset.scale);
-        this.scene.add(this.object);
+        this.scene.add(object);
 
         const light = new this.THREE.AmbientLight(0xffffff, 1);
         this.scene.add(light);
