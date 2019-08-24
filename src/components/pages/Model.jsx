@@ -339,22 +339,25 @@ class Model extends React.Component {
                     ))}
                 </div>
 
-                <div
-                    className="DebugPanel"
-                    style={{
-                        position: 'absolute',
-                        right: 0,
-                    }}
-                >
-                    <p>
-                        Position:
-                        {JSON.stringify(cameraPosition)}
-                    </p>
-                    <p>
-                        Target:
-                        {JSON.stringify(cameraFocus)}
-                    </p>
-                </div>
+                {process.env.NODE_ENV === 'development'
+                && (
+                    <div
+                        className="DebugPanel"
+                        style={{
+                            position: 'absolute',
+                            right: 0,
+                        }}
+                    >
+                        <p>
+                            Position:
+                            {JSON.stringify(cameraPosition)}
+                        </p>
+                        <p>
+                            Target:
+                            {JSON.stringify(cameraFocus)}
+                        </p>
+                    </div>
+                )}
             </div>
         );
     }
