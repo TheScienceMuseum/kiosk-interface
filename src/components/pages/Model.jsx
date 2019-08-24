@@ -163,19 +163,22 @@ class Model extends React.Component {
 
     setDisplayedSection(section) {
         const { subpages } = this.props;
-        const subpage = subpages[section];
 
-        this.renderer.render(this.scene, this.camera);
-        this.controls.update();
+        if (section < subpages.length) {
+            const subpage = subpages[section];
 
-        const targetScroll = section * ScreenSize[window.appJson.aspect_ratio].height;
-        const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        TweenLite.to(this.scrollElem, 0.5, options);
+            this.renderer.render(this.scene, this.camera);
+            this.controls.update();
 
-        this.setCameraView(
-            subpage.camera.position,
-            get(subpage, 'hotspot.focus', get(subpage, 'hotspot.position', [0, 0, 0])),
-        );
+            const targetScroll = section * ScreenSize[window.appJson.aspect_ratio].height;
+            const options = { scrollTop: targetScroll, ease: Ease.easeOut };
+            TweenLite.to(this.scrollElem, 0.5, options);
+
+            this.setCameraView(
+                subpage.camera.position,
+                get(subpage, 'hotspot.focus', get(subpage, 'hotspot.position', [0, 0, 0])),
+            );
+        }
     }
 
     modelHasLoaded(object) {
