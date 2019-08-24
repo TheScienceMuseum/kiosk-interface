@@ -8,5 +8,5 @@ import data from '../../../public/manifest';
 const pageData = data.content.contents[0];
 
 it('renders', () => {
-    shallow(<MenuItemMixed {...pageData} onClick={() => {}} />);
+    shallow(<MenuItemMixed aspect="16:9" {...pageData} onClick={() => {}} />);
 });
