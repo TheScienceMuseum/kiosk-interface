@@ -9,5 +9,5 @@ import data from '../../../public/manifest';
 const pageData = find(data.content.contents, article => article.type === 'video');
 
 it('renders', () => {
-    shallow(<MenuItemVideo {...pageData} onClick={() => {}} />);
+    shallow(<MenuItemVideo {...pageData} onClick={() => {}} onClickAuto={() => {}} />);
 });
