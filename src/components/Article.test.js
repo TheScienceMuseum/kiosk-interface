@@ -16,6 +16,7 @@ it('renders', () => {
             loadArticle={() => {}}
             pauseTimer={() => {}}
             resetInactiveTimer={() => {}}
+            aspect="16:9"
         />
     );
     // console.log(article.debug());

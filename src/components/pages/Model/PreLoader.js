@@ -37,6 +37,16 @@ export default {
                     asset.obj,
                     // called when resource is loaded
                     (object) => {
+                        const [assetPosX, assetPosY, assetPosZ] = asset.position;
+                        const [rotationX, rotationY, rotationZ] = asset.rotation;
+
+                        object.rotateX(THREE.Math.degToRad(rotationX));
+                        object.rotateY(THREE.Math.degToRad(rotationY));
+                        object.rotateZ(THREE.Math.degToRad(rotationZ));
+
+                        object.position.set(assetPosX, assetPosY, assetPosZ);
+                        object.scale.set(asset.scale, asset.scale, asset.scale);
+
                         set(window, `ModelStore.${article.articleID}`, { asset, object });
                     },
                     // called when loading is in progresses

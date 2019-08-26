@@ -381,7 +381,11 @@ class Article extends React.Component {
         const { subpages } = this.articleContent;
         let subpagesCount;
         if (aspect === 'landscape') {
-            subpagesCount = (subpages) ? (subpages.length + 1) : 1;
+            if (this.articleContent.type === ArticleTypes.MODEL) {
+                subpagesCount = subpages.length;
+            } else {
+                subpagesCount = (subpages) ? (subpages.length + 1) : 1;
+            }
         } else {
             subpagesCount = 1;
         }

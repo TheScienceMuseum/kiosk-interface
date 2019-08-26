@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    each, has, pick,
+    each, get, has, pick, values,
 } from 'lodash';
 import { TweenLite, Ease } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
@@ -24,11 +24,16 @@ class Model extends React.Component {
         this.THREE = THREE;
 
         this.state = {
-            cameraPosition: {
-                x: 0,
-                y: 0,
-                z: 0,
-            },
+            cameraPosition: [
+                0,
+                0,
+                0,
+            ],
+            cameraFocus: [
+                0,
+                0,
+                0,
+            ],
         };
 
         this.scale = 1;
@@ -75,13 +80,14 @@ class Model extends React.Component {
             this.renderer.render(this.scene, this.camera);
             this.setState(prevState => ({
                 ...prevState,
-                cameraPosition: this.camera.position,
+                cameraPosition: values(pick(this.camera.position, ['x', 'y', 'z'])),
+                cameraFocus: values(pick(this.controls.target, ['x', 'y', 'z'])),
             }));
         });
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.25;
         this.controls.screenSpacePanning = false;
-        this.controls.minDistance = 60;
+        this.controls.minDistance = 20;
         this.controls.maxDistance = 500;
         this.controls.update();
 
@@ -157,34 +163,26 @@ class Model extends React.Component {
 
     setDisplayedSection(section) {
         const { subpages } = this.props;
-        const subpage = subpages[section];
 
-        this.renderer.render(this.scene, this.camera);
-        this.controls.update();
+        if (section < subpages.length) {
+            const subpage = subpages[section];
 
-        const targetScroll = section * ScreenSize[window.appJson.aspect_ratio].height;
-        const options = { scrollTop: targetScroll, ease: Ease.easeOut };
-        TweenLite.to(this.scrollElem, 0.5, options);
+            this.renderer.render(this.scene, this.camera);
+            this.controls.update();
 
-        this.setCameraView(
-            subpage.camera.position,
-            has(subpage, 'hotspot')
-                ? subpage.hotspot.position
-                : [0, 0, 0],
-        );
+            const targetScroll = section * ScreenSize[window.appJson.aspect_ratio].height;
+            const options = { scrollTop: targetScroll, ease: Ease.easeOut };
+            TweenLite.to(this.scrollElem, 0.5, options);
+
+            this.setCameraView(
+                subpage.camera.position,
+                get(subpage, 'hotspot.focus', get(subpage, 'hotspot.position', [0, 0, 0])),
+            );
+        }
     }
 
     modelHasLoaded(object) {
-        const { asset } = this.props;
-        const [assetPosX, assetPosY, assetPosZ] = asset.position;
-
-        this.object = object;
-
-        this.object.rotateX(this.THREE.Math.degToRad(asset.rotation[0]));
-        this.object.rotateY(this.THREE.Math.degToRad(asset.rotation[1]));
-        this.object.rotateZ(this.THREE.Math.degToRad(asset.rotation[2]));
-        this.object.position.set(assetPosX, assetPosY, assetPosZ);
-        this.scene.add(this.object);
+        this.scene.add(object);
 
         const light = new this.THREE.AmbientLight(0xffffff, 1);
         this.scene.add(light);
@@ -194,7 +192,7 @@ class Model extends React.Component {
     }
 
     createTriggers() {
-        const { subpages, onChangeCurrentPage } = this.props;
+        const { asset, subpages, onChangeCurrentPage } = this.props;
 
         each(subpages, (subpage, index) => {
             if (!has(subpage, 'hotspot')) {
@@ -202,9 +200,11 @@ class Model extends React.Component {
             }
 
             const [posX, posY, posZ] = subpage.hotspot.position;
+            const inactiveColour = asset.hotspot_inactive || 0xffff00;
+            const activeColour = asset.hotspot_active || 0x0000ff;
 
-            const geometry = new this.THREE.SphereGeometry(5, 32, 32);
-            const material = new this.THREE.MeshBasicMaterial({ color: 0xffff00 });
+            const geometry = new this.THREE.SphereGeometry(0.5, 16, 16);
+            const material = new this.THREE.MeshBasicMaterial({ color: inactiveColour });
             const sphere = new this.THREE.Mesh(geometry, material);
             sphere.position.set(posX, posY, posZ);
             this.scene.add(sphere);
@@ -220,12 +220,12 @@ class Model extends React.Component {
             });
 
             sphere.on('mouseout', () => {
-                sphere.material.color.setHex(0xffff00);
+                sphere.material.color.set(inactiveColour);
                 this.renderer.render(this.scene, this.camera);
             });
 
             sphere.on('mouseover', () => {
-                sphere.material.color.setHex(0x0000ff);
+                sphere.material.color.set(activeColour);
                 this.renderer.render(this.scene, this.camera);
             });
         });
@@ -281,7 +281,7 @@ class Model extends React.Component {
 
     render() {
         const { subpages } = this.props;
-        const { cameraPosition } = this.state;
+        const { cameraPosition, cameraFocus } = this.state;
 
         return (
             <div className="Page PageModel">
@@ -329,15 +329,25 @@ class Model extends React.Component {
                     ))}
                 </div>
 
-                <div
-                    className="DebugPanel"
-                    style={{
-                        position: 'absolute',
-                        right: 0,
-                    }}
-                >
-                    <p>{JSON.stringify(cameraPosition)}</p>
-                </div>
+                {process.env.NODE_ENV === 'development'
+                && (
+                    <div
+                        className="DebugPanel"
+                        style={{
+                            position: 'absolute',
+                            right: 0,
+                        }}
+                    >
+                        <p>
+                            Position:
+                            {JSON.stringify(cameraPosition)}
+                        </p>
+                        <p>
+                            Target:
+                            {JSON.stringify(cameraFocus)}
+                        </p>
+                    </div>
+                )}
             </div>
         );
     }
