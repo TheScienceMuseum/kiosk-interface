@@ -7,6 +7,7 @@ import Video from './Video';
 const pageData = {
     articleID: '1-5',
     title: 'Knowledge is power: Peter’s story',
+    subtitle: 'Some subtitle to show under the main text',
     titleImage: {
         assetType: 'image',
         assetSource: './media/3d-science-animation-footage-000458869_prevstill.jpeg',
