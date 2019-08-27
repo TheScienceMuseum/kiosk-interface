@@ -6,11 +6,15 @@ import App from './App';
 // import * as serviceWorker from './serviceWorker';
 // import data from './data.json';
 
+import './styles/galleries/themedicinegallery.scss';
+import './styles/galleries/thefootballgallery.scss';
+
 fetch('manifest.json').then(resp => resp.json()).then(json => {
     if (process.env.NODE_ENV !== 'production') {
         console.log('JSON data version:', json.version);
         // console.log('Package version:', packageFile.version);
     }
+
     window.appJson = json;
     ReactDOM.render(<App {...json} env={window.electon_env} clientVersion={window.client_ver} />, document.getElementById('root'));
 });
