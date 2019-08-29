@@ -109,9 +109,16 @@ class App extends Component {
         }
     }
 
+    getGalleryClass() {
+        const { content } = this.props;
+        const { titles } = content;
+        return titles.galleryName.replace(/\s/g, '').toLowerCase();
+    }
+
     appClasses() {
         let classes = '';
         classes += this.getAspectClass();
+        classes += ` ${this.getGalleryClass()}`;
         return classes;
     }
 
