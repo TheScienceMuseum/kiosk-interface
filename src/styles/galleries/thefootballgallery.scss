@@ -1,0 +1,65 @@
+.thefootballgallery {
+    $white: #ffffff;
+    $black: #000;
+    $corianBone: #DED4BC;
+    $red: green;
+
+    $appBackground: $white;
+    $pageBackground: $corianBone;
+    $imageBackground: #000;
+
+    $fontLight: 'smglight';
+    $fontMedium: 'smgregular';
+
+    $transitionTime-showContent: 350ms;
+    $transitionTime-delayContent: 0.5s;
+
+    $icomoon-font-family: "kik-icons" !default;
+    $icomoon-font-path: "../fonts" !default;
+
+    $icon-close: "\e903";
+    $icon-home: "\e906";
+    $icon-arrow: "\e900";
+    $icon-minus: "\e901";
+    $icon-plus: "\e902";
+    $icon-enlarge-img: "\e904";
+    $icon-reduce-img: "\e905";
+    $icon-play: "\e907";
+    $icon-pause: "\e908";
+    $icon-rotate: "\e909";
+
+    $portraitWidth: 800px;
+    $portraitHeight: 1280px;
+    $portraitWithMenuHeight: 1180px;
+    $portraitWithMenuWidth: 800px;
+    .Button {
+        background-color: $red;
+    }
+
+    .MenuNav__Button {
+        background: transparent;
+        color: $red;
+    }
+
+    .MenuPips {
+        .MenuPipHighlighter {
+            background: $red;
+        }
+        .MenuPips__Button:after {
+            border-color: $red;
+        }
+    }
+
+    .NavBar {
+        background-color: $red;
+    }
+
+    .NavButtons--vertical .NavButtons__Prev,
+    .NavButtons--vertical .NavButtons__Next {
+        background-color: transparent;
+    }
+
+    .dateCircle, .dateLine {
+        background-color: $red;
+    }
+}
