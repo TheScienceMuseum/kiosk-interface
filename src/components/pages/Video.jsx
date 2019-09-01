@@ -170,7 +170,6 @@ class Video extends React.Component {
         const {
             autoPlay, date, title, subtitle,
         } = this.props;
-        // console.log('this.asset: ', this.asset);
         let showVideo = '';
         let showPoster = 'poster ';
         let articleStyle = '';
@@ -211,6 +210,8 @@ class Video extends React.Component {
                         poster={getThumb({ fullSrc: this.titleImage.assetSource })}
                         className={showVideo}
                         onEnded={this.onPause}
+                        onPause={this.onPause}
+                        onPlay={this.onPlay}
                     >
                         <source src={this.asset.assetSource} type="video/mp4" />
                         {

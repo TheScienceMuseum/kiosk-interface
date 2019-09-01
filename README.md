@@ -16,3 +16,10 @@ To start working on the Kiosk Interface, complete the following steps:
 To create a package that can be manually transferred to a kiosk, run `yarn build:package`.
 This command will build the testing version of the package, and produce a `.package` file 
 that can then be transferred to a kiosk using the kiosk debug menu (`command / control + d`)
+
+## Updating Staging
+
+* SSH into the staging environment
+* Change kiosk_version to the bitbucket pipeline number inside `/var/www/kiosk_manager/.env` (requires `sudo`)
+* run `sudo service php7.3-fpm restart`
+* run `sudo supervisorctl restart all`

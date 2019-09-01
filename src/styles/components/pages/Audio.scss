@@ -33,6 +33,32 @@ audio::-webkit-media-controls-mute-button {
     display: none;
 }
 
+.perfectScrollButton {
+    background-size:cover;
+    background-position:center center;
+    width:29px;
+    height:16px;
+    background-color: transparent;
+    position:absolute;
+    right:0;
+    margin-right:-12px;
+    -webkit-appearance: none;
+    border:0;
+    box-shadow: none;
+}
+
+.perfectScrollUp {
+    background: url('../../../images/Icons/Chevron.svg');
+    margin-top:-25px;
+}
+
+.perfectScrollDown {
+    background: url('../../../images/Icons/Chevron.svg');
+    transform: rotate(180deg);
+    margin-right:-13px;
+    margin-top:10px;
+}
+
 
 .audioIcon {
     background: url("../../../images/Audio/Icons/Sound.svg") no-repeat;
@@ -90,6 +116,7 @@ audio::-webkit-media-controls-mute-button {
         margin-top: 50px;
         font-size: 22px;
         line-height: 32px;
+        position:relative;
         .scrollbar-container {
             height: 550px;
             opacity:1;
