@@ -18,6 +18,11 @@
     .MenuItem__Title {
         height: 800px;
         width:500px;
+        justify-content: flex-end;
+        padding-left: 45px;
+        padding-right: 45px;
+        width: 530px;
+        margin-left: -30px;
     }
 
     .MenuPips__Button {
@@ -41,9 +46,16 @@
     .MenuItem__Video h2, .MenuItem__Mixed h2 {
         width: 400px;
         font-size:40px;
+        left:45px;
+        bottom:70px;
     }
 
     li.MenuItem.hidden {
         width: 500px;
+    }
+
+    .Attractor__details {
+        padding-bottom: 50px;
+        padding-left: 50px;
     }
 }
