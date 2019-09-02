@@ -4,6 +4,10 @@
         padding-bottom:0px;
     }
 
+    .Page.PageVideo {
+        width:800px;
+    }
+
     .ZoomableImage.ZoomableImage--zoomedIn .imageContainer {
         width: $portraitWidth !important;
         height: $portraitHeight !important;
