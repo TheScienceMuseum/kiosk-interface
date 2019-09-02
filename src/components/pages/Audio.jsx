@@ -47,12 +47,19 @@ class Audio extends React.Component {
             trackPercentage: 0,
             playing: false,
             playButtonClasses: 'playPauseContainer',
+            transcriptScrolling: false,
         };
         this.onTimeUpdate = this.onTimeUpdate.bind(this);
         this.onPause = this.onPause.bind(this);
         this.onPlay = this.onPlay.bind(this);
         this.getBarStyle = this.getBarStyle.bind(this);
         this.getPlayStyle = this.getPlayStyle.bind(this);
+        this.scrollRef = React.createRef();
+        this.actionScrollDown = this.actionScrollDown.bind(this);
+        this.actionScrollUp = this.actionScrollUp.bind(this);
+        this.scrollTranscriptDown = this.scrollTranscriptDown.bind(this);
+        this.scrollTranscriptUp = this.scrollTranscriptUp.bind(this);
+        this.stopScrolling = this.stopScrolling.bind(this);
     }
 
     componentDidMount() {
@@ -159,6 +166,44 @@ class Audio extends React.Component {
         return 'audio';
     }
 
+    stopScrolling() {
+        this.setState({ transcriptScrolling: false });
+    }
+
+    scrollTranscriptDown() {
+        this.setState({ transcriptScrolling: true }, () => {
+            this.actionScrollDown();
+        });
+    }
+
+    scrollTranscriptUp() {
+        this.setState({ transcriptScrolling: true }, () => {
+            this.actionScrollUp();
+        });
+    }
+
+    actionScrollUp() {
+        const { transcriptScrolling } = this.state;
+        if (!transcriptScrolling) return;
+        setTimeout(() => {
+            if (!this || !this.scrollRef) return;
+            const curScroll = this.scrollRef.scrollTop;
+            this.scrollRef.scrollTop = curScroll - 10;
+            this.actionScrollUp();
+        }, 10);
+    }
+
+    actionScrollDown() {
+        const { transcriptScrolling } = this.state;
+        if (!transcriptScrolling) return;
+        setTimeout(() => {
+            if (!this || !this.scrollRef) return;
+            const curScroll = this.scrollRef.scrollTop;
+            this.scrollRef.scrollTop = curScroll + 10;
+            this.actionScrollDown();
+        }, 10);
+    }
+
     render() {
         const { nameText, sourceText, audio } = this.props;
         const { transcriptShowing, playButtonClasses } = this.state;
@@ -228,14 +273,31 @@ class Audio extends React.Component {
                             e.stopPropagation();
                         }}
                     >
+                        <button
+                            type="button"
+                            className="perfectScrollButton perfectScrollUp"
+                            onMouseDown={this.scrollTranscriptUp}
+                            onMouseUp={this.stopScrolling}
+                            onTouchStart={this.scrollTranscriptUp}
+                            onTouchEnd={this.stopScrolling}
+                        />
                         <PerfectScrollbar
                             options={{
                                 suppressScrollX: true,
                             }}
                             className="area"
+                            containerRef={(containerRef) => { this.scrollRef = containerRef; }}
                         >
                             <div className="content">{audio.transcript}</div>
                         </PerfectScrollbar>
+                        <button
+                            type="button"
+                            className="perfectScrollButton perfectScrollDown"
+                            onMouseDown={this.scrollTranscriptDown}
+                            onMouseUp={this.stopScrolling}
+                            onTouchStart={this.scrollTranscriptDown}
+                            onTouchEnd={this.stopScrolling}
+                        />
                     </div>
                 </div>
             </div>

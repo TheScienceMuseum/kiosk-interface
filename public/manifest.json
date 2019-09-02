@@ -18,7 +18,7 @@
         "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
         "subtitlesSource": "testing.vtt"
       },
-      "idleTimeout": 12000
+      "idleTimeout": 5000
     },
     "contents": [
       {

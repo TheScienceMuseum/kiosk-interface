@@ -19,6 +19,15 @@
             animation: portraitSlideInUP 1s ease-out 0s 1;
         }
     }
+    .zoomableWrapper {
+        .Button {
+            &.ZoomableImage__ZoomButton {
+                display:none;
+                top:50%;
+                margin-top:-60px;
+            }
+        }
+    }
 }
 
 @keyframes portraitSlideInUP {
