@@ -746,22 +746,41 @@
         ]
       },
       {
-        "articleID": "1-3",
-        "title": "Managing my risk: Caroline’s story of BRCA2 diagnosis",
+        "type": "mixed",
+        "title": "Video Test",
+        "subpages": [
+            {
+                "type": "textVideo",
+                "asset": {
+                  "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                  "assetType": "video",
+                  "subtitlesSource": "testing.vtt",
+                  "bslSource": "media/video-historical-castle.mp4"
+                },
+                "title": "Video with Text",
+                "layout": "left",
+                "content": [
+                    "Some content here"
+                ],
+                "titleImage": {
+                  "assetType": "image",
+                  "assetSource": "./media/02.jpg"
+                },
+                "pageID": "1-2-0"
+            }
+        ],
+        "subtitle": null,
         "titleImage": {
-          "assetType": "image",
-          "assetSource": "./media/3d-science-animation-footage-000458869_prevstill.jpeg"
+            "assetType": "image",
+            "boundingBox": {
+                "x": 649.9999999999998,
+                "y": 599.9999999999998,
+                "width": 2700.0000000000005,
+                "height": 4800.000000000001
+            },
+            "assetSource": ".\/media\/1244-agung-pratamah-1248291-unsplash.jpg"
         },
-        "type": "video",
-        "asset": {
-          "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
-          "assetType": "video",
-          "subtitlesSource": "testing.vtt",
-          "bslSource": "media/video-historical-castle.mp4"
-        },
-        "subtitle": [
-          "some subtitle, some subtitle, some subtitle, some subtitle, some subtitle, some subtitle"
-        ]
+        "articleID": "1-3"
       },
       {
         "articleID": "1-4",
