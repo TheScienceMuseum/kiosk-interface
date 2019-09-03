@@ -23,6 +23,12 @@
             animation: portraitSlideInUP 1s ease-out 0s 1;
         }
     }
+    .thumbContainer {
+        position:absolute;
+        right:0;
+        left:100% !important;
+        margin-left:-960px;
+    }
     .zoomableWrapper {
         .Button {
             &.ZoomableImage__ZoomButton {
