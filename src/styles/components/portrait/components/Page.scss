@@ -1,7 +1,11 @@
 .portrait {
     .Page {
         height:$portraitHeight;
-        padding-bottom:100px;
+        padding-bottom:0px;
+    }
+
+    .Page.PageVideo {
+        width:800px;
     }
 
     .ZoomableImage.ZoomableImage--zoomedIn .imageContainer {
