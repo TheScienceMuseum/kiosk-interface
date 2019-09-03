@@ -49,4 +49,15 @@
         bottom: 150px;
         left:50px;
     }
+
+    .PageTextVideo {
+        button {
+            &.poster {
+                height: 100%;
+            }
+        }
+        .video-react {
+            height:50%;
+        }
+    }
 }

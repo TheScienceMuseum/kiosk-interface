@@ -62,7 +62,9 @@
 .PageTextImage .ImageContainer {
     transition: all 1s;
 }
+
 .PageTextImage--imageFull {
+
     .thumbContainer {
         width:100%;
     }
@@ -76,6 +78,9 @@
         }
     }
     &.PageTextImage--right {
+        .ImageContainer {
+            transition-delay: 0.4s;
+        }
         .ContentContainer {
             transition-delay: 0.4s;
             transform: translateX(-100%);
