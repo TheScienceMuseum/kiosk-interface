@@ -6,6 +6,10 @@
             position:relative;
             .thumbContainer {
                 height:100% !important;
+                transition: none;
+            }
+            .imgThumb {
+                transition: none;
             }
         }
         .ContentContainer {
