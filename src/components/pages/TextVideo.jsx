@@ -8,7 +8,6 @@ import { Layouts } from '../../utils/Constants';
 import '../../styles/components/pages/TextImage.scss';
 import propTypes from '../../propTypes';
 import createBodyTag from '../../utils/createBodyTag';
-import getThumb from '../generic/getThumb';
 
 /*
  * :
@@ -88,7 +87,7 @@ class TextVideo extends React.Component {
     getPosterStyle() {
         let posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         if (posterImg) {
-            posterImg = getThumb({ asset: this.titleImage });
+            posterImg = this.titleImage.assetSource;
         }
         return {
             backgroundImage: `url('${posterImg}')`,
@@ -197,7 +196,7 @@ class TextVideo extends React.Component {
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={getThumb({ asset: this.titleImage })}
+                        poster={this.titleImage.assetSource}
                         className={showVideo}
                         onEnded={this.onPause}
                         onPause={this.onPause}
