@@ -86,9 +86,9 @@ class TextVideo extends React.Component {
 
 
     getPosterStyle() {
-        const posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
+        let posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         if (posterImg) {
-            getThumb({ fullSrc: this.titleImage.assetSource });
+            posterImg = getThumb({ fullSrc: this.titleImage.assetSource });
         }
         return {
             backgroundImage: `url('${posterImg}')`,

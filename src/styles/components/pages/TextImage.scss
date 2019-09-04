@@ -123,6 +123,13 @@
             right: 80px;
             text-align: right;
         }
+
+        .imgThumb {
+            position:absolute;
+            right:0;
+            left:100% !important;
+            margin-left:-960px;
+        }
     }
 
     &--imageFull {
