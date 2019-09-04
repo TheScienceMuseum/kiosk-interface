@@ -6,6 +6,7 @@ import Hammer from 'react-hammerjs';
 import propTypes from '../../propTypes';
 import '../../styles/components/menuitems/MenuItems.scss';
 import getFirstContentImage from '../generic/getFirstContentImage';
+import getThumb from '../generic/getThumb';
 /*
  * MenuItemMixed.jsx:
  *
@@ -22,7 +23,7 @@ class MenuItemMixed extends React.Component {
         } = this.props;
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
 
-        let imgSource = titleImage.assetSource;
+        let imgSource = getThumb({ fullSrc: titleImage.assetSource });
         if (aspect === 'portrait' && subpages) {
             const portImage = getFirstContentImage({ subpages });
             imgSource = portImage.thumbnail;
