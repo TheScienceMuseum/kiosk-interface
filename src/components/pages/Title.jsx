@@ -6,7 +6,7 @@ import '../../styles/components/pages/Title.scss';
 import propTypes from '../../propTypes';
 
 import createBodyTag from '../../utils/createBodyTag';
-
+import getThumb from '../generic/getThumb';
 /*
  * Title:
  *
@@ -20,7 +20,7 @@ function Title(props) {
     const { title, subtitle, asset } = props;
 
     const imageStyle = {
-        background: `url(${asset.assetSource})`,
+        background: `url(${getThumb({ fullSrc: asset.assetSource })})`,
     };
 
     return (
