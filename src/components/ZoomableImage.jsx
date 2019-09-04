@@ -594,7 +594,7 @@ class ZoomableImage extends React.Component {
             fadeOutFullscreen,
         } = this.state;
 
-        const thumbSrc = getThumb({ fullSrc });
+        const thumbSrc = getThumb({ asset: this.asset });
 
         const zoomed = fullscreen ? 'zoomedIn' : 'zoomedOut';
 
