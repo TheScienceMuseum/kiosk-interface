@@ -23,13 +23,13 @@ function getFirstContentImage(props) {
     case PageTypes.TEXT_AUDIO:
         return {
             full: page.asset.assetSource,
-            thumbnail: getThumb({ fullSrc: page.asset.assetSource }),
+            thumbnail: getThumb({ asset: page.asset }),
         };
     case PageTypes.VIDEO:
     case PageTypes.VIDEO_TEXT:
         return {
             full: page.titleImage.assetSource,
-            thumbnail: getThumb({ fullSrc: page.titleImage.assetSource }),
+            thumbnail: getThumb({ asset: page.titleImage }),
         };
     default:
         return {
