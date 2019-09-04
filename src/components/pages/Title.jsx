@@ -20,7 +20,7 @@ function Title(props) {
     const { title, subtitle, asset } = props;
 
     const imageStyle = {
-        background: `url(${getThumb(asset.assetSource)})`,
+        background: `url(${getThumb({ fullSrc: asset.assetSource })})`,
     };
 
     return (
