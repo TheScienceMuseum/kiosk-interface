@@ -23,7 +23,7 @@ class MenuItemMixed extends React.Component {
         } = this.props;
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
 
-        let imgSource = getThumb(titleImage.assetSource);
+        let imgSource = getThumb({ fullSrc: titleImage.assetSource });
         if (aspect === 'portrait' && subpages) {
             const portImage = getFirstContentImage({ subpages });
             imgSource = portImage.thumbnail;
