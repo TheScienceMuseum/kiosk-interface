@@ -22,7 +22,7 @@ class MenuItemVideo extends React.Component {
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
-        const thumbImg = getThumb({ fullSrc: titleImage.assetSource });
+        const thumbImg = getThumb({ asset: titleImage });
         return (
             <li className={`MenuItem MenuItem__Video ${isSelectedClass}`}>
                 <Hammer>
