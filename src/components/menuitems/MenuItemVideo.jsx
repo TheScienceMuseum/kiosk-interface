@@ -4,7 +4,6 @@ import Hammer from 'react-hammerjs';
 
 import '../../styles/components/menuitems/MenuItems.scss';
 import propTypes from '../../propTypes';
-import getThumb from '../generic/getThumb';
 
 /*
  * MenuItem-Video.jsx:
