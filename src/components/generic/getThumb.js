@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 // import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,11 +12,12 @@ import PropTypes from 'prop-types';
 
 
 function getThumb(props) {
-    return props.fullSrc.replace(/\.png|\.jpg|\.jpeg/, '_boundingBox.jpg');
+    return props.asset.thumbnail;
+    // old return props.fullSrc.replace(/\.png|\.jpg|\.jpeg/, '_boundingBox.jpg');
 }
 
 getThumb.propTypes = {
-    fullSrc: PropTypes.string.isRequired,
+    asset: PropTypes.object.isRequired,
 };
 
 getThumb.defaultProps = {

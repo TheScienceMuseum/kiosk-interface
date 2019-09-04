@@ -94,7 +94,7 @@ class Video extends React.Component {
     getPosterStyle() {
         let posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         if (posterImg) {
-            posterImg = getThumb({ fullSrc: posterImg });
+            posterImg = getThumb({ asset: this.titleImage });
         }
         return {
             backgroundImage: `url('${posterImg}')`,
@@ -207,7 +207,7 @@ class Video extends React.Component {
                         autoPlay={!!autoPlay}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={getThumb({ fullSrc: this.titleImage.assetSource })}
+                        poster={getThumb({ asset: this.titleImage })}
                         className={showVideo}
                         onEnded={this.onPause}
                         onPause={this.onPause}
