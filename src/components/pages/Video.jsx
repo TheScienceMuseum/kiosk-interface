@@ -7,7 +7,6 @@ import { Player, ControlBar } from 'video-react';
 import has from 'lodash.has';
 import propTypes from '../../propTypes';
 import createBodyTag from '../../utils/createBodyTag';
-import getThumb from '../generic/getThumb';
 
 /*
  * Video:
@@ -94,7 +93,7 @@ class Video extends React.Component {
     getPosterStyle() {
         let posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         if (posterImg) {
-            posterImg = getThumb({ asset: this.titleImage });
+            posterImg = this.titleImage.assetSource;
         }
         return {
             backgroundImage: `url('${posterImg}')`,
@@ -207,7 +206,7 @@ class Video extends React.Component {
                         autoPlay={!!autoPlay}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={getThumb({ asset: this.titleImage })}
+                        poster={this.titleImage.assetSource}
                         className={showVideo}
                         onEnded={this.onPause}
                         onPause={this.onPause}
