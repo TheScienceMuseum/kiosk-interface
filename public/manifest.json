@@ -2,7 +2,7 @@
   "short_name": "",
   "name": "genetic-diagnosis",
   "label": "Genetic Diagnosis",
-  "aspect_ratio": "16:9",
+  "aspect_ratio": "9:16",
   "version": 14,
   "main": "index.html",
   "requirements": {
