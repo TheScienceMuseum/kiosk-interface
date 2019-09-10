@@ -26,7 +26,7 @@ class MenuItemVideo extends React.Component {
 
     render() {
         const {
-            title, articleID, onClick, onClickAuto, titleImage, selected,
+            title, articleID, onClick, onClickAuto, selected,
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
