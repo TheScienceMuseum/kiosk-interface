@@ -1,11 +1,14 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Player, ControlBar } from 'video-react';
 import has from 'lodash.has';
 
 import { Layouts } from '../../utils/Constants';
 import '../../styles/components/pages/TextImage.scss';
+import '../../styles/components/pages/TextVideo.scss';
 import propTypes from '../../propTypes';
 import createBodyTag from '../../utils/createBodyTag';
 
@@ -30,8 +33,11 @@ class TextVideo extends React.Component {
             bslEnabled: false,
             subtitlesEnabled: false,
             played: false,
+            canPlay: false,
+            transcriptShowing: false,
+            transcriptScrolling: false,
         };
-
+        this.scrollRef = React.createRef();
         this.handleHideContent = this.handleHideContent.bind(this);
 
         this.onPause = this.onPause.bind(this);
@@ -42,11 +48,20 @@ class TextVideo extends React.Component {
         this.getBslClass = this.getBslClass.bind(this);
         this.getSubClass = this.getSubClass.bind(this);
         this.beginPlay = this.beginPlay.bind(this);
+        this.endPlay = this.endPlay.bind(this);
+        this.scrollTranscriptDown = this.scrollTranscriptDown.bind(this);
+        this.scrollTranscriptUp = this.scrollTranscriptUp.bind(this);
+        this.stopScrolling = this.stopScrolling.bind(this);
+        this.actionScrollUp = this.actionScrollUp.bind(this);
+        this.actionScrollDown = this.actionScrollDown.bind(this);
     }
 
     componentDidMount() {
         setTimeout(() => {
             this.disableSubTitles();
+            this.setState({
+                canPlay: true,
+            });
         }, 100);
     }
 
@@ -91,6 +106,23 @@ class TextVideo extends React.Component {
         }
         return {
             backgroundImage: `url('${posterImg}')`,
+        };
+    }
+
+    getAudioStyle() {
+        const { transcriptShowing } = this.state;
+
+        if (transcriptShowing) {
+            return {
+                visibility: 'visible',
+                opacity: 1,
+            };
+        }
+
+        return {
+            opacity: 0,
+            visibility: 'hidden',
+            overflow: 'hidden',
         };
     }
 
@@ -156,8 +188,72 @@ class TextVideo extends React.Component {
     }
 
     beginPlay() {
-        this.setState({ played: true });
-        this.player.play();
+        const { canPlay } = this.state;
+        const { toggleNavHide } = this.props;
+        if (canPlay) {
+            if (window.appJson.aspect_ratio === '16:9') {
+                toggleNavHide(true);
+            }
+            this.setState({ played: true });
+            this.player.play();
+        }
+    }
+
+    endPlay() {
+        const { toggleNavHide } = this.props;
+        if (window.appJson.aspect_ratio === '16:9') {
+            toggleNavHide(false);
+        }
+        this.player.pause();
+        this.setState({ played: false });
+        const { resetInactiveTimer } = this.props;
+        resetInactiveTimer();
+    }
+
+    openTranscript() {
+        this.setState({ transcriptShowing: true });
+    }
+
+    closeTranscript() {
+        this.setState({ transcriptShowing: false });
+    }
+
+    stopScrolling() {
+        this.setState({ transcriptScrolling: false });
+    }
+
+    scrollTranscriptDown() {
+        this.setState({ transcriptScrolling: true }, () => {
+            this.actionScrollDown();
+        });
+    }
+
+    scrollTranscriptUp() {
+        this.setState({ transcriptScrolling: true }, () => {
+            this.actionScrollUp();
+        });
+    }
+
+    actionScrollUp() {
+        const { transcriptScrolling } = this.state;
+        if (!transcriptScrolling) return;
+        setTimeout(() => {
+            if (!this || !this.scrollRef) return;
+            const curScroll = this.scrollRef.scrollTop;
+            this.scrollRef.scrollTop = curScroll - 10;
+            this.actionScrollUp();
+        }, 10);
+    }
+
+    actionScrollDown() {
+        const { transcriptScrolling } = this.state;
+        if (!transcriptScrolling) return;
+        setTimeout(() => {
+            if (!this || !this.scrollRef) return;
+            const curScroll = this.scrollRef.scrollTop;
+            this.scrollRef.scrollTop = curScroll + 10;
+            this.actionScrollDown();
+        }, 10);
     }
 
     render() {
@@ -165,7 +261,7 @@ class TextVideo extends React.Component {
             title, content, asset, layout,
         } = this.props;
 
-        const { contentHidden } = this.state;
+        const { contentHidden, transcriptShowing } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
 
         const { showBSL, showSubtitles, played } = this.state;
@@ -191,7 +287,9 @@ class TextVideo extends React.Component {
                         className={showPoster}
                         onClick={this.beginPlay}
                         style={this.getPosterStyle()}
-                    />
+                    >
+                        <span className="play" />
+                    </button>
                     <Player
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"
@@ -237,19 +335,101 @@ class TextVideo extends React.Component {
                                     </button>
                                 )
                             }
+                            <button
+                                type="button"
+                                className="kioskPlayerControl end close"
+                                onClick={this.endPlay}
+                            >
+                                Close
+                            </button>
                         </ControlBar>
                     </Player>
                 </div>
                 <div className="ContentContainer">
-                    <h2>{title}</h2>
-                    <div
-                        className="ContentContainer__body"
-                        dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
-                    />
-                    <div className="ImageCaption">
-                        <h3>{asset.nameText}</h3>
-                        <p>{asset.sourceText}</p>
-                    </div>
+                    {!transcriptShowing && (
+                        <React.Fragment>
+                            <h2>{title}</h2>
+                            <div
+                                className="ContentContainer__body"
+                                dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}
+                            />
+                        </React.Fragment>
+                    )}
+                    <button
+                        type="button"
+                        onClick={this.beginPlay}
+                        className="ContentContainer__play"
+                    >
+                        Play Video
+                    </button>
+                    { (!transcriptShowing && this.asset.transcript) && (
+                        <button
+                            type="button"
+                            className="transcriptBtn"
+                            onClick={this.openTranscript.bind(this)}
+                        >
+                            transcript
+                        </button>
+                    )}
+                    { (transcriptShowing && this.asset.transcript) && (
+                        <button
+                            type="button"
+                            className="transcriptBtn open"
+                            onClick={this.closeTranscript.bind(this)}
+                        >
+                            close transcript
+                        </button>
+                    )}
+                    {this.asset.transcript && (
+                        <div
+                            className="transcript"
+                            style={this.getAudioStyle()}
+                            onPointerUp={(e) => {
+                                // Ignore pointer up for hammerjs swiping on the model viewer
+                                e.stopPropagation();
+                            }}
+                        >
+                            <button
+                                type="button"
+                                className="perfectScrollButton perfectScrollUp"
+                                onMouseDown={this.scrollTranscriptUp}
+                                onMouseUp={this.stopScrolling}
+                                onTouchStart={this.scrollTranscriptUp}
+                                onTouchEnd={this.stopScrolling}
+                            />
+                            <PerfectScrollbar
+                                options={{
+                                    suppressScrollX: true,
+                                }}
+                                className="area"
+                                containerRef={(containerRef) => { this.scrollRef = containerRef; }}
+                            >
+                                <div className="content">
+                                    {this.asset.transcript.split('\n').map((item, key) => (
+                                        <span key={key}>
+                                            {item}
+                                            <br />
+                                        </span>
+                                    ))
+                                    }
+                                </div>
+                            </PerfectScrollbar>
+                            <button
+                                type="button"
+                                className="perfectScrollButton perfectScrollDown"
+                                onMouseDown={this.scrollTranscriptDown}
+                                onMouseUp={this.stopScrolling}
+                                onTouchStart={this.scrollTranscriptDown}
+                                onTouchEnd={this.stopScrolling}
+                            />
+                        </div>
+                    )}
+                    {!transcriptShowing && (
+                        <div className="ImageCaption">
+                            <h3>{asset.nameText}</h3>
+                            <p>{asset.sourceText}</p>
+                        </div>
+                    )}
                 </div>
             </div>
         );

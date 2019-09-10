@@ -164,7 +164,13 @@ class Article extends React.Component {
     makeInitialPage(articleContent) {
         const { aspect } = this.props;
         if (aspect === 'portrait') { return ''; }
-        return <Title title={articleContent.title} subtitle="" asset={articleContent.titleImage} />;
+        return (
+            <Title
+                title={articleContent.title}
+                subtitle={articleContent.subtitle}
+                asset={articleContent.titleImage}
+            />
+        );
     }
 
     makeMixedArticle(articleContent) {

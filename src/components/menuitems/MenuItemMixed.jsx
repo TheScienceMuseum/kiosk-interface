@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,26 +18,46 @@ import getThumb from '../generic/getThumb';
 
 
 class MenuItemMixed extends React.Component {
-    render() {
-        const {
-            title, titleImage, articleID, onClick, selected, aspect, subpages,
-        } = this.props;
-        const isSelectedClass = selected ? 'MenuItem__Selected' : '';
-
+    getBackgroundStyle() {
+        const { titleImage, aspect, subpages } = this.props;
         let imgSource = getThumb({ asset: titleImage });
         if (aspect === 'portrait' && subpages) {
             const portImage = getFirstContentImage({ subpages });
             imgSource = portImage.thumbnail;
         }
+        return {
+            backgroundImage: `url('${imgSource}')`,
+        };
+    }
+
+    getPlayButtonStyle() {
+        const { aspect, subpages } = this.props;
+        if (aspect === 'portrait' && subpages) {
+            const portImage = getFirstContentImage({ subpages });
+            if (portImage.showPlayButton) {
+                return {
+                    display: 'none',
+                };
+            }
+        }
+        return {
+            display: 'none',
+        };
+    }
+
+    render() {
+        const {
+            title, articleID, onClick, selected,
+        } = this.props;
+        const isSelectedClass = selected ? 'MenuItem__Selected' : '';
 
         return (
             <li className={`MenuItem MenuItem__Mixed ${isSelectedClass}`}>
                 <Hammer onTap={() => onClick(articleID)}>
                     <button type="button">
-                        <div className="Image--withGrad">
-                            <img src={imgSource} alt="" />
-                        </div>
+                        <div className="Image--withGrad" style={this.getBackgroundStyle()} />
                         <h2>{title}</h2>
+                        <div className="playButton" style={this.getPlayButtonStyle()} />
                     </button>
                 </Hammer>
             </li>
