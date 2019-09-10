@@ -44,13 +44,13 @@ Title.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)])
-        .isRequired,
+        PropTypes.arrayOf(PropTypes.string)]),
     asset: propTypes.asset,
 };
 
 Title.defaultProps = {
     asset: null,
+    subtitle: '',
 };
 
 export default Title;
