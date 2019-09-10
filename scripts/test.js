@@ -16,7 +16,7 @@ process.on('unhandledRejection', err => {
 require('../config/env');
 
 window.appJson = {
-  aspect_ratio = '16:9';
+    aspect_ratio: '16:9',
 };
 
 const jest = require('jest');
