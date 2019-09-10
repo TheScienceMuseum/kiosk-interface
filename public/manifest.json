@@ -37,11 +37,12 @@
             "audio": {
               "assetSource": "./media/audio-test.mp3",
               "assetType": "audio",
-              "soundTitle": "James Watson (b. 1928) pictured in 2018.",
+              "nameText": "Some Audio about my boy James Watson.",
               "transcript": "Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. Science Museum Group. "
             },
             "asset": {
-              "assetSource": "./media/02.jpg",
+              "assetSource": "./media/01.jpg",
+              "thumbnail": "./media/01.jpg",
               "assetType": "image",
               "boundingBox": {
                 "x": 0.2,
@@ -114,7 +115,7 @@
             "type": "textImage",
             "layout": "left",
             "asset": {
-              "assetSource": "./media/02.jpg",
+              "assetSource": "./media/01.jpg",
               "assetType": "image",
               "boundingBox": {
                 "x": 0.2,
@@ -194,6 +195,53 @@
         ]
       },
       {
+        "type": "mixed",
+        "title": "vidya",
+        "subpages": [
+            {
+                "type": "textVideo",
+                "asset": {
+                    "assetType": "video",
+                    "assetSource": "http://media.w3.org/2010/05/bunny/movie.mp4",
+                    "bslSource": "media/video-historical-castle.mp4",
+                    "nameText": "Source",
+                    "sourceText": "Something Else",
+                    "transcript": "something \n\nsomething now\n\nanother line\n\nsomething \n\nsomething now\n\nanother line\n\nsomething \n\nsomething now\n\nanother line"
+                },
+                "title": "vidya test",
+                "layout": "left",
+                "content": [
+                    "Some content here"
+                ],
+                "titleImage": {
+                    "assetType": "image",
+                    "boundingBox": {
+                        "x": 415.00000000000006,
+                        "y": 79.99999999999997,
+                        "width": 360,
+                        "height": 640
+                    },
+                    "assetSource": "./media/01.jpg",
+                    "thumbnail": "./media/01.jpg"
+                },
+                "pageID": "1-0-0"
+            }
+        ],
+        "subtitle": "some subtitle",
+        "titleImage": {
+            "assetType": "image",
+            "boundingBox": {
+                "x": 415.00000000000006,
+                "y": 79.99999999999997,
+                "width": 360,
+                "height": 640
+            },
+            "assetSource": "./media/01.jpg",
+            "thumbnail": "./media/01.jpg"
+        },
+        "articleID": "1-0"
+    },
+      {
         "articleID": "1-2",
         "type": "timeline",
         "title": "The search for the BRCA2 gene",
@@ -231,7 +279,7 @@
             "layout": "right",
             "date": "1972",
             "asset": {
-              "assetSource": "./media/02.jpg",
+              "assetSource": "./media/01.jpg",
               "assetType": "image",
               "boundingBox": {
                 "x": 0.1,
@@ -764,7 +812,7 @@
                 ],
                 "titleImage": {
                   "assetType": "image",
-                  "assetSource": "./media/02.jpg"
+                  "assetSource": "./media/01.jpg"
                 },
                 "pageID": "1-2-0"
             }

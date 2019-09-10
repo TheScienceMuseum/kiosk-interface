@@ -15,21 +15,28 @@ import propTypes from '../../propTypes';
 
 
 class MenuItemVideo extends React.Component {
+    getBackgroundStyle() {
+        const { titleImage } = this.props;
+        const thumbImg = titleImage.assetSource;
+
+        return {
+            backgroundImage: `url('${thumbImg}')`,
+        };
+    }
+
     render() {
         const {
-            title, articleID, onClick, onClickAuto, titleImage, selected,
+            title, articleID, onClick, onClickAuto, selected,
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
-        const thumbImg = titleImage.assetSource;
+
         return (
             <li className={`MenuItem MenuItem__Video ${isSelectedClass}`}>
                 <Hammer>
                     <div className="buttonsContainer">
                         <button type="button" onClick={() => onClick(articleID)}>
-                            <div className="Image--withGrad">
-                                <img src={thumbImg} alt="" draggable="false" />
-                            </div>
+                            <div className="Image--withGrad" style={this.getBackgroundStyle()} />
                             <h2>{title}</h2>
                         </button>
                         <button
