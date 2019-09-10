@@ -109,6 +109,23 @@ class TextVideo extends React.Component {
         };
     }
 
+    getAudioStyle() {
+        const { transcriptShowing } = this.state;
+
+        if (transcriptShowing) {
+            return {
+                visibility: 'visible',
+                opacity: 1,
+            };
+        }
+
+        return {
+            opacity: 0,
+            visibility: 'hidden',
+            overflow: 'hidden',
+        };
+    }
+
     disableSubTitles() {
         this.player.video.video.textTracks[0].mode = 'disabled';
     }
@@ -191,23 +208,6 @@ class TextVideo extends React.Component {
         this.setState({ played: false });
         const { resetInactiveTimer } = this.props;
         resetInactiveTimer();
-    }
-
-    getAudioStyle() {
-        const { transcriptShowing } = this.state;
-
-        if (transcriptShowing) {
-            return {
-                visibility: 'visible',
-                opacity: 1,
-            };
-        }
-
-        return {
-            opacity: 0,
-            visibility: 'hidden',
-            overflow: 'hidden',
-        };
     }
 
     openTranscript() {
