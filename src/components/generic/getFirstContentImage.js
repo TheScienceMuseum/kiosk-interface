@@ -24,17 +24,20 @@ function getFirstContentImage(props) {
         return {
             full: page.asset.assetSource,
             thumbnail: getThumb({ asset: page.asset }),
+            showPlayButton: false,
         };
     case PageTypes.VIDEO:
     case PageTypes.VIDEO_TEXT:
         return {
             full: page.titleImage.assetSource,
             thumbnail: getThumb({ asset: page.titleImage }),
+            showPlayButton: true,
         };
     default:
         return {
             full: '',
             thumbnail: '',
+            showPlayButton: false,
         };
     }
 }

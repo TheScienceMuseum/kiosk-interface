@@ -30,6 +30,21 @@ class MenuItemMixed extends React.Component {
         };
     }
 
+    getPlayButtonStyle() {
+        const { aspect, subpages } = this.props;
+        if (aspect === 'portrait' && subpages) {
+            const portImage = getFirstContentImage({ subpages });
+            if (portImage.showPlayButton) {
+                return {
+                    display: 'none',
+                };
+            }
+        }
+        return {
+            display: 'none',
+        };
+    }
+
     render() {
         const {
             title, articleID, onClick, selected,
@@ -42,6 +57,7 @@ class MenuItemMixed extends React.Component {
                     <button type="button">
                         <div className="Image--withGrad" style={this.getBackgroundStyle()} />
                         <h2>{title}</h2>
+                        <div className="playButton" style={this.getPlayButtonStyle()} />
                     </button>
                 </Hammer>
             </li>
