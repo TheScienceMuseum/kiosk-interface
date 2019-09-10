@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable spaced-comment */
 /* eslint-disable react/sort-comp */
 /* eslint-disable class-methods-use-this */
@@ -99,15 +100,6 @@ class Audio extends React.Component {
             visibility: 'hidden',
             overflow: 'hidden',
         };
-    }
-
-    handleTranscriptClick() {
-        const { transcriptShowing } = this.state;
-        if (transcriptShowing) {
-            this.closeTranscript();
-            return;
-        }
-        this.openTranscript();
     }
 
     openTranscript() {
@@ -218,7 +210,7 @@ class Audio extends React.Component {
                     />
                 </div>
                 <div className={this.getAudioContainerClass()}>
-                    <h3>{audio.soundTitle}</h3>
+                    <h3>{audio.nameText}</h3>
                     <div className="controller">
                         <Media>
                             <div className="media">
@@ -288,7 +280,15 @@ class Audio extends React.Component {
                             className="area"
                             containerRef={(containerRef) => { this.scrollRef = containerRef; }}
                         >
-                            <div className="content">{audio.transcript}</div>
+                            <div className="content">
+                                {audio.transcript.split('\n').map((item, key) => (
+                                    <span key={key}>
+                                        {item}
+                                        <br />
+                                    </span>
+                                ))
+                                }
+                            </div>
                         </PerfectScrollbar>
                         <button
                             type="button"

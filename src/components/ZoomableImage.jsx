@@ -604,10 +604,16 @@ class ZoomableImage extends React.Component {
         const thumbContainerClass = fullscreen ? 'thumbContainer fadeInFull' : 'thumbContainer';
 
         const zoomingOut = fadeOutFullscreen ? 'true' : 'false';
+
+        let imgThumbClass = 'imgThumb';
+        if (window && window.appJson) {
+            imgThumbClass = window.appJson.aspect_ratio === '9:16' ? 'imgThumb imgThumb--withGrad' : 'imgThumb';
+        }
+
         return (
             <div className="zoomableWrapper">
                 <div className={thumbContainerClass} style={{ width: `${thumbWidth}px`, height: `${thumbHeight}px` }}>
-                    <div className="imgThumb" style={{ backgroundImage: `url(${thumbSrc})`, width: `${thumbWidth}px` }} />
+                    <div className={imgThumbClass} style={{ backgroundImage: `url(${thumbSrc})`, width: `${thumbWidth}px` }} />
                 </div>
                 <div
                     className={`ZoomableImage ZoomableImage--${zoomed} zoomingOut--${zoomingOut}`}

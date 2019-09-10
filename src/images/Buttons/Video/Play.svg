@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="47px" height="46px" viewBox="0 0 47 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Buttons/Video/Play</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M45.3731399,-1 L45.3731399,44.2786885 L-1,44.2786885 L-1,-1 L45.3731399,-1 Z M43.3731399,1 L1,1 L1,42.2786885 L43.3731399,42.2786885 L43.3731399,1 Z M14.3861745,10.9174301 L32.9058226,22.1982116 L14.3861745,33.4789931 L14.3861745,10.9174301 Z M16.3861745,14.4775028 L16.3861745,29.9189204 L29.0612546,22.1982116 L16.3861745,14.4775028 Z" id="path-1"></path>
+    </defs>
+    <g id="Build-assets-1920x1080" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MIXED-CONTENT-PAGE" transform="translate(-1249.000000, -5784.000000)">
+            <g id="Video-Block" transform="translate(0.000000, 5398.000000)">
+                <g id="Group-12" transform="translate(1170.000000, 1.000000)">
+                    <g id="Buttons/Video/Play/Default" transform="translate(80.000000, 385.965676)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <g id="Colours/Flat/Black" mask="url(#mask-2)" fill="#111111" fill-rule="nonzero">
+                            <g transform="translate(-1.000000, -1.000000)" id="Rectangle">
+                                <rect x="0" y="0" width="46" height="45"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
