@@ -100,26 +100,51 @@ body .Page.PageVideo {
             }
         }
 
-        &.subtitles {
-            background-image: url("../../../images/Buttons/Subtitles/Default.png");
-            &.enabled {
+        &.enabled {
+            &.subtitles { 
                 background-color:#fff;
-                background-image: url("../../../images/Buttons/Subtitles/Selected.png");
+                .inner { 
+                    
+                    background-image: url("../../../images/Buttons/Subtitles/Selected.png");
+                }
             }
-        }
-        &.bsl {
-            background-image: url("../../../images/Buttons/BSL/Default.png");
-            &.enabled {
+
+            &.bsl { 
                 background-color:#fff;
-                background-image: url("../../../images/Buttons/BSL/Selected.png");
+                .inner { 
+                    
+                    background-image: url("../../../images/Buttons/BSL/Selected.png");
+                }
             }
-        }
-        &.close {
-            background-image: url("../../../images/Buttons/Close/Default.png");
         }
 
-        &:active {
-            transform: scale(1.2);
+        .inner {
+            display:block;
+            width:100%;
+            height:100%;
+            transition: all 0.3s;
+            background-position:center center;
+            &.subtitles {
+                background-image: url("../../../images/Buttons/Subtitles/Default.png");
+                &.enabled {
+                    background-color:#fff;
+                    background-image: url("../../../images/Buttons/Subtitles/Selected.png");
+                }
+            }
+            &.bsl {
+                background-image: url("../../../images/Buttons/BSL/Default.png");
+                &.enabled {
+                    background-color:#fff;
+                    background-image: url("../../../images/Buttons/BSL/Selected.png");
+                }
+            }
+            &.close {
+                background-image: url("../../../images/Buttons/Close/Default.png");
+            }
+
+            &:active {
+                transform: scale(1.2);
+            }
         }
     }
 
