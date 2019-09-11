@@ -258,7 +258,7 @@ class TextVideo extends React.Component {
 
     render() {
         const {
-            title, content, asset, layout,
+            title, content, layout,
         } = this.props;
 
         const { contentHidden, transcriptShowing } = this.state;
