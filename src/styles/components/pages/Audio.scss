@@ -121,6 +121,9 @@ audio::-webkit-media-controls-mute-button {
             height: 550px;
             opacity:1;
             background: transparent;
+            .content {
+                padding-right:30px;
+            }
             .ps__rail-y {
                 opacity:1 !important;
                 background:rgba(0,0,0,0.2);
