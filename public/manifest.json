@@ -215,6 +215,8 @@
                 ],
                 "titleImage": {
                     "assetType": "image",
+                    "nameText": "something",
+                    "sourceText": "Some source",
                     "boundingBox": {
                         "x": 415.00000000000006,
                         "y": 79.99999999999997,
