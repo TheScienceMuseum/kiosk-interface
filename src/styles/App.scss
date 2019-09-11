@@ -73,14 +73,6 @@ h1 {
     }
 }
 
-.Attractor__details {
-    .Button {
-        &:active {
-            transform: scale(1.1);
-        }
-    }
-}
-
 .Button {
     background: $red;
     color: $white;
@@ -108,8 +100,15 @@ h1 {
         padding: 0;
     }
 
+    .pop, i {
+        display:inline-block;
+        transition: all 0.3s;
+    }
+
     &:active {
-        transform: scale(1.2);
+        .pop, i {
+            transform: scale(1.2);
+        }
     }
 }
 /*
