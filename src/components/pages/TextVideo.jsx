@@ -258,7 +258,7 @@ class TextVideo extends React.Component {
 
     render() {
         const {
-            title, content, asset, layout,
+            title, content, layout,
         } = this.props;
 
         const { contentHidden, transcriptShowing } = this.state;
@@ -426,8 +426,8 @@ class TextVideo extends React.Component {
                     )}
                     {!transcriptShowing && (
                         <div className="ImageCaption">
-                            <h3>{asset.nameText}</h3>
-                            <p>{asset.sourceText}</p>
+                            <h3>{this.titleImage.nameText}</h3>
+                            <p>{this.titleImage.sourceText}</p>
                         </div>
                     )}
                 </div>
