@@ -426,8 +426,8 @@ class TextVideo extends React.Component {
                     )}
                     {!transcriptShowing && (
                         <div className="ImageCaption">
-                            <h3>{asset.nameText}</h3>
-                            <p>{asset.sourceText}</p>
+                            <h3>{this.titleImage.nameText}</h3>
+                            <p>{this.titleImage.sourceText}</p>
                         </div>
                     )}
                 </div>
