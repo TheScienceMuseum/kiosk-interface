@@ -1,5 +1,16 @@
 .landscape {
     .PageTextVideo {
+        .poster {
+            display:flex;
+            &:after {
+                bottom:0;
+                top:100%;
+                left:0;
+                margin-left:0;
+                margin-top:-140px;
+                position:absolute;
+            }
+        }
         .ImageContainer {
             width: 100%;
             padding-right:100px;
