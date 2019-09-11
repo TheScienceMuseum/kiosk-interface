@@ -234,7 +234,7 @@ class Video extends React.Component {
                                         `}
                                         onClick={this.handleBSL}
                                     >
-                                        Enable/Disable BSL
+                                        <span className="inner bsl" />
                                     </button>
                                 )
                             }
@@ -247,7 +247,7 @@ class Video extends React.Component {
                                         `}
                                         onClick={this.handleSubtitles}
                                     >
-                                        Enable/Disable subtitles
+                                        <span className="inner subtitles" />
                                     </button>
                                 )
                             }
@@ -256,7 +256,7 @@ class Video extends React.Component {
                                 className="kioskPlayerControl end close"
                                 onClick={this.endPlay}
                             >
-                                Close
+                                <span className="inner close" />
                             </button>
                         </ControlBar>
                     </Player>
