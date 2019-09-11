@@ -30,6 +30,19 @@
     }
 }
 
+.landscape {
+    .Page {
+        .ContentContainer {
+            min-height:650px;
+        }
+        &.PageTextVideo {
+            .ContentContainer {
+                min-height:600px;
+            }
+        }
+    }
+}
+
 
 
 .ContentContainer {

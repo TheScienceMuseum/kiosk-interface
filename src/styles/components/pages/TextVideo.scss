@@ -1,5 +1,16 @@
 .landscape {
     .PageTextVideo {
+        .poster {
+            display:flex;
+            &:after {
+                bottom:0;
+                top:100%;
+                left:0;
+                margin-left:0;
+                margin-top:-140px;
+                position:absolute;
+            }
+        }
         .ImageContainer {
             width: 100%;
             padding-right:100px;
@@ -101,6 +112,9 @@
                 height: 380px;
                 opacity:1;
                 background: transparent;
+                .content {
+                    padding-right:30px;
+                }
                 .ps__rail-y {
                     opacity:1 !important;
                     background:rgba(0,0,0,0.2);

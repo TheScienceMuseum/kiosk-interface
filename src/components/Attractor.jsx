@@ -45,7 +45,11 @@ class Attractor extends React.Component {
                 <div className="Attractor__details">
                     <p>{ galleryName }</p>
                     <h1>{ title }</h1>
-                    <button type="button" onClick={start} className="Button">Touch to start</button>
+                    <button type="button" onClick={start} className="Button">
+                        <span className="pop">
+                            Touch to start
+                        </span>
+                    </button>
                 </div>
 
             </div>
