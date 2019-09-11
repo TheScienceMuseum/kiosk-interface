@@ -111,6 +111,16 @@ h1 {
         }
     }
 }
+
+.Attractor__details {
+    .Button {
+        &:active {
+            .pop, i {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
 /*
 .Button {
     background-color: $red;
