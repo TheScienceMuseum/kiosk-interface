@@ -94,6 +94,12 @@ audio::-webkit-media-controls-mute-button {
 }
 
 .audio {
+    button {
+        transition: all 0.3s;
+        &:active {
+            transform: scale(1.2);
+        }
+    }
     h3 {
         margin-bottom:40px;
         margin-top:50px;
