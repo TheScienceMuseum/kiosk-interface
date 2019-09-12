@@ -1,6 +1,11 @@
 @import "../../variables";
 @import "Page";
 @import "~video-react/styles/scss/video-react";
+
+.video-react-bezel {
+    display: none !important;
+}
+
 body .Page.PageVideo {
     z-index:11;
     width:1920px;
@@ -27,6 +32,29 @@ body .Page.PageVideo {
         transform: translateY(100px);
     }
 }
+
+.video-react {
+    .video-react-slider {
+        .video-react-load-progress {
+            transition: all 0.5s linear;
+        }
+        .video-react-play-progress {
+            &:before {
+                transition: all 0.5s linear;
+            }
+        }
+        &:focus {
+            box-shadow:none !important;
+            text-shadow: none !important;
+            .video-react-slider-bar {
+                &:before {
+                    box-shadow: none !important;
+                }
+            }
+        }   
+    }
+}
+
 .PageVideo, .PageTextVideo {
     background-color: black !important;
 
@@ -49,6 +77,11 @@ body .Page.PageVideo {
         &.hide {
             opacity:0;
         }
+        &:active {
+            &:after {
+                transform: scale(1.1);
+            }
+        }
         &:after {
             content: " ";
             display: block;
@@ -61,6 +94,7 @@ body .Page.PageVideo {
             top: 50%;
             margin-left:-70px;
             background-color: rgba(0,0,0,0.3);
+            transition: all 0.5s;
         }
 
 
@@ -175,6 +209,7 @@ body .Page.PageVideo {
                     &:before {
                         display:none;
                     }
+                    transition: all 0.3s;
                     width:100px;
                     background-image: url("../../../images/Buttons/Play/Default.png");
                     &.video-react-playing {

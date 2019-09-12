@@ -20,7 +20,7 @@ class Attractor extends React.Component {
         if (attractor.assetType === AssetTypes.IMAGE) {
             return (
                 <div className="Attractor__image Image--withGrad">
-                    <img src={attractor.thumbnail} alt="" />
+                    <img src={attractor.thumbnail} alt="" width="100%" />
                 </div>
             );
         }
