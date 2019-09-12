@@ -13,7 +13,7 @@
 
 .dateCircle {
     position: absolute;
-    left: 50%;
+    left: 910px;
     top: 50%;
     z-index: 100;
     background: $red;
@@ -45,7 +45,7 @@
 .dateLine {
     width: 10px;
     position: absolute;
-    left: 50%;
+    left: 910px;
     top: 50%;
     height: 0%;
     background: $red;
@@ -62,7 +62,7 @@
     background: green;
 
     .ImageContainer {
-        width: 50%;
+        width: 910px;
         height: 100%;
         overflow: hidden;
         transition: none;
@@ -71,22 +71,24 @@
     }
 
     .ContentContainer {
-        width: 50%;
+        width: 1010px;
         height: 100%;
         position: absolute;
         padding-top: 130px;
         background: $pageBackground;
         right: 0;
+        padding-right:230px;
     }
 
     .ImageCaption {
         display: block;
         position: absolute;
-        bottom: 130px;
+        top: 100%;
         left: 80px;
         font-size: 22px;
         //flex: 0 0 auto;
         max-width: 750px;
+        margin-top:-130px;
 
     }
 
@@ -98,7 +100,7 @@
 
         .ContentContainer {
             right: 0;
-            left: 50%;
+            left: 910px;
             transition: all $transitionTime-showContent ease-out;
             padding-right:180px;
         }
@@ -107,7 +109,8 @@
     &--right {
         .ImageContainer {
             //order: 1;
-            left: 50%;
+            left: 910px;
+            width:1010px;
         }
 
         .ContentContainer {
@@ -115,7 +118,7 @@
             //right: auto;
             left: 0;
             transition: all $transitionTime-showContent ease-out;
-            
+            width:910px;
         }
 
         .ImageCaption {
@@ -125,10 +128,11 @@
         }
 
         .imgThumb {
+            width:1010px;
             position:absolute;
             right:0;
             left:100% !important;
-            margin-left:-960px;
+            margin-left:-1010px;
         }
     }
 
