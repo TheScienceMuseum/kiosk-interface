@@ -100,6 +100,13 @@ class TextVideo extends React.Component {
 
 
     getPosterStyle() {
+        if (window.appJson.aspect_ratio === '9:16') {
+            if (this.titleImage.thumbnail) {
+                return {
+                    backgroundImage: `url('${this.titleImage.thumbnail}')`,
+                };
+            }
+        }
         let posterImg = this.titleImage.assetSource ? this.titleImage.assetSource : null;
         if (posterImg) {
             posterImg = this.titleImage.assetSource;
@@ -278,6 +285,8 @@ class TextVideo extends React.Component {
         const mainClass = 'Page PageTextVideo PageTextImage '
             + `PageTextVideo--${layout} PageTextVideo--${imageState} ${articleStyle}`;
 
+        const PosterImg = window.appJson.aspect_ratio === '9:16' ? this.titleImage.thumbnail : this.titleImage.assetSource;
+
         /* eslint-disable react/no-danger */
         return (
             <div className={mainClass}>
@@ -294,7 +303,7 @@ class TextVideo extends React.Component {
                         ref={(node) => { this.player = node; }}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={this.titleImage.assetSource}
+                        poster={PosterImg}
                         className={showVideo}
                         onEnded={this.onPause}
                         onPause={this.onPause}
