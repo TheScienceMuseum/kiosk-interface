@@ -285,7 +285,10 @@ class TextVideo extends React.Component {
         const mainClass = 'Page PageTextVideo PageTextImage '
             + `PageTextVideo--${layout} PageTextVideo--${imageState} ${articleStyle}`;
 
-        const PosterImg = window.appJson.aspect_ratio === '9:16' ? this.titleImage.thumbnail : this.titleImage.assetSource;
+        const PosterImg = (
+            window.appJson.aspect_ratio === '9:16'
+                ? this.titleImage.thumbnail : this.titleImage.assetSource
+        );
 
         /* eslint-disable react/no-danger */
         return (
