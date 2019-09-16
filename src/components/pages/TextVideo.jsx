@@ -458,7 +458,9 @@ class TextVideo extends React.Component {
                                         suppressScrollX: true,
                                     }}
                                     className="area"
-                                    containerRef={(containerRef) => { this.scrollRef = containerRef; }}
+                                    containerRef={
+                                        (containerRef) => { this.scrollRef = containerRef; }
+                                    }
                                 >
                                     <div className="content">
                                         {this.asset.transcript.split('\n').map((item, key) => (
