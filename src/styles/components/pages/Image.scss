@@ -20,8 +20,10 @@
         top: 0;
         background: $pageBackground;
         z-index: 99999;
-        transition: all 350ms ease-out;
+        transition: all 550ms ease-out;
         transform: translateX(0);
+        padding-bottom:180px;
+        min-height:650px;
         &--zoomedOut {
             transform: translateX(0);
         }
@@ -48,7 +50,11 @@
     }
 
     .ImageCaption {
-        margin-top: 80px;
+        bottom:80px;
+        position:absolute;
         text-align: right;
+        h3 {
+            margin-bottom:30px;
+        }
     }
 }

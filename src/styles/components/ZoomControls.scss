@@ -1,10 +1,11 @@
 @keyframes enterFromBottom {
-    from { bottom: -100%; opacity: 0; }
-    to { bottom: 0; opacity: 1; }
+    0% { bottom: -100%; opacity: 0; }
+    50% { bottom: -100%; opacity: 0; }
+    100% { bottom: 0; opacity: 1; }
 }
 
 .ZoomControls {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -21,7 +22,7 @@
     background-color: rgba(0,0,0,0.8);
     opacity: 1;
 
-    animation: enterFromBottom .6s;
+    animation: enterFromBottom 2s;
 
     .Button {
 

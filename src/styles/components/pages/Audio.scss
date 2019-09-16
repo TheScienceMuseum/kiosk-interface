@@ -1,6 +1,137 @@
 @import "../../variables";
 @import "Page";
 
+@keyframes sourceTextAnimation {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@keyframes sourceTextAnimationCopied {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+@keyframes sourceTextShowAnimation {
+    0% {
+        opacity:0;
+        visibility: hidden;
+        height:0;
+    }
+    50% {
+        visibility: hidden;
+        height: 0;
+        opacity:0;
+    }
+    51% {
+        visibility: visible;
+        height:auto;
+        opacity:1;
+    }
+    90% {
+        visibility: visible;
+        height:auto;
+        opacity:1;
+    }
+}
+
+@keyframes sourceTextHideAnimation {
+    0% {
+        opacity:1;
+        visibility: visible;
+        height:auto;
+    }
+    50% {
+        visibility: hidden;
+        height: auto;
+        opacity:0;
+    }
+    51% {
+        height:0;
+    }
+    90% {
+        visibility: hidden;
+        height:0;
+        opacity:0;
+    }
+}
+
+@keyframes audioHideInitiallyFadeInAnimation {
+    0% {
+        opacity:0;
+        margin-top:50px;
+    }
+    51% {
+        opacity:0;
+        margin-top:50px;
+    }
+    52% {
+        opacity:1;
+        margin-top:0px;
+    }
+    100% {
+        opacity:1;
+        margin-top:0px;
+    }
+}
+
+@keyframes audioShowFadeInAnimation {
+    0% {
+        margin-top:0px;
+    }
+    51% {
+        margin-top:0px;
+    }
+    52% {
+        margin-top:50px;
+    }
+    100% {
+        margin-top:50px;
+    }
+}
+
+.sourceTextContainer {
+    &.closed {
+        animation: sourceTextAnimation 1s ease;
+        .sourceText {
+            animation: sourceTextHideAnimation 1s ease;
+            visibility: hidden;
+            height:0;
+            opacity:0;
+        }
+        .audio {
+            margin-top:0px;
+            animation: audioHideInitiallyFadeInAnimation 1s ease;
+        }
+    }
+    &.audioFadeIn {
+        animation: sourceTextAnimationCopied 1s ease;
+        .sourceText {
+            animation: sourceTextShowAnimation 1s ease;
+            visibility: visible;
+            height:auto;
+            opacity:1;
+        }
+        .audio {
+            margin-top:50px;
+            animation: audioShowFadeInAnimation 1s ease;
+        }
+    }
+}
+
 audio {
     padding: 0;
     margin: 0;
@@ -34,29 +165,30 @@ audio::-webkit-media-controls-mute-button {
 }
 
 .perfectScrollButton {
-    background-size:cover;
+    background-size:29px;
     background-position:center center;
-    width:29px;
-    height:16px;
+    background-repeat: no-repeat;
+    width:50px;
+    height:50px;
     background-color: transparent;
     position:absolute;
     right:0;
-    margin-right:-12px;
+    margin-right:-22px;
     -webkit-appearance: none;
     border:0;
     box-shadow: none;
 }
 
 .perfectScrollUp {
-    background: url('../../../images/Icons/Chevron.svg');
-    margin-top:-25px;
+    background-image: url('../../../images/Icons/Chevron.svg');
+    margin-top:-70px;
 }
 
 .perfectScrollDown {
-    background: url('../../../images/Icons/Chevron.svg');
+    background-image: url('../../../images/Icons/Chevron.svg');
     transform: rotate(180deg);
-    margin-right:-13px;
-    margin-top:10px;
+    margin-right:-24px;
+    margin-top:20px;
 }
 
 
@@ -94,6 +226,7 @@ audio::-webkit-media-controls-mute-button {
 }
 
 .audio {
+    margin-top:50px;
     button {
         transition: all 0.3s;
         &:active {
@@ -102,7 +235,9 @@ audio::-webkit-media-controls-mute-button {
     }
     h3 {
         margin-bottom:40px;
-        margin-top:50px;
+        margin-top:0px;
+        font-size:22px;
+        text-transform: none;
     }
 
     &.transcript-open {
@@ -158,6 +293,7 @@ audio::-webkit-media-controls-mute-button {
             }
             time {
                 margin-left:16px;
+                font-size:20px;
             }
             time:first-child {
                 display:none;
@@ -239,8 +375,9 @@ audio::-webkit-media-controls-mute-button {
     .transcriptBtn {
         background: rgba(0,0,0,0.1);
         border:0;
-        height:20px;
+        height:30px;
         margin-left:20px;
+        font-size:20px;
         &.open {
             background: rgba(0,0,0,1);
             color: #fff;
@@ -269,7 +406,9 @@ audio::-webkit-media-controls-mute-button {
                 display:none;
             }
             .transcript {
+                
                 margin-top:20px;
+                
                 .scrollbar-container {
                     height: 300px;
                 }

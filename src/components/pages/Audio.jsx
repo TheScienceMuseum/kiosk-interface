@@ -49,6 +49,7 @@ class Audio extends React.Component {
             playing: false,
             playButtonClasses: 'playPauseContainer',
             transcriptScrolling: false,
+            titleFadeIn: false,
         };
         this.onTimeUpdate = this.onTimeUpdate.bind(this);
         this.onPause = this.onPause.bind(this);
@@ -67,23 +68,17 @@ class Audio extends React.Component {
         this.getPlayStyle();
     }
 
-    getSourceTextStyle() {
-        const { transcriptShowing } = this.state;
-
+    getSourceTextClass() {
+        const { transcriptShowing, titleFadeIn } = this.state;
+        let sourceClass = 'sourceTextContainer';
         if (transcriptShowing) {
-            return {
-                opacity: 0,
-                display: 'none',
-                visibility: 'hidden',
-            };
+            sourceClass += ' closed';
         }
-
-        return {
-            opacity: 1,
-            visibility: 'visible',
-        };
+        if (titleFadeIn && !transcriptShowing) {
+            sourceClass += ' audioFadeIn';
+        }
+        return sourceClass;
     }
-
 
     getAudioStyle() {
         const { transcriptShowing } = this.state;
@@ -103,7 +98,7 @@ class Audio extends React.Component {
     }
 
     openTranscript() {
-        this.setState({ transcriptShowing: true });
+        this.setState({ transcriptShowing: true, titleFadeIn: true });
     }
 
     closeTranscript() {
@@ -201,8 +196,8 @@ class Audio extends React.Component {
         const { transcriptShowing, playButtonClasses } = this.state;
         /* eslint-disable react/no-danger */
         return (
-            <div>
-                <div className="sourceText" style={this.getSourceTextStyle()}>
+            <div className={this.getSourceTextClass()}>
+                <div className="sourceText">
                     <h2>{nameText}</h2>
                     <div
                         className="ContentContainer__body"
@@ -244,7 +239,7 @@ class Audio extends React.Component {
                                 className="transcriptBtn"
                                 onClick={this.openTranscript.bind(this)}
                             >
-                                transcript
+                                Transcript
                             </button>
                         )}
                         { transcriptShowing && (
@@ -253,7 +248,7 @@ class Audio extends React.Component {
                                 className="transcriptBtn open"
                                 onClick={this.closeTranscript.bind(this)}
                             >
-                                close transcript
+                                Close transcript
                             </button>
                         )}
                     </div>
