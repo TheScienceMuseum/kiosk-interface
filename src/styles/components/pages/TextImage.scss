@@ -5,9 +5,11 @@
 .Article--fullScreen {
     .dateCircle {
         transform: scale(0);
+        transition-delay: 0s !important;
     }
     .dateLine {
         height:0 !important;
+        transition-delay: 0.3s !important;
     }
 }
 
@@ -29,6 +31,7 @@
     margin-top: -50px;
     transition: all 0.3s;
     z-index: 9999;
+    transition-delay: 1s !important;
 }
 
 .portrait {
@@ -52,6 +55,7 @@
     z-index: 9998;
     margin-left: -5px;
     transition: all 0.5s;
+    transition-delay: 0.6s !important;
 }
 
 .PageTextImage {
@@ -101,7 +105,7 @@
         .ContentContainer {
             right: 0;
             left: 910px;
-            transition: all $transitionTime-showContent ease-out;
+            transition: all $transitionTime-showContent ease;
             padding-right:180px;
         }
     }
@@ -117,7 +121,7 @@
             //order: 0;
             //right: auto;
             left: 0;
-            transition: all $transitionTime-showContent ease-out;
+            transition: all $transitionTime-showContent ease;
             width:910px;
         }
 

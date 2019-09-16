@@ -26,7 +26,7 @@ class MenuItemVideo extends React.Component {
 
     render() {
         const {
-            title, articleID, onClick, onClickAuto, selected,
+            title, articleID, onClick, selected,
         } = this.props;
 
         const isSelectedClass = selected ? 'MenuItem__Selected' : '';
@@ -42,7 +42,7 @@ class MenuItemVideo extends React.Component {
                         <button
                             type="button"
                             className="playButton"
-                            onClick={() => onClickAuto(articleID)}
+                            onClick={() => onClick(articleID)}
                         />
                     </div>
                 </Hammer>
@@ -55,7 +55,6 @@ MenuItemVideo.propTypes = {
     title: PropTypes.string.isRequired,
     articleID: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
-    onClickAuto: PropTypes.func.isRequired,
     titleImage: propTypes.titleImage.isRequired,
     selected: PropTypes.bool,
 };
