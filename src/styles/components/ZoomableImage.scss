@@ -29,6 +29,15 @@
                 //linear-gradient(-180deg, white 0%, white 100%);
     }
 }
+
+.landscape {
+    .PageTextImage--right {
+        .ContentContainer {
+            transition: all 1s ease;
+        }   
+    }
+}
+
 .PageTextImage--right {
     .zoomableWrapper {
         .thumbContainer {
