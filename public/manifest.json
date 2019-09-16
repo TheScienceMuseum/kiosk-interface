@@ -25,6 +25,7 @@
         "articleID": "1-1",
         "type": "mixed",
         "title": "James Watson: discovering the Double Helix",
+        "subtitle": "Some content some content",
         "titleImage": {
           "assetType": "image",
           "assetSource": "./media/01.jpg"
@@ -174,7 +175,7 @@
           {
             "pageID": "1-2-7",
             "type": "image",
-            "layout": "right",
+            "layout": "left",
             "asset": {
               "assetSource": "./media/07.jpg",
               "assetType": "image",
@@ -223,8 +224,8 @@
                         "width": 360,
                         "height": 640
                     },
-                    "assetSource": "./media/01.jpg",
-                    "thumbnail": "./media/01.jpg"
+                    "assetSource": "./media/cropped.jpg",
+                    "thumbnail": "./media/cropped.jpg"
                 },
                 "pageID": "1-0-0"
             }
@@ -238,8 +239,8 @@
                 "width": 360,
                 "height": 640
             },
-            "assetSource": "./media/01.jpg",
-            "thumbnail": "./media/01.jpg"
+            "assetSource": "./media/cropped.jpg",
+            "thumbnail": "./media/cropped.jpg"
         },
         "articleID": "1-0"
     },

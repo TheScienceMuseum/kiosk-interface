@@ -39,7 +39,10 @@ class Video extends React.Component {
             subtitlesEnabled: false,
             played: false,
             hasClosed: false,
+            bslFadeAnim: false,
         };
+        this.getBSLOverClass = this.getBSLOverClass.bind(this);
+        this.handleBSLtimeOut = this.handleBSLtimeOut.bind(this);
     }
 
     componentDidMount() {
@@ -65,6 +68,15 @@ class Video extends React.Component {
     onPlay() {
         const { pauseTimer } = this.props;
         pauseTimer();
+    }
+
+    getBSLOverClass() {
+        const { bslFadeAnim } = this.state;
+        let bsl = 'bslOver';
+        if (bslFadeAnim) {
+            bsl += ' open';
+        }
+        return bsl;
     }
 
     getBslClass() {
@@ -103,15 +115,35 @@ class Video extends React.Component {
     handleBSL() {
         const { bslEnabled } = this.state;
 
-        // get current play time
+        if (bslEnabled) {
+            // disable
+            this.setState({ bslEnabled: false, bslFadeAnim: true }, () => {
+                setTimeout(this.handleBSLtimeOut, 500);
+                setTimeout(() => {
+                    this.setState({ bslFadeAnim: false });
+                }, 1000);
+            });
+            return;
+        }
+
+        // enable & change source
+        this.setState({ bslEnabled: true, bslFadeAnim: true }, () => {
+            setTimeout(this.handleBSLtimeOut, 500);
+            setTimeout(() => {
+                this.setState({ bslFadeAnim: false });
+            }, 1000);
+        });
+    }
+
+    handleBSLtimeOut() {
+        const { bslEnabled } = this.state;
         const playerState = this.player.getState();
 
-        if (bslEnabled) {
+        if (!bslEnabled) {
             // disable
             this.player.video.video.src = this.asset.assetSource;
             this.player.load(this.asset.assetSource);
             this.player.seek(playerState.player.currentTime);
-            this.setState({ bslEnabled: false });
             return;
         }
 
@@ -119,7 +151,6 @@ class Video extends React.Component {
         this.player.video.video.src = this.asset.bslSource;
         this.player.load(this.asset.bslSource);
         this.player.seek(playerState.player.currentTime);
-        this.setState({ bslEnabled: true });
     }
 
     handleSubtitles() {
@@ -179,6 +210,7 @@ class Video extends React.Component {
         }
         return (
             <React.Fragment>
+                <div className={this.getBSLOverClass()} />
                 <div className={`Page PageVideo ${articleStyle}`}>
                     { typeof date !== 'undefined' && (
                         <div className="dateCircle">
@@ -206,7 +238,7 @@ class Video extends React.Component {
                         autoPlay={!!autoPlay}
                         // crossOrigin="anonymous"
                         selectedTextTrack={this.getSubTrack().value}
-                        poster={this.titleImage.assetSource}
+                        poster="/media/white1x1.jpg"
                         className={showVideo}
                         onEnded={this.onPause}
                         onPause={this.onPause}
