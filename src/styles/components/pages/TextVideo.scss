@@ -1,5 +1,22 @@
 @import "../../variables";
+@import "../pages/Audio.scss";
 
+.PageTextVideo {
+    .sourceTextContainer {
+        &.closed {
+            .transcript {
+                margin-top:0px;
+                animation: audioHideInitiallyFadeInAnimation 1s ease;
+            }
+        }
+        &.audioFadeIn {
+            .transcript {
+                margin-top:50px;
+                animation: audioShowFadeInAnimation 1s ease;
+            }
+        }
+    }
+}
 .landscape {
     .PageTextVideo {
         .ImageCaption {
@@ -43,7 +60,10 @@
                 font-family: $fontLight;
                 background-color:transparent;
                 border:0;
-                
+                transition: all 0.3s;
+                &:active {
+                    transform: scale(1.2);
+                }
                 &:before {
                     content: " ";
                     display: block;
@@ -74,15 +94,12 @@
 @keyframes animateButtonPoster {
     0% {
         opacity: 0;
-        top:-200px;
     }
     60% {
         opacity: 0;
-        top:-200px;
     }
     100% {
         opacity: 1;
-        top: -300px;
     }
 }
 
@@ -105,13 +122,19 @@
                 top: -300px;
                 animation: animateButtonPoster 2s ease-out;
                 animation-delay: 0s;
+                background-image: url('../../../images/Audio/Portrait/Buttons/SoundPlay.svg');
+                border-radius:50%;
+                height:137px;
+                background-size:100%;
+                background-color: rgba(0,0,0,0);
             }
         }
         .transcriptBtn {
             background: rgba(0,0,0,0.1);
             border:0;
-            height:20px;
+            height:30px;
             margin-left:0px;
+            font-size:20px;
             &.open {
                 background: rgba(0,0,0,1);
                 color: #fff;
@@ -124,8 +147,9 @@
             font-size: 22px;
             line-height: 32px;
             position:relative;
+            width:650px;
             .scrollbar-container {
-                height: 380px;
+                height: 300px;
                 opacity:1;
                 background: transparent;
                 .content {
