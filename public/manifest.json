@@ -544,18 +544,14 @@
           {
             "pageID": "5-3-1",
             "type": "title",
-            "asset": {
-              "assetType": "image",
-              "assetSource": "./media/01.jpg"
-            },
             "title": "Self-Conscious Gene by Marc Quinn",
             "content": [
               "Quinn’s sculpture portrays Rick Genest, an actor, artist and model from Canada, known for covering his entire body in anatomical tattoos.",
               "Explore the artwork in detail to find out more about Rick’s life, how the statue was made, and the history of tattooing."
             ],
             "camera": {
-              "position": [121, 8, -16],
-              "rotation": [0, 20, 200]
+              "position": [88.94611876562502,-5,-11.761470250000047],
+              "focus": [0, 5, 0]
             }
           },
           {
@@ -565,11 +561,14 @@
             "content": [
               "Made of bronze, this statue was cast in sections and then welded together.",
               "These lines show the joining points and have been left to reveal the making process.",
-              "The surface of bronze changes colour, which will change the appearance of these joins over time."
+              "The surface of bronze changes colour, which will change the appearance of these joins over time.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_1.jpg"
+              }
             ],
             "camera": {
-              "position": [20.09903325018832,-17.387001030561617,25.222023100719312],
-              "rotation": [0, 20, 200]
+              "position": [20.09903325018832,-17.387001030561617,25.222023100719312]
             },
             "hotspot": {
               "focus": [0, -20, 0],
@@ -582,15 +581,18 @@
             "title": "Brain Surgery",
             "content": [
               "Rick developed a brain tumour in his early teens. After successful surgery he began to have anatomical imagery tattooed on to his body.",
-              "His head shows a visible brain above a distinct line, as if the skull and scalp have been lifted off."
+              "His head shows a visible brain above a distinct line, as if the skull and scalp have been lifted off.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_2.jpg"
+              }
             ],
             "camera": {
-              "position": [25.25999781797079,52.04203059684709,-10.15613016228794],
-              "rotation": [0, 20, 200]
+              "position": [28.78755731205328,23.5,-10.1292473754654]
             },
             "hotspot": {
-              "focus": [8.964797096904679,38,-4.828572050046723],
-              "position": [0, 38, 0]
+              "focus": [0, 32, 0],
+              "position": [0, 28, 0]
             }
           },
           {
@@ -598,11 +600,14 @@
             "type": "hotspot",
             "title": "Full-body tattoos",
             "content": [
-              "Although you can’t see them, Rick’s legs were also covered in tattoos. Full ‘bodysuit’ tattoos have been common in Japan for centuries but were only adopted in Europe and America from the early 1900s."
+              "Although you can’t see them, Rick’s legs were also covered in tattoos. Full ‘bodysuit’ tattoos have been common in Japan for centuries but were only adopted in Europe and America from the early 1900s.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_3.jpg"
+              }
             ],
             "camera": {
-              "position": [2.9888279455684605,-37.36856689661272,-29.55865135434324],
-              "rotation": [0, 20, 200]
+              "position": [2.9888279455684605,-37.36856689661272,-29.55865135434324]
             },
             "hotspot": {
               "focus": [0,-16,0],
@@ -615,11 +620,14 @@
             "title": "A Towering Presence",
             "content": [
               "Standing next to Quinn’s sculpture, adult visitors appear to shrink to the size of a toddler. The head is made larger, the legs narrower to emphasise Rick’s monumental presence.",
-              "Please feel free to hold his hand and become part of the scene."
+              "Please feel free to hold his hand and become part of the scene.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_4.jpg"
+              }
             ],
             "camera": {
-              "position": [23.31852230574604,-30.548064455293506,-55.26028939943177],
-              "rotation": [0, 20, 200]
+              "position": [23.31852230574604,-30.548064455293506,-55.26028939943177]
             },
             "hotspot": {
               "focus": [0,2,0],
@@ -632,11 +640,14 @@
             "title": "Skull and Cross bones",
             "content": [
               "The tattooed zombie head was Rick’s first tattoo. Zombies were a popular choice of image in 1990s tattooing. Rick’s tattoos often drew on imagery from horror films.",
-              "He was later nicknamed Zombie Boy."
+              "He was later nicknamed Zombie Boy.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_5.jpg"
+              }
             ],
             "camera": {
-              "position": [-10.595586896155112,22.67513059381839,-16.75043923698847],
-              "rotation": [0, 20, 200]
+              "position": [-10.595586896155112,22.67513059381839,-16.75043923698847]
             },
             "hotspot": {
               "focus": [0,20,0],
@@ -649,11 +660,14 @@
             "title": "Tattooed insects",
             "content": [
               "Rick’s tattoos combine anatomy and horror film imagery to produce the effect of a decomposing corpse. Spot the maggots, centipedes and other bugs all over his body.",
-              "Animals are popular tattoo subjects in many cultures with a range of symbolic meanings."
+              "Animals are popular tattoo subjects in many cultures with a range of symbolic meanings.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_6.jpg"
+              }
             ],
             "camera": {
-              "position": [-22.635112885159465,10.369096692835102,3.4492854183493797],
-              "rotation": [0, 20, 200]
+              "position": [-22.635112885159465,10.369096692835102,3.4492854183493797]
             },
             "hotspot": {
               "focus": [0,16,0],
@@ -666,11 +680,14 @@
             "title": "Knuckle tattoos",
             "content": [
               "Rick had the words ‘Evil’ and ‘Dead’ tattooed across his knuckles.",
-              "This is a common tattoo design, made famous by the American film Night of the Hunter in 1955, where a character has ‘Love’ and ‘Hate’ on his knuckles. Tattoos often reflect fundamental human emotions."
+              "This is a common tattoo design, made famous by the American film Night of the Hunter in 1955, where a character has ‘Love’ and ‘Hate’ on his knuckles. Tattoos often reflect fundamental human emotions.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_7.jpg"
+              }
             ],
             "camera": {
-              "position": [19.372049472009763,12.444243584406184,0.0679956916540386],
-              "rotation": [0, 20, 200]
+              "position": [19.372049472009763,12.444243584406184,0.0679956916540386]
             },
             "hotspot": {
               "focus": [0,16,0],
@@ -683,11 +700,14 @@
             "title": "Famous anatomical imagery",
             "content": [
               "Open in Rick’s hands is an anatomy book featuring famous images on the cover. These featured in the book ‘On the Fabric of the Human Body’ by Andreas Vesalius in 1543. The back uses a popular European emblem of a skeleton reflecting on death.",
-              "See a copy of the book elsewhere in this gallery."
+              "See a copy of the book elsewhere in this gallery.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_8.jpg"
+              }
             ],
             "camera": {
-              "position": [28.13195617832955,7.532353164628237,5.305247423181045],
-              "rotation": [0, 20, 200]
+              "position": [28.13195617832955,7.532353164628237,5.305247423181045]
             },
             "hotspot": {
               "focus": [0,20,0],
@@ -700,11 +720,14 @@
             "title": "Biohazard",
             "content": [
               "Rick chose to feature a large biohazard symbol in the centre of his chest. Images of chemical waste also appear on his upper arms. This forms part of his overall imagery as a rotting corpse.",
-              "This tattooed symbol was also adopted by gay men with HIV in the 1990s."
+              "This tattooed symbol was also adopted by gay men with HIV in the 1990s.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_9.jpg"
+              }
             ],
             "camera": {
-              "position": [17.719162248581085,26.494659902412538,-24.23147490151929],
-              "rotation": [0, 20, 200]
+              "position": [17.719162248581085,26.494659902412538,-24.23147490151929]
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -717,11 +740,14 @@
             "title": "Layered tattoos",
             "content": [
               "You can clearly see Rick’s spine tattooed down the centre of his back, but it lies over other older tattoos.",
-              "It is common to build up tattoos in layers as people’s tastes and identities change over time. Rick started with more traditional image choices and added the anatomy over the top."
+              "It is common to build up tattoos in layers as people’s tastes and identities change over time. Rick started with more traditional image choices and added the anatomy over the top.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_10.jpg"
+              }
             ],
             "camera": {
-              "position": [-21.1633992739798,41.77943206604955,4.682390169041572],
-              "rotation": [0, 20, 200]
+              "position": [-21.1633992739798,41.77943206604955,4.682390169041572]
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -733,11 +759,14 @@
             "type": "hotspot",
             "title": "Spiders’ webs",
             "content": [
-              "Both of Rick’s elbows were tattooed with cobwebs. These link to the insects visible all over his body, feeding on his larger imagery as a ‘decomposing corpse’. Cobwebs have been a common tattoo choice since the 1950s."
+              "Both of Rick’s elbows were tattooed with cobwebs. These link to the insects visible all over his body, feeding on his larger imagery as a ‘decomposing corpse’. Cobwebs have been a common tattoo choice since the 1950s.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_11.jpg"
+              }
             ],
             "camera": {
-              "position": [-4.725403094529539,-0.9497928350664964,16.704007550605674],
-              "rotation": [0, 20, 200]
+              "position": [-4.725403094529539,-0.9497928350664964,16.704007550605674]
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -750,11 +779,14 @@
             "title": "Muscular Corset",
             "content": [
               "These muscles on Rick’s lower back are part of the anatomical imagery tattooed all over his body.",
-              "A popular theme of 1990s tattooing featured ‘skin rips’ that appeared to show the body under a person’s skin, sometimes muscle, sometimes machine."
+              "A popular theme of 1990s tattooing featured ‘skin rips’ that appeared to show the body under a person’s skin, sometimes muscle, sometimes machine.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_12.jpg"
+              }
             ],
             "camera": {
-              "position": [-12.92539222004398,14.216971550381649,-12.164771736349287],
-              "rotation": [0, 20, 200]
+              "position": [-18.671790328608033,17.134751310503823,-0.6779156745233915]
             },
             "hotspot": {
               "focus": [0, 10, 0],
@@ -767,11 +799,14 @@
             "title": "Barbed wire",
             "content": [
               "Tattooed barbed wire covers Rick, giving the sense that his body is bursting against these constraints.",
-              "Barbed wire comes in and out of fashion as a tattoo, it was very popular in the 1990s and again in the late 2010s."
+              "Barbed wire comes in and out of fashion as a tattoo, it was very popular in the 1990s and again in the late 2010s.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_13.jpg"
+              }
             ],
             "camera": {
-              "position": [-0.02416020902655292,7.571196503890522,-19.851960353113427],
-              "rotation": [0, 20, 200]
+              "position": [-0.02416020902655292,7.571196503890522,-19.851960353113427]
             },
             "hotspot": {
               "focus": [0, 10, 0],
@@ -783,11 +818,14 @@
             "type": "hotspot",
             "title": "Memento Mori",
             "content": [
-              "Many of Rick’s tattoos used imagery of death and dying, like these gravestones. Called memento mori, these are a popular image in Western art used to remind viewers of the fragility of life. They have also been part of tattoo history since the tattoos chosen by Christian pilgrims in the 1600s."
+              "Many of Rick’s tattoos used imagery of death and dying, like these gravestones. Called memento mori, these are a popular image in Western art used to remind viewers of the fragility of life. They have also been part of tattoo history since the tattoos chosen by Christian pilgrims in the 1600s.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_14.jpg"
+              }
             ],
             "camera": {
-              "position": [-7.153887138766182,12.125239777871966,28.690387997718656],
-              "rotation": [0, 20, 200]
+              "position": [-7.153887138766182,12.125239777871966,28.690387997718656]
             },
             "hotspot": {
               "focus": [0, 18, 0],
