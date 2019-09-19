@@ -176,7 +176,19 @@ class Model extends React.Component {
 
             this.setCameraView(
                 subpage.camera.position,
-                get(subpage, 'hotspot.focus', get(subpage, 'hotspot.position', [0, 0, 0])),
+                get(
+                    subpage,
+                    'camera.focus',
+                    get(
+                        subpage,
+                        'hotspot.focus',
+                        get(
+                            subpage,
+                            'hotspot.position',
+                            [0, 0, 0],
+                        ),
+                    ),
+                ),
             );
         }
     }
