@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    each, get, has, pick, values,
-} from 'lodash';
-import { TweenLite, Ease } from 'gsap/umd/TweenLite';
+import { each, get, has, pick, values } from 'lodash';
+import { Ease, TweenLite } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
