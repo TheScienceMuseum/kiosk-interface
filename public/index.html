@@ -63,7 +63,7 @@
             ce.apply(this, arguments);
         };
     } catch ( e ) {
-        console.warn('could not hijack console functions, errors will not be sent to the kms server');
+        console.warn('could not hijack console functions, errors will not be sent to the kms server', e);
     }
 
 

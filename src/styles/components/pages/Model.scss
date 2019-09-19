@@ -31,8 +31,9 @@
         animation: enterFromBottom .6s;
 
         .ZoomControls {
+            position: relative;
             margin: 0 auto;
-            padding: 20px 0px;
+            padding: 20px 0;
             max-width: 500px;
         }
 
@@ -64,6 +65,10 @@
             p {
                 font-size: 1.2rem;
                 margin-bottom: 15px;
+
+                img {
+                    max-width: 100%;
+                }
             }
         }
     }
