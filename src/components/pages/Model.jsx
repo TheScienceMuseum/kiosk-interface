@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    each, get, has, pick, values,
+    each,
+    get,
+    has,
+    pick,
+    values,
 } from 'lodash';
-import { TweenLite, Ease } from 'gsap/umd/TweenLite';
+import { Ease, TweenLite } from 'gsap/umd/TweenLite';
 import * as TWEEN from '@tweenjs/tween.js';
 import * as THREE from 'three';
 import { Interaction } from 'three.interaction';
@@ -176,7 +180,19 @@ class Model extends React.Component {
 
             this.setCameraView(
                 subpage.camera.position,
-                get(subpage, 'hotspot.focus', get(subpage, 'hotspot.position', [0, 0, 0])),
+                get(
+                    subpage,
+                    'camera.focus',
+                    get(
+                        subpage,
+                        'hotspot.focus',
+                        get(
+                            subpage,
+                            'hotspot.position',
+                            [0, 0, 0],
+                        ),
+                    ),
+                ),
             );
         }
     }
@@ -280,7 +296,7 @@ class Model extends React.Component {
     }
 
     render() {
-        const { subpages } = this.props;
+        const { asset, subpages } = this.props;
         const { cameraPosition, cameraFocus } = this.state;
 
         return (
@@ -318,12 +334,29 @@ class Model extends React.Component {
                         <div key={subpage.pageID} id={`article-subpage-${subpage.pageID}`}>
                             <h2>{subpage.title}</h2>
                             {/* eslint-disable react/no-array-index-key, react/no-danger */}
-                            {subpage.content.map((line, idx) => (
-                                <p
-                                    key={`page-${subpage.pageID}-${idx}`}
-                                    dangerouslySetInnerHTML={{ __html: line }}
-                                />
-                            ))}
+                            {subpage.content.map((line, idx) => {
+                                let content = line;
+                                if (has(content, 'type')) {
+                                    switch (content.type) {
+                                    case 'image':
+                                        content = (
+                                            <img
+                                                src={asset.assetDirectory + content.href}
+                                                alt=""
+                                            />
+                                        );
+                                        break;
+                                    default:
+                                        break;
+                                    }
+                                }
+                                return (
+                                    <p
+                                        key={`page-${subpage.pageID}-${idx}`}
+                                        dangerouslySetInnerHTML={{ __html: content }}
+                                    />
+                                );
+                            })}
                             {/* eslint-enable react/no-array-index-key, react/no-danger */}
                         </div>
                     ))}
