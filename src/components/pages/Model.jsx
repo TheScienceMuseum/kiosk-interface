@@ -339,12 +339,12 @@ class Model extends React.Component {
                                 if (has(content, 'type')) {
                                     switch (content.type) {
                                     case 'image':
-                                        content = (
-                                            <img
-                                                src={asset.assetDirectory + content.href}
+                                        content = `
+                                            <img 
+                                                src="${asset.assetDirectory + content.href}"
                                                 alt=""
                                             />
-                                        );
+                                        `;
                                         break;
                                     default:
                                         break;
