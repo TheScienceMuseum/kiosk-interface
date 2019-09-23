@@ -135,6 +135,7 @@
             height:30px;
             margin-left:0px;
             font-size:20px;
+            font-family: $fontMedium;
             &.open {
                 background: rgba(0,0,0,1);
                 color: #fff;
@@ -148,6 +149,17 @@
             line-height: 32px;
             position:relative;
             width:650px;
+            button {
+                transition: all 0.3s;
+                &:active {
+                    transform: scale(1.2);
+                }
+                &.perfectScrollDown {
+                    &:active {
+                        transform: scale(1.2) rotate(180deg);
+                    }
+                }
+            }
             .scrollbar-container {
                 height: 300px;
                 opacity:1;
