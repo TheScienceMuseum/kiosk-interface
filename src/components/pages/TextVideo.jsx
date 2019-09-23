@@ -31,7 +31,7 @@ class TextVideo extends React.Component {
             showBSL: has(this.asset, 'bslSource'),
             showSubtitles: has(this.asset, 'subtitlesSource'),
             bslEnabled: false,
-            subtitlesEnabled: false,
+            subtitlesEnabled: true,
             played: false,
             canPlay: false,
             transcriptShowing: false,
