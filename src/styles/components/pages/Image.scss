@@ -47,6 +47,15 @@
             transform: translateX(120%);
             transition-delay: 0s;
         }
+        .ImageCaption {
+            text-align: left;
+        }
+    }
+
+    .ContentContainer--left { 
+        .ImageCaption {
+            right: 80px;
+        }
     }
 
     .ImageCaption {
