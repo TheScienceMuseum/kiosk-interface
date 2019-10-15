@@ -432,23 +432,23 @@ class TextVideo extends React.Component {
                         >
                             Play Video
                         </button>
-                        { (!transcriptShowing && this.asset.transcript) && (
-                            <button
-                                type="button"
-                                className="transcriptBtn"
-                                onClick={this.openTranscript.bind(this)}
-                            >
-                                Transcript
-                            </button>
-                        )}
-                        { (transcriptShowing && this.asset.transcript) && (
-                            <button
-                                type="button"
-                                className="transcriptBtn open"
-                                onClick={this.closeTranscript.bind(this)}
-                            >
-                                Close transcript
-                            </button>
+                        { (this.asset.transcript) && (
+                            <React.Fragment>
+                                <button
+                                    type="button"
+                                    className="transcriptBtn"
+                                    onClick={this.openTranscript.bind(this)}
+                                >
+                                    Transcript
+                                </button>
+                                <button
+                                    type="button"
+                                    className="transcriptBtn open"
+                                    onClick={this.closeTranscript.bind(this)}
+                                >
+                                    Close transcript
+                                </button>
+                            </React.Fragment>
                         )}
                         {this.asset.transcript && (
                             <div
