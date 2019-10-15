@@ -12,7 +12,6 @@ import { AssetTypes } from '../utils/Constants';
  * @author Gavin Cockrem <gavin@joipolloi.com.
  * @package sciencemuseum-kiosk-interface
  */
-
 class Attractor extends React.Component {
     makeAttractor() {
         const { attractor } = this.props;

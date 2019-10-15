@@ -43,11 +43,13 @@ class Video extends React.Component {
         };
         this.getBSLOverClass = this.getBSLOverClass.bind(this);
         this.handleBSLtimeOut = this.handleBSLtimeOut.bind(this);
+        this.seekTime = false;
     }
 
     componentDidMount() {
         setTimeout(() => {
             this.disableSubTitles();
+            this.seekEventHandle();
         }, 100);
         const {
             autoPlay, resetInactiveTimer, pauseTimer,
@@ -112,6 +114,16 @@ class Video extends React.Component {
         };
     }
 
+    seekEventHandle() {
+        this.player.video.video.addEventListener('loadeddata', () => {
+            if (this.seekTime) {
+                this.player.seek(this.seekTime);
+                this.seekTime = false;
+                this.player.video.video.play();
+            }
+        });
+    }
+
     handleBSL() {
         const { bslEnabled } = this.state;
 
@@ -138,19 +150,20 @@ class Video extends React.Component {
     handleBSLtimeOut() {
         const { bslEnabled } = this.state;
         const playerState = this.player.getState();
+        this.seekTime = playerState.player.currentTime;
 
         if (!bslEnabled) {
             // disable
             this.player.video.video.src = this.asset.assetSource;
             this.player.load(this.asset.assetSource);
-            this.player.seek(playerState.player.currentTime);
+            // this.player.seek(playerState.player.currentTime);
             return;
         }
 
         // enable & change source
         this.player.video.video.src = this.asset.bslSource;
         this.player.load(this.asset.bslSource);
-        this.player.seek(playerState.player.currentTime);
+        // this.player.seek(playerState.player.currentTime);
     }
 
     handleSubtitles() {
