@@ -17,7 +17,6 @@ class ErrorBoundary extends Component {
         // when we are running in the kiosk-client this
         // will be intercepted by our custom logger
         console.error(JSON.stringify([error.toString(), info]));
-        console.log("we have an error!");
     }
 
     render() {
