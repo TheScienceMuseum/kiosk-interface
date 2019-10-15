@@ -326,7 +326,7 @@ class TextVideo extends React.Component {
             title, content, layout,
         } = this.props;
 
-        const { contentHidden, transcriptShowing } = this.state;
+        const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
 
         const { showBSL, showSubtitles, played } = this.state;
