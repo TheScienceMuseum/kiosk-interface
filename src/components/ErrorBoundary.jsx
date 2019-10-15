@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/components/ErrorBoundary.scss';
 
 class ErrorBoundary extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class ErrorBoundary extends Component {
         // when we are running in the kiosk-client this
         // will be intercepted by our custom logger
         console.error(JSON.stringify([error.toString(), info]));
+        console.log("we have an error!");
     }
 
     render() {
@@ -24,15 +26,12 @@ class ErrorBoundary extends Component {
 
         if (hasError) {
             return (
-                <div className="App">
-                    <h1>We are sorry</h1>
-                    <small>
-                        Something went wrong, we are aware and will resolve the issue shortly.
-                    </small>
-                    <input type="hidden" value={errorMessage} />
-                    <button type="button" onClick={() => { window.location.reload(); }}>
-                        Refresh Screen
-                    </button>
+                <div className="App AppError">
+                    <div>
+                        <h4>Oops!</h4>
+                        <h1>Something has gone wrong!</h1>
+                        <input type="hidden" value={errorMessage} />
+                    </div>
                 </div>
             );
         }
