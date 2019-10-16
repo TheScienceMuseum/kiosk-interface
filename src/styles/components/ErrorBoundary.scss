@@ -1,0 +1,26 @@
+@import '../variables';
+
+.AppError {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    div {
+        width:80%;
+    }
+
+    h1 {
+        font-size:4vw;
+        font-family: $fontLight;
+        font-weight:100;
+        margin:0;
+    }
+
+    h4 {
+        font-size: 1vw;
+        font-family: $fontLight;
+        font-weight:100;
+        text-transform: uppercase;
+        margin:0;
+        margin-bottom:20px;
+    }
+}

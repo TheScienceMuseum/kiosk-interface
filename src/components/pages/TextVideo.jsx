@@ -58,6 +58,8 @@ class TextVideo extends React.Component {
         this.actionScrollDown = this.actionScrollDown.bind(this);
         this.getBSLOverClass = this.getBSLOverClass.bind(this);
         this.handleBSLtimeOut = this.handleBSLtimeOut.bind(this);
+
+        this.seekTime = false;
     }
 
     componentDidMount() {
@@ -66,6 +68,7 @@ class TextVideo extends React.Component {
             this.setState({
                 canPlay: true,
             });
+            this.seekEventHandle();
         }, 100);
     }
 
@@ -199,22 +202,33 @@ class TextVideo extends React.Component {
         });
     }
 
+    seekEventHandle() {
+        this.player.video.video.addEventListener('loadeddata', () => {
+            if (this.seekTime) {
+                this.player.seek(this.seekTime);
+                this.seekTime = false;
+                this.player.video.video.play();
+            }
+        });
+    }
+
     handleBSLtimeOut() {
         const { bslEnabled } = this.state;
         const playerState = this.player.getState();
+        this.seekTime = playerState.player.currentTime;
 
         if (!bslEnabled) {
             // disable
             this.player.video.video.src = this.asset.assetSource;
             this.player.load(this.asset.assetSource);
-            this.player.seek(playerState.player.currentTime);
+            // this.player.seek(playerState.player.currentTime);
             return;
         }
 
         // enable & change source
         this.player.video.video.src = this.asset.bslSource;
         this.player.load(this.asset.bslSource);
-        this.player.seek(playerState.player.currentTime);
+        // this.player.seek(playerState.player.currentTime);
     }
 
     handleSubtitles() {
@@ -312,7 +326,7 @@ class TextVideo extends React.Component {
             title, content, layout,
         } = this.props;
 
-        const { contentHidden, transcriptShowing } = this.state;
+        const { contentHidden } = this.state;
         const imageState = contentHidden ? 'imageFull' : 'imageWindowed';
 
         const { showBSL, showSubtitles, played } = this.state;
@@ -418,23 +432,23 @@ class TextVideo extends React.Component {
                         >
                             Play Video
                         </button>
-                        { (!transcriptShowing && this.asset.transcript) && (
-                            <button
-                                type="button"
-                                className="transcriptBtn"
-                                onClick={this.openTranscript.bind(this)}
-                            >
-                                Transcript
-                            </button>
-                        )}
-                        { (transcriptShowing && this.asset.transcript) && (
-                            <button
-                                type="button"
-                                className="transcriptBtn open"
-                                onClick={this.closeTranscript.bind(this)}
-                            >
-                                Close transcript
-                            </button>
+                        { (this.asset.transcript) && (
+                            <React.Fragment>
+                                <button
+                                    type="button"
+                                    className="transcriptBtn"
+                                    onClick={this.openTranscript.bind(this)}
+                                >
+                                    Transcript
+                                </button>
+                                <button
+                                    type="button"
+                                    className="transcriptBtn open"
+                                    onClick={this.closeTranscript.bind(this)}
+                                >
+                                    Close transcript
+                                </button>
+                            </React.Fragment>
                         )}
                         {this.asset.transcript && (
                             <div
