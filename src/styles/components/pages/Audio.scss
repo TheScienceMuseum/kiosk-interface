@@ -1,6 +1,35 @@
 @import "../../variables";
 @import "Page";
 
+
+@keyframes buttonFadeOut {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity:0;
+    }
+    50% {
+        width:0;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+
+@keyframes buttonFadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
 @keyframes sourceTextAnimation {
     0% {
         opacity:1;
@@ -104,8 +133,32 @@
 }
 
 .sourceTextContainer {
+    .transcriptBtn {
+        transition: all 0.5s;
+        &.open {
+            opacity:0;
+            visibility: hidden;
+        }
+        &:active {
+            transform: scale(1.2);
+        }
+    }
     &.closed {
         animation: sourceTextAnimation 1s ease;
+        .transcriptBtn {
+            animation: buttonFadeOut 1s ease;
+            opacity:0;
+            visibility: hidden;
+            width:0;
+            padding:0;
+            &.open {
+                animation: buttonFadeIn 1s ease;
+                opacity:1;
+                visibility: visible;
+                width:auto;
+                padding: 1px 7px 2px;
+            }
+        }
         .sourceText {
             animation: sourceTextHideAnimation 1s ease;
             visibility: hidden;
@@ -119,6 +172,16 @@
     }
     &.audioFadeIn {
         animation: sourceTextAnimationCopied 1s ease;
+        .transcriptBtn {
+            animation: buttonFadeIn 1s ease;
+            opacity:1;
+            visibility: visible;
+            &.open {
+                animation: buttonFadeOut 1s ease;
+                opacity:0;
+                visibility: hidden;
+            }
+        }
         .sourceText {
             animation: sourceTextShowAnimation 1s ease;
             visibility: visible;
@@ -259,12 +322,12 @@ audio::-webkit-media-controls-mute-button {
     .transcript {
         display:block;
         transition: all 0.5s;
-        margin-top: 50px;
+        margin-top: 90px;
         font-size: 22px;
         line-height: 32px;
         position:relative;
         .scrollbar-container {
-            height: 550px;
+            height: 510px;
             opacity:1;
             background: transparent;
             .content {

@@ -27,6 +27,11 @@ class TextImage extends React.Component {
         };
 
         this.handleHideContent = this.handleHideContent.bind(this);
+        this.showTitle = true;
+        const { title } = props;
+        if (!title || title === 'none' || title === 'NONE' || title === '') {
+            this.showTitle = false;
+        }
     }
 
     getAnimationClasses() {
@@ -86,7 +91,9 @@ class TextImage extends React.Component {
                 <div className="ContentContainer">
                     {typeof audio === 'undefined' && (
                         <React.Fragment>
-                            <h2>{title}</h2>
+                            {this.showTitle && (
+                                <h2>{title}</h2>
+                            )}
                             <div
                                 className="ContentContainer__body"
                                 dangerouslySetInnerHTML={{ __html: createBodyTag(content) }}

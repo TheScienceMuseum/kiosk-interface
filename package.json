@@ -33,6 +33,7 @@
     },
     "scripts": {
         "start": "node scripts/start.js",
+        "start-prod": "node scripts/start-prod.js",
         "build": "node scripts/build.js",
         "build:package": "scripts/build-package.sh",
         "test": "node scripts/test.js",

@@ -122,9 +122,9 @@
                 top: -300px;
                 animation: animateButtonPoster 2s ease-out;
                 animation-delay: 0s;
-                background-image: url('../../../images/Audio/Portrait/Buttons/SoundPlay.svg');
+                background-image: url('../../../images/Buttons/Video/PlayHero/Audio.svg');
                 border-radius:50%;
-                height:137px;
+                height:140px;
                 background-size:100%;
                 background-color: rgba(0,0,0,0);
             }
@@ -160,7 +160,14 @@
                     }
                 }
             }
+            .perfectScrollUp {
+                margin-top: -60px;
+            }
+            .perfectScrollDown {
+                margin-top: 10px;
+            }
             .scrollbar-container {
+                margin-top:30px;
                 height: 300px;
                 opacity:1;
                 background: transparent;

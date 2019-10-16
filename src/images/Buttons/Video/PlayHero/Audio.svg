@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Buttons/Video/PlayHero/Audio</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="40" cy="40" r="40"></circle>
+        <path d="M40,0 C62.09139,0 80,17.90861 80,40 C80,62.09139 62.09139,80 40,80 C17.90861,80 -2.48689958e-14,62.09139 -2.48689958e-14,40 C-2.48689958e-14,17.90861 17.90861,0 40,0 Z M40,2 C19.0131795,2 2,19.0131795 2,40 C2,60.9868205 19.0131795,78 40,78 C60.9868205,78 78,60.9868205 78,40 C78,19.0131795 60.9868205,2 40,2 Z M30.36,24.8 L56.44,40.64 L30.36,56.48 L30.36,24.8 Z M31.96,27.68 L31.96,53.6 L53.4,40.64 L31.96,27.68 Z" id="path-3"></path>
+    </defs>
+    <g id="Buttons/Video/PlayHero/Audio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Oval" fill="#D8D8D8" fill-rule="nonzero" opacity="0" xlink:href="#path-1"></use>
+        <g id="Colours/Flat/Black" opacity="0.5" mask="url(#mask-2)" fill="#111111" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+        </g>
+        <mask id="mask-4" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#000000" fill-rule="nonzero" xlink:href="#path-3"></use>
+        <g id="Colours/Flat/White" mask="url(#mask-4)" fill="#FFFFFF" fill-rule="nonzero">
+            <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+        </g>
+    </g>
+</svg>
