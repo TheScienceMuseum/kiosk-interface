@@ -346,13 +346,15 @@ class Model extends React.Component {
                                     switch (content.type) {
                                     case 'image':
                                         content = `
-                                            <img 
-                                                src="${asset.assetDirectory + content.href}"
-                                                alt=""
-                                            />
-                                            <br>
-                                            <strong>${content.name || ''}</strong>
-                                            <p>${content.source || ''}</p>
+                                            <div style="position: absolute; bottom: 80px;">
+                                                <img 
+                                                    src="${asset.assetDirectory + content.href}"
+                                                    alt=""
+                                                />
+                                                <br>
+                                                <p><strong>${content.name || ''}</strong></p>
+                                                <p><small>${content.source || ''}</small></p>
+                                            </div>
                                         `;
                                         break;
                                     default:
