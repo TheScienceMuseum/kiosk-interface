@@ -57,7 +57,7 @@ class Model extends React.Component {
     componentDidMount() {
         const width = this.viewerElem.clientWidth;
         const height = this.viewerElem.clientHeight;
-        const { asset, subpages, articleID } = this.props;
+        const { subpages, articleID } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
         console.log('starting position', [posX, posY, posZ]);
