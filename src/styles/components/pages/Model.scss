@@ -7,7 +7,7 @@
     flex: 0 0 100%;
 
     .ModelViewer {
-        width: 1180px;
+        width: 1170px;
         height: 980px;
         position: relative;
         display: inline-block;
@@ -45,7 +45,7 @@
     }
 
     .ModelText {
-        width: calc(1920px - 1280px);
+        width: calc(1920px - 1270px);
         height: 100%;
         position: absolute;
         background: $pageBackground;
