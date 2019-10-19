@@ -536,7 +536,7 @@
           "position": [-48, 0, -25],
           "rotation": [270, 0, 0],
           "scale": 20,
-          "background": "#000000",
+          "background": ["#000000", "#222222"],
           "hotspot_inactive": "#DED4BC",
           "hotspot_active": "#80809c"
         },

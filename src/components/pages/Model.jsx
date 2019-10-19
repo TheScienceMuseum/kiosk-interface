@@ -298,9 +298,15 @@ class Model extends React.Component {
     render() {
         const { asset, subpages } = this.props;
         const { cameraPosition, cameraFocus } = this.state;
+        const [top, bottom] = asset.background;
 
         return (
-            <div className="Page PageModel">
+            <div
+                style={{
+                    backgroundImage: `linear-gradient(${top}, ${bottom})`,
+                }}
+                className="Page PageModel"
+            >
                 <div
                     className="ModelViewer"
                     ref={(ref) => {
