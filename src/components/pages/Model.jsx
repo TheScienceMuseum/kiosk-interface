@@ -43,6 +43,7 @@ class Model extends React.Component {
         this.scale = 1;
         this.minZoom = 1;
         this.maxZoom = 20;
+        this.hotspots = [];
 
         this.createTriggers = this.createTriggers.bind(this);
         this.handleRotate90 = this.handleRotate90.bind(this);
@@ -52,6 +53,8 @@ class Model extends React.Component {
         this.modelHasLoaded = this.modelHasLoaded.bind(this);
         this.setCameraView = this.setCameraView.bind(this);
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
+        this.setAllHotspotsInactive = this.setAllHotspotsInactive.bind(this);
+        this.setHotspotActive = this.setHotspotActive.bind(this);
     }
 
     componentDidMount() {
@@ -170,6 +173,7 @@ class Model extends React.Component {
 
         if (section < subpages.length) {
             const subpage = subpages[section];
+            this.setHotspotActive(section);
 
             this.renderer.render(this.scene, this.camera);
             this.controls.update();
@@ -197,14 +201,20 @@ class Model extends React.Component {
         }
     }
 
-    modelHasLoaded(object) {
-        this.scene.add(object);
+    setHotspotActive(index) {
+        this.setAllHotspotsInactive();
+        if (this.hotspots[index]) {
+            this.hotspots[index].visible = false;
+        }
+    }
 
-        const light = new this.THREE.AmbientLight(0xffffff, 1);
-        this.scene.add(light);
-
-        this.createTriggers();
-        this.setDisplayedSection(0);
+    setAllHotspotsInactive() {
+        each(this.hotspots, (hotspot) => {
+            if (hotspot) {
+                // eslint-disable-next-line no-param-reassign
+                hotspot.visible = true;
+            }
+        });
     }
 
     createTriggers() {
@@ -244,7 +254,19 @@ class Model extends React.Component {
                 sphere.material.color.set(activeColour);
                 this.renderer.render(this.scene, this.camera);
             });
+
+            this.hotspots[index] = sphere;
         });
+    }
+
+    modelHasLoaded(object) {
+        this.scene.add(object);
+
+        const light = new this.THREE.AmbientLight(0xffffff, 1);
+        this.scene.add(light);
+
+        this.createTriggers();
+        this.setDisplayedSection(0);
     }
 
     handleZoomIn() {
