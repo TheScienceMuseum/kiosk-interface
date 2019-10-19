@@ -57,7 +57,7 @@ class Model extends React.Component {
     componentDidMount() {
         const width = this.viewerElem.clientWidth;
         const height = this.viewerElem.clientHeight;
-        const { asset, subpages, articleID } = this.props;
+        const { subpages, articleID } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
         console.log('starting position', [posX, posY, posZ]);
@@ -70,8 +70,8 @@ class Model extends React.Component {
             1000,
         );
 
-        this.renderer = new this.THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setClearColor(asset.background || '#aaa');
+        this.renderer = new this.THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer.setClearColor(0x000000, 0);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(width, height);
 
@@ -298,9 +298,15 @@ class Model extends React.Component {
     render() {
         const { asset, subpages } = this.props;
         const { cameraPosition, cameraFocus } = this.state;
+        const [top, bottom] = asset.background;
 
         return (
-            <div className="Page PageModel">
+            <div
+                style={{
+                    backgroundImage: `linear-gradient(${top}, ${bottom})`,
+                }}
+                className="Page PageModel"
+            >
                 <div
                     className="ModelViewer"
                     ref={(ref) => {
