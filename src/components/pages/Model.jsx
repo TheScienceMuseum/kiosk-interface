@@ -55,6 +55,7 @@ class Model extends React.Component {
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
         this.setAllHotspotsInactive = this.setAllHotspotsInactive.bind(this);
         this.setHotspotActive = this.setHotspotActive.bind(this);
+        this.resetCamera = this.resetCamera.bind(this);
     }
 
     componentDidMount() {
@@ -317,6 +318,11 @@ class Model extends React.Component {
         }, 500);
     }
 
+    resetCamera() {
+        const { currentSection } = this.props;
+        this.setDisplayedSection(currentSection);
+    }
+
     render() {
         const { asset, subpages } = this.props;
         const { cameraPosition, cameraFocus } = this.state;
@@ -356,6 +362,13 @@ class Model extends React.Component {
                         currentScale={this.scale}
                         step={1}
                     />
+                    <button
+                        className="Button Button--text"
+                        type="button"
+                        onClick={this.resetCamera}
+                    >
+                        RESET
+                    </button>
                 </div>
                 <div className="ModelText" ref={(ref) => { this.scrollElem = ref; }}>
                     {subpages.map(subpage => (
