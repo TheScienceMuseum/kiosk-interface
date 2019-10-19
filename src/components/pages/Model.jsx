@@ -362,6 +362,13 @@ class Model extends React.Component {
                         currentScale={this.scale}
                         step={1}
                     />
+                    <button
+                        className="Button Button--text"
+                        type="button"
+                        onClick={this.resetCamera}
+                    >
+                        RESET
+                    </button>
                 </div>
                 <div className="ModelText" ref={(ref) => { this.scrollElem = ref; }}>
                     {subpages.map(subpage => (
