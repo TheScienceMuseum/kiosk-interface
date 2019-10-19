@@ -70,8 +70,8 @@ class Model extends React.Component {
             1000,
         );
 
-        this.renderer = new this.THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setClearColor(asset.background || '#aaa');
+        this.renderer = new this.THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer.setClearColor(0x000000, 0);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(width, height);
 
