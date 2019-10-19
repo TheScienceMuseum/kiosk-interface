@@ -350,6 +350,9 @@ class Model extends React.Component {
                                                 src="${asset.assetDirectory + content.href}"
                                                 alt=""
                                             />
+                                            <br>
+                                            <strong>${content.name || ''}</strong>
+                                            <p>${content.source || ''}</p>
                                         `;
                                         break;
                                     default:
