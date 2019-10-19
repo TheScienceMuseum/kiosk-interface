@@ -54,12 +54,14 @@
         overflow: hidden;
 
         > div {
-            padding: 80px;
+            padding: 130px 80px 80px 80px;
             height: 100vh;
 
             h2 {
                 font-size: 2.5rem;
-                margin-bottom: 25px;
+                font-weight: 200;
+                color: $red;
+                margin-bottom: 20px;
             }
 
             p {
