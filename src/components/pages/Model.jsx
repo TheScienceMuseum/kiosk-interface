@@ -55,6 +55,7 @@ class Model extends React.Component {
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
         this.setAllHotspotsInactive = this.setAllHotspotsInactive.bind(this);
         this.setHotspotActive = this.setHotspotActive.bind(this);
+        this.resetCamera = this.resetCamera.bind(this);
     }
 
     componentDidMount() {
@@ -315,6 +316,11 @@ class Model extends React.Component {
         setTimeout(() => {
             window.cancelAnimationFrame(animationFrame);
         }, 500);
+    }
+
+    resetCamera() {
+        const { currentSection } = this.props;
+        this.setDisplayedSection(currentSection);
     }
 
     render() {
