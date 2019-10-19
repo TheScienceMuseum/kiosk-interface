@@ -346,7 +346,7 @@ class Model extends React.Component {
                                     switch (content.type) {
                                     case 'image':
                                         content = `
-                                            <div style="position: absolute; bottom: 80px;">
+                                            <div>
                                                 <img 
                                                     src="${asset.assetDirectory + content.href}"
                                                     alt=""

@@ -66,12 +66,25 @@
             }
 
             p {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 margin-bottom: 15px;
 
-                img {
-                    margin-top: 20px;
-                    max-width: 100%;
+                div {
+                    position: absolute;
+                    bottom: 80px;
+                    width: 490px;
+                    text-align: center;
+
+                    img {
+                        max-height: 368px;
+                        max-width: 490px;
+                        margin-bottom: 20px;
+                    }
+
+                    p {
+                        width: 100%;
+                        text-align: left;
+                    }
                 }
             }
         }
