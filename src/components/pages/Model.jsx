@@ -43,6 +43,7 @@ class Model extends React.Component {
         this.scale = 1;
         this.minZoom = 1;
         this.maxZoom = 20;
+        this.hotspots = [];
 
         this.createTriggers = this.createTriggers.bind(this);
         this.handleRotate90 = this.handleRotate90.bind(this);
@@ -244,6 +245,8 @@ class Model extends React.Component {
                 sphere.material.color.set(activeColour);
                 this.renderer.render(this.scene, this.camera);
             });
+
+            this.hotspots[index] = sphere;
         });
     }
 
