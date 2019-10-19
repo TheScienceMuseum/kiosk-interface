@@ -47,16 +47,15 @@
     }
 
     .ModelText {
-        width: calc(1920px - 1270px);
+        width: calc(1920px - 1170px);
         height: 100%;
         position: absolute;
         background: $pageBackground;
         right: 0;
-        margin-right: 100px;
         overflow: hidden;
 
         > div {
-            padding: 130px 80px 80px 80px;
+            padding: 130px 180px 80px 80px;
             height: 100vh;
             position: relative;
 
