@@ -43,6 +43,7 @@ class Model extends React.Component {
         this.scale = 1;
         this.minZoom = 1;
         this.maxZoom = 20;
+        this.hotspots = [];
 
         this.createTriggers = this.createTriggers.bind(this);
         this.handleRotate90 = this.handleRotate90.bind(this);
@@ -52,12 +53,15 @@ class Model extends React.Component {
         this.modelHasLoaded = this.modelHasLoaded.bind(this);
         this.setCameraView = this.setCameraView.bind(this);
         this.setDisplayedSection = this.setDisplayedSection.bind(this);
+        this.setAllHotspotsInactive = this.setAllHotspotsInactive.bind(this);
+        this.setHotspotActive = this.setHotspotActive.bind(this);
+        this.resetCamera = this.resetCamera.bind(this);
     }
 
     componentDidMount() {
         const width = this.viewerElem.clientWidth;
         const height = this.viewerElem.clientHeight;
-        const { asset, subpages, articleID } = this.props;
+        const { subpages, articleID } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
         console.log('starting position', [posX, posY, posZ]);
@@ -70,8 +74,8 @@ class Model extends React.Component {
             1000,
         );
 
-        this.renderer = new this.THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setClearColor(asset.background || '#aaa');
+        this.renderer = new this.THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer.setClearColor(0x000000, 0);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(width, height);
 
@@ -170,6 +174,7 @@ class Model extends React.Component {
 
         if (section < subpages.length) {
             const subpage = subpages[section];
+            this.setHotspotActive(section);
 
             this.renderer.render(this.scene, this.camera);
             this.controls.update();
@@ -197,14 +202,20 @@ class Model extends React.Component {
         }
     }
 
-    modelHasLoaded(object) {
-        this.scene.add(object);
+    setHotspotActive(index) {
+        this.setAllHotspotsInactive();
+        if (this.hotspots[index]) {
+            this.hotspots[index].visible = false;
+        }
+    }
 
-        const light = new this.THREE.AmbientLight(0xffffff, 1);
-        this.scene.add(light);
-
-        this.createTriggers();
-        this.setDisplayedSection(0);
+    setAllHotspotsInactive() {
+        each(this.hotspots, (hotspot) => {
+            if (hotspot) {
+                // eslint-disable-next-line no-param-reassign
+                hotspot.visible = true;
+            }
+        });
     }
 
     createTriggers() {
@@ -244,7 +255,19 @@ class Model extends React.Component {
                 sphere.material.color.set(activeColour);
                 this.renderer.render(this.scene, this.camera);
             });
+
+            this.hotspots[index] = sphere;
         });
+    }
+
+    modelHasLoaded(object) {
+        this.scene.add(object);
+
+        const light = new this.THREE.AmbientLight(0xffffff, 1);
+        this.scene.add(light);
+
+        this.createTriggers();
+        this.setDisplayedSection(0);
     }
 
     handleZoomIn() {
@@ -295,12 +318,23 @@ class Model extends React.Component {
         }, 500);
     }
 
+    resetCamera() {
+        const { currentSection } = this.props;
+        this.setDisplayedSection(currentSection);
+    }
+
     render() {
         const { asset, subpages } = this.props;
         const { cameraPosition, cameraFocus } = this.state;
+        const [top, bottom] = asset.background;
 
         return (
-            <div className="Page PageModel">
+            <div
+                style={{
+                    backgroundImage: `linear-gradient(${top}, ${bottom})`,
+                }}
+                className="Page PageModel"
+            >
                 <div
                     className="ModelViewer"
                     ref={(ref) => {
@@ -328,6 +362,13 @@ class Model extends React.Component {
                         currentScale={this.scale}
                         step={1}
                     />
+                    <button
+                        className="Button Button--text"
+                        type="button"
+                        onClick={this.resetCamera}
+                    >
+                        RESET
+                    </button>
                 </div>
                 <div className="ModelText" ref={(ref) => { this.scrollElem = ref; }}>
                     {subpages.map(subpage => (
@@ -340,10 +381,15 @@ class Model extends React.Component {
                                     switch (content.type) {
                                     case 'image':
                                         content = `
-                                            <img 
-                                                src="${asset.assetDirectory + content.href}"
-                                                alt=""
-                                            />
+                                            <div>
+                                                <img 
+                                                    src="${asset.assetDirectory + content.href}"
+                                                    alt=""
+                                                />
+                                                <br>
+                                                <p><strong>${content.name || ''}</strong></p>
+                                                <p><small>${content.source || ''}</small></p>
+                                            </div>
                                         `;
                                         break;
                                     default:

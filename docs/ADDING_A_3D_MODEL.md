@@ -40,7 +40,7 @@ The structure of the article in the manifest should be as follows (sections are 
       0
     ],
     "scale": 20,
-    "background": "#8c8c76",
+    "background": ["#8c8c76", "#000000"],
     "hotspot_inactive": "#DED4BC",
     "hotspot_active": "#80809c"
   },
@@ -122,7 +122,7 @@ The structure of the article in the manifest should be as follows (sections are 
     "position": [-48, 0, -25],
     "rotation": [270, 0, 0],
     "scale": 20,
-    "background": "#8c8c76",
+    "background": ["#8c8c76", "#000000"],
     "hotspot_inactive": "#DED4BC",
     "hotspot_active": "#80809c"
 }
@@ -134,7 +134,7 @@ The structure of the article in the manifest should be as follows (sections are 
 * **developer_comments** Just used to leave comments for developers who will come along later and add more hotspots etc.
 * **position / rotation** The position that the 3D model is placed in the scene and how it is rotated
 * **scale** Resize the 3D Model
-* **background** The background of the scene
+* **background** The background of the scene, an array for a linear top down gradient
 * **hotspot_inactive / hotspot_active** Colors used for the hotspots
 
 
@@ -283,7 +283,7 @@ Remove the `assetDirectory` property for the 3D model asset, but leave the other
     "position": [-48, 0, -25],
     "rotation": [270, 0, 0],
     "scale": 20,
-    "background": "#8c8c76",
+    "background": ["#8c8c76", "#000000"],
     "hotspot_inactive": "#DED4BC",
     "hotspot_active": "#80809c"
   }

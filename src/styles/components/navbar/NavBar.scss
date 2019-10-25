@@ -77,6 +77,11 @@
         > *:first-child {
             flex: 0 0 auto;
         }
+        .NavButtons {
+            &:before {
+                display: none;
+            }
+        }
     }
 
 }
