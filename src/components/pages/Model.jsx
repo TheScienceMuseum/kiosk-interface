@@ -61,7 +61,7 @@ class Model extends React.Component {
     componentDidMount() {
         const width = this.viewerElem.clientWidth;
         const height = this.viewerElem.clientHeight;
-        const { subpages, articleID } = this.props;
+        const { articleID, asset, subpages } = this.props;
         const [posX, posY, posZ] = subpages[0].camera.position;
 
         console.log('starting position', [posX, posY, posZ]);
@@ -84,6 +84,7 @@ class Model extends React.Component {
         this.viewerElem.appendChild(this.renderer.domElement);
 
         this.controls = new this.THREE.OrbitControls(this.camera, this.renderer.domElement);
+
         this.controls.addEventListener('change', () => {
             this.renderer.render(this.scene, this.camera);
             this.setState(prevState => ({
@@ -95,6 +96,7 @@ class Model extends React.Component {
         this.controls.enableDamping = true;
         this.controls.dampingFactor = 0.25;
         this.controls.screenSpacePanning = false;
+        this.controls.zoomSpeed = asset.zoomSpeed;
         this.controls.minDistance = 20;
         this.controls.maxDistance = 500;
         this.controls.update();
