@@ -256,10 +256,13 @@ class Article extends React.Component {
         let { currentPage } = this.state;
         let { currentPageType } = this.state;
         const { navHidden } = this.state;
-        const { subpages } = this.articleContent;
+        const { type, subpages } = this.articleContent;
 
         Article.pauseOnNavigation();
-        if (currentPage === (subpages.length) || navHidden) return;
+        if (
+            currentPage === (subpages.length - (type === ArticleTypes.MODEL ? 1 : 0))
+            || navHidden
+        ) return;
         currentPage += 1;
         currentPageType = subpages[currentPage - 1].type;
 
