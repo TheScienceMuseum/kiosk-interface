@@ -185,6 +185,13 @@ class Model extends React.Component {
             const options = { scrollTop: targetScroll, ease: Ease.easeOut };
             TweenLite.to(this.scrollElem, 0.5, options);
 
+            // set zoom level
+            this.scale = get(
+                subpage,
+                'camera.zoom',
+                0,
+            );
+
             this.setCameraView(
                 subpage.camera.position,
                 get(
