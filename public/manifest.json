@@ -539,7 +539,8 @@
           "zoomSpeed": 0.8,
           "background": ["#111111", "#222222"],
           "hotspot_inactive": "#DED4BC",
-          "hotspot_active": "#80809c"
+          "hotspot_active": "#80809c",
+          "hotspot_size": 0.8
         },
         "subpages": [
           {
@@ -552,7 +553,8 @@
             ],
             "camera": {
               "position": [88.94611876562502,-5,-11.761470250000047],
-              "focus": [0, 5, 0]
+              "focus": [0, 5, 0],
+              "zoom": 0
             }
           },
           {
@@ -569,7 +571,8 @@
               }
             ],
             "camera": {
-              "position": [20.09903325018832,-17.387001030561617,25.222023100719312]
+              "position": [20.09903325018832,-17.387001030561617,25.222023100719312],
+              "zoom": 14
             },
             "hotspot": {
               "focus": [0, -20, 0],
@@ -585,11 +588,14 @@
               "His head shows a visible brain above a distinct line, as if the skull and scalp have been lifted off.",
               {
                 "type": "image",
-                "href": "images/Hotspot_2.jpg"
+                "href": "images/Hotspot_2.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [28.78755731205328,23.5,-10.1292473754654]
+              "position": [28.78755731205328,23.5,-10.1292473754654],
+              "zoom": 10
             },
             "hotspot": {
               "focus": [0, 32, 0],
@@ -604,11 +610,14 @@
               "Although you can’t see them, Rick’s legs were also covered in tattoos. Full ‘bodysuit’ tattoos have been common in Japan for centuries but were only adopted in Europe and America from the early 1900s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_3.jpg"
+                "href": "images/Hotspot_3.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [2.9888279455684605,-37.36856689661272,-29.55865135434324]
+              "position": [2.9888279455684605,-37.36856689661272,-29.55865135434324],
+              "zoom": 12
             },
             "hotspot": {
               "focus": [0,-16,0],
@@ -624,11 +633,14 @@
               "Please feel free to hold his hand and become part of the scene.",
               {
                 "type": "image",
-                "href": "images/Hotspot_4.jpg"
+                "href": "images/Hotspot_4.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [23.31852230574604,-30.548064455293506,-55.26028939943177]
+              "position": [23.31852230574604,-30.548064455293506,-55.26028939943177],
+              "zoom": 4
             },
             "hotspot": {
               "focus": [0,2,0],
@@ -644,11 +656,14 @@
               "He was later nicknamed Zombie Boy.",
               {
                 "type": "image",
-                "href": "images/Hotspot_5.jpg"
+                "href": "images/Hotspot_5.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-10.595586896155112,22.67513059381839,-16.75043923698847]
+              "position": [-10.595586896155112,22.67513059381839,-16.75043923698847],
+              "zoom": 20
             },
             "hotspot": {
               "focus": [0,20,0],
@@ -664,11 +679,14 @@
               "Animals are popular tattoo subjects in many cultures with a range of symbolic meanings.",
               {
                 "type": "image",
-                "href": "images/Hotspot_6.jpg"
+                "href": "images/Hotspot_6.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-22.635112885159465,10.369096692835102,3.4492854183493797]
+              "position": [-22.635112885159465,10.369096692835102,3.4492854183493797],
+              "zoom": 18
             },
             "hotspot": {
               "focus": [0,16,0],
@@ -684,11 +702,14 @@
               "This is a common tattoo design, made famous by the American film Night of the Hunter in 1955, where a character has ‘Love’ and ‘Hate’ on his knuckles. Tattoos often reflect fundamental human emotions.",
               {
                 "type": "image",
-                "href": "images/Hotspot_7.jpg"
+                "href": "images/Hotspot_7.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [19.372049472009763,12.444243584406184,0.0679956916540386]
+              "position": [19.372049472009763,12.444243584406184,0.0679956916540386],
+              "zoom": 20
             },
             "hotspot": {
               "focus": [0,16,0],
@@ -704,11 +725,14 @@
               "See a copy of the book elsewhere in this gallery.",
               {
                 "type": "image",
-                "href": "images/Hotspot_8.jpg"
+                "href": "images/Hotspot_8.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [28.13195617832955,7.532353164628237,5.305247423181045]
+              "position": [28.13195617832955,7.532353164628237,5.305247423181045],
+              "zoom": 10
             },
             "hotspot": {
               "focus": [0,20,0],
@@ -724,11 +748,14 @@
               "This tattooed symbol was also adopted by gay men with HIV in the 1990s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_9.jpg"
+                "href": "images/Hotspot_9.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [17.719162248581085,26.494659902412538,-24.23147490151929]
+              "position": [17.719162248581085,26.494659902412538,-24.23147490151929],
+              "zoom": 10
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -744,11 +771,14 @@
               "It is common to build up tattoos in layers as people’s tastes and identities change over time. Rick started with more traditional image choices and added the anatomy over the top.",
               {
                 "type": "image",
-                "href": "images/Hotspot_10.jpg"
+                "href": "images/Hotspot_10.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-21.1633992739798,41.77943206604955,4.682390169041572]
+              "position": [-21.1633992739798,41.77943206604955,4.682390169041572],
+              "zoom": 10
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -763,11 +793,14 @@
               "Both of Rick’s elbows were tattooed with cobwebs. These link to the insects visible all over his body, feeding on his larger imagery as a ‘decomposing corpse’. Cobwebs have been a common tattoo choice since the 1950s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_11.jpg"
+                "href": "images/Hotspot_11.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-4.725403094529539,-0.9497928350664964,16.704007550605674]
+              "position": [-4.725403094529539,-0.9497928350664964,16.704007550605674],
+              "zoom": 14
             },
             "hotspot": {
               "focus": [0, 20, 0],
@@ -784,11 +817,14 @@
               "In art history this is called an écorché, a painting or sculpture of a human figure with the skin removed to display the muscles.",
               {
                 "type": "image",
-                "href": "images/Hotspot_12.jpg"
+                "href": "images/Hotspot_12.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-18.671790328608033,17.134751310503823,-0.6779156745233915]
+              "position": [-18.671790328608033,17.134751310503823,-0.6779156745233915],
+              "zoom": 20
             },
             "hotspot": {
               "focus": [0, 10, 0],
@@ -804,11 +840,14 @@
               "Barbed wire comes in and out of fashion as a tattoo, it was very popular in the 1990s and again in the late 2010s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_13.jpg"
+                "href": "images/Hotspot_13.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-0.02416020902655292,7.571196503890522,-19.851960353113427]
+              "position": [-0.02416020902655292,7.571196503890522,-19.851960353113427],
+              "zoom": 20
             },
             "hotspot": {
               "focus": [0, 10, 0],
@@ -823,11 +862,14 @@
               "Many of Rick’s tattoos used imagery of death and dying, like these gravestones. Called memento mori, these are a popular image in Western art used to remind viewers of the fragility of life. They have also been part of tattoo history since the tattoos chosen by Christian pilgrims in the 1600s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_14.jpg"
+                "href": "images/Hotspot_14.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
               }
             ],
             "camera": {
-              "position": [-7.153887138766182,12.125239777871966,28.690387997718656]
+              "position": [-7.153887138766182,12.125239777871966,28.690387997718656],
+              "zoom": 12
             },
             "hotspot": {
               "focus": [0, 18, 0],
