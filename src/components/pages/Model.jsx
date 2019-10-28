@@ -239,7 +239,7 @@ class Model extends React.Component {
             const inactiveColour = asset.hotspot_inactive || 0xffff00;
             const activeColour = asset.hotspot_active || 0x0000ff;
 
-            const geometry = new this.THREE.SphereGeometry(0.5, 16, 16);
+            const geometry = new this.THREE.SphereGeometry(asset.hotspot_size || 0.8, 16, 16);
             const material = new this.THREE.MeshBasicMaterial({ color: inactiveColour });
             const sphere = new this.THREE.Mesh(geometry, material);
             sphere.position.set(posX, posY, posZ);

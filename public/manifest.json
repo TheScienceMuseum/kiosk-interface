@@ -539,7 +539,8 @@
           "zoomSpeed": 0.8,
           "background": ["#111111", "#222222"],
           "hotspot_inactive": "#DED4BC",
-          "hotspot_active": "#80809c"
+          "hotspot_active": "#80809c",
+          "hotspot_size": 0.8
         },
         "subpages": [
           {
