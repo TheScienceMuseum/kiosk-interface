@@ -34,7 +34,10 @@
         font-size: 25px;
 
         &:not(:first-child) {
-            margin-left: 2px;
+            margin-left: 10px;
+        }
+        &:first-child {
+            margin-right:10px;
         }
 
 
