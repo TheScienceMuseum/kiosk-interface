@@ -43,6 +43,12 @@
             background-color: #111111;
             background-repeat: no-repeat;
             background-position: center center;
+            &.Button--icon-rotate {
+                font-size:50px;
+            }
+            &.Button--text {
+                padding-right:20px;
+            }
         }
     }
 
@@ -55,7 +61,7 @@
         overflow: hidden;
 
         > div {
-            padding: 130px 180px 80px 80px;
+            padding: 100px 180px 80px 80px;
             height: 100vh;
             position: relative;
 
@@ -67,20 +73,36 @@
             }
 
             p {
-                font-size: 1.4rem;
-                margin-bottom: 15px;
-                text-align: justify;
+                font-size: 22px;
+                line-height: 36px;
+                margin-bottom: 20px;
+                
 
                 div {
                     position: absolute;
-                    bottom: 80px;
+                    bottom: 59px;
                     width: 490px;
-                    text-align: center;
-
+                    text-align: left;
+                    &.image-credit  {
+                        position: relative;
+                        bottom:auto;
+                        width:auto;
+                        font-size:20px;
+                        p {
+                            font-size:20px;
+                            line-height:22px;
+                            &:first-child {
+                                margin-bottom:10px;
+                            }
+                            small {
+                                font-size:16px;
+                            }
+                        }
+                    }
                     img {
                         max-height: 368px;
                         max-width: 490px;
-                        margin-bottom: 20px;
+                        margin-bottom: 16px;
                     }
 
                     p {
