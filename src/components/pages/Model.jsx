@@ -356,7 +356,7 @@ class Model extends React.Component {
                 />
                 <div className="ModelControls">
                     <button
-                        className="Button Button--icon"
+                        className="Button Button--icon Button--icon-rotate"
                         type="button"
                         onClick={this.handleRotate90}
                     >
@@ -396,8 +396,10 @@ class Model extends React.Component {
                                                     alt=""
                                                 />
                                                 <br>
-                                                <p><strong>${content.name || ''}</strong></p>
-                                                <p><small>${content.source || ''}</small></p>
+                                                <div class='image-credit'>
+                                                    <p><strong>${content.name || ''}</strong></p>
+                                                    <p><small>${content.source || ''}</small></p>
+                                                </div>
                                             </div>
                                         `;
                                         break;
