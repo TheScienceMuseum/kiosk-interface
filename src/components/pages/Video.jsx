@@ -269,7 +269,7 @@ class Video extends React.Component {
                                 />
                             )
                         }
-                        <ControlBar autoHide={false} className="kioskControlBar">
+                        <ControlBar autoHide className="kioskControlBar">
                             {
                                 showBSL && (
                                     <button
