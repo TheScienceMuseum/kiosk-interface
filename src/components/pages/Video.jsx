@@ -197,6 +197,7 @@ class Video extends React.Component {
         const { pauseTimer } = this.props;
         pauseTimer();
         this.player.play();
+        this.player.startControlsTimer();
     }
 
     endPlay() {
