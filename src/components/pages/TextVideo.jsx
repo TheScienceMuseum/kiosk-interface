@@ -261,6 +261,7 @@ class TextVideo extends React.Component {
             }
             this.setState({ played: true });
             this.player.play();
+            this.player.startControlsTimer();
         }
     }
 
