@@ -13,7 +13,7 @@ import { PageTypes } from '../../utils/Constants';
 
 
 function getFirstContentImage(props) {
-    const { subpages } = props;
+    const { titleImage, subpages } = props;
     const page = subpages[0];
 
     switch (page.type) {
@@ -21,9 +21,16 @@ function getFirstContentImage(props) {
     case PageTypes.TITLE:
     case PageTypes.IMAGE:
     case PageTypes.TEXT_AUDIO:
+        if (page.asset) {
+            return {
+                full: page.asset.assetSource,
+                thumbnail: getThumb({ asset: page.asset }),
+                showPlayButton: false,
+            };
+        }
         return {
-            full: page.asset.assetSource,
-            thumbnail: getThumb({ asset: page.asset }),
+            full: titleImage.assetSource,
+            thumbnail: getThumb({ asset: titleImage }),
             showPlayButton: false,
         };
     case PageTypes.VIDEO:

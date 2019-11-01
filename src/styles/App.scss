@@ -8,6 +8,11 @@
 body, html {
     margin: 0;
     font-family: $fontLight;
+    cursor: none;
+}
+
+* {
+    cursor: none;
 }
 
 h1 {
