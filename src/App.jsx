@@ -142,11 +142,15 @@ class App extends Component {
     }
 
     pauseTimer() {
-        this.idleTimer.pause();
+        if (this.idleTimer) {
+            this.idleTimer.pause();
+        }
     }
 
     resetTimer() {
-        this.idleTimer.reset();
+        if (this.idleTimer) {
+            this.idleTimer.reset();
+        }
     }
 
 
