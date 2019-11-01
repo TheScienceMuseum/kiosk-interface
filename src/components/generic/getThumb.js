@@ -12,7 +12,10 @@ import PropTypes from 'prop-types';
 
 
 function getThumb(props) {
-    return props.asset.thumbnail;
+    if (!props.asset) {
+        return '';
+    }
+    return props.asset.thumbnail || props.asset.assetSource;
     // old return props.fullSrc.replace(/\.png|\.jpg|\.jpeg/, '_boundingBox.jpg');
 }
 
