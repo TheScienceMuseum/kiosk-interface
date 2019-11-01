@@ -22,7 +22,7 @@ class MenuItemMixed extends React.Component {
         const { titleImage, aspect, subpages } = this.props;
         let imgSource = getThumb({ asset: titleImage });
         if (aspect === 'portrait' && subpages) {
-            const portImage = getFirstContentImage({ subpages });
+            const portImage = getFirstContentImage({ titleImage, subpages });
             imgSource = portImage.thumbnail;
         }
         return {
@@ -31,9 +31,9 @@ class MenuItemMixed extends React.Component {
     }
 
     getPlayButtonStyle() {
-        const { aspect, subpages } = this.props;
+        const { titleImage, aspect, subpages } = this.props;
         if (aspect === 'portrait' && subpages) {
-            const portImage = getFirstContentImage({ subpages });
+            const portImage = getFirstContentImage({ titleImage, subpages });
             if (portImage.showPlayButton) {
                 return {
                     display: 'none',

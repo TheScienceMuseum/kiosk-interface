@@ -378,13 +378,11 @@ audio::-webkit-media-controls-mute-button {
                 width: 16px;
                 border-radius: 3px;
                 background: #ffffff;
-                cursor: pointer;
                 margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
                 box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
               }
             input[type=range]::-ms-track {
                 width: 100%;
-                cursor: pointer;
               
                 /* Hides the slider so custom styles can be added */
                 background: transparent; 
