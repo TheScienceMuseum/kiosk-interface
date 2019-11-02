@@ -875,6 +875,116 @@
               "focus": [0, 18, 0],
               "position": [-1.2653681253285023,11.066805502254127,20.276986832288497]
             }
+          },
+          {
+            "pageID": "5-3-16",
+            "type": "hotspot",
+            "title": "Face Tattoos",
+            "content": [
+              "Rick tattooed his own eye sockets, as the starting point for his skull tattoo. The face is usually one of the last areas of the body to be tattooed, and established tattoo artists refuse to do this for inexperienced customers. Facial tattoos are, however, common in many non-Western cultures.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_15.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
+              }
+            ],
+            "camera": {
+              "position": [7.803364860647897,22.158867777763238,-16.662056965603195],
+              "zoom": 20
+            },
+            "hotspot": {
+              "focus": [0, 30, 0],
+              "position": [7.803364860647897,22.158867777763238,-16.662056965603195]
+            }
+          },
+          {
+            "pageID": "5-3-17",
+            "type": "hotspot",
+            "title": "Monochrome",
+            "content": [
+              "Rick’s tattoos were exclusively in black and grey, a colour choice popular with a lot of famous tattoo artists. This was inspired by Californian prison tattoos, where ink was usually made out of dust, limiting the range of colours available.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_16.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
+              }
+            ],
+            "camera": {
+              "position": [-19.78621191551116,15.121703881922276,-0.4703503918813046],
+              "zoom": 20
+            },
+            "hotspot": {
+              "focus": [0, 18, 0],
+              "position": [-19.78621191551116,15.121703881922276,-0.4703503918813046]
+            }
+          },
+          {
+            "pageID": "5-3-18",
+            "type": "hotspot",
+            "title": "Horror Films",
+            "content": [
+              "Text tattoos feature across Rick’s forearms – ‘The Saw is Family’ on his right, and ‘The Dead Walk’ on his left. Both reference well-known horror films from the 1990s and 2000s. Horror imagery appears throughout his tattoos, mixing popular culture with medical imagery.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_17.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
+              }
+            ],
+            "camera": {
+              "position": [-10.63131779662308,6.031809198445092,-18.784813007205937],
+              "zoom": 20
+            },
+            "hotspot": {
+              "focus": [0, 5, 0],
+              "position": [-10.63131779662308,6.031809198445092,-18.784813007205937]
+            }
+          },
+          {
+            "pageID": "5-3-19",
+            "type": "hotspot",
+            "title": "A Memorial",
+            "content": [
+              "Rick Genest died during the production of this sculpture. The artist Marc Quinn has chosen to turn this artwork into a memorial to Rick, and he explains this in the text cast into the pages of the book.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_18.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
+              }
+            ],
+            "camera": {
+              "position": [-6.0153241427491695,37.39828504111044,7.817643704207273],
+              "zoom": 12
+            },
+            "hotspot": {
+              "focus": [0, 20, 0],
+              "position": [-6.0153241427491695,37.39828504111044,7.817643704207273]
+            }
+          },
+          {
+            "pageID": "5-3-20",
+            "type": "hotspot",
+            "title": "The Grim Reaper",
+            "content": [
+              "A hooded figure representing death is tattooed on Rick’s upper right arm, visually balancing the zombie on his upper left. The hooded Grim Reaper was a familiar comic book image from the 1950s-70s adopted into tattoo culture.",
+              {
+                "type": "image",
+                "href": "images/Hotspot_19.jpg",
+                "name": "Image name",
+                "source": "Science Museum / SSPL"
+              }
+            ],
+            "camera": {
+              "position": [-0.24731164625459778,24.83250623485269,22.554049830567998],
+              "zoom": 12
+            },
+            "hotspot": {
+              "focus": [0, 18, 0],
+              "position": [-0.24731164625459778,24.83250623485269,22.554049830567998]
+            }
           }
         ]
       },
