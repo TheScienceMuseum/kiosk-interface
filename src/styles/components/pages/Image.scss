@@ -49,12 +49,15 @@
         }
         .ImageCaption {
             text-align: left;
+            right:80px;
+            left:80px;
         }
     }
 
     .ContentContainer--left { 
         .ImageCaption {
             right: 80px;
+            left: 80px;
         }
     }
 
