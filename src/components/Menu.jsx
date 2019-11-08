@@ -288,7 +288,7 @@ class Menu extends React.Component {
             return output;
         });
         return (
-            <Hammer onSwipe={this.handleSwipe}>
+            <Hammer onPan={this.handleSwipe}>
                 <nav className="Menu">
                     <ul className="Menu__Container" ref={(ref) => { this.scrollElem = ref; }}>
                         <MenuItemTitle {...titles} />
