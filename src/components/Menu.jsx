@@ -40,7 +40,8 @@ class Menu extends React.Component {
         this.onNext = this.nextItem.bind(this);
         this.onPrev = this.previousItem.bind(this);
         this.onJump = this.scrollToItem.bind(this);
-
+        this.dampenScroll = 30;
+        this.swipeCounter = 0;
         this.handleSwipe = this.handleSwipe.bind(this);
         this.itemClick = this.onItemClick.bind(this);
         this.itemClickAuto = this.onItemClickAuto.bind(this);
@@ -182,10 +183,14 @@ class Menu extends React.Component {
     }
 
     handleSwipe(e) {
-        if (e.direction === HammerJS.DIRECTION_LEFT) {
-            this.nextItem();
-        } else if (e.direction === HammerJS.DIRECTION_RIGHT) {
-            this.previousItem();
+        this.swipeCounter = this.swipeCounter + 1;
+        if (this.swipeCounter > this.dampenScroll) {
+            if (e.direction === HammerJS.DIRECTION_LEFT) {
+                this.nextItem();
+            } else if (e.direction === HammerJS.DIRECTION_RIGHT) {
+                this.previousItem();
+            }
+            this.swipeCounter = 0;
         }
     }
 
