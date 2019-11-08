@@ -183,7 +183,7 @@ class Menu extends React.Component {
     }
 
     handleSwipe(e) {
-        this.swipeCounter++;
+        this.swipeCounter = this.swipeCounter + 1;
         if(this.swipeCounter > this.dampenScroll){
             if (e.direction === HammerJS.DIRECTION_LEFT) {
                 this.nextItem();
@@ -192,7 +192,6 @@ class Menu extends React.Component {
             }
             this.swipeCounter = 0;
         }
-        console.log(this.swipeCounter);
     }
 
     scrollToItem(targetID) {
