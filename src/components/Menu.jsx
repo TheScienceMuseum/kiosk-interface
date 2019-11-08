@@ -40,7 +40,7 @@ class Menu extends React.Component {
         this.onNext = this.nextItem.bind(this);
         this.onPrev = this.previousItem.bind(this);
         this.onJump = this.scrollToItem.bind(this);
-        this.dampenScroll = 20;
+        this.dampenScroll = 15;
         this.swipeCounter = 0;
         this.handleSwipe = this.handleSwipe.bind(this);
         this.itemClick = this.onItemClick.bind(this);
