@@ -293,3 +293,19 @@ Remove the `assetDirectory` property for the 3D model asset, but leave the other
 #### Adding the data to the custom page
 
 To add the model data to the custom page, we need to insert 
+
+### Updating an existing model
+
+To update either the model or images associated with a model you can do the following:
+
+* run `SELECT data FROM custom_page WHERE name = "<custom page name>"`
+* look through the resulting json for the key `.asset.id`
+* log into the AWS console
+* navigate to [the joipolloi-scimus-assets bucket](https://s3.console.aws.amazon.com/s3/buckets/joipolloi-scimus-assets/?region=eu-west-2&tab=overview)
+* search for the id of the asset
+* download the zip file inside the asset prefix
+* extract and update the contents of the zip file as needed
+* compress the updated files into a zip file with the same name as the one in the s3 bucket
+* upload the new zip file to the s3 bucket to replace the file you downloaded earlier
+
+Rebuild the package or re-preview it to see the changes.
