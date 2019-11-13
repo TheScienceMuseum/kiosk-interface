@@ -530,7 +530,7 @@
           "obj": "ScanLAB_Projects_SM_ZombieBoy_170000_v02.OBJ",
           "mtl": "ScanLAB_Projects_SM_ZombieBoy_TEXTURE.mtl",
           "assetType": "model",
-          "nameText": "Zombie Boy",
+          "nameText": "Self-Conscious Gene by Marc Quinn",
           "sourceText": "",
           "developer_comments": "Model is approx x: -10, 10 y: 36, -36 z: -5, 5",
           "position": [-48, 0, -25],
@@ -584,13 +584,13 @@
             "type": "hotspot",
             "title": "Brain Surgery",
             "content": [
-              "Rick developed a brain tumour in his early teens. After successful surgery he began to have anatomical imagery tattooed on to his body.",
+              "Rick developed a brain tumour in his early teens. After successful surgery he began to have anatomical imagery tattooed onto his body.",
               "His head shows a visible brain above a distinct line, as if the skull and scalp have been lifted off.",
               {
                 "type": "image",
-                "href": "images/Hotspot_2.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -611,8 +611,8 @@
               {
                 "type": "image",
                 "href": "images/Hotspot_3.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "name": "",
+                "source": "© WENN Rights Ltd / Alamy Stock Photo"
               }
             ],
             "camera": {
@@ -633,9 +633,9 @@
               "Please feel free to hold his hand and become part of the scene.",
               {
                 "type": "image",
-                "href": "images/Hotspot_4.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -656,9 +656,9 @@
               "He was later nicknamed Zombie Boy.",
               {
                 "type": "image",
-                "href": "images/Hotspot_5.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -676,12 +676,12 @@
             "title": "Tattooed insects",
             "content": [
               "Rick’s tattoos combine anatomy and horror film imagery to produce the effect of a decomposing corpse. Spot the maggots, centipedes and other bugs all over his body.",
-              "Animals are popular tattoo subjects in many cultures with a range of symbolic meanings.",
+              "Animals are popular tattoo subjects in many cultures, with a range of symbolic meanings.",
               {
                 "type": "image",
-                "href": "images/Hotspot_6.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -699,12 +699,12 @@
             "title": "Knuckle tattoos",
             "content": [
               "Rick had the words ‘Evil’ and ‘Dead’ tattooed across his knuckles.",
-              "This is a common tattoo design, made famous by the American film Night of the Hunter in 1955, where a character has ‘Love’ and ‘Hate’ on his knuckles. Tattoos often reflect fundamental human emotions.",
+              "This is a common tattoo design, made famous by the American film, Night of the Hunter, in 1955, where a character has ‘Love’ and ‘Hate’ on his knuckles. Tattoos often reflect fundamental human emotions.",
               {
                 "type": "image",
                 "href": "images/Hotspot_7.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "name": "Robert Mitchum as Reverend Harry Powell in The Night of The Hunter, 1955",
+                "source": "© Herbert Dorfman / Corbis Historica / Getty Images"
               }
             ],
             "camera": {
@@ -726,8 +726,8 @@
               {
                 "type": "image",
                 "href": "images/Hotspot_8.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "name": "",
+                "source": "Science Museum Group"
               }
             ],
             "camera": {
@@ -748,9 +748,9 @@
               "This tattooed symbol was also adopted by gay men with HIV in the 1990s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_9.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -771,9 +771,9 @@
               "It is common to build up tattoos in layers as people’s tastes and identities change over time. Rick started with more traditional image choices and added the anatomy over the top.",
               {
                 "type": "image",
-                "href": "images/Hotspot_10.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -793,9 +793,9 @@
               "Both of Rick’s elbows were tattooed with cobwebs. These link to the insects visible all over his body, feeding on his larger imagery as a ‘decomposing corpse’. Cobwebs have been a common tattoo choice since the 1950s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_11.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -812,14 +812,14 @@
             "type": "hotspot",
             "title": "Muscular Corset",
             "content": [
-              "These muscles on Rick’s lower back are part of the anatomical imagery tattooed all over his body.",
+              "These muscles on Rick’s back are part of the anatomical imagery tattooed all over his body.",
               "A popular theme of 1990s tattooing featured ‘skin rips’ that appeared to show the body under a person’s skin, sometimes muscle, sometimes machine.",
               "In art history this is called an écorché, a painting or sculpture of a human figure with the skin removed to display the muscles.",
               {
                 "type": "image",
                 "href": "images/Hotspot_12.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "name": "",
+                "source": "© Brent Severson / The Skin Gallery"
               }
             ],
             "camera": {
@@ -837,12 +837,12 @@
             "title": "Barbed wire",
             "content": [
               "Tattooed barbed wire covers Rick, giving the sense that his body is bursting against these constraints.",
-              "Barbed wire comes in and out of fashion as a tattoo, it was very popular in the 1990s and again in the late 2010s.",
+              "Barbed wire comes in and out of fashion as a tattoo; it was very popular in the 1990s and again in the late 2010s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_13.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
@@ -862,9 +862,9 @@
               "Many of Rick’s tattoos used imagery of death and dying, like these gravestones. Called memento mori, these are a popular image in Western art used to remind viewers of the fragility of life. They have also been part of tattoo history since the tattoos chosen by Christian pilgrims in the 1600s.",
               {
                 "type": "image",
-                "href": "images/Hotspot_14.jpg",
-                "name": "Image name",
-                "source": "Science Museum / SSPL"
+                "href": "",
+                "name": "",
+                "source": ""
               }
             ],
             "camera": {
