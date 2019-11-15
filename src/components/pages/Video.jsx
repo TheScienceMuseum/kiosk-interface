@@ -327,7 +327,7 @@ Video.propTypes = {
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)])
         .isRequired,
-    toggleSwipe: PropTypes.func.isRequired
+    toggleSwipe: PropTypes.func.isRequired,
 };
 
 Video.defaultProps = {
