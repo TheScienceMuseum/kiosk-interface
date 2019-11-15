@@ -254,7 +254,7 @@ class TextVideo extends React.Component {
 
     beginPlay() {
         const { canPlay } = this.state;
-        const { toggleNavHide } = this.props;
+        const { toggleNavHide, toggleSwipe } = this.props;
         if (canPlay) {
             if (window.appJson.aspect_ratio === '16:9') {
                 toggleNavHide(true);
@@ -262,11 +262,12 @@ class TextVideo extends React.Component {
             this.setState({ played: true });
             this.player.play();
             this.player.startControlsTimer();
+            toggleSwipe(false);
         }
     }
 
     endPlay() {
-        const { toggleNavHide } = this.props;
+        const { toggleNavHide, toggleSwipe } = this.props;
         if (window.appJson.aspect_ratio === '16:9') {
             toggleNavHide(false);
         }
@@ -274,6 +275,7 @@ class TextVideo extends React.Component {
         this.setState({ played: false });
         const { resetInactiveTimer } = this.props;
         resetInactiveTimer();
+        toggleSwipe(true);
     }
 
     openTranscript() {
@@ -525,6 +527,7 @@ TextVideo.propTypes = {
     pauseTimer: PropTypes.func.isRequired,
     resetInactiveTimer: PropTypes.func.isRequired,
     titleImage: propTypes.titleImage.isRequired,
+    toggleSwipe: PropTypes.func.isRequired,
 };
 
 export default TextVideo;

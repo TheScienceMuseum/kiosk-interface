@@ -47,6 +47,7 @@ class Article extends React.Component {
             dateLineClosed: true,
             firstDate: -1,
             showPages: props.aspect === 'portrait',
+            canSwipe: true,
         };
 
         this.handleSwipe = this.handleSwipe.bind(this);
@@ -59,6 +60,8 @@ class Article extends React.Component {
         this.handleHomeButton = this.handleHomeButton.bind(this);
         this.handleChangeCurrentPage = this.handleChangeCurrentPage.bind(this);
         Article.pauseOnNavigation = Article.pauseOnNavigation.bind(this);
+
+        this.toggleSwipe = this.toggleSwipe.bind(this);
         // this.article = null;
 
         const { articleID } = this.props;
@@ -154,6 +157,7 @@ class Article extends React.Component {
                     resetInactiveTimer={resetInactiveTimer}
                     autoPlay={autoPlay}
                     showNav
+                    toggleSwipe={this.toggleSwipe}
                 />
             );
         default:
@@ -210,6 +214,7 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         {...page}
+                        toggleSwipe={this.toggleSwipe}
                     />
                 );
                 break;
@@ -225,6 +230,7 @@ class Article extends React.Component {
                         pauseTimer={pauseTimer}
                         resetInactiveTimer={resetInactiveTimer}
                         autoPlay={false}
+                        toggleSwipe={this.toggleSwipe}
                     />
                 );
                 break;
@@ -237,12 +243,25 @@ class Article extends React.Component {
         return pagesOutput;
     }
 
+    toggleSwipe(v) {
+        this.setState({ canSwipe: v });
+    }
+
+    enableSwipe() {
+        this.setState({ canSwipe: true });
+    }
+
+    disableSwipe() {
+        this.setState({ canSwipe: false });
+    }
+
     handleSwipe(e) {
         // console.log('Article: handleSwipe: e: ', e);
         // console.log('Article: handleSwipe: e.direction: ', e.direction);
         // console.log('Article: handleSwipe: ', HammerJS.DIRECTION_DOWN);
         // console.log('Article: handleSwipe: ', HammerJS.DIRECTION_UP);
-
+        const { canSwipe } = this.state;
+        if (!canSwipe) return;
         if (e.direction === HammerJS.DIRECTION_UP) {
             this.nextPage();
         } else if (e.direction === HammerJS.DIRECTION_DOWN) {
@@ -251,7 +270,9 @@ class Article extends React.Component {
     }
 
     nextPage() {
-        // console.log('Article: nextPage');
+        // console.log( 'Article: nextPage');
+        const { canSwipe } = this.state;
+        if (!canSwipe) return;
 
         let { currentPage } = this.state;
         let { currentPageType } = this.state;
@@ -280,6 +301,8 @@ class Article extends React.Component {
 
     prevPage() {
         // console.log('Article: prevPage');
+        const { canSwipe } = this.state;
+        if (!canSwipe) return;
 
         let { currentPageType } = this.state;
         let { currentPage } = this.state;
