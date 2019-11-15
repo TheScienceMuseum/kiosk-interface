@@ -11,8 +11,8 @@ import '../../styles/components/menuitems/MenuItems.scss';
  * @package sciencemuseum-kiosk-interface
  */
 function CompressMenuTitle(t) {
-    if (t.length > 45) {
-        return t.substring(0, 45);
+    if (t.length > 46) {
+        return t.substring(0, 46);
     }
 
     return t;
