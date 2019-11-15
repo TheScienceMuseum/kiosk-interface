@@ -194,17 +194,19 @@ class Video extends React.Component {
 
     beginPlay() {
         this.setState({ played: true, hasClosed: false });
-        const { pauseTimer } = this.props;
+        const { pauseTimer, toggleSwipe } = this.props;
         pauseTimer();
         this.player.play();
         this.player.startControlsTimer();
+        toggleSwipe(false);
     }
 
     endPlay() {
         this.setState({ played: false, hasClosed: true });
-        const { resetInactiveTimer } = this.props;
+        const { resetInactiveTimer, toggleSwipe } = this.props;
         resetInactiveTimer();
         this.player.pause();
+        toggleSwipe(true);
     }
 
     render() {
@@ -325,6 +327,7 @@ Video.propTypes = {
         PropTypes.string,
         PropTypes.arrayOf(PropTypes.string)])
         .isRequired,
+    toggleSwipe: PropTypes.func.isRequired
 };
 
 Video.defaultProps = {
